@@ -1,0 +1,1649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Upgrade Cost</key>
+	<dict>
+		<key>Barn</key>
+		<dict>
+			<key>Damage</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>Armor</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>Health</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+		</dict>
+		<key>Energy</key>
+		<dict>
+			<key>Max Energy</key>
+			<array>
+				<string></string>
+				<string></string>
+				<string></string>
+				<string></string>
+				<string></string>
+				<string></string>
+			</array>
+			<key>Energy Regeneration</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+		</dict>
+		<key>Gold Bonus</key>
+		<array>
+			<integer>0</integer>
+			<integer>0</integer>
+			<integer>0</integer>
+			<integer>0</integer>
+			<integer>0</integer>
+			<integer>0</integer>
+		</array>
+		<key>Ship</key>
+		<dict>
+			<key>Damage</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>Firerate</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>AreaOfEffect Damage</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+		</dict>
+		<key>Player Monsters</key>
+		<dict>
+			<key>Orange</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>Apple</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>Strawberry</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>Banana</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>Cherry</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>Coconut</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>Mango</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>Grape</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>Pineapple</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>Watermelon</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+		</dict>
+	</dict>
+	<key>Barn</key>
+	<dict>
+		<key>Damage</key>
+		<array>
+			<integer>0</integer>
+			<integer>10</integer>
+			<integer>20</integer>
+			<integer>30</integer>
+			<integer>60</integer>
+			<integer>100</integer>
+		</array>
+		<key>Armor</key>
+		<array>
+			<integer>0</integer>
+			<integer>1</integer>
+			<integer>3</integer>
+			<integer>5</integer>
+			<integer>8</integer>
+			<integer>13</integer>
+		</array>
+		<key>Health</key>
+		<array>
+			<integer>500</integer>
+			<integer>800</integer>
+			<integer>1500</integer>
+			<integer>2500</integer>
+			<integer>3500</integer>
+			<integer>5500</integer>
+		</array>
+	</dict>
+	<key>Energy</key>
+	<dict>
+		<key>Max Energy</key>
+		<array>
+			<integer>100</integer>
+			<integer>450</integer>
+			<integer>800</integer>
+			<integer>1200</integer>
+			<integer>2200</integer>
+			<integer>4000</integer>
+		</array>
+		<key>Energy Regeneration</key>
+		<array>
+			<integer>2</integer>
+			<integer>6</integer>
+			<integer>15</integer>
+			<integer>30</integer>
+			<integer>50</integer>
+			<integer>100</integer>
+		</array>
+	</dict>
+	<key>Gold Bonus</key>
+	<array>
+		<integer>0</integer>
+		<integer>2</integer>
+		<integer>5</integer>
+		<integer>10</integer>
+		<integer>20</integer>
+		<integer>30</integer>
+	</array>
+	<key>Ship</key>
+	<dict>
+		<key>Damage</key>
+		<array>
+			<integer>5</integer>
+			<integer>7</integer>
+			<integer>10</integer>
+			<integer>15</integer>
+			<integer>20</integer>
+			<integer>30</integer>
+		</array>
+		<key>Firerate</key>
+		<array>
+			<integer>30</integer>
+			<integer>25</integer>
+			<integer>20</integer>
+			<integer>15</integer>
+		</array>
+		<key>AreaOfEffect Damage</key>
+		<array>
+			<integer>0</integer>
+			<integer>5</integer>
+			<integer>10</integer>
+			<integer>15</integer>
+			<integer>20</integer>
+			<integer>25</integer>
+		</array>
+	</dict>
+	<key>Player Monsters</key>
+	<dict>
+		<key>Orange</key>
+		<array>
+			<dict>
+				<key>Health</key>
+				<integer>150</integer>
+				<key>Energy Cost</key>
+				<integer>15</integer>
+				<key>Move Speed</key>
+				<integer>2</integer>
+				<key>Delay</key>
+				<integer>1</integer>
+				<key>Damage</key>
+				<integer>10</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>160</integer>
+				<key>Energy Cost</key>
+				<integer>13</integer>
+				<key>Move Speed</key>
+				<integer>2</integer>
+				<key>Delay</key>
+				<integer>1</integer>
+				<key>Damage</key>
+				<integer>12</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>200</integer>
+				<key>Energy Cost</key>
+				<integer>13</integer>
+				<key>Move Speed</key>
+				<integer>3</integer>
+				<key>Delay</key>
+				<integer>1</integer>
+				<key>Damage</key>
+				<integer>15</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>250</integer>
+				<key>Energy Cost</key>
+				<integer>10</integer>
+				<key>Move Speed</key>
+				<integer>3</integer>
+				<key>Delay</key>
+				<integer>1</integer>
+				<key>Damage</key>
+				<integer>20</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+		</array>
+		<key>Apple</key>
+		<array>
+			<dict>
+				<key>Health</key>
+				<integer>300</integer>
+				<key>Energy Cost</key>
+				<integer>30</integer>
+				<key>Move Speed</key>
+				<real>2.5</real>
+				<key>Delay</key>
+				<integer>3</integer>
+				<key>Damage</key>
+				<integer>20</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>330</integer>
+				<key>Energy Cost</key>
+				<integer>30</integer>
+				<key>Move Speed</key>
+				<real>2.5</real>
+				<key>Delay</key>
+				<integer>3</integer>
+				<key>Damage</key>
+				<integer>25</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>350</integer>
+				<key>Energy Cost</key>
+				<integer>25</integer>
+				<key>Move Speed</key>
+				<real>2.5</real>
+				<key>Delay</key>
+				<integer>3</integer>
+				<key>Damage</key>
+				<integer>30</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>380</integer>
+				<key>Energy Cost</key>
+				<integer>20</integer>
+				<key>Move Speed</key>
+				<integer>2</integer>
+				<key>Delay</key>
+				<integer>2</integer>
+				<key>Damage</key>
+				<integer>35</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+		</array>
+		<key>Strawberry</key>
+		<array>
+			<dict>
+				<key>Health</key>
+				<integer>100</integer>
+				<key>Energy Cost</key>
+				<integer>50</integer>
+				<key>Move Speed</key>
+				<integer>1</integer>
+				<key>Delay</key>
+				<integer>4</integer>
+				<key>Damage</key>
+				<integer>20</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>140</integer>
+				<key>Energy Cost</key>
+				<integer>45</integer>
+				<key>Move Speed</key>
+				<integer>2</integer>
+				<key>Delay</key>
+				<integer>3</integer>
+				<key>Damage</key>
+				<integer>25</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>160</integer>
+				<key>Energy Cost</key>
+				<integer>45</integer>
+				<key>Move Speed</key>
+				<integer>2</integer>
+				<key>Delay</key>
+				<integer>3</integer>
+				<key>Damage</key>
+				<integer>27</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>180</integer>
+				<key>Energy Cost</key>
+				<integer>40</integer>
+				<key>Move Speed</key>
+				<integer>2</integer>
+				<key>Delay</key>
+				<integer>3</integer>
+				<key>Damage</key>
+				<integer>30</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+		</array>
+		<key>Cherry</key>
+		<array>
+			<dict>
+				<key>Health</key>
+				<integer>70</integer>
+				<key>Energy Cost</key>
+				<integer>50</integer>
+				<key>Move Speed</key>
+				<integer>4</integer>
+				<key>Delay</key>
+				<integer>6</integer>
+				<key>Damage</key>
+				<integer>50</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<true/>
+				<key>AreaOfEffect Damage</key>
+				<integer>20</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>100</integer>
+				<key>Energy Cost</key>
+				<integer>50</integer>
+				<key>Move Speed</key>
+				<integer>4</integer>
+				<key>Delay</key>
+				<integer>5</integer>
+				<key>Damage</key>
+				<integer>70</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<true/>
+				<key>AreaOfEffect Damage</key>
+				<integer>20</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>130</integer>
+				<key>Energy Cost</key>
+				<integer>50</integer>
+				<key>Move Speed</key>
+				<integer>4</integer>
+				<key>Delay</key>
+				<integer>5</integer>
+				<key>Damage</key>
+				<integer>70</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<true/>
+				<key>AreaOfEffect Damage</key>
+				<integer>30</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>150</integer>
+				<key>Energy Cost</key>
+				<integer>50</integer>
+				<key>Move Speed</key>
+				<integer>4</integer>
+				<key>Delay</key>
+				<integer>7</integer>
+				<key>Damage</key>
+				<integer>90</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<true/>
+				<key>AreaOfEffect Damage</key>
+				<integer>35</integer>
+			</dict>
+		</array>
+		<key>Mango</key>
+		<array>
+			<dict>
+				<key>Health</key>
+				<integer>400</integer>
+				<key>Energy Cost</key>
+				<integer>100</integer>
+				<key>Move Speed</key>
+				<integer>2</integer>
+				<key>Delay</key>
+				<integer>7</integer>
+				<key>Damage</key>
+				<integer>40</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>430</integer>
+				<key>Energy Cost</key>
+				<integer>100</integer>
+				<key>Move Speed</key>
+				<integer>3</integer>
+				<key>Delay</key>
+				<integer>8</integer>
+				<key>Damage</key>
+				<integer>45</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>460</integer>
+				<key>Energy Cost</key>
+				<integer>100</integer>
+				<key>Move Speed</key>
+				<integer>3</integer>
+				<key>Delay</key>
+				<integer>7</integer>
+				<key>Damage</key>
+				<integer>50</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>500</integer>
+				<key>Energy Cost</key>
+				<integer>80</integer>
+				<key>Move Speed</key>
+				<integer>3</integer>
+				<key>Delay</key>
+				<integer>8</integer>
+				<key>Damage</key>
+				<integer>50</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+		</array>
+		<key>Banana</key>
+		<array>
+			<dict>
+				<key>Health</key>
+				<integer>150</integer>
+				<key>Energy Cost</key>
+				<integer>150</integer>
+				<key>Move Speed</key>
+				<integer>2</integer>
+				<key>Delay</key>
+				<integer>10</integer>
+				<key>Damage</key>
+				<integer>40</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>160</integer>
+				<key>Energy Cost</key>
+				<integer>150</integer>
+				<key>Move Speed</key>
+				<integer>2</integer>
+				<key>Delay</key>
+				<integer>10</integer>
+				<key>Damage</key>
+				<integer>55</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>160</integer>
+				<key>Energy Cost</key>
+				<integer>180</integer>
+				<key>Move Speed</key>
+				<integer>3</integer>
+				<key>Delay</key>
+				<integer>8</integer>
+				<key>Damage</key>
+				<integer>60</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>200</integer>
+				<key>Energy Cost</key>
+				<integer>200</integer>
+				<key>Move Speed</key>
+				<integer>3</integer>
+				<key>Delay</key>
+				<integer>9</integer>
+				<key>Damage</key>
+				<integer>70</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+		</array>
+		<key>Coconut</key>
+		<array>
+			<dict>
+				<key>Health</key>
+				<integer>520</integer>
+				<key>Energy Cost</key>
+				<integer>200</integer>
+				<key>Move Speed</key>
+				<integer>1</integer>
+				<key>Delay</key>
+				<integer>7</integer>
+				<key>Damage</key>
+				<integer>20</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>600</integer>
+				<key>Energy Cost</key>
+				<integer>200</integer>
+				<key>Move Speed</key>
+				<integer>1</integer>
+				<key>Delay</key>
+				<integer>7</integer>
+				<key>Damage</key>
+				<integer>20</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>700</integer>
+				<key>Energy Cost</key>
+				<integer>200</integer>
+				<key>Move Speed</key>
+				<integer>1</integer>
+				<key>Delay</key>
+				<integer>6</integer>
+				<key>Damage</key>
+				<integer>20</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>850</integer>
+				<key>Energy Cost</key>
+				<integer>170</integer>
+				<key>Move Speed</key>
+				<integer>2</integer>
+				<key>Delay</key>
+				<integer>6</integer>
+				<key>Damage</key>
+				<integer>20</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+		</array>
+		<key>Grape</key>
+		<array>
+			<dict>
+				<key>Health</key>
+				<integer>250</integer>
+				<key>Energy Cost</key>
+				<integer>200</integer>
+				<key>Move Speed</key>
+				<integer>3</integer>
+				<key>Delay</key>
+				<integer>9</integer>
+				<key>Damage</key>
+				<integer>20</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<true/>
+				<key>AreaOfEffect Damage</key>
+				<integer>20</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>250</integer>
+				<key>Energy Cost</key>
+				<integer>210</integer>
+				<key>Move Speed</key>
+				<integer>3</integer>
+				<key>Delay</key>
+				<integer>9</integer>
+				<key>Damage</key>
+				<integer>25</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<true/>
+				<key>AreaOfEffect Damage</key>
+				<integer>25</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>250</integer>
+				<key>Energy Cost</key>
+				<integer>230</integer>
+				<key>Move Speed</key>
+				<integer>3</integer>
+				<key>Delay</key>
+				<integer>9</integer>
+				<key>Damage</key>
+				<integer>30</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<true/>
+				<key>AreaOfEffect Damage</key>
+				<integer>30</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>250</integer>
+				<key>Energy Cost</key>
+				<integer>270</integer>
+				<key>Move Speed</key>
+				<integer>3</integer>
+				<key>Delay</key>
+				<integer>9</integer>
+				<key>Damage</key>
+				<integer>40</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<true/>
+				<key>AreaOfEffect Damage</key>
+				<integer>40</integer>
+			</dict>
+		</array>
+		<key>Pineapple</key>
+		<array>
+			<dict>
+				<key>Health</key>
+				<integer>700</integer>
+				<key>Energy Cost</key>
+				<integer>250</integer>
+				<key>Move Speed</key>
+				<integer>2</integer>
+				<key>Delay</key>
+				<integer>10</integer>
+				<key>Damage</key>
+				<integer>45</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>650</integer>
+				<key>Energy Cost</key>
+				<integer>250</integer>
+				<key>Move Speed</key>
+				<integer>3</integer>
+				<key>Delay</key>
+				<integer>10</integer>
+				<key>Damage</key>
+				<integer>55</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>550</integer>
+				<key>Energy Cost</key>
+				<integer>230</integer>
+				<key>Move Speed</key>
+				<integer>3</integer>
+				<key>Delay</key>
+				<integer>10</integer>
+				<key>Damage</key>
+				<integer>70</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>400</integer>
+				<key>Energy Cost</key>
+				<integer>230</integer>
+				<key>Move Speed</key>
+				<integer>5</integer>
+				<key>Delay</key>
+				<integer>10</integer>
+				<key>Damage</key>
+				<integer>90</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<false/>
+				<key>AreaOfEffect Damage</key>
+				<integer>0</integer>
+			</dict>
+		</array>
+		<key>Watermelon</key>
+		<array>
+			<dict>
+				<key>Health</key>
+				<integer>600</integer>
+				<key>Energy Cost</key>
+				<integer>250</integer>
+				<key>Move Speed</key>
+				<integer>2</integer>
+				<key>Delay</key>
+				<integer>8</integer>
+				<key>Damage</key>
+				<integer>45</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<true/>
+				<key>AreaOfEffect Damage</key>
+				<integer>10</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>650</integer>
+				<key>Energy Cost</key>
+				<integer>250</integer>
+				<key>Move Speed</key>
+				<integer>2</integer>
+				<key>Delay</key>
+				<integer>9</integer>
+				<key>Damage</key>
+				<integer>50</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<true/>
+				<key>AreaOfEffect Damage</key>
+				<integer>20</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>700</integer>
+				<key>Energy Cost</key>
+				<integer>250</integer>
+				<key>Move Speed</key>
+				<integer>2</integer>
+				<key>Delay</key>
+				<integer>9</integer>
+				<key>Damage</key>
+				<integer>60</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<true/>
+				<key>AreaOfEffect Damage</key>
+				<integer>25</integer>
+			</dict>
+			<dict>
+				<key>Health</key>
+				<integer>800</integer>
+				<key>Energy Cost</key>
+				<integer>300</integer>
+				<key>Move Speed</key>
+				<integer>4</integer>
+				<key>Delay</key>
+				<integer>10</integer>
+				<key>Damage</key>
+				<integer>75</integer>
+				<key>Attack Speed</key>
+				<integer>0</integer>
+				<key>AreaOfEffect</key>
+				<true/>
+				<key>AreaOfEffect Damage</key>
+				<integer>30</integer>
+			</dict>
+		</array>
+	</dict>
+	<key>Enemy Monsters</key>
+	<dict>
+		<key>Carrot</key>
+		<dict>
+			<key>Health</key>
+			<integer>200</integer>
+			<key>Move Speed</key>
+			<integer>2</integer>
+			<key>Damage</key>
+			<integer>15</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+			<key>Gold Reward</key>
+			<integer>5</integer>
+		</dict>
+		<key>Broccoli</key>
+		<dict>
+			<key>Health</key>
+			<integer>350</integer>
+			<key>Move Speed</key>
+			<integer>3</integer>
+			<key>Damage</key>
+			<integer>25</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+			<key>Gold Reward</key>
+			<integer>7</integer>
+		</dict>
+		<key>Corn</key>
+		<dict>
+			<key>Health</key>
+			<integer>250</integer>
+			<key>Move Speed</key>
+			<integer>2</integer>
+			<key>Damage</key>
+			<integer>20</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+			<key>Gold Reward</key>
+			<integer>7</integer>
+		</dict>
+		<key>Tomato</key>
+		<dict>
+			<key>Health</key>
+			<integer>130</integer>
+			<key>Move Speed</key>
+			<integer>1</integer>
+			<key>Damage</key>
+			<integer>150</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<true/>
+			<key>AreaOfEffect Damage</key>
+			<integer>50</integer>
+			<key>Gold Reward</key>
+			<integer>10</integer>
+		</dict>
+		<key>Potato</key>
+		<dict>
+			<key>Health</key>
+			<integer>500</integer>
+			<key>Move Speed</key>
+			<integer>3</integer>
+			<key>Damage</key>
+			<integer>50</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+			<key>Gold Reward</key>
+			<integer>17</integer>
+		</dict>
+		<key>Pea Pod</key>
+		<dict>
+			<key>Health</key>
+			<integer>600</integer>
+			<key>Move Speed</key>
+			<integer>1</integer>
+			<key>Damage</key>
+			<integer>30</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+			<key>Gold Reward</key>
+			<integer>15</integer>
+		</dict>
+		<key>Pea</key>
+		<dict>
+			<key>Health</key>
+			<integer>50</integer>
+			<key>Move Speed</key>
+			<integer>4</integer>
+			<key>Damage</key>
+			<integer>65</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<true/>
+			<key>AreaOfEffect Damage</key>
+			<integer>20</integer>
+			<key>Gold Reward</key>
+			<integer>5</integer>
+		</dict>
+		<key>Pumpkin</key>
+		<dict>
+			<key>Health</key>
+			<integer>1200</integer>
+			<key>Move Speed</key>
+			<integer>2</integer>
+			<key>Damage</key>
+			<integer>200</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+			<key>Gold Reward</key>
+			<integer>25</integer>
+		</dict>
+		<key>Beet</key>
+		<dict>
+			<key>Health</key>
+			<integer>2000</integer>
+			<key>Move Speed</key>
+			<integer>5</integer>
+			<key>Damage</key>
+			<integer>50</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<true/>
+			<key>AreaOfEffect Damage</key>
+			<integer>30</integer>
+			<key>Gold Reward</key>
+			<integer>40</integer>
+		</dict>
+		<key>Asparagus</key>
+		<dict>
+			<key>Health</key>
+			<integer>2000</integer>
+			<key>Move Speed</key>
+			<integer>4</integer>
+			<key>Damage</key>
+			<integer>100</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<true/>
+			<key>AreaOfEffect Damage</key>
+			<integer>30</integer>
+			<key>Gold Reward</key>
+			<integer>55</integer>
+		</dict>
+	</dict>
+	<key>Game Levels</key>
+	<array>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>0</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+</dict>
+</plist>
