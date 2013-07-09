@@ -14,4 +14,5 @@
 }
 - (id)initWithMonsterPicture;
 -(void)fireBullet;
+-(void)reset;
 @end

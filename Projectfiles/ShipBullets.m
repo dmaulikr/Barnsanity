@@ -18,7 +18,6 @@
     if (self)
     {
         [self setScale:.12 ];
-        self.damage=1;
         speed=4;
         //get the radius of the world
         radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
@@ -28,7 +27,8 @@
         float shipYPos=[[[GameMechanics sharedGameMechanics] gameScene] getChildByTag:0].position.y;
         
         distanceToSpawn=fabsf(worldYPos-shipYPos);
-        
+        self.areaOfEffect=TRUE;
+        [self reset];
         [self scheduleUpdate];
     }
     return self;
@@ -80,6 +80,14 @@
     [self setPosition:newPosition];
     
     
+    
+}
+
+-(void)reset{
+    int level=[[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship"] objectForKey:@"Damage"] integerValue];
+    self.damage=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Ship"]objectForKey:@"Damage"]   objectAtIndex:level] integerValue];
+    level=[[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship"] objectForKey:@"AreaOfEffect Damage"]integerValue];
+    self.areaOfEffectDamage=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Ship"]objectForKey:@"AreaOfEffect Damage"]   objectAtIndex:level]integerValue];
     
 }
 

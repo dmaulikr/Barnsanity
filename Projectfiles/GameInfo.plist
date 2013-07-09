@@ -166,7 +166,7 @@
 			</array>
 		</dict>
 	</dict>
-	<key>Barn</key>
+	<key>Player Barn</key>
 	<dict>
 		<key>Damage</key>
 		<array>
@@ -230,7 +230,7 @@
 	<dict>
 		<key>Damage</key>
 		<array>
-			<integer>5</integer>
+			<integer>90</integer>
 			<integer>7</integer>
 			<integer>10</integer>
 			<integer>15</integer>
@@ -1183,6 +1183,15 @@
 	<key>Game Levels</key>
 	<array>
 		<dict>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>300</integer>
+				<key>Damage</key>
+				<integer>50</integer>
+			</dict>
 			<key>Carrot</key>
 			<integer>0</integer>
 			<key>Broccoli</key>

@@ -13,8 +13,9 @@
 #define left 1
 
 @interface Monster : CCSprite{
+    NSString *nameOfMonster;
     //radius of the world
-    float radiusOfWorld;
+    float radiusToSpawn;
     //angle of the position the unit is at
     float angle;
     //the change in angle as the unit moves
@@ -36,6 +37,7 @@
 
 //units health info
 @property (nonatomic, assign) NSInteger hitPoints;
+@property (nonatomic, assign) NSInteger hitPointsInit;
 //whether the unit is visible
 @property (nonatomic, assign) BOOL visible;
 //whether the unit is visible

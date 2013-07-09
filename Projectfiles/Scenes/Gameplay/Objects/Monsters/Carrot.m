@@ -15,6 +15,7 @@
     
     if (self)
     {
+        nameOfMonster=@"Carrot";
         
 		//self.velocity = CGPointMake(-30, 0);
         
@@ -41,8 +42,8 @@
         //Create an action with the animation that can then be assigned to a sprite
         run = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:running]];
         
-        // run the animation
-        [self runAction:run];
+//        // run the animation
+//        [self runAction:run];
         
         // ************* STABBING ANIMATION ********************
         
@@ -72,10 +73,10 @@
             [self runAction:run];
         }];
         
-        attack = [CCSequence actions:startHit, hitAction, finishHit, nil];
+        attack = [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] , hitAction, [CCDelayTime actionWithDuration:.5] ,finishHit, nil];
         
         //get the radius of the world
-        radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
+        radiusToSpawn=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
         
         [self setScale:.5];
         
@@ -84,6 +85,7 @@
         [self setColor:ccc3(255, 0, 0)];
         //include update
         [self scheduleUpdate];
+        
         
         
     }

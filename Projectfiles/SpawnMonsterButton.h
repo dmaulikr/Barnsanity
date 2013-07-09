@@ -8,12 +8,16 @@
 
 #import "CCSprite.h"
 
-@interface SpawnMonsterButton : CCSprite{
+@interface SpawnMonsterButton : CCSprite
+{
     int fireDelayInitial;
     int fireDelayTimer;
     float angleOfSpawn;
+    NSString *nameOfMonster;
+    CCProgressTimer *delayTimer;
 }
 -(id) initWithEntityImage;
 -(void)pressed;
+-(void)updateDelay;
 
 @end

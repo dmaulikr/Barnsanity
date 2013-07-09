@@ -13,12 +13,20 @@
 
 - (void)spawnAt:(float) angleOfLocation
 {
+    [self resumeSchedulerAndActions];
+    NSDictionary *monsterInfo=[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Enemy Monsters"]objectForKey:nameOfMonster ];
+        self.hitPoints=[[monsterInfo objectForKey:@"Health"] integerValue];
+        self.damage=[[monsterInfo objectForKey:@"Damage"]integerValue];
+        speedAngle=[[monsterInfo objectForKey:@"Move Speed"] doubleValue] * (M_PI/1860);
+        self.areaOfEffect=[[monsterInfo objectForKey:@"AreaOfEffect"] boolValue];
+        self.areaOfEffectDamage=[[monsterInfo objectForKey:@"AreaOfEffect Damage"]integerValue];
+        reward=[[monsterInfo objectForKey:@"Gold Reward"] integerValue]+[[GameMechanics sharedGameMechanics] game].goldBonusPerMonster;
     //angle of the spawn
     angle=angleOfLocation;
     
     // Select a spawn location
-    float xPos=radiusOfWorld*cos(angle);
-    float yPos=radiusOfWorld*sin(angle);
+    float xPos=radiusToSpawn*cos(angle);
+    float yPos=radiusToSpawn*sin(angle);
     
     if(angle<M_PI){
         moveDirection=right;
@@ -36,7 +44,7 @@
     self.alive=TRUE;
     hitDidRun=FALSE;
     blinkDidRun=FALSE;
-    
+    [self runAction:run];
 	
 }
 
@@ -57,9 +65,16 @@
     if(self.hitPoints<=0){
         self.visible = FALSE;
         self.alive=FALSE;
+        self.move=FALSE;
+        [self pauseSchedulerAndActions];
+        [self stopAllActions];
         self.position = ccp(-MAX_INT, 0);
         [[GameMechanics sharedGameMechanics] game].gold+=reward;
+        if(moveDirection==left){
+                    self.flipX=0;
+        }
     }else if(blinkDidRun==FALSE || [blink isDone]){
+        blinkDidRun=TRUE;
         [self runAction:blink];
     }
     

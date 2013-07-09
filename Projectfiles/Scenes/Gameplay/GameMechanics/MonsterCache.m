@@ -14,6 +14,9 @@
 #import "ShipBullets.h"
 #import "Carrot.h"
 #import "Orange.h"
+#import "Apple.h"
+#import "Strawberry.h"
+#import "Cherry.h"
 
 #define ENEMY_MAX 300
 
@@ -45,16 +48,29 @@
      */
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
+-(void) reset{
+    CCSpriteBatchNode *playerBatch;
+    BasicPlayerMonster* player;
+    ShipBullets *bullet;
+    CCARRAY_FOREACH([playerMonster children], playerBatch){
+        CCARRAY_FOREACH([playerBatch children], player){
+            [player reset];
+        }
+    }
+    CCARRAY_FOREACH([shipBullets children], bullet){
+        [bullet reset];
+    }
+    
+}
 -(id) init
 {
 	if ((self = [super init]))
 	{
         //creating 2 barns, one for each side and add it to the barn array and adding it to self node
-        enemyBarn=[[Barn alloc ]initWithEntityImage:TRUE];
-        playerBarn=[[Barn alloc ]initWithEntityImage:FALSE];
-        [self addChild:enemyBarn];
-        [self addChild:playerBarn];
+        _enemyBarn=[[Barn alloc ]initWithEntityImage:TRUE];
+        _playerBarn=[[Barn alloc ]initWithEntityImage:FALSE];
+        [self addChild:_enemyBarn];
+        [self addChild:_playerBarn];
         
         enemyMonsters= [[CCNode alloc] init];
         playerMonster =[[CCNode alloc] init];
@@ -77,9 +93,23 @@
 		CCSpriteBatchNode *enemyBatch = [CCSpriteBatchNode batchNodeWithTexture:frame.texture];
         CCSpriteBatchNode *playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
 		[enemyMonsters addChild:enemyBatch];
+        
         [monster setObject:enemyBatch forKey:(id<NSCopying>)[Carrot class]];
         [playerMonster addChild:playerBatch];
         [monster setObject:playerBatch forKey:(id<NSCopying>)[Orange class]];
+        
+        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
+        [playerMonster addChild:playerBatch];
+        [monster setObject:playerBatch forKey:(id<NSCopying>)[Apple class]];
+        
+        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
+        [playerMonster addChild:playerBatch];
+        [monster setObject:playerBatch forKey:(id<NSCopying>)[Strawberry class]];
+        
+        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
+        [playerMonster addChild:playerBatch];
+        [monster setObject:playerBatch forKey:(id<NSCopying>)[Cherry class]];
+        
     
         
         /**
@@ -155,8 +185,8 @@
 
 -(void)spawnBarn{
     
-    [enemyBarn constructAt:M_PI ];
-    [playerBarn constructAt:0 ];
+    [_enemyBarn constructAt:M_PI ];
+    [_playerBarn constructAt:0 ];
 }
 
 -(void)createShipBullet{
@@ -211,8 +241,6 @@
      respawn or if we need to create a new one */
     BOOL foundAvailablePlayerToSpawn = FALSE;
     // if the enemiesOfType array exists, iterate over all already existing enemies of the provided type and check if one of them can be respawned
-    if (playerOfType != nil)
-    {
         CCARRAY_FOREACH([playerOfType children], player)
         {
             // find the first free enemy and respawn it
@@ -224,7 +252,7 @@
                 break;
             }
         }
-    }
+    
     // if we haven't been able to find a enemy to respawn, we need to create one
     if (!foundAvailablePlayerToSpawn)
     {
@@ -248,8 +276,6 @@
     BOOL foundAvailableEnemyToSpawn = FALSE;
     
     // if the enemiesOfType array exists, iterate over all already existing enemies of the provided type and check if one of them can be respawned
-    if (enemiesOfType != nil)
-    {
         CCARRAY_FOREACH([enemiesOfType children], enemy)
         {
             // find the first free enemy and respawn it
@@ -261,7 +287,7 @@
                 break;
             }
         }
-    }
+    
     
     // if we haven't been able to find a enemy to respawn, we need to create one
     if (!foundAvailableEnemyToSpawn)
@@ -322,8 +348,8 @@
                 //if the enemy unit still havent attacked yet, check if they are colliding with the barn
                 if(!enemy.attacked||enemy.areaOfEffect){
                     
-                    if(playerBarn.visible){
-                        CGRect barnBoundingBox = [playerBarn boundingBox];
+                    if(_playerBarn.visible){
+                        CGRect barnBoundingBox = [_playerBarn boundingBox];
                         
                         if (CGRectIntersectsRect(enemyHitZone, barnBoundingBox))
                         {
@@ -332,23 +358,18 @@
                             {
                                 enemy.attacked=TRUE;
                                 [enemy attack];
-                                [playerBarn gotHit:enemy.damage];
+                                [_playerBarn gotHit:enemy.damage];
                             }else if(enemy.attacking && enemy.areaOfEffect){
-                                [playerBarn gotHit:enemy.areaOfEffectDamage];
+                                [_playerBarn gotHit:enemy.areaOfEffectDamage];
                             }
                             
                         }
-                        
+                    
                     }
                 }
                 
                 
             }
-        }
-        
-        
-        
-        
         
         //if the enemy unit didnt attack this iteration then attacked will be false, so the enemy unit should move, else it did attack and should not move while battling
         if(!enemy.attacked){
@@ -356,6 +377,7 @@
         }else{
             enemy.move=FALSE;
         }
+    }
     }
     
     
@@ -401,8 +423,8 @@
                 
                 //if the player unit still havent attacked yet, check if they are colliding with the barn
                 if(!player.attacked || player.areaOfEffect){
-                    if(enemyBarn.visible){
-                        CGRect barnBoundingBox = [enemyBarn boundingBox];
+                    if(_enemyBarn.visible){
+                        CGRect barnBoundingBox = [_enemyBarn boundingBox];
                         
                         if (CGRectIntersectsRect(playerHitZone, barnBoundingBox))
                         {
@@ -410,9 +432,9 @@
                             {
                                 player.attacked=TRUE;
                                 [player attack];
-                                [enemyBarn gotHit:player.damage];
+                                [_enemyBarn gotHit:player.damage];
                             }else if(player.attacking && player.areaOfEffect){
-                                [enemyBarn gotHit:player.areaOfEffectDamage];
+                                [_enemyBarn gotHit:player.areaOfEffectDamage];
                             }
                             
                         }
@@ -457,42 +479,47 @@
             }
         }
     }
-    CGRect barnHitZone = [enemyBarn hitZone];
+    
+    CGRect barnHitZone;
+    if(_enemyBarn.visible){
+     barnHitZone = [_enemyBarn hitZone];
     /*Collision Detection for Barns*/
     CCARRAY_FOREACH([playerMonster children], playerBatch){
         CCARRAY_FOREACH([playerBatch children], player){
-            if(player.alive && !enemyBarn.attacking){
+            if(player.alive && !_enemyBarn.attacking){
                 CGRect enemyBoundingBox = [player boundingBox];
                 if (CGRectIntersectsRect(barnHitZone,enemyBoundingBox))
                 {
-                    if(!enemyBarn.attacking){
-                        [enemyBarn attack];
-                        [player gotHit:enemyBarn.damage];
+                    if(!_enemyBarn.attacking){
+                        [_enemyBarn attack];
+                        [player gotHit:_enemyBarn.damage];
                     }
                 }
             }
         }
     }
+    }
     
-    barnHitZone = [playerBarn hitZone];
+    if(_playerBarn.visible){
+    barnHitZone = [_playerBarn hitZone];
     /*Collision Detection for Barns*/
     CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
     {
         CCARRAY_FOREACH([enemyBatch children], enemy)
         {
-            if(enemy.alive && !playerBarn.attacking){
+            if(enemy.alive && !_playerBarn.attacking){
                 CGRect enemyBoundingBox = [enemy boundingBox];
                 if (CGRectIntersectsRect(barnHitZone,enemyBoundingBox))
                 {
-                    if(!playerBarn.attacking){
-                        [playerBarn attack];
-                        [enemy gotHit:playerBarn.damage];
+                    if(!_playerBarn.attacking){
+                        [_playerBarn attack];
+                        [enemy gotHit:_playerBarn.damage];
                     }
                 }
             }
         }
     }
-    
+    }
     
 }
 

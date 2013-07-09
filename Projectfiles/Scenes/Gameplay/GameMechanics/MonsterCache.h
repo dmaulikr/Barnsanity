@@ -24,12 +24,11 @@
     //a dictionary to hold the array of different monster units
     NSMutableDictionary* monster;
     
-    Barn *enemyBarn;
-    Barn *playerBarn;
-    
     // count the updates (used to determine when monsters should be spawned)
     int updateCount;
 }
+@property (nonatomic, weak) Barn *enemyBarn;
+@property (nonatomic, weak) Barn *playerBarn;
 
 + (id)sharedMonsterCache;
 

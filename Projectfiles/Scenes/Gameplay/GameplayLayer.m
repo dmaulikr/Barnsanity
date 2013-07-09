@@ -24,7 +24,12 @@
 //buttons
 #import "SpawnMonsterButton.h"
 #import "Orange.h"
+#import "Apple.h"
+#import "Strawberry.h"
+#import "Cherry.h"
+
 #import "Carrot.h"
+#import "MonsterButtonCache.h"
 //units
 #import "World.h"
 #import "BasicEnemyMonster.h"
@@ -107,102 +112,77 @@ static CGRect screenRect;
     if (self)
     {
         self.isTouchEnabled = YES;
-        // get screen center
-        CGPoint screenCenter = [CCDirector sharedDirector].screenCenter;
         //get the rectangle that describes the edges of the screen
         screenSize = [[CCDirector sharedDirector] winSize];
         screenRect = CGRectMake(0, 0, screenSize.width, screenSize.height);
         
-        // preload particle effects
-        // To preload the textures, play each effect once off-screen
-        CCParticleSystem* system = [CCParticleSystemQuad particleWithFile:@"fx-explosion.plist"];
-        system.positionType = kCCPositionTypeFree;
-        system.autoRemoveOnFinish = YES;
-        system.position = ccp(MAX_INT, MAX_INT);
-        // adding it as child lets the particle effect play
-        [self addChild:system];
+//        // preload particle effects
+//        // To preload the textures, play each effect once off-screen
+//        CCParticleSystem* system = [CCParticleSystemQuad particleWithFile:@"fx-explosion.plist"];
+//        system.positionType = kCCPositionTypeFree;
+//        system.autoRemoveOnFinish = YES;
+//        system.position = ccp(MAX_INT, MAX_INT);
+//        // adding it as child lets the particle effect play
+//        [self addChild:system];
         
         //set inital values
         rotationVelocity=0;
         touchingworld=false;
         shipFire=FALSE;
         
-        //        // add the scrolling background
-        //        ParallaxBackground *background = [ParallaxBackground node];
-        //        [self addChild:background z:-2];
-        
         //background image
         CCSprite *background=[[CCSprite alloc] initWithFile:@"sky_background_by_09shootingstar90-d4oq6xw.png"];
         [self addChild:background z:0];
         
         
+        //create node for monster button objects
+        [self addChild:[MonsterButtonCache sharedMonsterButtonCache]];
+        
+        //create the ship object
         ship=[[Ship alloc] initWithMonsterPicture];
         ship.position=ccp(screenSize.width/2,screenSize.height-ship.contentSize.height/4);
-        [self addChild:ship z:6 tag:0];
-        
-        
+        [self addChild:ship z:MAX_INT-1 tag:0];
         
         //set the world image
         World *planet=[World createEntity];
         self.radiusOfWorld=planet.contentSize.width/2;
         
-        //create a node where everyone
+        //create a node where the all mosnter sprites will rotate around
         centerOfRotation=[CCNode node];
         centerOfRotation.position= ccp(screenSize.width/2, -planet.contentSize.height/3);
         [self addChild:centerOfRotation z:1 tag:1];
-        
+        //include the planet into the rotation node
         [centerOfRotation addChild:planet z:1 tag:1];
         
+        //create the game mechanic object
         [GameMechanics sharedGameMechanics];
+        //include the node that creates and hold all monster object
         [centerOfRotation addChild:[MonsterCache sharedMonsterCache] z:2 tag:2];
         
-        //create monster button
-        monsterButton=[[SpawnMonsterButton alloc] initWithEntityImage];
-        [self addChild:monsterButton z:6 tag:3];
-        monsterButton.position=ccp(screenSize.width-monsterButton.contentSize.width/5-5,screenSize.height-monsterButton.contentSize.height/4);
-        
-        
-        
-        
-        
+        //node that contains all gameplay objects
         hudNode = [CCNode node];
         [self addChild:hudNode];
-        
-        //        // add scoreboard entry for in-app currency
-        //        inAppCurrencyDisplayNode = [[ScoreboardEntryNode alloc] initWithScoreImage:@"coin.png" fontFile:@"avenir.fnt"];
-        //        inAppCurrencyDisplayNode.scoreStringFormat = @"%d";
-        //        inAppCurrencyDisplayNode.position = ccp(10, screenSize.height - 40);
-        //        inAppCurrencyDisplayNode.score = [Store availableAmountInAppCurrency];
-        //        [hudNode addChild:inAppCurrencyDisplayNode z:MAX_INT-1];
-        
         // add scoreboard entry for points
-        pointsDisplayNode = [[ScoreboardEntryNode alloc] initWithScoreImage:nil fontFile:@"avenir24.fnt"];
+        pointsDisplayNode = [[ScoreboardEntryNode alloc] initWithfontFile:@"avenir24.fnt"];
         pointsDisplayNode.position = ccp(10, screenSize.height - 50);
         pointsDisplayNode.scoreStringFormat = @"Gold: %d";
         [hudNode addChild:pointsDisplayNode z:MAX_INT-1];
-        
-        //        // set up the skip ahead menu
-        //        CCSprite *skipAhead = [CCSprite spriteWithFile:@"skipahead.png"];
-        //        CCSprite *skipAheadSelected = [CCSprite spriteWithFile:@"skipahead-pressed.png"];
-        //        skipAheadMenuItem = [CCMenuItemSprite itemWithNormalSprite:skipAhead selectedSprite:skipAheadSelected target:self selector:@selector(skipAheadButtonPressed)];
-        //        skipAheadMenu = [CCMenu menuWithItems:skipAheadMenuItem, nil];
-        //        skipAheadMenu.position = ccp(self.contentSize.width - skipAheadMenuItem.contentSize.width -20, self.contentSize.height - 80);
-        //        // initially skipAheadMenu is hidden
-        //        skipAheadMenu.visible = FALSE;
-        //        [hudNode addChild:skipAheadMenu];
-        
+        //include timer
+        timer=[[TimerDisplayNode alloc] initWithfontFile:@"avenir24.fnt"];
+        timer.position = ccp(10, screenSize.height - 30);
+        [hudNode addChild:timer z:MAX_INT-1];
+        //include energy
+        energy=[[EnergyDisplayNode alloc] initWithfontFile:@"avenir24.fnt"];
+        energy.position = ccp(10, screenSize.height - 40);
+        [hudNode addChild:energy z:MAX_INT-1];
         // set up pause button
         CCSprite *pauseButton = [CCSprite spriteWithFile:@"pause.png"];
         CCSprite *pauseButtonPressed = [CCSprite spriteWithFile:@"pause-pressed.png"];
         pauseButtonMenuItem = [CCMenuItemSprite itemWithNormalSprite:pauseButton selectedSprite:pauseButtonPressed target:self selector:@selector(pauseButtonPressed)];
         pauseButtonMenu = [CCMenu menuWithItems:pauseButtonMenuItem, nil];
-        pauseButtonMenu.position = ccp(12, screenSize.height - 20);
+        pauseButtonMenu.position = ccp(20, screenSize.height - 70);
         [hudNode addChild:pauseButtonMenu];
-        
-        
-        // add decorative node
-        //[self addChild:[DecorativeObjectsNode node]];
-        
+                
         // setup a new gaming session
         [self resetGame];
         
@@ -249,22 +229,30 @@ static CGRect screenRect;
 - (void)resetGame
 {
     [[GameMechanics sharedGameMechanics] resetGame];
-    
     game = [[Game alloc] init];
     [[GameMechanics sharedGameMechanics] setGame:game];
     // add a reference to this gamePlay scene to the gameMechanics, which allows accessing the scene from other classes
     [[GameMechanics sharedGameMechanics] setGameScene:self];
     [[MonsterCache sharedMonsterCache]spawnBarn];
+    [[MonsterCache sharedMonsterCache]reset];
+    [timer resetTimer:game.timeInSec];
+    [ship reset];
+    [energy resetEnergy:game.energyMax increasedAt:game.energyPerSec];
     
+        [[MonsterButtonCache sharedMonsterButtonCache] reset];
+    [[MonsterButtonCache sharedMonsterButtonCache] placeButton:[Orange class] atLocation:0];
+    [[MonsterButtonCache sharedMonsterButtonCache] placeButton:[Apple class] atLocation:1];
+    [[MonsterButtonCache sharedMonsterButtonCache] placeButton:[Strawberry class] atLocation:2];
+    [[MonsterButtonCache sharedMonsterButtonCache] placeButton:[Cherry class] atLocation:3];
     /* setup initial values */
     centerOfRotation.rotation=0;
     
-    //    // setup HUD
-    //    pointsDisplayNode.score = game.score;
-    
     // set spwan rate for monsters
-    [[GameMechanics sharedGameMechanics] setSpawnCost:50 forPlayerMonsterType:[Orange class]];
-    [[GameMechanics sharedGameMechanics] setSpawnRate:300 forEnemyMonsterType:[Carrot class]];
+    [[GameMechanics sharedGameMechanics] setSpawnCost:2 forPlayerMonsterType:[Orange class]];
+        [[GameMechanics sharedGameMechanics] setSpawnCost:2 forPlayerMonsterType:[Apple class]];
+        [[GameMechanics sharedGameMechanics] setSpawnCost:2 forPlayerMonsterType:[Strawberry class]];
+        [[GameMechanics sharedGameMechanics] setSpawnCost:2 forPlayerMonsterType:[Cherry class]];
+    [[GameMechanics sharedGameMechanics] setSpawnRate:900 forEnemyMonsterType:[Carrot class]];
 }
 
 #pragma mark - Update & Input Events
@@ -315,17 +303,20 @@ static CGRect screenRect;
 
 - (void)updateRunning:(ccTime)delta
 {
+    pointsDisplayNode.score=game.gold;
+    game.timeInSec=timer.timeInSec;
+    [energy setEnergy:game.energy];
     
     //for rotation deceleration
     if(rotationVelocity!=0.0){
-        [self getChildByTag:1].rotation+=rotationVelocity;
+        centerOfRotation.rotation+=rotationVelocity;
         if(rotationVelocity>0){
-            rotationVelocity-=1;
+            rotationVelocity-=2;
             if(rotationVelocity<1){
                 rotationVelocity=0;
             }
         }else{
-            rotationVelocity+=1;
+            rotationVelocity+=2;
             if(rotationVelocity>-1){
                 rotationVelocity=0;
             }
@@ -335,15 +326,18 @@ static CGRect screenRect;
     if(shipFire){
         [ship fireBullet];
     }
-    pointsDisplayNode.score=game.gold;
     centerOfRotation.rotation=fmodf(centerOfRotation.rotation, 360);
     
-    //
-    //    if (knight.hitPoints == 0)
-    //    {
-    //        // knight died, present screen with option to GO ON for paying some coins
-    //        [self presentGoOnPopUp];
-    //    }
+    
+//        if ([[MonsterCache sharedMonsterCache] playerBarn].hitPoints <= 0)
+//        {
+//           // knight died, present screen with option to GO ON for paying some coins
+//            [self presentGoOnPopUp];
+//        }else if ([[MonsterCache sharedMonsterCache] enemyBarn].hitPoints <= 0)
+//        {
+//            // knight died, present screen with option to GO ON for paying some coins
+//            [self presentGoOnPopUp];
+//        }
 }
 
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -353,17 +347,26 @@ static CGRect screenRect;
     CGPoint touchPoint = [touch locationInView:[touch view]];
     previousTouch=touchPoint;
     //get the center of the world
-    CGPoint circleCenter=[self getChildByTag:1].position;
+    CGPoint circleCenter=centerOfRotation.position;
     //have the coordinate system to align
     touchPoint.y= -touchPoint.y+screenSize.height;
     
     //if the distance between the touch and the center of the circle is less than the radius then this is true
-    if(ccpLengthSQ(ccpSub(circleCenter,touchPoint)) <([[self getChildByTag:1] getChildByTag:1 ].contentSize.height/2*[[self getChildByTag:1]getChildByTag:1 ].contentSize.height/2) )
+    if(ccpLengthSQ(ccpSub(circleCenter,touchPoint)) <([centerOfRotation getChildByTag:1].contentSize.height/2*[centerOfRotation getChildByTag:1 ].contentSize.height/2) )
     {
         touchingworld=true;
-    }else if(CGRectContainsPoint(monsterButton.boundingBox, touchPoint)){
+    }else if(CGRectContainsPoint([[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:0 ].boundingBox, touchPoint)){
         touchingworld=false;
-        [monsterButton pressed];
+        [(SpawnMonsterButton*)[[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:0 ] pressed];
+    }else if(CGRectContainsPoint([[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:1 ].boundingBox, touchPoint)){
+        touchingworld=false;
+        [(SpawnMonsterButton*)[[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:1 ] pressed];
+    }else if(CGRectContainsPoint([[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:2 ].boundingBox, touchPoint)){
+        touchingworld=false;
+        [(SpawnMonsterButton*)[[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:2 ] pressed];
+    }else if(CGRectContainsPoint([[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:3 ].boundingBox, touchPoint)){
+        touchingworld=false;
+        [(SpawnMonsterButton*)[[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:3 ] pressed];
     }else{
         touchingworld=false;
         shipFire=TRUE;
@@ -379,18 +382,18 @@ static CGRect screenRect;
         currentTouch = [touch locationInView: [touch view]];
         
         //calculate the angle for the first(previous) touch location
-        CGPoint firstVector = ccpSub( previousTouch, [self getChildByTag:1].position);
+        CGPoint firstVector = ccpSub( previousTouch, centerOfRotation.position);
         CGFloat firstRotateAngle = -ccpToAngle(firstVector);
         CGFloat previousAngle = CC_RADIANS_TO_DEGREES(firstRotateAngle);
         
         //calculate the curent touch location
-        CGPoint vector = ccpSub(currentTouch, [self getChildByTag:1].position);
+        CGPoint vector = ccpSub(currentTouch, centerOfRotation.position);
         CGFloat rotateAngle = -ccpToAngle(vector);
         CGFloat currentAngle = CC_RADIANS_TO_DEGREES(rotateAngle);
         //calculate delta angle
         deltaRotation=(currentAngle - previousAngle);
         //rotate the world
-        [self getChildByTag:1].rotation+=2.15*deltaRotation;
+        centerOfRotation.rotation+=2.15*deltaRotation;
         previousTouch=currentTouch;
     }
     
@@ -402,11 +405,11 @@ static CGRect screenRect;
     
     if(touchingworld){
         //calculate the angle for the first(previous) touch location
-        CGPoint firstVector = ccpSub( previousTouch, [self getChildByTag:1].position);
+        CGPoint firstVector = ccpSub( previousTouch, centerOfRotation.position);
         CGFloat firstRotateAngle = -ccpToAngle(firstVector);
         CGFloat previousAngle = CC_RADIANS_TO_DEGREES(firstRotateAngle);
         //calculate the curent touch location
-        CGPoint vector = ccpSub(currentTouch, [self getChildByTag:1].position);
+        CGPoint vector = ccpSub(currentTouch, centerOfRotation.position);
         CGFloat rotateAngle = -ccpToAngle(vector);
         CGFloat currentAngle = CC_RADIANS_TO_DEGREES(rotateAngle);
         //calculate the velocity for which the world will spin after the touch ends

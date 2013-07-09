@@ -17,6 +17,9 @@
     BOOL hitDidRun;
     //control how much of the health bar to show
     CCProgressTimer *healthBar;
+    CCBlink *blink;
+    BOOL blinkDidRun;
+    CCSequence *attack;
     
 }
 //the health of the unit
@@ -37,4 +40,6 @@
 //if the unit is attacked
 -(void) gotHit:(int) damage;
 -(void)attack;
+
+-(void) reset;
 @end

@@ -27,5 +27,6 @@
 - (id)initWithMonsterPicture;
 - (void)spawn;
 - (void)gotHit;
+-(void)reset;
 
 @end

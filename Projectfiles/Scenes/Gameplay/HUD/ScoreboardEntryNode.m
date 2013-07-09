@@ -12,7 +12,7 @@
 
 @synthesize score = _score;
 
-- (id)initWithScoreImage:(NSString *)scoreImage fontFile:(NSString *)fontFile
+- (id)initWithfontFile:(NSString *)fontFile
 {
     self = [super init];
     
@@ -23,15 +23,7 @@
         scoreLabel.anchorPoint = ccp(0,0.5);
         [self addChild:scoreLabel];
         
-        if (scoreImage)
-        {
-            CCSprite *scoreIcon = [CCSprite spriteWithFile:scoreImage];
-            [self addChild:scoreIcon];
-            
-            // move the score label to the right of the icon
-            scoreLabel.position = ccp(scoreLabel.position.x + scoreIcon.contentSize.width, scoreLabel.position.y);
-            //scoreIcon.position = ccp(scoreIcon.position.x, scoreIcon.contentSize.height);
-        }
+
     }
     
     return self;

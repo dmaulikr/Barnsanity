@@ -17,7 +17,7 @@
     CCLabelBMFont *scoreLabel;
 }
 
-- (id)initWithScoreImage:(NSString *)scoreImage fontFile:(NSString *)fontFile;
+- (id)initWithfontFile:(NSString *)fontFile;
 
 @property (nonatomic, assign) int score;
 @property (nonatomic, strong) NSString *scoreStringFormat;

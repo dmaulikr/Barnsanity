@@ -9,37 +9,45 @@
 #import "SpawnMonsterButton.h"
 #import "MonsterCache.h"
 #import "GameMechanics.h"
-#import "Orange.h"
 
 @implementation SpawnMonsterButton
 -(id) initWithEntityImage
 {
-	// Loading the Entity's sprite using a file, is a ship for now but you can change this
-	if ((self = [super initWithFile:@"button_topdown-button.png"]))
-	{
-        [self setScale:.25];
-        fireDelayInitial=30;
-        fireDelayTimer=0;
-        //include updates
-        [self scheduleUpdate];
-	}
-	return self;
+     @throw @"- (id)initWithEntityImage has to be implemented in Subclass.";
+
 }
 
 -(void)pressed{
-    if(fireDelayTimer<=0){
-        angleOfSpawn = fmodf([[[GameMechanics sharedGameMechanics] gameScene]  getChildByTag:1].rotation, 360);
-        if((angleOfSpawn <=0 && angleOfSpawn >= -180)||(angleOfSpawn >180 && angleOfSpawn < 359)){
-            [[MonsterCache sharedMonsterCache] spawn:[Orange class] atAngle:angleOfSpawn];
-            fireDelayTimer=fireDelayInitial;
-        }
-    }
-    
+        @throw @"- (void)pressed has to be implemented in Subclass.";
 }
 
--(void)update:(ccTime)delta{
-    if(fireDelayTimer>0){
-        fireDelayTimer--;
+-(void)updateDelay{
+    int level=[[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Player Monsters"] objectForKey:nameOfMonster] integerValue];
+    if(level >= 0){
+        fireDelayInitial=[[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Monsters"] objectForKey:nameOfMonster] objectAtIndex:level]objectForKey:@"Delay"] integerValue];
     }
 }
+
+-(void) updateTimer:(NSTimer *) theTimer {
+    if ([[GameMechanics sharedGameMechanics] gameState] == GameStateRunning)
+    {
+        if(fireDelayTimer>0){
+            fireDelayTimer--;
+            delayTimer.percentage=((fireDelayTimer/fireDelayInitial)*100);
+
+    }
+    }
+}
+
+//-(CGRect)boundingBox{
+//    CGRect rect = CGRectMake(0, 0, self.contentSize.width, self.contentSize.height);
+//    return CGRectApplyAffineTransform(rect, [self nodeToParentTransform]);
+//}
+
+-(void)draw{
+        ccColor4F rectColor = ccc4f(0.5, 0.5, 0.5, 1.0);
+        ccDrawSolidRect(ccp(0,0), ccp(self.contentSize.width, self.contentSize.height), rectColor);
+    [super draw];
+}
+
 @end

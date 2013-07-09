@@ -46,8 +46,9 @@
         healthBar.position=ccp(health.contentSize.width/2,2*self.contentSize.height/2+10);
         healthBar.midpoint = ccp(0,0.5); // Here is where all magic is
         healthBar.barChangeRate = ccp(1, 0);
+                blink = [CCBlink actionWithDuration:.4f blinks:2];
         
-        
+        attack = [CCSequence actions:[CCDelayTime actionWithDuration:1.5], nil];
         
         //include updates
         [self scheduleUpdate];
@@ -57,6 +58,8 @@
 }
 
 -(void)constructAt:(float) angle{
+     [self resumeSchedulerAndActions];
+    [self reset];
     //get the radius of the world
     radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
     //calculate the x and y position based on the angle given
@@ -70,13 +73,16 @@
     
     //have the barn visible
     self.visible=TRUE;
+    self.attacking=FALSE;
+    blinkDidRun=FALSE;
     //set the health bar
     healthBar.percentage=100;
 }
 
 -(void)attack{
-    if(hitDidRun == FALSE){
+    if(hitDidRun == FALSE||[attack isDone]){
         hitDidRun=TRUE;
+        [self runAction:attack];
     }
 }
 -(void)gotHit:(int)damage{
@@ -85,21 +91,51 @@
     //display health bar base of the amount of health left
     //    healthBar.percentage-=100*(damage/self.initialHitPoints);
     if(self.hitPoints<=0){
+                [self pauseSchedulerAndActions];
+                [self stopAllActions];
         self.visible=FALSE;
         if(self.enemy){
             [[GameMechanics sharedGameMechanics] game].gold+=reward;
         }
+    }else if(blinkDidRun==FALSE || [blink isDone]){
+        blinkDidRun=TRUE;
+        [self runAction:blink];
     }
 }
 
 -(void)update:(ccTime)delta{
-    //
+    self.attacking=FALSE;
+    // calculate a hit zone
+    CGPoint monsterCenter = ccp(self.position.x + self.contentSize.width / 2, self.position.y + self.contentSize.height / 2);
+    CGSize hitZoneSize = CGSizeMake(self.contentSize.width/2, self.contentSize.height/2);
+    self.hitZone = CGRectMake(monsterCenter.x - 0.5 * hitZoneSize.width, monsterCenter.y - 0.5 * hitZoneSize.width, hitZoneSize.width, hitZoneSize.height);
 }
 
-//-(void)draw{
-//    ccColor4F rectColor = ccc4f(0.5, 0.5, 0.5, 1.0);
-//    CGPoint center = ccp(self.position.x + self.contentSize.width / 2, self.position.y + self.contentSize.height / 2);
-//    ccDrawSolidRect(ccp(center.x-self.contentSize.width/2,center.y+self.contentSize.height/2), ccp(self.contentSize.width, 10), rectColor);
-//    [super draw];
-//}
+-(void)reset{
+    if(self.enemy){
+        int level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Game Levels"] integerValue];
+        NSDictionary *monsterInfo=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Game Levels"]objectAtIndex:level]   objectForKey:@"Barn"];
+        self.hitPoints=[[monsterInfo objectForKey:@"Health"] integerValue];
+        self.damage=[[monsterInfo objectForKey:@"Damage"]integerValue];
+        armor=[[monsterInfo objectForKey:@"Armor"] integerValue];
+    }else{
+        NSDictionary *monsterlevel=[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Player Barn"];
+        int level=[[monsterlevel objectForKey:@"Health"]integerValue];
+        self.hitPoints=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Barn"]objectForKey:@"Health"]   objectAtIndex:level] integerValue];
+        level=[[monsterlevel objectForKey:@"Damage"] integerValue];
+        self.damage=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Barn"]objectForKey:@"Damage"]   objectAtIndex:level]integerValue];
+        level=[[monsterlevel objectForKey:@"Armor"] integerValue];
+        armor=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Barn"]objectForKey:@"Armor"]   objectAtIndex:level] integerValue];
+    }
+
+    
+}
+
+-(void)draw{
+    ccDrawColor4B(100, 0, 255, 255); //purple, values range from 0 to 255
+    CGPoint origin = ccp(self.hitZone.origin.x - self.position.x, self.hitZone.origin.y - self.position.y);
+    CGPoint destination = ccp(origin.x + self.hitZone.size.width, origin.y + self.hitZone.size.height);
+    ccDrawRect(origin, destination);
+    [super draw];
+}
 @end

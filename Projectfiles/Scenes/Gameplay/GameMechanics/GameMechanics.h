@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, GameState) {
  This class is used by all entities in the game to access shared ressources.
  **/
 
-
+@class GameplayLayer;
 @interface GameMechanics : NSObject
 
 // determines the current state the game is in. Either menu mode (scene displayed beyond main menu) or gameplay mode.

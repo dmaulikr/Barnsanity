@@ -11,15 +11,15 @@
 #import "PauseScreen.h"
 #import "InGameStore.h"
 #import "ScoreboardEntryNode.h"
-#import "HealthDisplayNode.h"
 #import "PopUp.h"
-
-#import "SpawnMonsterButton.h"
+#import "OrangeMonsterButton.h"
 #import "MonsterCache.h"
 #import "Ship.h"
+#import "TimerDisplayNode.h"
+#import "EnergyDisplayNode.h"
 
 
-
+@class TimerDisplayNode;
 @interface GameplayLayer : CCLayer <StoreDisplayNeedsUpdate, PauseScreenDelegate>
 {
     //for rotation of the sprites
@@ -31,11 +31,12 @@
     
     bool shipFire;
     Ship *ship;
-    SpawnMonsterButton *monsterButton;
     CCNode *centerOfRotation;
-    
+    OrangeMonsterButton *monsterButton;
     ScoreboardEntryNode *pointsDisplayNode;
     ScoreboardEntryNode *inAppCurrencyDisplayNode;
+    TimerDisplayNode *timer;
+    EnergyDisplayNode *energy;
     // groups health, coins and points display
     CCNode *hudNode;
     

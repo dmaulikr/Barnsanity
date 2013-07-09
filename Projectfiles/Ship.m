@@ -8,6 +8,7 @@
 
 #import "Ship.h"
 #import "MonsterCache.h"
+#import "GameMechanics.h"
 
 @implementation Ship
 - (id)initWithMonsterPicture{
@@ -16,9 +17,6 @@
     if ((self = [super initWithFile:@"cat3-topdown.png"]))
     {
         [self setScale:.25];
-        
-        fireDelayInitial=20;
-        fireDelayTimer=0;
         
         //include updates
         [self scheduleUpdate];
@@ -41,5 +39,10 @@
             fireDelayTimer--;
         }
     }
+}
+
+-(void)reset{
+    int level=[[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship"] objectForKey:@"Firerate"] integerValue];
+    fireDelayInitial=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Ship"]objectForKey:@"Firerate"]   objectAtIndex:level] integerValue];
 }
 @end

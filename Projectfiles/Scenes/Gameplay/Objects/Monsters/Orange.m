@@ -16,7 +16,7 @@
     
     if (self)
     {
-        
+        nameOfMonster=@"Orange";
 		//self.velocity = CGPointMake(-30, 0);
         
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"animation_knight.plist"];
@@ -42,8 +42,8 @@
         //Create an action with the animation that can then be assigned to a sprite
         run = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:running]];
         
-        // run the animation
-        [self runAction:run];
+//        // run the animation
+//        [self runAction:run];
         
         // ************* STABBING ANIMATION ********************
         
@@ -55,7 +55,7 @@
              [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: [NSString stringWithFormat:@"animation_knight-stab-%d.png", i]]];
         }
         
-        CCAnimation *hitting = [CCAnimation animationWithSpriteFrames:animationFramesAttack delay:0.5f];
+        CCAnimation *hitting = [CCAnimation animationWithSpriteFrames:animationFramesAttack delay:.5f];
         CCAction *hitAction = [CCCallBlock actionWithBlock:^{
             [CCRepeat actionWithAction:[CCAnimate actionWithAnimation:hitting] times:1];
         }];
@@ -71,17 +71,17 @@
             [self runAction:run];
         }];
         
-        attack = [CCSequence actions:startHit, hitAction, finishHit, nil];
+        attack = [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] , hitAction, [CCDelayTime actionWithDuration:.5] ,finishHit, nil];
         
         //get the radius of the world
-        radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
+        radiusToSpawn=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
         
         blink = [CCBlink actionWithDuration:.4f blinks:2];
         
         //for the prototype
-        [self setColor:ccc3(255, 255, 0)];
         [self setScale:.5];
         [self scheduleUpdate];
+        [self reset];
         
         
     }

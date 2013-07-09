@@ -24,9 +24,39 @@
 		30C2D6AA1784B4DC006D2634 /* Barn.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C2D6A91784B4DC006D2634 /* Barn.m */; };
 		30C2D6AD1784B4E8006D2634 /* World.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C2D6AC1784B4E7006D2634 /* World.m */; };
 		30C2D6B01784B539006D2634 /* SpawnMonsterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C2D6AF1784B539006D2634 /* SpawnMonsterButton.m */; };
-		30C2D6B31784B56D006D2634 /* TimerDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C2D6B21784B56D006D2634 /* TimerDisplayNode.m */; };
 		30C2D6B51784B591006D2634 /* GameInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30C2D6B41784B591006D2634 /* GameInfo.plist */; };
 		30C2D6B71784B602006D2634 /* NewGame_Levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30C2D6B61784B602006D2634 /* NewGame_Levels.plist */; };
+		30C43510178B273F00D6ABBD /* Apple.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4350F178B273F00D6ABBD /* Apple.m */; };
+		30C43513178B275700D6ABBD /* Strawberry.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43512178B275700D6ABBD /* Strawberry.m */; };
+		30C43516178B276300D6ABBD /* Cherry.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43515178B276300D6ABBD /* Cherry.m */; };
+		30C43519178B276C00D6ABBD /* Mango.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43518178B276C00D6ABBD /* Mango.m */; };
+		30C4351C178B278000D6ABBD /* Banana.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4351B178B278000D6ABBD /* Banana.m */; };
+		30C4351F178B278900D6ABBD /* Coconut.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4351E178B278900D6ABBD /* Coconut.m */; };
+		30C43522178B279400D6ABBD /* Grape.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43521178B279400D6ABBD /* Grape.m */; };
+		30C43525178B27A000D6ABBD /* Pineapple.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43524178B27A000D6ABBD /* Pineapple.m */; };
+		30C43528178B27B000D6ABBD /* Watermelon.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43527178B27B000D6ABBD /* Watermelon.m */; };
+		30C4352B178B284700D6ABBD /* Broccoli.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4352A178B284700D6ABBD /* Broccoli.m */; };
+		30C4352E178B285000D6ABBD /* Corn.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4352D178B285000D6ABBD /* Corn.m */; };
+		30C43531178B285C00D6ABBD /* Tomato.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43530178B285B00D6ABBD /* Tomato.m */; };
+		30C43534178B286900D6ABBD /* Potato.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43533178B286900D6ABBD /* Potato.m */; };
+		30C43537178B287500D6ABBD /* PeaPod.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43536178B287500D6ABBD /* PeaPod.m */; };
+		30C4353A178B288100D6ABBD /* Pea.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43539178B288100D6ABBD /* Pea.m */; };
+		30C4353D178B288E00D6ABBD /* Pumpkin.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4353C178B288D00D6ABBD /* Pumpkin.m */; };
+		30C43540178B289800D6ABBD /* Beet.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4353F178B289800D6ABBD /* Beet.m */; };
+		30C43543178B28A800D6ABBD /* Asparagus.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43542178B28A700D6ABBD /* Asparagus.m */; };
+		30C43546178B2C7E00D6ABBD /* OrangeMonsterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43545178B2C7E00D6ABBD /* OrangeMonsterButton.m */; };
+		30C43549178B2C8900D6ABBD /* AppleMonsterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43548178B2C8900D6ABBD /* AppleMonsterButton.m */; };
+		30C4354C178B2C9600D6ABBD /* StrawberryMonsterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4354B178B2C9600D6ABBD /* StrawberryMonsterButton.m */; };
+		30C4354F178B2CA100D6ABBD /* CherryMonsterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4354E178B2CA100D6ABBD /* CherryMonsterButton.m */; };
+		30C43552178B2CAC00D6ABBD /* MangoMonsterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43551178B2CAB00D6ABBD /* MangoMonsterButton.m */; };
+		30C43555178B2CBB00D6ABBD /* BananaMonsterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43554178B2CBA00D6ABBD /* BananaMonsterButton.m */; };
+		30C43558178B2CD100D6ABBD /* CoconutMonsterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43557178B2CD000D6ABBD /* CoconutMonsterButton.m */; };
+		30C4355B178B2CDC00D6ABBD /* GrapeMonsterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4355A178B2CDB00D6ABBD /* GrapeMonsterButton.m */; };
+		30C4355E178B2CEA00D6ABBD /* PineappleMonsterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4355D178B2CE900D6ABBD /* PineappleMonsterButton.m */; };
+		30C43561178B2CFD00D6ABBD /* WatermelonMonsterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43560178B2CFB00D6ABBD /* WatermelonMonsterButton.m */; };
+		30C43564178B338F00D6ABBD /* MonsterButtonCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43563178B338E00D6ABBD /* MonsterButtonCache.m */; };
+		30E69475178750380048D2DE /* TimerDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E69474178750380048D2DE /* TimerDisplayNode.m */; };
+		30E69478178750490048D2DE /* EnergyDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E69477178750490048D2DE /* EnergyDisplayNode.m */; };
 		54170919177123A90021A8C5 /* mgwuSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 541708DD177123A90021A8C5 /* mgwuSDK.framework */; };
 		5417091A177123A90021A8C5 /* aqua.png in Resources */ = {isa = PBXBuildFile; fileRef = 541708DF177123A90021A8C5 /* aqua.png */; };
 		5417091B177123A90021A8C5 /* bluechatbubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 541708E0177123A90021A8C5 /* bluechatbubble.png */; };
@@ -262,7 +292,6 @@
 		62F018B417445BEC00BAF979 /* bg3-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F018AC17445BEC00BAF979 /* bg3-hd.png */; };
 		62F018B517445BEC00BAF979 /* bg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F018AD17445BEC00BAF979 /* bg3.png */; };
 		62F018BC17445C7D00BAF979 /* GameplayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 62F018BB17445C7D00BAF979 /* GameplayLayer.m */; };
-		62F018C3174563BC00BAF979 /* HealthDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 62F018C2174563BC00BAF979 /* HealthDisplayNode.m */; };
 		62F018CE174570D500BAF979 /* ScoreboardEntryNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 62F018CD174570D500BAF979 /* ScoreboardEntryNode.m */; };
 		62F018D8174574AC00BAF979 /* bitmapfont-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 62F018D0174574AC00BAF979 /* bitmapfont-hd.fnt */; };
 		62F018D9174574AC00BAF979 /* bitmapfont-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F018D1174574AC00BAF979 /* bitmapfont-hd.png */; };
@@ -340,10 +369,70 @@
 		30C2D6AC1784B4E7006D2634 /* World.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = World.m; sourceTree = "<group>"; };
 		30C2D6AE1784B539006D2634 /* SpawnMonsterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpawnMonsterButton.h; sourceTree = "<group>"; };
 		30C2D6AF1784B539006D2634 /* SpawnMonsterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpawnMonsterButton.m; sourceTree = "<group>"; };
-		30C2D6B11784B56D006D2634 /* TimerDisplayNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDisplayNode.h; sourceTree = "<group>"; };
-		30C2D6B21784B56D006D2634 /* TimerDisplayNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDisplayNode.m; sourceTree = "<group>"; };
 		30C2D6B41784B591006D2634 /* GameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GameInfo.plist; sourceTree = "<group>"; };
 		30C2D6B61784B602006D2634 /* NewGame_Levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NewGame_Levels.plist; sourceTree = "<group>"; };
+		30C4350E178B273F00D6ABBD /* Apple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Apple.h; sourceTree = "<group>"; };
+		30C4350F178B273F00D6ABBD /* Apple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Apple.m; sourceTree = "<group>"; };
+		30C43511178B275700D6ABBD /* Strawberry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Strawberry.h; sourceTree = "<group>"; };
+		30C43512178B275700D6ABBD /* Strawberry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Strawberry.m; sourceTree = "<group>"; };
+		30C43514178B276300D6ABBD /* Cherry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cherry.h; sourceTree = "<group>"; };
+		30C43515178B276300D6ABBD /* Cherry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cherry.m; sourceTree = "<group>"; };
+		30C43517178B276B00D6ABBD /* Mango.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mango.h; sourceTree = "<group>"; };
+		30C43518178B276C00D6ABBD /* Mango.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mango.m; sourceTree = "<group>"; };
+		30C4351A178B278000D6ABBD /* Banana.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Banana.h; sourceTree = "<group>"; };
+		30C4351B178B278000D6ABBD /* Banana.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banana.m; sourceTree = "<group>"; };
+		30C4351D178B278900D6ABBD /* Coconut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coconut.h; sourceTree = "<group>"; };
+		30C4351E178B278900D6ABBD /* Coconut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coconut.m; sourceTree = "<group>"; };
+		30C43520178B279400D6ABBD /* Grape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grape.h; sourceTree = "<group>"; };
+		30C43521178B279400D6ABBD /* Grape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grape.m; sourceTree = "<group>"; };
+		30C43523178B27A000D6ABBD /* Pineapple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pineapple.h; sourceTree = "<group>"; };
+		30C43524178B27A000D6ABBD /* Pineapple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pineapple.m; sourceTree = "<group>"; };
+		30C43526178B27B000D6ABBD /* Watermelon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Watermelon.h; sourceTree = "<group>"; };
+		30C43527178B27B000D6ABBD /* Watermelon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Watermelon.m; sourceTree = "<group>"; };
+		30C43529178B284700D6ABBD /* Broccoli.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Broccoli.h; sourceTree = "<group>"; };
+		30C4352A178B284700D6ABBD /* Broccoli.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Broccoli.m; sourceTree = "<group>"; };
+		30C4352C178B285000D6ABBD /* Corn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Corn.h; sourceTree = "<group>"; };
+		30C4352D178B285000D6ABBD /* Corn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Corn.m; sourceTree = "<group>"; };
+		30C4352F178B285B00D6ABBD /* Tomato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tomato.h; sourceTree = "<group>"; };
+		30C43530178B285B00D6ABBD /* Tomato.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tomato.m; sourceTree = "<group>"; };
+		30C43532178B286900D6ABBD /* Potato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Potato.h; sourceTree = "<group>"; };
+		30C43533178B286900D6ABBD /* Potato.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Potato.m; sourceTree = "<group>"; };
+		30C43535178B287500D6ABBD /* PeaPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeaPod.h; sourceTree = "<group>"; };
+		30C43536178B287500D6ABBD /* PeaPod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeaPod.m; sourceTree = "<group>"; };
+		30C43538178B288000D6ABBD /* Pea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pea.h; sourceTree = "<group>"; };
+		30C43539178B288100D6ABBD /* Pea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pea.m; sourceTree = "<group>"; };
+		30C4353B178B288D00D6ABBD /* Pumpkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pumpkin.h; sourceTree = "<group>"; };
+		30C4353C178B288D00D6ABBD /* Pumpkin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pumpkin.m; sourceTree = "<group>"; };
+		30C4353E178B289700D6ABBD /* Beet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beet.h; sourceTree = "<group>"; };
+		30C4353F178B289800D6ABBD /* Beet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beet.m; sourceTree = "<group>"; };
+		30C43541178B28A700D6ABBD /* Asparagus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asparagus.h; sourceTree = "<group>"; };
+		30C43542178B28A700D6ABBD /* Asparagus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asparagus.m; sourceTree = "<group>"; };
+		30C43544178B2C7E00D6ABBD /* OrangeMonsterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrangeMonsterButton.h; sourceTree = "<group>"; };
+		30C43545178B2C7E00D6ABBD /* OrangeMonsterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrangeMonsterButton.m; sourceTree = "<group>"; };
+		30C43547178B2C8900D6ABBD /* AppleMonsterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleMonsterButton.h; sourceTree = "<group>"; };
+		30C43548178B2C8900D6ABBD /* AppleMonsterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleMonsterButton.m; sourceTree = "<group>"; };
+		30C4354A178B2C9500D6ABBD /* StrawberryMonsterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrawberryMonsterButton.h; sourceTree = "<group>"; };
+		30C4354B178B2C9600D6ABBD /* StrawberryMonsterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrawberryMonsterButton.m; sourceTree = "<group>"; };
+		30C4354D178B2CA100D6ABBD /* CherryMonsterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CherryMonsterButton.h; sourceTree = "<group>"; };
+		30C4354E178B2CA100D6ABBD /* CherryMonsterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CherryMonsterButton.m; sourceTree = "<group>"; };
+		30C43550178B2CAB00D6ABBD /* MangoMonsterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MangoMonsterButton.h; sourceTree = "<group>"; };
+		30C43551178B2CAB00D6ABBD /* MangoMonsterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MangoMonsterButton.m; sourceTree = "<group>"; };
+		30C43553178B2CBA00D6ABBD /* BananaMonsterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BananaMonsterButton.h; sourceTree = "<group>"; };
+		30C43554178B2CBA00D6ABBD /* BananaMonsterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BananaMonsterButton.m; sourceTree = "<group>"; };
+		30C43556178B2CCF00D6ABBD /* CoconutMonsterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoconutMonsterButton.h; sourceTree = "<group>"; };
+		30C43557178B2CD000D6ABBD /* CoconutMonsterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoconutMonsterButton.m; sourceTree = "<group>"; };
+		30C43559178B2CDB00D6ABBD /* GrapeMonsterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrapeMonsterButton.h; sourceTree = "<group>"; };
+		30C4355A178B2CDB00D6ABBD /* GrapeMonsterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrapeMonsterButton.m; sourceTree = "<group>"; };
+		30C4355C178B2CE800D6ABBD /* PineappleMonsterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PineappleMonsterButton.h; sourceTree = "<group>"; };
+		30C4355D178B2CE900D6ABBD /* PineappleMonsterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PineappleMonsterButton.m; sourceTree = "<group>"; };
+		30C4355F178B2CFB00D6ABBD /* WatermelonMonsterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatermelonMonsterButton.h; sourceTree = "<group>"; };
+		30C43560178B2CFB00D6ABBD /* WatermelonMonsterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatermelonMonsterButton.m; sourceTree = "<group>"; };
+		30C43562178B338D00D6ABBD /* MonsterButtonCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterButtonCache.h; sourceTree = "<group>"; };
+		30C43563178B338E00D6ABBD /* MonsterButtonCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterButtonCache.m; sourceTree = "<group>"; };
+		30E69473178750380048D2DE /* TimerDisplayNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDisplayNode.h; sourceTree = "<group>"; };
+		30E69474178750380048D2DE /* TimerDisplayNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDisplayNode.m; sourceTree = "<group>"; };
+		30E69476178750490048D2DE /* EnergyDisplayNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnergyDisplayNode.h; sourceTree = "<group>"; };
+		30E69477178750490048D2DE /* EnergyDisplayNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnergyDisplayNode.m; sourceTree = "<group>"; };
 		541708DD177123A90021A8C5 /* mgwuSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = mgwuSDK.framework; sourceTree = "<group>"; };
 		541708DF177123A90021A8C5 /* aqua.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aqua.png; sourceTree = "<group>"; };
 		541708E0177123A90021A8C5 /* bluechatbubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluechatbubble.png; sourceTree = "<group>"; };
@@ -630,8 +719,6 @@
 		62F018AD17445BEC00BAF979 /* bg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg3.png; sourceTree = "<group>"; };
 		62F018BA17445C7D00BAF979 /* GameplayLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameplayLayer.h; path = Scenes/Gameplay/GameplayLayer.h; sourceTree = "<group>"; };
 		62F018BB17445C7D00BAF979 /* GameplayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameplayLayer.m; path = Scenes/Gameplay/GameplayLayer.m; sourceTree = "<group>"; };
-		62F018C1174563BC00BAF979 /* HealthDisplayNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HealthDisplayNode.h; path = Scenes/Gameplay/HUD/HealthDisplayNode.h; sourceTree = "<group>"; };
-		62F018C2174563BC00BAF979 /* HealthDisplayNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HealthDisplayNode.m; path = Scenes/Gameplay/HUD/HealthDisplayNode.m; sourceTree = "<group>"; };
 		62F018CC174570D500BAF979 /* ScoreboardEntryNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreboardEntryNode.h; path = Scenes/Gameplay/HUD/ScoreboardEntryNode.h; sourceTree = "<group>"; };
 		62F018CD174570D500BAF979 /* ScoreboardEntryNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreboardEntryNode.m; path = Scenes/Gameplay/HUD/ScoreboardEntryNode.m; sourceTree = "<group>"; };
 		62F018D0174574AC00BAF979 /* bitmapfont-hd.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "bitmapfont-hd.fnt"; path = "HUD/bitmapfont-hd.fnt"; sourceTree = "<group>"; };
@@ -741,6 +828,24 @@
 				30C2D67E1784B272006D2634 /* BasicEnemyMonster.m */,
 				30C2D6801784B298006D2634 /* Carrot.h */,
 				30C2D6811784B298006D2634 /* Carrot.m */,
+				30C43529178B284700D6ABBD /* Broccoli.h */,
+				30C4352A178B284700D6ABBD /* Broccoli.m */,
+				30C4352C178B285000D6ABBD /* Corn.h */,
+				30C4352D178B285000D6ABBD /* Corn.m */,
+				30C4352F178B285B00D6ABBD /* Tomato.h */,
+				30C43530178B285B00D6ABBD /* Tomato.m */,
+				30C43532178B286900D6ABBD /* Potato.h */,
+				30C43533178B286900D6ABBD /* Potato.m */,
+				30C43535178B287500D6ABBD /* PeaPod.h */,
+				30C43536178B287500D6ABBD /* PeaPod.m */,
+				30C43538178B288000D6ABBD /* Pea.h */,
+				30C43539178B288100D6ABBD /* Pea.m */,
+				30C4353B178B288D00D6ABBD /* Pumpkin.h */,
+				30C4353C178B288D00D6ABBD /* Pumpkin.m */,
+				30C4353E178B289700D6ABBD /* Beet.h */,
+				30C4353F178B289800D6ABBD /* Beet.m */,
+				30C43541178B28A700D6ABBD /* Asparagus.h */,
+				30C43542178B28A700D6ABBD /* Asparagus.m */,
 			);
 			name = Enemy;
 			sourceTree = "<group>";
@@ -752,6 +857,24 @@
 				30C2D6781784B1FC006D2634 /* BasicPlayerMonster.m */,
 				30C2D67A1784B237006D2634 /* Orange.h */,
 				30C2D67B1784B237006D2634 /* Orange.m */,
+				30C4350E178B273F00D6ABBD /* Apple.h */,
+				30C4350F178B273F00D6ABBD /* Apple.m */,
+				30C43511178B275700D6ABBD /* Strawberry.h */,
+				30C43512178B275700D6ABBD /* Strawberry.m */,
+				30C43514178B276300D6ABBD /* Cherry.h */,
+				30C43515178B276300D6ABBD /* Cherry.m */,
+				30C43517178B276B00D6ABBD /* Mango.h */,
+				30C43518178B276C00D6ABBD /* Mango.m */,
+				30C4351A178B278000D6ABBD /* Banana.h */,
+				30C4351B178B278000D6ABBD /* Banana.m */,
+				30C4351D178B278900D6ABBD /* Coconut.h */,
+				30C4351E178B278900D6ABBD /* Coconut.m */,
+				30C43520178B279400D6ABBD /* Grape.h */,
+				30C43521178B279400D6ABBD /* Grape.m */,
+				30C43523178B27A000D6ABBD /* Pineapple.h */,
+				30C43524178B27A000D6ABBD /* Pineapple.m */,
+				30C43526178B27B000D6ABBD /* Watermelon.h */,
+				30C43527178B27B000D6ABBD /* Watermelon.m */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -761,6 +884,26 @@
 			children = (
 				30C2D6AE1784B539006D2634 /* SpawnMonsterButton.h */,
 				30C2D6AF1784B539006D2634 /* SpawnMonsterButton.m */,
+				30C43544178B2C7E00D6ABBD /* OrangeMonsterButton.h */,
+				30C43545178B2C7E00D6ABBD /* OrangeMonsterButton.m */,
+				30C43547178B2C8900D6ABBD /* AppleMonsterButton.h */,
+				30C43548178B2C8900D6ABBD /* AppleMonsterButton.m */,
+				30C4354A178B2C9500D6ABBD /* StrawberryMonsterButton.h */,
+				30C4354B178B2C9600D6ABBD /* StrawberryMonsterButton.m */,
+				30C4354D178B2CA100D6ABBD /* CherryMonsterButton.h */,
+				30C4354E178B2CA100D6ABBD /* CherryMonsterButton.m */,
+				30C43550178B2CAB00D6ABBD /* MangoMonsterButton.h */,
+				30C43551178B2CAB00D6ABBD /* MangoMonsterButton.m */,
+				30C43553178B2CBA00D6ABBD /* BananaMonsterButton.h */,
+				30C43554178B2CBA00D6ABBD /* BananaMonsterButton.m */,
+				30C43556178B2CCF00D6ABBD /* CoconutMonsterButton.h */,
+				30C43557178B2CD000D6ABBD /* CoconutMonsterButton.m */,
+				30C43559178B2CDB00D6ABBD /* GrapeMonsterButton.h */,
+				30C4355A178B2CDB00D6ABBD /* GrapeMonsterButton.m */,
+				30C4355C178B2CE800D6ABBD /* PineappleMonsterButton.h */,
+				30C4355D178B2CE900D6ABBD /* PineappleMonsterButton.m */,
+				30C4355F178B2CFB00D6ABBD /* WatermelonMonsterButton.h */,
+				30C43560178B2CFB00D6ABBD /* WatermelonMonsterButton.m */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -1294,12 +1437,12 @@
 		62F018C01745638900BAF979 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
-				62F018C1174563BC00BAF979 /* HealthDisplayNode.h */,
-				62F018C2174563BC00BAF979 /* HealthDisplayNode.m */,
 				62F018CC174570D500BAF979 /* ScoreboardEntryNode.h */,
 				62F018CD174570D500BAF979 /* ScoreboardEntryNode.m */,
-				30C2D6B11784B56D006D2634 /* TimerDisplayNode.h */,
-				30C2D6B21784B56D006D2634 /* TimerDisplayNode.m */,
+				30E69473178750380048D2DE /* TimerDisplayNode.h */,
+				30E69474178750380048D2DE /* TimerDisplayNode.m */,
+				30E69476178750490048D2DE /* EnergyDisplayNode.h */,
+				30E69477178750490048D2DE /* EnergyDisplayNode.m */,
 			);
 			name = HUD;
 			sourceTree = "<group>";
@@ -1370,6 +1513,8 @@
 				62F018FA17469E4E00BAF979 /* GameMechanics.m */,
 				62F018FC1746A13E00BAF979 /* MonsterCache.h */,
 				62F018FD1746A13E00BAF979 /* MonsterCache.m */,
+				30C43562178B338D00D6ABBD /* MonsterButtonCache.h */,
+				30C43563178B338E00D6ABBD /* MonsterButtonCache.m */,
 			);
 			name = GameMechanics;
 			sourceTree = "<group>";
@@ -1773,7 +1918,6 @@
 				625E3C1E1743E9B300D07B65 /* Leaderboard.m in Sources */,
 				625E3C3117441F7000D07B65 /* StoreScreenScene.m in Sources */,
 				62F018BC17445C7D00BAF979 /* GameplayLayer.m in Sources */,
-				62F018C3174563BC00BAF979 /* HealthDisplayNode.m in Sources */,
 				62F018CE174570D500BAF979 /* ScoreboardEntryNode.m in Sources */,
 				62F018FB17469E4E00BAF979 /* GameMechanics.m in Sources */,
 				62F018FE1746A13E00BAF979 /* MonsterCache.m in Sources */,
@@ -1829,7 +1973,37 @@
 				30C2D6AA1784B4DC006D2634 /* Barn.m in Sources */,
 				30C2D6AD1784B4E8006D2634 /* World.m in Sources */,
 				30C2D6B01784B539006D2634 /* SpawnMonsterButton.m in Sources */,
-				30C2D6B31784B56D006D2634 /* TimerDisplayNode.m in Sources */,
+				30E69475178750380048D2DE /* TimerDisplayNode.m in Sources */,
+				30E69478178750490048D2DE /* EnergyDisplayNode.m in Sources */,
+				30C43510178B273F00D6ABBD /* Apple.m in Sources */,
+				30C43513178B275700D6ABBD /* Strawberry.m in Sources */,
+				30C43516178B276300D6ABBD /* Cherry.m in Sources */,
+				30C43519178B276C00D6ABBD /* Mango.m in Sources */,
+				30C4351C178B278000D6ABBD /* Banana.m in Sources */,
+				30C4351F178B278900D6ABBD /* Coconut.m in Sources */,
+				30C43522178B279400D6ABBD /* Grape.m in Sources */,
+				30C43525178B27A000D6ABBD /* Pineapple.m in Sources */,
+				30C43528178B27B000D6ABBD /* Watermelon.m in Sources */,
+				30C4352B178B284700D6ABBD /* Broccoli.m in Sources */,
+				30C4352E178B285000D6ABBD /* Corn.m in Sources */,
+				30C43531178B285C00D6ABBD /* Tomato.m in Sources */,
+				30C43534178B286900D6ABBD /* Potato.m in Sources */,
+				30C43537178B287500D6ABBD /* PeaPod.m in Sources */,
+				30C4353A178B288100D6ABBD /* Pea.m in Sources */,
+				30C4353D178B288E00D6ABBD /* Pumpkin.m in Sources */,
+				30C43540178B289800D6ABBD /* Beet.m in Sources */,
+				30C43543178B28A800D6ABBD /* Asparagus.m in Sources */,
+				30C43546178B2C7E00D6ABBD /* OrangeMonsterButton.m in Sources */,
+				30C43549178B2C8900D6ABBD /* AppleMonsterButton.m in Sources */,
+				30C4354C178B2C9600D6ABBD /* StrawberryMonsterButton.m in Sources */,
+				30C4354F178B2CA100D6ABBD /* CherryMonsterButton.m in Sources */,
+				30C43552178B2CAC00D6ABBD /* MangoMonsterButton.m in Sources */,
+				30C43555178B2CBB00D6ABBD /* BananaMonsterButton.m in Sources */,
+				30C43558178B2CD100D6ABBD /* CoconutMonsterButton.m in Sources */,
+				30C4355B178B2CDC00D6ABBD /* GrapeMonsterButton.m in Sources */,
+				30C4355E178B2CEA00D6ABBD /* PineappleMonsterButton.m in Sources */,
+				30C43561178B2CFD00D6ABBD /* WatermelonMonsterButton.m in Sources */,
+				30C43564178B338F00D6ABBD /* MonsterButtonCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

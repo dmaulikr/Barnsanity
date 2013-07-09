@@ -37,14 +37,22 @@
     }else{
         angle-=speedAngle;
     }
-    float deltaX=radiusOfWorld*cos(angle);
-    float deltaY=radiusOfWorld*sin(angle);
+    float deltaX=radiusToSpawn*cos(angle);
+    float deltaY=radiusToSpawn*sin(angle);
     CGPoint newPosition = ccp(deltaX, deltaY);
     
     
     self.rotation=CC_RADIANS_TO_DEGREES(-angle+M_PI_2);
     
     [self setPosition:newPosition];
+}
+
+-(void)draw{
+    ccDrawColor4B(100, 0, 255, 255); //purple, values range from 0 to 255
+    CGPoint origin = ccp(self.hitZone.origin.x - self.position.x, self.hitZone.origin.y - self.position.y);
+    CGPoint destination = ccp(origin.x + self.hitZone.size.width, origin.y + self.hitZone.size.height);
+    ccDrawRect(origin, destination);
+    [super draw];
 }
 
 @end

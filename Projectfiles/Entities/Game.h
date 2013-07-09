@@ -18,9 +18,13 @@
 @property (nonatomic, assign) NSInteger meters;
 @property (nonatomic, assign) NSInteger enemiesKilled;
 
-
+@property (nonatomic, assign) NSInteger gameplayLevel;
 @property (nonatomic, assign) NSInteger gold;
+@property (nonatomic, assign) NSInteger goldBonusPerMonster;
 @property (nonatomic, assign) NSInteger energy;
+@property (nonatomic, assign) NSInteger energyMax;
+@property (nonatomic, assign) NSInteger energyPerSec;
+@property (nonatomic, assign) NSInteger timeInSec;
 @property (nonatomic, strong) NSMutableDictionary *levelsOfEverything;
 @property (nonatomic, strong) NSMutableDictionary *gameInfo;
 

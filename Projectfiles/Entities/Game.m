@@ -43,6 +43,14 @@ static NSArray *_allMissions;
         NSString *stats = [[NSBundle mainBundle] pathForResource:@"GameInfo" ofType:@"plist"];
         self.gameInfo=[NSDictionary dictionaryWithContentsOfFile:stats];
         
+        
+        int level=[[self.levelsOfEverything objectForKey:@"Energy"] objectForKey:@"Energy Regeneration"];
+       self.energyPerSec=[[[[self.gameInfo objectForKey:@"Energy"] objectForKey:@"Energy Regeneration"] objectAtIndex:level]integerValue];
+        
+        
+        level=[[self.levelsOfEverything objectForKey:@"Energy"] objectForKey:@"Max Energy"];
+        self.energyMax=[[[[self.gameInfo objectForKey:@"Energy"] objectForKey:@"Max Energy"] objectAtIndex:level] integerValue];
+        self.timeInSec=900;
         if (self.missions == nil)
         {
             [Game loadMissions];
