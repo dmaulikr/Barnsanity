@@ -69,6 +69,17 @@
     [self.spawnRatesByEnemyMonsterType removeAllObjects];
     [self.spawnCostByPlayerMonsterType removeAllObjects];
     
+    //set the spawn rates for all enemy monster
+    int spawnRate;
+    int level=[[[_game levelsOfEverything] objectForKey:@"Game Levels"] integerValue];
+    NSDictionary *monsterInfo=[[[_game gameInfo] objectForKey:@"Game Levels"] objectAtIndex:level];
+    NSArray *monsterClass = [monsterInfo allKeys];
+    for (NSString *monsterTypeClass in monsterClass)
+    {
+        
+
+    }
+    
 }
 
 - (void)setGameState:(GameState)gameState

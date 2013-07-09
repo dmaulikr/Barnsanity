@@ -42,9 +42,6 @@
         //Create an action with the animation that can then be assigned to a sprite
         run = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:running]];
         
-//        // run the animation
-//        [self runAction:run];
-        
         // ************* STABBING ANIMATION ********************
         
         animationFramesAttack = [NSMutableArray array];
@@ -68,7 +65,9 @@
         CCFiniteTimeAction *finishHit = [CCCallBlock actionWithBlock:^{
             self.attacking = FALSE;
             // restart running animation
-            [self runAction:run];
+//            [self stopAction:run];
+                [self runAction:run];
+            
         }];
         
         attack = [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] , hitAction, [CCDelayTime actionWithDuration:.5] ,finishHit, nil];
@@ -91,15 +90,14 @@
 
 - (void)update:(ccTime)delta
 {
-    if(self.move){
-        [self changePosition];
+    if(self.move && self.alive){
+        [self updateRunningMode:delta];
     }
-    [self updateRunningMode:delta];
 }
 
 - (void)updateRunningMode:(ccTime)delta
 {
-    
+    [self changePosition];
     // calculate a hit zone
     CGPoint monsterCenter = ccp(self.position.x + self.contentSize.width / 2, self.position.y + self.contentSize.height / 2);
     CGSize hitZoneSize = CGSizeMake(self.contentSize.width/2, self.contentSize.height/2);

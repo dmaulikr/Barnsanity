@@ -46,7 +46,7 @@
         healthBar.position=ccp(health.contentSize.width/2,2*self.contentSize.height/2+10);
         healthBar.midpoint = ccp(0,0.5); // Here is where all magic is
         healthBar.barChangeRate = ccp(1, 0);
-                blink = [CCBlink actionWithDuration:.4f blinks:2];
+        blink = [CCBlink actionWithDuration:.4f blinks:2];
         
         attack = [CCSequence actions:[CCDelayTime actionWithDuration:1.5], nil];
         
@@ -58,8 +58,12 @@
 }
 
 -(void)constructAt:(float) angle{
-     [self resumeSchedulerAndActions];
+    
+    //resume update and set up stats
     [self reset];
+    [self resumeSchedulerAndActions];
+    
+    //set up spawn location
     //get the radius of the world
     radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
     //calculate the x and y position based on the angle given
@@ -75,6 +79,8 @@
     self.visible=TRUE;
     self.attacking=FALSE;
     blinkDidRun=FALSE;
+    hitDidRun=FALSE;
+    
     //set the health bar
     healthBar.percentage=100;
 }
@@ -91,11 +97,15 @@
     //display health bar base of the amount of health left
     //    healthBar.percentage-=100*(damage/self.initialHitPoints);
     if(self.hitPoints<=0){
-                [self pauseSchedulerAndActions];
-                [self stopAllActions];
+        //stop all update and actions
+        [self pauseSchedulerAndActions];
+        [self stopAllActions];
+        //turn invisible
         self.visible=FALSE;
+                self.position = ccp(-MAX_INT, 0);
+        
         if(self.enemy){
-            [[GameMechanics sharedGameMechanics] game].gold+=reward;
+            [[GameMechanics sharedGameMechanics] game].gold+=reward+[[GameMechanics sharedGameMechanics] game].goldBonusPerMonster;
         }
     }else if(blinkDidRun==FALSE || [blink isDone]){
         blinkDidRun=TRUE;
@@ -127,7 +137,7 @@
         level=[[monsterlevel objectForKey:@"Armor"] integerValue];
         armor=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Barn"]objectForKey:@"Armor"]   objectAtIndex:level] integerValue];
     }
-
+    
     
 }
 

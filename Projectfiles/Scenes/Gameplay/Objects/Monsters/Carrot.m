@@ -70,7 +70,9 @@
         CCFiniteTimeAction *finishHit = [CCCallBlock actionWithBlock:^{
             self.attacking = FALSE;
             // restart running animation
-            [self runAction:run];
+//            [self stopAction:run];
+                [self runAction:run];
+            
         }];
         
         attack = [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] , hitAction, [CCDelayTime actionWithDuration:.5] ,finishHit, nil];
@@ -86,7 +88,13 @@
         //include update
         [self scheduleUpdate];
         
-        
+        NSDictionary *monsterInfo=[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Enemy Monsters"]objectForKey:nameOfMonster ];
+        self.hitPointsInit=[[monsterInfo objectForKey:@"Health"] integerValue];
+        self.damage=[[monsterInfo objectForKey:@"Damage"]integerValue];
+        speedAngle=[[monsterInfo objectForKey:@"Move Speed"] doubleValue] * (M_PI/1860);
+        self.areaOfEffect=[[monsterInfo objectForKey:@"AreaOfEffect"] boolValue];
+        self.areaOfEffectDamage=[[monsterInfo objectForKey:@"AreaOfEffect Damage"]integerValue];
+        reward=[[monsterInfo objectForKey:@"Gold Reward"] integerValue];
         
     }
     
@@ -95,15 +103,14 @@
 
 - (void)update:(ccTime)delta
 {
-    if(self.move){
-        [self changePosition];
+    if(self.move && self.alive){
+        [self updateRunningMode:delta];
     }
-    [self updateRunningMode:delta];
 }
 
 - (void)updateRunningMode:(ccTime)delta
 {
-    
+            [self changePosition];
     // calculate a hit zone
     CGPoint monsterCenter = ccp(self.position.x + self.contentSize.width / 2, self.position.y + self.contentSize.height / 2);
     CGSize hitZoneSize = CGSizeMake(self.contentSize.width/2, self.contentSize.height/2);

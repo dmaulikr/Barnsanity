@@ -442,7 +442,7 @@
                     }
                 }
             }
-            if(!player.attacked){
+            if(!player.attacked ){
                 player.move=TRUE;
             }else{
                 player.move=FALSE;

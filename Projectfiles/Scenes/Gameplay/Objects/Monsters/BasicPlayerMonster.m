@@ -14,32 +14,41 @@
 
 - (void)spawnAt:(float) angleOfLocation
 {
- [self resumeSchedulerAndActions];
-    self.hitPoints=self.hitPointsInit;
-        if((angleOfLocation <=0 && angleOfLocation >= -90)||(angleOfLocation >270 && angleOfLocation < 359))
-        {
-            moveDirection=left;
-            self.flipX=180;
-        }else{
-            moveDirection=right;
-        }
-        //angle of the spawn
-        angle= M_PI_2+CC_DEGREES_TO_RADIANS(angleOfLocation);
-        
-        // Select a spawn location
-        float xPos=radiusToSpawn*cos(angle);
-        float yPos=radiusToSpawn*sin(angle);
-        
-        //set the location
-        self.position = CGPointMake(xPos, yPos);
-        self.rotation=CC_RADIANS_TO_DEGREES(-angle+M_PI_2);
-        // Finally set yourself to be visible, this also flag the enemy as "in use"
-        self.visible = YES;
-        self.move=TRUE;
-        self.alive=TRUE;
-        hitDidRun=FALSE;
-        blinkDidRun=FALSE;
+    //resume update and run animation
+    [self stopAllActions];
     [self runAction:run];
+    
+    //set health
+    self.hitPoints=self.hitPointsInit;
+    
+    //set location and move direction
+    if((angleOfLocation <=0 && angleOfLocation >= -90)||(angleOfLocation >270 && angleOfLocation < 359))
+    {
+        moveDirection=left;
+        self.flipX=180;
+    }else{
+        moveDirection=right;
+    }
+    //angle of the spawn
+    angle= M_PI_2+CC_DEGREES_TO_RADIANS(angleOfLocation);
+    
+    // Select a spawn location
+    float xPos=radiusToSpawn*cos(angle);
+    float yPos=radiusToSpawn*sin(angle);
+    
+    //set the location
+    self.position = CGPointMake(xPos, yPos);
+    self.rotation=CC_RADIANS_TO_DEGREES(-angle+M_PI_2);
+    
+    
+    // Finally set yourself to be visible, this also flag the enemy as "in use"
+    self.visible = YES;
+    self.move=TRUE;
+    self.alive=TRUE;
+    self.attacked=FALSE;
+    self.attacking=FALSE;
+    hitDidRun=FALSE;
+    blinkDidRun=FALSE;
 	
 }
 
@@ -58,12 +67,18 @@
     self.hitPoints -=damage;
     //if hitpoint is 0 or less then the monster dies
     if(self.hitPoints<=0){
+        //turn invisible
         self.visible = FALSE;
         self.alive=FALSE;
         self.move=FALSE;
-        [self pauseSchedulerAndActions];
         self.position = ccp(-MAX_INT, 0);
+        
+        //stop all actions and pause update
         [self stopAllActions];
+        
+        //flip image back to original position
+        self.flipX=0;
+        
     }else if(blinkDidRun==FALSE || [blink isDone]){
         blinkDidRun=TRUE;
         [self runAction:blink];

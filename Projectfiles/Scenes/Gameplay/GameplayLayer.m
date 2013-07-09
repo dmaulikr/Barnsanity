@@ -252,7 +252,7 @@ static CGRect screenRect;
         [[GameMechanics sharedGameMechanics] setSpawnCost:2 forPlayerMonsterType:[Apple class]];
         [[GameMechanics sharedGameMechanics] setSpawnCost:2 forPlayerMonsterType:[Strawberry class]];
         [[GameMechanics sharedGameMechanics] setSpawnCost:2 forPlayerMonsterType:[Cherry class]];
-    [[GameMechanics sharedGameMechanics] setSpawnRate:900 forEnemyMonsterType:[Carrot class]];
+    [[GameMechanics sharedGameMechanics] setSpawnRate:300 forEnemyMonsterType:[Carrot class]];
 }
 
 #pragma mark - Update & Input Events
