@@ -11,7 +11,6 @@
 #import "GameplayLayer.h"
 #import "MonsterCache.h"
 
-
 // define the different possible GameState types, by using constants
 typedef NS_ENUM(NSInteger, GameState) {
     GameStatePaused,

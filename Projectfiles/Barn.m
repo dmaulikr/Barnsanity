@@ -42,12 +42,14 @@
         [health setScale:2];
         healthBar=[CCProgressTimer progressWithSprite:health];
         healthBar.type = kCCProgressTimerTypeBar;
+        [healthBar setPercentage:100.0f];
         [self addChild:healthBar];
         healthBar.position=ccp(health.contentSize.width/2,2*self.contentSize.height/2+10);
-        healthBar.midpoint = ccp(0,0.5); // Here is where all magic is
+        healthBar.midpoint = ccp(0,0.5);
         healthBar.barChangeRate = ccp(1, 0);
-        blink = [CCBlink actionWithDuration:.4f blinks:2];
         
+        
+        blink = [CCBlink actionWithDuration:.4f blinks:2];
         attack = [CCSequence actions:[CCDelayTime actionWithDuration:1.5], nil];
         
         //include updates
@@ -74,7 +76,7 @@
     //calculate the rotation of the image base of the angle
     self.rotation=CC_RADIANS_TO_DEGREES(-angle+M_PI_2);
     
-    
+    self.hitPoints=self.hitPointsInit;
     //have the barn visible
     self.visible=TRUE;
     self.attacking=FALSE;
@@ -95,7 +97,7 @@
     //decrease the health by the amount of damage
     self.hitPoints-=(damage - armor);
     //display health bar base of the amount of health left
-    //    healthBar.percentage-=100*(damage/self.initialHitPoints);
+    [healthBar setPercentage:((float)_hitPoints/(float)_hitPointsInit)*100];
     if(self.hitPoints<=0){
         //stop all update and actions
         [self pauseSchedulerAndActions];
@@ -125,27 +127,34 @@
     if(self.enemy){
         int level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Game Levels"] integerValue];
         NSDictionary *monsterInfo=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Game Levels"]objectAtIndex:level]   objectForKey:@"Barn"];
-        self.hitPoints=[[monsterInfo objectForKey:@"Health"] integerValue];
+        self.hitPointsInit=[[monsterInfo objectForKey:@"Health"] integerValue];
         self.damage=[[monsterInfo objectForKey:@"Damage"]integerValue];
         armor=[[monsterInfo objectForKey:@"Armor"] integerValue];
     }else{
         NSDictionary *monsterlevel=[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Player Barn"];
         int level=[[monsterlevel objectForKey:@"Health"]integerValue];
-        self.hitPoints=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Barn"]objectForKey:@"Health"]   objectAtIndex:level] integerValue];
+        self.hitPointsInit=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Barn"]objectForKey:@"Health"]   objectAtIndex:level] integerValue];
         level=[[monsterlevel objectForKey:@"Damage"] integerValue];
         self.damage=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Barn"]objectForKey:@"Damage"]   objectAtIndex:level]integerValue];
         level=[[monsterlevel objectForKey:@"Armor"] integerValue];
         armor=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Barn"]objectForKey:@"Armor"]   objectAtIndex:level] integerValue];
     }
-    
-    
+ 
 }
 
--(void)draw{
-    ccDrawColor4B(100, 0, 255, 255); //purple, values range from 0 to 255
-    CGPoint origin = ccp(self.hitZone.origin.x - self.position.x, self.hitZone.origin.y - self.position.y);
-    CGPoint destination = ccp(origin.x + self.hitZone.size.width, origin.y + self.hitZone.size.height);
-    ccDrawRect(origin, destination);
+- (void)draw
+{
     [super draw];
+    
+#ifdef DEBUG
+    // visualize the hit zone
+    
+     ccDrawColor4B(100, 0, 255, 255); //purple, values range from 0 to 255
+     CGPoint origin = ccp(self.hitZone.origin.x - self.position.x, self.hitZone.origin.y - self.position.y);
+     CGPoint destination = ccp(origin.x + self.hitZone.size.width, origin.y + self.hitZone.size.height);
+     ccDrawRect(origin, destination);
+     
+    
+#endif
 }
 @end

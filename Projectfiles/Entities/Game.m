@@ -38,17 +38,17 @@ static NSArray *_allMissions;
     
     if (self)
     {
-        NSString *newGame = [[NSBundle mainBundle] pathForResource:@"NewGame_Level" ofType:@"plist"];
+        NSString *newGame = [[NSBundle mainBundle] pathForResource:@"NewGame_Levels" ofType:@"plist"];
         self.levelsOfEverything=[NSDictionary dictionaryWithContentsOfFile:newGame];
         NSString *stats = [[NSBundle mainBundle] pathForResource:@"GameInfo" ofType:@"plist"];
         self.gameInfo=[NSDictionary dictionaryWithContentsOfFile:stats];
         
         
-        int level=[[self.levelsOfEverything objectForKey:@"Energy"] objectForKey:@"Energy Regeneration"];
+        int level=[[[self.levelsOfEverything objectForKey:@"Energy"] objectForKey:@"Energy Regeneration"]integerValue];
        self.energyPerSec=[[[[self.gameInfo objectForKey:@"Energy"] objectForKey:@"Energy Regeneration"] objectAtIndex:level]integerValue];
         
         
-        level=[[self.levelsOfEverything objectForKey:@"Energy"] objectForKey:@"Max Energy"];
+        level=[[[self.levelsOfEverything objectForKey:@"Energy"] objectForKey:@"Max Energy"] integerValue];
         self.energyMax=[[[[self.gameInfo objectForKey:@"Energy"] objectForKey:@"Max Energy"] objectAtIndex:level] integerValue];
         self.timeInSec=900;
         if (self.missions == nil)

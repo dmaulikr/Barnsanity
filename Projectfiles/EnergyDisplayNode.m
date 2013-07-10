@@ -43,7 +43,11 @@
 -(void) updateTimer:(NSTimer *) theTimer{
     if ([[GameMechanics sharedGameMechanics] gameState] == GameStateRunning)
     {
-        [self setEnergy:(_energy+_energyPerSec)];
+        if(_energy+_energyPerSec< _energyMax){
+            [self setEnergy:(_energy+_energyPerSec)];
+        }else{
+            [self setEnergy:(_energyMax)];
+        }
     }
 }
 @end

@@ -266,7 +266,7 @@
 				<key>Move Speed</key>
 				<integer>2</integer>
 				<key>Delay</key>
-				<integer>1</integer>
+				<integer>5</integer>
 				<key>Damage</key>
 				<integer>10</integer>
 				<key>Attack Speed</key>
@@ -1193,7 +1193,7 @@
 				<integer>50</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>0</integer>
+			<integer>300</integer>
 			<key>Broccoli</key>
 			<integer>0</integer>
 			<key>Corn</key>

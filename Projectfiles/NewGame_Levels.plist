@@ -34,11 +34,11 @@
 		<key>Orange</key>
 		<integer>0</integer>
 		<key>Apple</key>
-		<integer>-1</integer>
+		<integer>0</integer>
 		<key>Strawberry</key>
-		<integer>-1</integer>
+		<integer>0</integer>
 		<key>Cherry</key>
-		<integer>-1</integer>
+		<integer>0</integer>
 		<key>Mango</key>
 		<integer>-1</integer>
 		<key>Banana</key>

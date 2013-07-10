@@ -65,14 +65,24 @@
         /* add a start button */
         CCSprite *normalStartButton = [CCSprite spriteWithFile:@"mainmenu.png"];
         CCSprite *selectedStartButton = [CCSprite spriteWithFile:@"mainmenu.png"];
-        startButton = [CCMenuItemSprite itemWithNormalSprite:normalStartButton selectedSprite:selectedStartButton target:self selector:@selector(startButtonPressed)];
+        startButton = [CCMenuItemSprite itemWithNormalSprite:normalStartButton selectedSprite:selectedStartButton target:self selector:@selector(continueButtonPressed)];
+        newGameButton= [CCMenuItemFont itemWithString:@"New Game" block:^(id sender) {
+            CCScene *scene = [[StoreScreenScene alloc] init];
+            [[CCDirector sharedDirector] replaceScene:scene];
+        }];
+        newGameButton.color = DEFAULT_FONT_COLOR;
+        option= [CCMenuItemFont itemWithString:@"Option" block:^(id sender) {
+            CCScene *scene = [[StoreScreenScene alloc] init];
+            [[CCDirector sharedDirector] replaceScene:scene];
+        }];
+        option.color = DEFAULT_FONT_COLOR;
         storeButton = [CCMenuItemFont itemWithString:@"Store" block:^(id sender) {
             CCScene *scene = [[StoreScreenScene alloc] init];
             [[CCDirector sharedDirector] replaceScene:scene];
         }];
         storeButton.color = DEFAULT_FONT_COLOR;
 
-        startMenu = [CCMenu menuWithItems:startButton, storeButton, nil];
+        startMenu = [CCMenu menuWithItems:startButton, newGameButton, option, storeButton, nil];
         startMenu.position = ccp(screenCenter.x, screenCenter.y - 50);
         [startMenu alignItemsVertically];
         [self addChild: startMenu];
@@ -81,20 +91,21 @@
 	return self;
 }
 
-- (void)startButtonPressed
+- (void)continueButtonPressed
 {
-    /** Build an action sequence, that moves the main menu of the screen **/
-    CCMoveTo *moveOffScreen = [CCMoveTo actionWithDuration:1.f position:ccp(self.position.x, self.contentSize.height * 2)];
-    
-    CCAction *movementCompleted = [CCCallBlock actionWithBlock:^{
-        // cleanup
-        self.visible = FALSE;
-        [self removeFromParent];
-    }];
-    
-    CCSequence *menuHideMovement = [CCSequence actions:moveOffScreen, movementCompleted, nil];
-    [self runAction:menuHideMovement];
+//    /** Build an action sequence, that moves the main menu of the screen **/
+//    CCMoveTo *moveOffScreen = [CCMoveTo actionWithDuration:1.f position:ccp(self.position.x, self.contentSize.height * 2)];
+//    
+//    CCAction *movementCompleted = [CCCallBlock actionWithBlock:^{
+//        // cleanup
+//        self.visible = FALSE;
+//        [self removeFromParent];
+//    }];
+//    
+//    CCSequence *menuHideMovement = [CCSequence actions:moveOffScreen, movementCompleted, nil];
+//    [self runAction:menuHideMovement];
 
+    self.visible=FALSE;
     /** Start the game and display the HUD */
     [[[GameMechanics sharedGameMechanics] gameScene] startGame];
     [[[GameMechanics sharedGameMechanics] gameScene] showHUD:TRUE];

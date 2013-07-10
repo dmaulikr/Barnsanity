@@ -14,6 +14,8 @@
     CCMenu *startMenu;
     CCMenuItem *startButton;
     CCMenuItemFont *storeButton;
+    CCMenuItemFont *newGameButton;
+    CCMenuItemFont *option;
     CGPoint startTitleLabelTargetPoint;
 }
 

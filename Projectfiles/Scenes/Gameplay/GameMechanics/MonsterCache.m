@@ -223,11 +223,8 @@
     
 }
 -(void) spawn:(Class)PlayerTypeClass atAngle:(float) angleOfLocation{
-    int cost = [[GameMechanics sharedGameMechanics] spawnCostForPlayerMonsterType:PlayerTypeClass];
-    if(cost<=[[GameMechanics sharedGameMechanics]game].energy){
-        [[GameMechanics sharedGameMechanics]game].energy-=cost;
         [self spawnPlayerOfType:PlayerTypeClass atAngle:(float) angleOfLocation];
-    }
+    
 }
 
 -(void) spawnPlayerOfType:(Class)PlayerTypeClass atAngle:(float) angleOfLocation{

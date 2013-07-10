@@ -135,9 +135,6 @@ static CGRect screenRect;
         [self addChild:background z:0];
         
         
-        //create node for monster button objects
-        [self addChild:[MonsterButtonCache sharedMonsterButtonCache]];
-        
         //create the ship object
         ship=[[Ship alloc] initWithMonsterPicture];
         ship.position=ccp(screenSize.width/2,screenSize.height-ship.contentSize.height/4);
@@ -162,6 +159,11 @@ static CGRect screenRect;
         //node that contains all gameplay objects
         hudNode = [CCNode node];
         [self addChild:hudNode];
+        
+        
+        //create node for monster button objects
+        [hudNode addChild:[MonsterButtonCache sharedMonsterButtonCache]];
+        
         // add scoreboard entry for points
         pointsDisplayNode = [[ScoreboardEntryNode alloc] initWithfontFile:@"avenir24.fnt"];
         pointsDisplayNode.position = ccp(10, screenSize.height - 50);
@@ -215,7 +217,7 @@ static CGRect screenRect;
 {
     [[GameMechanics sharedGameMechanics] setGameState:GameStateRunning];
     [self enableGamePlayButtons];
-    [self presentSkipAheadButtonWithDuration:5.f];
+//    [self presentSkipAheadButtonWithDuration:5.f];
     
     /*
      inform all missions, that they have started
@@ -228,9 +230,9 @@ static CGRect screenRect;
 
 - (void)resetGame
 {
-    [[GameMechanics sharedGameMechanics] resetGame];
     game = [[Game alloc] init];
     [[GameMechanics sharedGameMechanics] setGame:game];
+    [[GameMechanics sharedGameMechanics] resetGame];
     // add a reference to this gamePlay scene to the gameMechanics, which allows accessing the scene from other classes
     [[GameMechanics sharedGameMechanics] setGameScene:self];
     [[MonsterCache sharedMonsterCache]spawnBarn];
@@ -246,13 +248,6 @@ static CGRect screenRect;
     [[MonsterButtonCache sharedMonsterButtonCache] placeButton:[Cherry class] atLocation:3];
     /* setup initial values */
     centerOfRotation.rotation=0;
-    
-    // set spwan rate for monsters
-    [[GameMechanics sharedGameMechanics] setSpawnCost:2 forPlayerMonsterType:[Orange class]];
-        [[GameMechanics sharedGameMechanics] setSpawnCost:2 forPlayerMonsterType:[Apple class]];
-        [[GameMechanics sharedGameMechanics] setSpawnCost:2 forPlayerMonsterType:[Strawberry class]];
-        [[GameMechanics sharedGameMechanics] setSpawnCost:2 forPlayerMonsterType:[Cherry class]];
-    [[GameMechanics sharedGameMechanics] setSpawnRate:300 forEnemyMonsterType:[Carrot class]];
 }
 
 #pragma mark - Update & Input Events
@@ -463,48 +458,52 @@ static CGRect screenRect;
 {
     // TODO: implement animated
     hudNode.visible = TRUE;
+    ship.visible=TRUE;
+    centerOfRotation.visible=TRUE;
 }
 
 - (void)hideHUD:(BOOL)animated
 {
     // TODO: implement animated
     hudNode.visible = FALSE;
+    ship.visible=FALSE;
+    centerOfRotation.visible=FALSE;
 }
 
-- (void)presentSkipAheadButtonWithDuration:(NSTimeInterval)duration
-{
-    skipAheadMenu.visible = TRUE;
-    skipAheadMenu.opacity = 0.f;
-    CCFadeIn *fadeIn = [CCFadeIn actionWithDuration:0.5f];
-    [skipAheadMenu runAction:fadeIn];
-    
-    [self scheduleOnce: @selector(hideSkipAheadButton) delay:duration];
-}
+//- (void)presentSkipAheadButtonWithDuration:(NSTimeInterval)duration
+//{
+//    skipAheadMenu.visible = TRUE;
+//    skipAheadMenu.opacity = 0.f;
+//    CCFadeIn *fadeIn = [CCFadeIn actionWithDuration:0.5f];
+//    [skipAheadMenu runAction:fadeIn];
+//    
+//    [self scheduleOnce: @selector(hideSkipAheadButton) delay:duration];
+//}
 
-- (void)hideSkipAheadButton
-{
-    CCFiniteTimeAction *fadeOut = [CCFadeOut actionWithDuration:1.5f];
-    CCCallBlock *hide = [CCCallBlock actionWithBlock:^{
-        // execute this code to hide the 'Skip Ahead'-Button, once it is faded out
-        skipAheadMenu.visible = FALSE;
-        // enable again, so that interaction is possible as soon as the menu is visible again
-        skipAheadMenu.enabled = TRUE;
-    }];
-    
-    CCSequence *fadeOutAndHide = [CCSequence actions:fadeOut, hide, nil];
-    
-    [skipAheadMenu runAction:fadeOutAndHide];
-}
+//- (void)hideSkipAheadButton
+//{
+//    CCFiniteTimeAction *fadeOut = [CCFadeOut actionWithDuration:1.5f];
+//    CCCallBlock *hide = [CCCallBlock actionWithBlock:^{
+//        // execute this code to hide the 'Skip Ahead'-Button, once it is faded out
+//        skipAheadMenu.visible = FALSE;
+//        // enable again, so that interaction is possible as soon as the menu is visible again
+//        skipAheadMenu.enabled = TRUE;
+//    }];
+//    
+//    CCSequence *fadeOutAndHide = [CCSequence actions:fadeOut, hide, nil];
+//    
+//    [skipAheadMenu runAction:fadeOutAndHide];
+//}
 
 - (void)disableGameplayButtons
 {
     pauseButtonMenu.enabled = FALSE;
-    skipAheadMenu.enabled = FALSE;
+//    skipAheadMenu.enabled = FALSE;
 }
 - (void)enableGamePlayButtons
 {
     pauseButtonMenu.enabled = TRUE;
-    skipAheadMenu.enabled = TRUE;
+//    skipAheadMenu.enabled = TRUE;
 }
 
 #pragma mark - Delegate Methods
@@ -526,27 +525,27 @@ static CGRect screenRect;
 
 #pragma mark - Button Callbacks
 
-- (void)skipAheadButtonPressed
-{
-    if ([Store hasSufficientFundsForSkipAheadAction])
-    {
-        skipAheadMenu.enabled = FALSE;
-        CCLOG(@"Skip Ahead!");
-        [self startSkipAheadMode];
-        
-        // hide the skip ahead button, after it was pressed
-        // we need to cancel the previously scheduled perform selector...
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideSkipAheadButton) object:nil];
-        
-        // ... in order to execute it directly
-        [self hideSkipAheadButton];
-    } else
-    {
-        // pause the game, to allow the player to buy coins
-        [[GameMechanics sharedGameMechanics] setGameState:GameStatePaused];
-        [self presentMoreCoinsPopUpWithTarget:self selector:@selector(returnedFromMoreCoinsScreenFromSkipAheadAction)];
-    }
-}
+//- (void)skipAheadButtonPressed
+//{
+//    if ([Store hasSufficientFundsForSkipAheadAction])
+//    {
+//        skipAheadMenu.enabled = FALSE;
+//        CCLOG(@"Skip Ahead!");
+//        [self startSkipAheadMode];
+//        
+//        // hide the skip ahead button, after it was pressed
+//        // we need to cancel the previously scheduled perform selector...
+//        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideSkipAheadButton) object:nil];
+//        
+//        // ... in order to execute it directly
+//        [self hideSkipAheadButton];
+//    } else
+//    {
+//        // pause the game, to allow the player to buy coins
+//        [[GameMechanics sharedGameMechanics] setGameState:GameStatePaused];
+//        [self presentMoreCoinsPopUpWithTarget:self selector:@selector(returnedFromMoreCoinsScreenFromSkipAheadAction)];
+//    }
+//}
 
 - (void)goOnPopUpButtonClicked:(CCControlButton *)sender
 {
@@ -602,28 +601,28 @@ static CGRect screenRect;
     [NotificationBox presentNotificationBoxOnNode:self withText:@"Going on!" duration:1.f];
 }
 
-- (void)startSkipAheadMode
-{
-    BOOL successful = [Store purchaseSkipAheadAction];
-    
-    /*
-     Only enter the skip ahead mode if the purchase was successful (player had enough coins).
-     This is checked previously, but we want to got sure that the player can never access this item
-     without paying.
-     */
-    if (successful)
-    {
-        [self scheduleOnce: @selector(endSkipAheadMode) delay:5.f];
-        
-        // present a notification, to inform the user, that he is in skip ahead mode
-        [NotificationBox presentNotificationBoxOnNode:self withText:@"Skip Ahead Mode!" duration:4.5f];
-    }
-}
-
-- (void)endSkipAheadMode
-{
-    
-}
+//- (void)startSkipAheadMode
+//{
+//    BOOL successful = [Store purchaseSkipAheadAction];
+//    
+//    /*
+//     Only enter the skip ahead mode if the purchase was successful (player had enough coins).
+//     This is checked previously, but we want to got sure that the player can never access this item
+//     without paying.
+//     */
+//    if (successful)
+//    {
+//        [self scheduleOnce: @selector(endSkipAheadMode) delay:5.f];
+//        
+//        // present a notification, to inform the user, that he is in skip ahead mode
+//        [NotificationBox presentNotificationBoxOnNode:self withText:@"Skip Ahead Mode!" duration:4.5f];
+//    }
+//}
+//
+//- (void)endSkipAheadMode
+//{
+//    
+//}
 
 - (void)presentMoreCoinsPopUpWithTarget:(id)target selector:(SEL)selector
 {

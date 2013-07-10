@@ -26,6 +26,7 @@
     if(level >= 0){
         fireDelayInitial=[[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Monsters"] objectForKey:nameOfMonster] objectAtIndex:level]objectForKey:@"Delay"] integerValue];
     }
+    
 }
 
 -(void) updateTimer:(NSTimer *) theTimer {
@@ -33,21 +34,13 @@
     {
         if(fireDelayTimer>0){
             fireDelayTimer--;
-            delayTimer.percentage=((fireDelayTimer/fireDelayInitial)*100);
+            float newPercentage=((float)(fireDelayTimer-1)/(float)fireDelayInitial)*100;
+            [delayTimer runAction:[CCProgressFromTo actionWithDuration:1.0f from:delayTimer.percentage to:newPercentage]];
 
     }
     }
 }
 
-//-(CGRect)boundingBox{
-//    CGRect rect = CGRectMake(0, 0, self.contentSize.width, self.contentSize.height);
-//    return CGRectApplyAffineTransform(rect, [self nodeToParentTransform]);
-//}
 
--(void)draw{
-        ccColor4F rectColor = ccc4f(0.5, 0.5, 0.5, 1.0);
-        ccDrawSolidRect(ccp(0,0), ccp(self.contentSize.width, self.contentSize.height), rectColor);
-    [super draw];
-}
 
 @end

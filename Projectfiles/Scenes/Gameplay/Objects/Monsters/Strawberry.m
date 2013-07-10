@@ -70,7 +70,7 @@
             [self runAction:run];
         }];
         
-        attack = [CCSequence actions:startHit, hitAction, finishHit, nil];
+        attack = [CCSequence actions:startHit,[CCDelayTime actionWithDuration:1] , hitAction, [CCDelayTime actionWithDuration:1] ,finishHit, nil];
         
         //get the radius of the world
         radiusToSpawn=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;

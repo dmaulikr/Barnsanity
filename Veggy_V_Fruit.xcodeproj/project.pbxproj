@@ -55,6 +55,7 @@
 		30C4355E178B2CEA00D6ABBD /* PineappleMonsterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4355D178B2CE900D6ABBD /* PineappleMonsterButton.m */; };
 		30C43561178B2CFD00D6ABBD /* WatermelonMonsterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43560178B2CFB00D6ABBD /* WatermelonMonsterButton.m */; };
 		30C43564178B338F00D6ABBD /* MonsterButtonCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43563178B338E00D6ABBD /* MonsterButtonCache.m */; };
+		30C87024178CAA090057F878 /* monster1-topdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C87023178CAA090057F878 /* monster1-topdown.png */; };
 		30E69475178750380048D2DE /* TimerDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E69474178750380048D2DE /* TimerDisplayNode.m */; };
 		30E69478178750490048D2DE /* EnergyDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E69477178750490048D2DE /* EnergyDisplayNode.m */; };
 		54170919177123A90021A8C5 /* mgwuSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 541708DD177123A90021A8C5 /* mgwuSDK.framework */; };
@@ -429,6 +430,7 @@
 		30C43560178B2CFB00D6ABBD /* WatermelonMonsterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatermelonMonsterButton.m; sourceTree = "<group>"; };
 		30C43562178B338D00D6ABBD /* MonsterButtonCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterButtonCache.h; sourceTree = "<group>"; };
 		30C43563178B338E00D6ABBD /* MonsterButtonCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterButtonCache.m; sourceTree = "<group>"; };
+		30C87023178CAA090057F878 /* monster1-topdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "monster1-topdown.png"; sourceTree = "<group>"; };
 		30E69473178750380048D2DE /* TimerDisplayNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDisplayNode.h; sourceTree = "<group>"; };
 		30E69474178750380048D2DE /* TimerDisplayNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDisplayNode.m; sourceTree = "<group>"; };
 		30E69476178750490048D2DE /* EnergyDisplayNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnergyDisplayNode.h; sourceTree = "<group>"; };
@@ -1589,6 +1591,7 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				30C87023178CAA090057F878 /* monster1-topdown.png */,
 				30C2D6941784B33D006D2634 /* world.png */,
 				30C2D6951784B33D006D2634 /* chest.png */,
 				30C2D6961784B33D006D2634 /* button_topdown-button.png */,
@@ -1895,6 +1898,7 @@
 				30C2D6A11784B33D006D2634 /* sky_background_by_09shootingstar90-d4oq6xw.png in Resources */,
 				30C2D6B51784B591006D2634 /* GameInfo.plist in Resources */,
 				30C2D6B71784B602006D2634 /* NewGame_Levels.plist in Resources */,
+				30C87024178CAA090057F878 /* monster1-topdown.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
