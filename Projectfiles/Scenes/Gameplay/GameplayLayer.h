@@ -70,6 +70,8 @@
  */
 - (void)startGame;
 
+-(void)goTolevelSelection;
+-(void)goToMainMenu;
 // returns a GamePlayLayer, with an overlayed MainMenu
 + (id)scene;
 

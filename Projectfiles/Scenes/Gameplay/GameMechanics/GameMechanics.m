@@ -81,15 +81,13 @@
 
 - (void)resetGame
 {
-    
-    self.gameScene = nil;
     self.gameState = GameStatePaused;
     [self.spawnRatesByEnemyMonsterType removeAllObjects];
     [self.spawnCostByPlayerMonsterType removeAllObjects];
     
     //set the spawn rates for all enemy monster
     int spawnRate;
-    int level=[[[_game levelsOfEverything] objectForKey:@"Game Levels"] integerValue];
+    int level=_game.gameplayLevel ;
     NSDictionary *monsterInfo=[[[_game gameInfo] objectForKey:@"Game Levels"] objectAtIndex:level];
     spawnRate=[[monsterInfo objectForKey:@"Carrot"] integerValue];
     if(spawnRate >0){

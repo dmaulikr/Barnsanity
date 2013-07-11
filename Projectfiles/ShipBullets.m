@@ -84,6 +84,7 @@
 }
 
 -(void)reset{
+    [self gotHit];
     int level=[[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship"] objectForKey:@"Damage"] integerValue];
     self.damage=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Ship"]objectForKey:@"Damage"]   objectAtIndex:level] integerValue];
     level=[[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship"] objectForKey:@"AreaOfEffect Damage"]integerValue];

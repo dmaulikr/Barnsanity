@@ -10,15 +10,16 @@
 #import "Game.h"
 #import "GameMechanics.h"
 #import "MainMenuLayer.h"
-#import "Mission.h"
-#import "RecapScreenScene.h"
+//#import "Mission.h"
 #import "Store.h"
 #import "PopupProvider.h"
 #import "CCControlButton.h"
 #import "StyleManager.h"
 #import "NotificationBox.h"
 #import "PauseScreen.h"
-
+#import "SelectLevelScreen.h"
+#import "WinScreen.h"
+#import "LoseScreen.h"
 
 #import "MonsterCache.h"
 //buttons
@@ -116,14 +117,14 @@ static CGRect screenRect;
         screenSize = [[CCDirector sharedDirector] winSize];
         screenRect = CGRectMake(0, 0, screenSize.width, screenSize.height);
         
-//        // preload particle effects
-//        // To preload the textures, play each effect once off-screen
-//        CCParticleSystem* system = [CCParticleSystemQuad particleWithFile:@"fx-explosion.plist"];
-//        system.positionType = kCCPositionTypeFree;
-//        system.autoRemoveOnFinish = YES;
-//        system.position = ccp(MAX_INT, MAX_INT);
-//        // adding it as child lets the particle effect play
-//        [self addChild:system];
+        //        // preload particle effects
+        //        // To preload the textures, play each effect once off-screen
+        //        CCParticleSystem* system = [CCParticleSystemQuad particleWithFile:@"fx-explosion.plist"];
+        //        system.positionType = kCCPositionTypeFree;
+        //        system.autoRemoveOnFinish = YES;
+        //        system.position = ccp(MAX_INT, MAX_INT);
+        //        // adding it as child lets the particle effect play
+        //        [self addChild:system];
         
         //set inital values
         rotationVelocity=0;
@@ -184,9 +185,10 @@ static CGRect screenRect;
         pauseButtonMenu = [CCMenu menuWithItems:pauseButtonMenuItem, nil];
         pauseButtonMenu.position = ccp(20, screenSize.height - 70);
         [hudNode addChild:pauseButtonMenu];
-                
-        // setup a new gaming session
-        [self resetGame];
+        
+        game = [[Game alloc] init];
+        [[GameMechanics sharedGameMechanics] setGameScene:self];
+        [[GameMechanics sharedGameMechanics] setGame:game];
         
         [self scheduleUpdate];
         
@@ -215,68 +217,34 @@ static CGRect screenRect;
 
 - (void)startGame
 {
-    [[GameMechanics sharedGameMechanics] setGameState:GameStateRunning];
+    [self resetGame];
     [self enableGamePlayButtons];
-//    [self presentSkipAheadButtonWithDuration:5.f];
-    
-    /*
-     inform all missions, that they have started
-     */
-    for (Mission *m in game.missions)
-    {
-        [m missionStart:game];
-    }
+    [self showHUD:TRUE];
+    [[GameMechanics sharedGameMechanics] setGameState:GameStateRunning];
 }
 
 - (void)resetGame
 {
-    game = [[Game alloc] init];
-    [[GameMechanics sharedGameMechanics] setGame:game];
+    //reset all spawn rates and spawn cost for monsters
     [[GameMechanics sharedGameMechanics] resetGame];
-    // add a reference to this gamePlay scene to the gameMechanics, which allows accessing the scene from other classes
-    [[GameMechanics sharedGameMechanics] setGameScene:self];
+    //reset game info for this level
+    [game reset];
+    //reset barn
     [[MonsterCache sharedMonsterCache]spawnBarn];
+    //reset all monsters
     [[MonsterCache sharedMonsterCache]reset];
+    //reset timer
     [timer resetTimer:game.timeInSec];
+    //reset the ship
     [ship reset];
+    //reset energy info
     [energy resetEnergy:game.energyMax increasedAt:game.energyPerSec];
-    
-        [[MonsterButtonCache sharedMonsterButtonCache] reset];
-    [[MonsterButtonCache sharedMonsterButtonCache] placeButton:[Orange class] atLocation:0];
-    [[MonsterButtonCache sharedMonsterButtonCache] placeButton:[Apple class] atLocation:1];
-    [[MonsterButtonCache sharedMonsterButtonCache] placeButton:[Strawberry class] atLocation:2];
-    [[MonsterButtonCache sharedMonsterButtonCache] placeButton:[Cherry class] atLocation:3];
+    //reset the monster buttons and their delays
+    [[MonsterButtonCache sharedMonsterButtonCache] reset];
     /* setup initial values */
     centerOfRotation.rotation=0;
 }
 
-#pragma mark - Update & Input Events
-
-
-- (void)pushGameStateToMissions
-{
-    for (Mission *mission in game.missions)
-    {
-        if (mission.successfullyCompleted)
-        {
-            // we skip this mission, since it succesfully completed
-            continue;
-        }
-        
-        if ([mission respondsToSelector:@selector(generalGameUpdate:)])
-        {
-            // inform about current game state
-            [mission generalGameUpdate:game];
-            
-            // check if mission is now completed
-            if (mission.successfullyCompleted)
-            {
-                NSString *missionAccomplished = [NSString stringWithFormat:@"Completed: %@", mission.missionDescription];
-                [NotificationBox presentNotificationBoxOnNode:self withText:missionAccomplished duration:1.f];
-            }
-        }
-    }
-}
 
 - (void) update:(ccTime)delta
 {
@@ -287,19 +255,12 @@ static CGRect screenRect;
     {
         [self updateRunning:delta];
         
-        // check if we need to inform missions about current game state
-        updateCount++;
-        //        if ((updateCount % MISSION_UPDATE_FREQUENCY) == 0)
-        //        {
-        //            [self pushGameStateToMissions];
-        //        }
     }
 }
 
 - (void)updateRunning:(ccTime)delta
 {
     pointsDisplayNode.score=game.gold;
-    game.timeInSec=timer.timeInSec;
     [energy setEnergy:game.energy];
     
     //for rotation deceleration
@@ -323,16 +284,15 @@ static CGRect screenRect;
     }
     centerOfRotation.rotation=fmodf(centerOfRotation.rotation, 360);
     
-    
-//        if ([[MonsterCache sharedMonsterCache] playerBarn].hitPoints <= 0)
-//        {
-//           // knight died, present screen with option to GO ON for paying some coins
-//            [self presentGoOnPopUp];
-//        }else if ([[MonsterCache sharedMonsterCache] enemyBarn].hitPoints <= 0)
-//        {
-//            // knight died, present screen with option to GO ON for paying some coins
-//            [self presentGoOnPopUp];
-//        }
+    //if player barn's hitpoint is 0 or less OR time runs out go to lose screen
+    if ([[MonsterCache sharedMonsterCache] playerBarn].hitPoints <= 0 || (game.timeInSec <=0))
+    {
+        [self goToLoseScreen];
+    }else if ([[MonsterCache sharedMonsterCache] enemyBarn].hitPoints <= 0)
+    {
+        // if enemy barn's hit point is 0 or less go to win screen
+        [self goToWinScreen];
+    }
 }
 
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -421,14 +381,11 @@ static CGRect screenRect;
 
 - (void)onEnterTransitionDidFinish
 {
-    //    // setup a gesture listener for jumping and stabbing gestures
-    //    [KKInput sharedInput].gestureSwipeEnabled = TRUE;
-    
     if (self.showMainMenu)
     {
         // add main menu
-        MainMenuLayer *mainMenuLayer = [[MainMenuLayer alloc] init];
-        [self addChild:mainMenuLayer z:MAX_INT];
+        [self goToMainMenu];
+        
     } else
     {
         // start game directly
@@ -444,15 +401,7 @@ static CGRect screenRect;
     self.accelerometerEnabled = FALSE;
 }
 
-#pragma mark - UI
 
-- (void)presentGoOnPopUp
-{
-    [[GameMechanics sharedGameMechanics] setGameState:GameStatePaused];
-    CCScale9Sprite *backgroundImage = [StyleManager goOnPopUpBackground];
-    goOnPopUp = [PopupProvider presentPopUpWithContentString:nil backgroundImage:backgroundImage target:self selector:@selector(goOnPopUpButtonClicked:) buttonTitles:@[@"OK", @"No"]];
-    [self disableGameplayButtons];
-}
 
 - (void)showHUD:(BOOL)animated
 {
@@ -470,41 +419,97 @@ static CGRect screenRect;
     centerOfRotation.visible=FALSE;
 }
 
-//- (void)presentSkipAheadButtonWithDuration:(NSTimeInterval)duration
-//{
-//    skipAheadMenu.visible = TRUE;
-//    skipAheadMenu.opacity = 0.f;
-//    CCFadeIn *fadeIn = [CCFadeIn actionWithDuration:0.5f];
-//    [skipAheadMenu runAction:fadeIn];
-//    
-//    [self scheduleOnce: @selector(hideSkipAheadButton) delay:duration];
-//}
 
-//- (void)hideSkipAheadButton
-//{
-//    CCFiniteTimeAction *fadeOut = [CCFadeOut actionWithDuration:1.5f];
-//    CCCallBlock *hide = [CCCallBlock actionWithBlock:^{
-//        // execute this code to hide the 'Skip Ahead'-Button, once it is faded out
-//        skipAheadMenu.visible = FALSE;
-//        // enable again, so that interaction is possible as soon as the menu is visible again
-//        skipAheadMenu.enabled = TRUE;
-//    }];
-//    
-//    CCSequence *fadeOutAndHide = [CCSequence actions:fadeOut, hide, nil];
-//    
-//    [skipAheadMenu runAction:fadeOutAndHide];
-//}
+
+/* Pausing the game functions */
 
 - (void)disableGameplayButtons
 {
     pauseButtonMenu.enabled = FALSE;
-//    skipAheadMenu.enabled = FALSE;
 }
 - (void)enableGamePlayButtons
 {
     pauseButtonMenu.enabled = TRUE;
-//    skipAheadMenu.enabled = TRUE;
 }
+
+- (void)resumeButtonPressed:(PauseScreen *)pauseScreen
+{
+    // enable the pause button again, since the pause menu is hidden now
+    [self enableGamePlayButtons];
+    [self showHUD:TRUE];
+}
+
+
+- (void)pauseButtonPressed
+{
+    // disable pause button while the pause menu is shown, since we want to avoid, that the pause button can be hit twice.
+    [self disableGameplayButtons];
+    [self hideHUD:FALSE];
+    PauseScreen *pauseScreen = [[PauseScreen alloc] initWithGame];
+    pauseScreen.delegate = self;
+    [self addChild:pauseScreen z:10];
+    [pauseScreen present];
+    [[GameMechanics sharedGameMechanics] setGameState:GameStatePaused];
+}
+
+/*Level Selection functions*/
+
+
+
+
+- (void)goTolevelSelection
+{
+    // disable pause button while the pause menu is shown, since we want to avoid, that the pause button can be hit twice.
+    [self disableGameplayButtons];
+    [self hideHUD:FALSE];
+    SelectLevelScreen *levelSelectionScreen = [[SelectLevelScreen alloc] initWithGame];
+    //    levelSelectionScreen.delegate = self;
+    [self addChild:levelSelectionScreen z:MAX_INT];
+    [levelSelectionScreen present];
+    [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
+}
+
+-(void)goToMainMenu{
+    [self disableGameplayButtons];
+    [self hideHUD:FALSE];
+    MainMenuLayer *mainMenuLayer = [[MainMenuLayer alloc] init];
+    [self addChild:mainMenuLayer z:MAX_INT];
+    [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
+}
+
+-(void) goToWinScreen{
+    [self disableGameplayButtons];
+    [self hideHUD:FALSE];
+    if(game.gameplayLevel == game.maxGamePlayLevel){
+        [game increaseGameLevel];
+    }
+    [game saveGame];
+    WinScreen *winLayer=[[WinScreen alloc]initWithGame];
+    [self addChild:winLayer z:MAX_INT];
+    [winLayer present];
+    [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
+}
+
+-(void) goToLoseScreen{
+    [self disableGameplayButtons];
+    [self hideHUD:FALSE];
+    LoseScreen *loseLayer=[[LoseScreen alloc]initWithGame];
+    [self addChild:loseLayer z:MAX_INT];
+    [loseLayer present];
+    [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
+}
+#pragma mark - UI
+
+- (void)presentGoOnPopUp
+{
+    [[GameMechanics sharedGameMechanics] setGameState:GameStatePaused];
+    CCScale9Sprite *backgroundImage = [StyleManager goOnPopUpBackground];
+    goOnPopUp = [PopupProvider presentPopUpWithContentString:nil backgroundImage:backgroundImage target:self selector:@selector(goOnPopUpButtonClicked:) buttonTitles:@[@"OK", @"No"]];
+    [self disableGameplayButtons];
+}
+
+
+
 
 #pragma mark - Delegate Methods
 
@@ -516,36 +521,6 @@ static CGRect screenRect;
 {
     inAppCurrencyDisplayNode.score = [Store availableAmountInAppCurrency];
 }
-
-- (void)resumeButtonPressed:(PauseScreen *)pauseScreen
-{
-    // enable the pause button again, since the pause menu is hidden now
-    [self enableGamePlayButtons];
-}
-
-#pragma mark - Button Callbacks
-
-//- (void)skipAheadButtonPressed
-//{
-//    if ([Store hasSufficientFundsForSkipAheadAction])
-//    {
-//        skipAheadMenu.enabled = FALSE;
-//        CCLOG(@"Skip Ahead!");
-//        [self startSkipAheadMode];
-//        
-//        // hide the skip ahead button, after it was pressed
-//        // we need to cancel the previously scheduled perform selector...
-//        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideSkipAheadButton) object:nil];
-//        
-//        // ... in order to execute it directly
-//        [self hideSkipAheadButton];
-//    } else
-//    {
-//        // pause the game, to allow the player to buy coins
-//        [[GameMechanics sharedGameMechanics] setGameState:GameStatePaused];
-//        [self presentMoreCoinsPopUpWithTarget:self selector:@selector(returnedFromMoreCoinsScreenFromSkipAheadAction)];
-//    }
-//}
 
 - (void)goOnPopUpButtonClicked:(CCControlButton *)sender
 {
@@ -573,24 +548,12 @@ static CGRect screenRect;
         
         // IMPORTANT: set game state to 'GameStateMenu', otherwise menu animations will no be played
         [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
-        
-        RecapScreenScene *recap = [[RecapScreenScene alloc] initWithGame:game];
-        [[CCDirector sharedDirector] replaceScene:recap];
+//        
+//        RecapScreenScene *recap = [[RecapScreenScene alloc] initWithGame:game];
+//        [[CCDirector sharedDirector] replaceScene:recap];
     }
 }
 
-- (void)pauseButtonPressed
-{
-    CCLOG(@"Pause");
-    // disable pause button while the pause menu is shown, since we want to avoid, that the pause button can be hit twice.
-    [self disableGameplayButtons];
-    
-    PauseScreen *pauseScreen = [[PauseScreen alloc] initWithGame:game];
-    pauseScreen.delegate = self;
-    [self addChild:pauseScreen z:10];
-    [pauseScreen present];
-    [[GameMechanics sharedGameMechanics] setGameState:GameStatePaused];
-}
 
 #pragma mark - Game Logic
 
@@ -604,7 +567,7 @@ static CGRect screenRect;
 //- (void)startSkipAheadMode
 //{
 //    BOOL successful = [Store purchaseSkipAheadAction];
-//    
+//
 //    /*
 //     Only enter the skip ahead mode if the purchase was successful (player had enough coins).
 //     This is checked previously, but we want to got sure that the player can never access this item
@@ -613,7 +576,7 @@ static CGRect screenRect;
 //    if (successful)
 //    {
 //        [self scheduleOnce: @selector(endSkipAheadMode) delay:5.f];
-//        
+//
 //        // present a notification, to inform the user, that he is in skip ahead mode
 //        [NotificationBox presentNotificationBoxOnNode:self withText:@"Skip Ahead Mode!" duration:4.5f];
 //    }
@@ -621,7 +584,7 @@ static CGRect screenRect;
 //
 //- (void)endSkipAheadMode
 //{
-//    
+//
 //}
 
 - (void)presentMoreCoinsPopUpWithTarget:(id)target selector:(SEL)selector

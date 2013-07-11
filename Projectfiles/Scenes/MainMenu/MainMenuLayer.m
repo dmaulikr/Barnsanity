@@ -7,12 +7,10 @@
 //
 
 #import "MainMenuLayer.h"
-#import "RecapScreenScene.h"
 #import "StoreScreenScene.h"
 #import "GameplayLayer.h"
 #import "Leaderboard.h"
 #import "STYLES.h"
-#import "Mission.h"
 #import "Store.h"
 #import "GameMechanics.h"
 
@@ -30,19 +28,17 @@
 {
 	if (self = [super init])
     {
-        // setup In-App-Purchase Store
-        [Store setupDefault];
         
         // set background color
         CCLayerColor* colorLayer = [CCLayerColor layerWithColor:SCREEN_BG_COLOR_TRANSPARENT];
         [self addChild:colorLayer z:0];
-    
+        
         //setup the start menu title
         if (!TITLE_AS_SPRITE) {
             // OPTION 1: Title as Text
             CCLabelTTF *tempStartTitleLabel = [CCLabelTTF labelWithString:TITLE_LABEL
-                                                   fontName:@"Arial"
-                                                   fontSize:20];
+                                                                 fontName:@"Arial"
+                                                                 fontSize:20];
             tempStartTitleLabel.color = DEFAULT_FONT_COLOR;
             startTitleLabel = tempStartTitleLabel;
         } else {
@@ -54,62 +50,80 @@
         CGPoint screenCenter = [CCDirector sharedDirector].screenCenter;
         CGSize screenSize = [CCDirector sharedDirector].screenSize;
         
-        // place the startTitleLabel off-screen, later we will animate it on screen 
+        // place the startTitleLabel off-screen, later we will animate it on screen
         startTitleLabel.position = ccp (screenCenter.x, screenSize.height + 100);
         
         // this will be the point, we will animate the title to
         startTitleLabelTargetPoint = ccp(screenCenter.x, screenSize.height - 80);
-
+        
 		[self addChild:startTitleLabel];
         
-        /* add a start button */
-        CCSprite *normalStartButton = [CCSprite spriteWithFile:@"mainmenu.png"];
-        CCSprite *selectedStartButton = [CCSprite spriteWithFile:@"mainmenu.png"];
-        startButton = [CCMenuItemSprite itemWithNormalSprite:normalStartButton selectedSprite:selectedStartButton target:self selector:@selector(continueButtonPressed)];
+        /* add a load button to load previous game */
+        continueButton= [CCMenuItemFont itemWithString:@"Load Game" block:^(id sender) {
+            [self continueButtonPressed];
+        }];
+        continueButton.color = DEFAULT_FONT_COLOR;
+        
+        //add a new game button to start a new game
         newGameButton= [CCMenuItemFont itemWithString:@"New Game" block:^(id sender) {
-            CCScene *scene = [[StoreScreenScene alloc] init];
-            [[CCDirector sharedDirector] replaceScene:scene];
+            [self newGameButtonPressed];
         }];
         newGameButton.color = DEFAULT_FONT_COLOR;
+        
+        
+        //add an option button to change settings
         option= [CCMenuItemFont itemWithString:@"Option" block:^(id sender) {
-            CCScene *scene = [[StoreScreenScene alloc] init];
-            [[CCDirector sharedDirector] replaceScene:scene];
+            //            [self optionButtonPressed];
         }];
         option.color = DEFAULT_FONT_COLOR;
-        storeButton = [CCMenuItemFont itemWithString:@"Store" block:^(id sender) {
-            CCScene *scene = [[StoreScreenScene alloc] init];
-            [[CCDirector sharedDirector] replaceScene:scene];
-        }];
-        storeButton.color = DEFAULT_FONT_COLOR;
-
-        startMenu = [CCMenu menuWithItems:startButton, newGameButton, option, storeButton, nil];
+        
+        //add all buttons into the menu
+        startMenu = [CCMenu menuWithItems:newGameButton,continueButton, option, nil];
         startMenu.position = ccp(screenCenter.x, screenCenter.y - 50);
         [startMenu alignItemsVertically];
         [self addChild: startMenu];
 	}
-
+    
 	return self;
 }
 
 - (void)continueButtonPressed
 {
-//    /** Build an action sequence, that moves the main menu of the screen **/
-//    CCMoveTo *moveOffScreen = [CCMoveTo actionWithDuration:1.f position:ccp(self.position.x, self.contentSize.height * 2)];
-//    
-//    CCAction *movementCompleted = [CCCallBlock actionWithBlock:^{
-//        // cleanup
-//        self.visible = FALSE;
-//        [self removeFromParent];
-//    }];
-//    
-//    CCSequence *menuHideMovement = [CCSequence actions:moveOffScreen, movementCompleted, nil];
-//    [self runAction:menuHideMovement];
+    //if there is a game saved it will return true and it will load that game, else you cannot load a previous game
+    if( [[[GameMechanics sharedGameMechanics] game] loadGame]){
+        //remove this layer before going to the level selection layer
+        self.visible = FALSE;
+        [self removeFromParentAndCleanup:TRUE];
+        
+        //go to level selection layer
+        [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
+    }
+}
 
+- (void)newGameButtonPressed
+{
+    //remove this layer before going to the level selection layer
+    self.visible = FALSE;
+    [self removeFromParentAndCleanup:TRUE];
+    //load a new game
+    [[[GameMechanics sharedGameMechanics] game] newGame];
+    //go to the level selection layer
+    [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
+}
+
+- (void) optionButtonPressed
+{
+    
+    //        self.visible = FALSE;
+    //        [self removeFromParent];
+    
+    
     self.visible=FALSE;
     /** Start the game and display the HUD */
     [[[GameMechanics sharedGameMechanics] gameScene] startGame];
     [[[GameMechanics sharedGameMechanics] gameScene] showHUD:TRUE];
 }
+
 
 #pragma mark - Scene Lifecyle
 
@@ -126,11 +140,6 @@
     id easeMove = [CCEaseBackInOut actionWithAction:move];
     [startTitleLabel runAction: easeMove];
     
-    // set game state to "MenuState" when this menu appears
-    [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
-    
-    // hide the HUD of the gamePlayLayer
-    [[[GameMechanics sharedGameMechanics] gameScene] hideHUD:FALSE];
 }
 
 @end

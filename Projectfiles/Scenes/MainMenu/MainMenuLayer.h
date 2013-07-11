@@ -11,12 +11,15 @@
 @interface MainMenuLayer : CCLayer
 {
     CCNode *startTitleLabel;
+    CGPoint startTitleLabelTargetPoint;
+    
     CCMenu *startMenu;
-    CCMenuItem *startButton;
+    
+    //buttons for the menu
+    CCMenuItemFont *continueButton;
     CCMenuItemFont *storeButton;
     CCMenuItemFont *newGameButton;
     CCMenuItemFont *option;
-    CGPoint startTitleLabelTargetPoint;
 }
 
 @end

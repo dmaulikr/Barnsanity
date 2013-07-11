@@ -10,7 +10,7 @@
 #import "Game.h"
 #import "CCSpriteBackgroundNode.h"
 #import "CCBackgroundColorNode.h"
-#import "MissionsNode.h"
+//#import "MissionsNode.h"
 
 @class PauseScreen;
 /*
@@ -28,12 +28,13 @@
     CCBackgroundColorNode *backgroundNode;
     CCMenu *menu;
     CCMenuItemSprite *resumeMenuItem;
-    MissionsNode *missionNode;
+    CCMenuItemFont *mainMenu;
+    CCMenuItemFont *selectLevel;
 }
 
 @property (nonatomic, weak) id<PauseScreenDelegate> delegate;
 
-- (id)initWithGame:(Game *)game;
+- (id)initWithGame;
 - (void)present;
 
 @end

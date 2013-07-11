@@ -125,7 +125,7 @@
 
 -(void)reset{
     if(self.enemy){
-        int level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Game Levels"] integerValue];
+        int level=[[GameMechanics sharedGameMechanics]game].gameplayLevel;
         NSDictionary *monsterInfo=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Game Levels"]objectAtIndex:level]   objectForKey:@"Barn"];
         self.hitPointsInit=[[monsterInfo objectForKey:@"Health"] integerValue];
         self.damage=[[monsterInfo objectForKey:@"Damage"]integerValue];

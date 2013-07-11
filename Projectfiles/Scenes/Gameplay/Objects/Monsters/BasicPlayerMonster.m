@@ -67,18 +67,7 @@
     self.hitPoints -=damage;
     //if hitpoint is 0 or less then the monster dies
     if(self.hitPoints<=0){
-        //turn invisible
-        self.visible = FALSE;
-        self.alive=FALSE;
-        self.move=FALSE;
-        self.position = ccp(-MAX_INT, 0);
-        
-        //stop all actions and pause update
-        [self stopAllActions];
-        
-        //flip image back to original position
-        self.flipX=0;
-        
+        [self destroy];
     }else if(blinkDidRun==FALSE || [blink isDone]){
         blinkDidRun=TRUE;
         [self runAction:blink];
@@ -86,7 +75,10 @@
     
 }
 
+
 -(void)reset{
+    [self destroy];
+    
     int level=[[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Player Monsters"] objectForKey:nameOfMonster] integerValue];
     if(level >= 0){
         NSDictionary *monsterInfo=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Monsters"]objectForKey:nameOfMonster]   objectAtIndex:level];

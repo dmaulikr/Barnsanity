@@ -35,7 +35,7 @@
  - (void)setTime:(int)time
 {
     _timeInSec = time;
-    
+    [[[GameMechanics sharedGameMechanics]game] setTimeInSec:time];
     timeLabel.string = [NSString stringWithFormat:_stringFormat, time/60, time%60];
 }
 

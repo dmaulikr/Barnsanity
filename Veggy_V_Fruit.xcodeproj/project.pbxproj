@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30553E6A178F67F2005192DB /* view.png in Resources */ = {isa = PBXBuildFile; fileRef = 30553E69178F67F2005192DB /* view.png */; };
+		30C0F536178DE93E009F40EF /* SelectLevelScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0F535178DE93E009F40EF /* SelectLevelScreen.m */; };
+		30C0F53B178DEA06009F40EF /* WinScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0F53A178DEA06009F40EF /* WinScreen.m */; };
+		30C0F53E178DEA12009F40EF /* LoseScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0F53D178DEA12009F40EF /* LoseScreen.m */; };
+		30C0F546178E1E12009F40EF /* EquipScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0F545178E1E12009F40EF /* EquipScreen.m */; };
 		30C2D6761784B1BA006D2634 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C2D6751784B1BA006D2634 /* Monster.m */; };
 		30C2D6791784B1FC006D2634 /* BasicPlayerMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C2D6781784B1FC006D2634 /* BasicPlayerMonster.m */; };
 		30C2D67C1784B237006D2634 /* Orange.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C2D67B1784B237006D2634 /* Orange.m */; };
@@ -143,10 +148,6 @@
 		6212B5001766728A0040386F /* InGameStore_background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6212B4FE1766728A0040386F /* InGameStore_background-hd.png */; };
 		6212B5011766728A0040386F /* InGameStore_close-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6212B4FF1766728A0040386F /* InGameStore_close-hd.png */; };
 		6212B5041768D9600040386F /* PauseScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 6212B5021768D9600040386F /* PauseScreen.m */; };
-		6212B5F8176914D50040386F /* Mission.m in Sources */ = {isa = PBXBuildFile; fileRef = 6212B5F7176914D50040386F /* Mission.m */; };
-		6212B5FB176915BE0040386F /* RunDistanceMission.m in Sources */ = {isa = PBXBuildFile; fileRef = 6212B5FA176915BE0040386F /* RunDistanceMission.m */; };
-		6212B5FE176AD0050040386F /* KillAmountOfEnemiesMission.m in Sources */ = {isa = PBXBuildFile; fileRef = 6212B5FD176AD0050040386F /* KillAmountOfEnemiesMission.m */; };
-		6212B601176AD7140040386F /* MissionObjective.m in Sources */ = {isa = PBXBuildFile; fileRef = 6212B600176AD7130040386F /* MissionObjective.m */; };
 		6212B606176DD78B0040386F /* checkbox-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6212B602176DD78B0040386F /* checkbox-hd.png */; };
 		6212B607176DD78B0040386F /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 6212B603176DD78B0040386F /* checkbox.png */; };
 		6212B608176DD78B0040386F /* checkmark-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6212B604176DD78B0040386F /* checkmark-hd.png */; };
@@ -171,8 +172,6 @@
 		6212B6B6176E33810040386F /* leaderboard_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6212B6B5176E33810040386F /* leaderboard_background.png */; };
 		6212B6BF176E33F50040386F /* topMissionCellBackground-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6212B6BD176E33F50040386F /* topMissionCellBackground-hd.png */; };
 		6212B6C2176E4ED50040386F /* CCLabelTTF+adjustToFitRequiredSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6212B6C1176E4ED20040386F /* CCLabelTTF+adjustToFitRequiredSize.m */; };
-		6212B6C5176E546D0040386F /* MissionProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6212B6C4176E546C0040386F /* MissionProvider.m */; };
-		6212B6C8176E6F850040386F /* KillAmountOfEnemiesInDistance.m in Sources */ = {isa = PBXBuildFile; fileRef = 6212B6C7176E6F820040386F /* KillAmountOfEnemiesInDistance.m */; };
 		6212B6D5176E9CA80040386F /* 9patch_tab_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 6212B6C9176E9CA70040386F /* 9patch_tab_pressed.png */; };
 		6212B6D6176E9CA80040386F /* 9patch_tab_pressed-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6212B6CA176E9CA70040386F /* 9patch_tab_pressed-hd.png */; };
 		6212B6D7176E9CA80040386F /* 9patch_tab_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 6212B6CB176E9CA70040386F /* 9patch_tab_normal.png */; };
@@ -225,7 +224,6 @@
 		62AE159F174BF92C007AC0B7 /* mmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 62AE1596174BF92A007AC0B7 /* mmenu.png */; };
 		62AE15A0174BF92C007AC0B7 /* mmenu_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 62AE1597174BF92B007AC0B7 /* mmenu_pressed.png */; };
 		62AE15A1174BF92C007AC0B7 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 62AE1598174BF92B007AC0B7 /* facebook.png */; };
-		62AE15A4174C27E3007AC0B7 /* PersonalBestNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 62AE15A3174C27E2007AC0B7 /* PersonalBestNode.m */; };
 		62AE15A6174C3B5E007AC0B7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62AE15A5174C3B5D007AC0B7 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		62AE15A8174C3B69007AC0B7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62AE15A7174C3B69007AC0B7 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		62AE15AA174C3B77007AC0B7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62AE15A9174C3B77007AC0B7 /* CFNetwork.framework */; };
@@ -273,13 +271,8 @@
 		62CD5DB11742D56C002EC156 /* title-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 62CD5DAD1742D56C002EC156 /* title-hd.png */; };
 		62CD5DB21742D56C002EC156 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 62CD5DAE1742D56C002EC156 /* title.png */; };
 		62CD5DC117430201002EC156 /* MainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CD5DC017430201002EC156 /* MainMenuLayer.m */; };
-		62CD5DC617430213002EC156 /* RecapScreenScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CD5DC317430213002EC156 /* RecapScreenScene.m */; };
-		62CD5DC717430213002EC156 /* StatisticsNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CD5DC517430213002EC156 /* StatisticsNode.m */; };
-		62CD5DCA174302BF002EC156 /* MissionsNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CD5DC9174302BF002EC156 /* MissionsNode.m */; };
 		62CD5DD217430600002EC156 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CD5DCF17430600002EC156 /* Game.m */; };
 		62CD5DFE17431223002EC156 /* StyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CD5DFD17431223002EC156 /* StyleManager.m */; };
-		62DEE92C1743D88900DAD18B /* TabNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DEE92B1743D88900DAD18B /* TabNode.m */; };
-		62DEE92F1743E49C00DAD18B /* LeaderboardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DEE92E1743E49C00DAD18B /* LeaderboardNode.m */; };
 		62E4B1531764F82700D0A8D9 /* monster-animations-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62E4B1511764F82700D0A8D9 /* monster-animations-hd.plist */; };
 		62E4B1541764F82700D0A8D9 /* monster-animations-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 62E4B1521764F82700D0A8D9 /* monster-animations-hd.png */; };
 		62E4B15817664E2700D0A8D9 /* button_playbutton-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 62E4B15617664E2700D0A8D9 /* button_playbutton-hd.png */; };
@@ -343,6 +336,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30553E69178F67F2005192DB /* view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view.png; sourceTree = "<group>"; };
+		30C0F534178DE93E009F40EF /* SelectLevelScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLevelScreen.h; sourceTree = "<group>"; };
+		30C0F535178DE93E009F40EF /* SelectLevelScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLevelScreen.m; sourceTree = "<group>"; };
+		30C0F539178DEA06009F40EF /* WinScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinScreen.h; sourceTree = "<group>"; };
+		30C0F53A178DEA06009F40EF /* WinScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinScreen.m; sourceTree = "<group>"; };
+		30C0F53C178DEA12009F40EF /* LoseScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoseScreen.h; sourceTree = "<group>"; };
+		30C0F53D178DEA12009F40EF /* LoseScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoseScreen.m; sourceTree = "<group>"; };
+		30C0F544178E1E12009F40EF /* EquipScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquipScreen.h; sourceTree = "<group>"; };
+		30C0F545178E1E12009F40EF /* EquipScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquipScreen.m; sourceTree = "<group>"; };
 		30C2D6741784B1BA006D2634 /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Monster.h; sourceTree = "<group>"; };
 		30C2D6751784B1BA006D2634 /* Monster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Monster.m; sourceTree = "<group>"; };
 		30C2D6771784B1FC006D2634 /* BasicPlayerMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicPlayerMonster.h; sourceTree = "<group>"; };
@@ -541,14 +543,6 @@
 		6212B4FF1766728A0040386F /* InGameStore_close-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InGameStore_close-hd.png"; sourceTree = "<group>"; };
 		6212B5021768D9600040386F /* PauseScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PauseScreen.m; path = Scenes/PauseScreen/PauseScreen.m; sourceTree = "<group>"; };
 		6212B5031768D9600040386F /* PauseScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PauseScreen.h; path = Scenes/PauseScreen/PauseScreen.h; sourceTree = "<group>"; };
-		6212B5F6176914D50040386F /* Mission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mission.h; sourceTree = "<group>"; };
-		6212B5F7176914D50040386F /* Mission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mission.m; sourceTree = "<group>"; };
-		6212B5F9176915BE0040386F /* RunDistanceMission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunDistanceMission.h; sourceTree = "<group>"; };
-		6212B5FA176915BE0040386F /* RunDistanceMission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunDistanceMission.m; sourceTree = "<group>"; };
-		6212B5FC176AD0050040386F /* KillAmountOfEnemiesMission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KillAmountOfEnemiesMission.h; sourceTree = "<group>"; };
-		6212B5FD176AD0050040386F /* KillAmountOfEnemiesMission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KillAmountOfEnemiesMission.m; sourceTree = "<group>"; };
-		6212B5FF176AD7120040386F /* MissionObjective.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissionObjective.h; sourceTree = "<group>"; };
-		6212B600176AD7130040386F /* MissionObjective.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MissionObjective.m; sourceTree = "<group>"; };
 		6212B602176DD78B0040386F /* checkbox-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-hd.png"; sourceTree = "<group>"; };
 		6212B603176DD78B0040386F /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
 		6212B604176DD78B0040386F /* checkmark-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark-hd.png"; sourceTree = "<group>"; };
@@ -574,10 +568,6 @@
 		6212B6BD176E33F50040386F /* topMissionCellBackground-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topMissionCellBackground-hd.png"; sourceTree = "<group>"; };
 		6212B6C0176E4ECF0040386F /* CCLabelTTF+adjustToFitRequiredSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CCLabelTTF+adjustToFitRequiredSize.h"; path = "Utils/CCLabelTTF+adjustToFitRequiredSize.h"; sourceTree = "<group>"; };
 		6212B6C1176E4ED20040386F /* CCLabelTTF+adjustToFitRequiredSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CCLabelTTF+adjustToFitRequiredSize.m"; path = "Utils/CCLabelTTF+adjustToFitRequiredSize.m"; sourceTree = "<group>"; };
-		6212B6C3176E546B0040386F /* MissionProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissionProvider.h; sourceTree = "<group>"; };
-		6212B6C4176E546C0040386F /* MissionProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MissionProvider.m; sourceTree = "<group>"; };
-		6212B6C6176E6F810040386F /* KillAmountOfEnemiesInDistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KillAmountOfEnemiesInDistance.h; sourceTree = "<group>"; };
-		6212B6C7176E6F820040386F /* KillAmountOfEnemiesInDistance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KillAmountOfEnemiesInDistance.m; sourceTree = "<group>"; };
 		6212B6C9176E9CA70040386F /* 9patch_tab_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9patch_tab_pressed.png; sourceTree = "<group>"; };
 		6212B6CA176E9CA70040386F /* 9patch_tab_pressed-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9patch_tab_pressed-hd.png"; sourceTree = "<group>"; };
 		6212B6CB176E9CA70040386F /* 9patch_tab_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9patch_tab_normal.png; sourceTree = "<group>"; };
@@ -633,8 +623,6 @@
 		62AE1596174BF92A007AC0B7 /* mmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mmenu.png; sourceTree = "<group>"; };
 		62AE1597174BF92B007AC0B7 /* mmenu_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mmenu_pressed.png; sourceTree = "<group>"; };
 		62AE1598174BF92B007AC0B7 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
-		62AE15A2174C27E1007AC0B7 /* PersonalBestNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalBestNode.h; path = Scenes/RecapScreen/PersonalBestNode.h; sourceTree = "<group>"; };
-		62AE15A3174C27E2007AC0B7 /* PersonalBestNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalBestNode.m; path = Scenes/RecapScreen/PersonalBestNode.m; sourceTree = "<group>"; };
 		62AE15A5174C3B5D007AC0B7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Accounts.framework; sourceTree = DEVELOPER_DIR; };
 		62AE15A7174C3B69007AC0B7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
 		62AE15A9174C3B77007AC0B7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
@@ -693,20 +681,10 @@
 		62CD5DB91742E235002EC156 /* STYLES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STYLES.h; path = Styles/STYLES.h; sourceTree = "<group>"; };
 		62CD5DBF17430201002EC156 /* MainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenuLayer.h; path = Scenes/MainMenu/MainMenuLayer.h; sourceTree = "<group>"; };
 		62CD5DC017430201002EC156 /* MainMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMenuLayer.m; path = Scenes/MainMenu/MainMenuLayer.m; sourceTree = "<group>"; };
-		62CD5DC217430213002EC156 /* RecapScreenScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecapScreenScene.h; path = Scenes/RecapScreen/RecapScreenScene.h; sourceTree = "<group>"; };
-		62CD5DC317430213002EC156 /* RecapScreenScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecapScreenScene.m; path = Scenes/RecapScreen/RecapScreenScene.m; sourceTree = "<group>"; };
-		62CD5DC417430213002EC156 /* StatisticsNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatisticsNode.h; path = Scenes/RecapScreen/StatisticsNode.h; sourceTree = "<group>"; };
-		62CD5DC517430213002EC156 /* StatisticsNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatisticsNode.m; path = Scenes/RecapScreen/StatisticsNode.m; sourceTree = "<group>"; };
-		62CD5DC8174302BF002EC156 /* MissionsNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MissionsNode.h; path = Scenes/RecapScreen/MissionsNode.h; sourceTree = "<group>"; };
-		62CD5DC9174302BF002EC156 /* MissionsNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MissionsNode.m; path = Scenes/RecapScreen/MissionsNode.m; sourceTree = "<group>"; };
 		62CD5DCE17430600002EC156 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Game.h; path = Entities/Game.h; sourceTree = "<group>"; };
 		62CD5DCF17430600002EC156 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Game.m; path = Entities/Game.m; sourceTree = "<group>"; };
 		62CD5DFC17431223002EC156 /* StyleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StyleManager.h; path = Styles/StyleManager.h; sourceTree = "<group>"; };
 		62CD5DFD17431223002EC156 /* StyleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StyleManager.m; path = Styles/StyleManager.m; sourceTree = "<group>"; };
-		62DEE92A1743D88900DAD18B /* TabNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabNode.h; path = Scenes/RecapScreen/TabNode.h; sourceTree = "<group>"; };
-		62DEE92B1743D88900DAD18B /* TabNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabNode.m; path = Scenes/RecapScreen/TabNode.m; sourceTree = "<group>"; };
-		62DEE92D1743E49B00DAD18B /* LeaderboardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeaderboardNode.h; path = Scenes/RecapScreen/LeaderboardNode.h; sourceTree = "<group>"; };
-		62DEE92E1743E49C00DAD18B /* LeaderboardNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeaderboardNode.m; path = Scenes/RecapScreen/LeaderboardNode.m; sourceTree = "<group>"; };
 		62E4B1511764F82700D0A8D9 /* monster-animations-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "monster-animations-hd.plist"; path = "Objects/monster-animations-hd.plist"; sourceTree = "<group>"; };
 		62E4B1521764F82700D0A8D9 /* monster-animations-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "monster-animations-hd.png"; path = "Objects/monster-animations-hd.png"; sourceTree = "<group>"; };
 		62E4B15617664E2700D0A8D9 /* button_playbutton-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_playbutton-hd.png"; sourceTree = "<group>"; };
@@ -823,6 +801,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30C0F532178DE8FD009F40EF /* SelectLevelScreen */ = {
+			isa = PBXGroup;
+			children = (
+				30C0F534178DE93E009F40EF /* SelectLevelScreen.h */,
+				30C0F535178DE93E009F40EF /* SelectLevelScreen.m */,
+			);
+			name = SelectLevelScreen;
+			sourceTree = "<group>";
+		};
+		30C0F537178DE996009F40EF /* WinScreen */ = {
+			isa = PBXGroup;
+			children = (
+				30C0F539178DEA06009F40EF /* WinScreen.h */,
+				30C0F53A178DEA06009F40EF /* WinScreen.m */,
+			);
+			name = WinScreen;
+			sourceTree = "<group>";
+		};
+		30C0F538178DE9BD009F40EF /* LoseScreen */ = {
+			isa = PBXGroup;
+			children = (
+				30C0F53C178DEA12009F40EF /* LoseScreen.h */,
+				30C0F53D178DEA12009F40EF /* LoseScreen.m */,
+			);
+			name = LoseScreen;
+			sourceTree = "<group>";
+		};
+		30C0F543178E1DF6009F40EF /* EquipScreen */ = {
+			isa = PBXGroup;
+			children = (
+				30C0F544178E1E12009F40EF /* EquipScreen.h */,
+				30C0F545178E1E12009F40EF /* EquipScreen.m */,
+			);
+			name = EquipScreen;
+			sourceTree = "<group>";
+		};
 		30C2D6721784B17C006D2634 /* Enemy */ = {
 			isa = PBXGroup;
 			children = (
@@ -1093,26 +1107,6 @@
 			path = SWTable;
 			sourceTree = "<group>";
 		};
-		6212B5F5176914D40040386F /* Missions */ = {
-			isa = PBXGroup;
-			children = (
-				6212B5F6176914D50040386F /* Mission.h */,
-				6212B5F7176914D50040386F /* Mission.m */,
-				6212B5F9176915BE0040386F /* RunDistanceMission.h */,
-				6212B5FA176915BE0040386F /* RunDistanceMission.m */,
-				6212B5FC176AD0050040386F /* KillAmountOfEnemiesMission.h */,
-				6212B5FD176AD0050040386F /* KillAmountOfEnemiesMission.m */,
-				6212B5FF176AD7120040386F /* MissionObjective.h */,
-				6212B600176AD7130040386F /* MissionObjective.m */,
-				6212B6C3176E546B0040386F /* MissionProvider.h */,
-				6212B6C4176E546C0040386F /* MissionProvider.m */,
-				6212B6C6176E6F810040386F /* KillAmountOfEnemiesInDistance.h */,
-				6212B6C7176E6F820040386F /* KillAmountOfEnemiesInDistance.m */,
-			);
-			name = Missions;
-			path = Entities/Missions;
-			sourceTree = "<group>";
-		};
 		6212B682176E109A0040386F /* StoreScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1310,12 +1304,15 @@
 		62CD5DB31742D9AD002EC156 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				30C0F543178E1DF6009F40EF /* EquipScreen */,
+				30C0F538178DE9BD009F40EF /* LoseScreen */,
+				30C0F537178DE996009F40EF /* WinScreen */,
+				30C0F532178DE8FD009F40EF /* SelectLevelScreen */,
 				62E4B15A17664E4800D0A8D9 /* PauseScreen */,
 				62B741451763721E00D9BD34 /* InGameStore */,
 				62F018B617445C1200BAF979 /* Gameplay */,
 				625E3C2E17441F3300D07B65 /* StoreScreen */,
 				62CD5DBE1743017E002EC156 /* MainMenu */,
-				62CD5DBA1742F501002EC156 /* RecapScreen */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1324,7 +1321,6 @@
 			isa = PBXGroup;
 			children = (
 				30C2D68F1784B316006D2634 /* Game Information */,
-				6212B5F5176914D40040386F /* Missions */,
 				62CD5DCE17430600002EC156 /* Game.h */,
 				62CD5DCF17430600002EC156 /* Game.m */,
 				62F0C644174F1B7C00FB096E /* Store.h */,
@@ -1347,25 +1343,6 @@
 				62CD5DFD17431223002EC156 /* StyleManager.m */,
 			);
 			name = Styles;
-			sourceTree = "<group>";
-		};
-		62CD5DBA1742F501002EC156 /* RecapScreen */ = {
-			isa = PBXGroup;
-			children = (
-				62CD5DC217430213002EC156 /* RecapScreenScene.h */,
-				62CD5DC317430213002EC156 /* RecapScreenScene.m */,
-				62CD5DC417430213002EC156 /* StatisticsNode.h */,
-				62CD5DC517430213002EC156 /* StatisticsNode.m */,
-				62CD5DC8174302BF002EC156 /* MissionsNode.h */,
-				62CD5DC9174302BF002EC156 /* MissionsNode.m */,
-				62DEE92A1743D88900DAD18B /* TabNode.h */,
-				62DEE92B1743D88900DAD18B /* TabNode.m */,
-				62DEE92D1743E49B00DAD18B /* LeaderboardNode.h */,
-				62DEE92E1743E49C00DAD18B /* LeaderboardNode.m */,
-				62AE15A2174C27E1007AC0B7 /* PersonalBestNode.h */,
-				62AE15A3174C27E2007AC0B7 /* PersonalBestNode.m */,
-			);
-			name = RecapScreen;
 			sourceTree = "<group>";
 		};
 		62CD5DBE1743017E002EC156 /* MainMenu */ = {
@@ -1591,6 +1568,7 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				30553E69178F67F2005192DB /* view.png */,
 				30C87023178CAA090057F878 /* monster1-topdown.png */,
 				30C2D6941784B33D006D2634 /* world.png */,
 				30C2D6951784B33D006D2634 /* chest.png */,
@@ -1899,6 +1877,7 @@
 				30C2D6B51784B591006D2634 /* GameInfo.plist in Resources */,
 				30C2D6B71784B602006D2634 /* NewGame_Levels.plist in Resources */,
 				30C87024178CAA090057F878 /* monster1-topdown.png in Resources */,
+				30553E6A178F67F2005192DB /* view.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1912,20 +1891,14 @@
 				DCC1A3A913A94F1A005BD75D /* AppDelegate.m in Sources */,
 				DCC1A3AD13A94F1A005BD75D /* main.m in Sources */,
 				62CD5DC117430201002EC156 /* MainMenuLayer.m in Sources */,
-				62CD5DC617430213002EC156 /* RecapScreenScene.m in Sources */,
-				62CD5DC717430213002EC156 /* StatisticsNode.m in Sources */,
-				62CD5DCA174302BF002EC156 /* MissionsNode.m in Sources */,
 				62CD5DD217430600002EC156 /* Game.m in Sources */,
 				62CD5DFE17431223002EC156 /* StyleManager.m in Sources */,
-				62DEE92C1743D88900DAD18B /* TabNode.m in Sources */,
-				62DEE92F1743E49C00DAD18B /* LeaderboardNode.m in Sources */,
 				625E3C1E1743E9B300D07B65 /* Leaderboard.m in Sources */,
 				625E3C3117441F7000D07B65 /* StoreScreenScene.m in Sources */,
 				62F018BC17445C7D00BAF979 /* GameplayLayer.m in Sources */,
 				62F018CE174570D500BAF979 /* ScoreboardEntryNode.m in Sources */,
 				62F018FB17469E4E00BAF979 /* GameMechanics.m in Sources */,
 				62F018FE1746A13E00BAF979 /* MonsterCache.m in Sources */,
-				62AE15A4174C27E3007AC0B7 /* PersonalBestNode.m in Sources */,
 				62F0C62B174D8A9100FB096E /* CCBackgroundColorNode.m in Sources */,
 				62F0C63C174E9F2D00FB096E /* CCSprite+scaleSpriteToFitContentSize.m in Sources */,
 				62F0C643174EFEB200FB096E /* CCNinePatchBackgroundNode.m in Sources */,
@@ -1943,13 +1916,7 @@
 				62B741481763728E00D9BD34 /* InGameStore.m in Sources */,
 				62B7415C1764E0FF00D9BD34 /* NotificationBox.m in Sources */,
 				6212B5041768D9600040386F /* PauseScreen.m in Sources */,
-				6212B5F8176914D50040386F /* Mission.m in Sources */,
-				6212B5FB176915BE0040386F /* RunDistanceMission.m in Sources */,
-				6212B5FE176AD0050040386F /* KillAmountOfEnemiesMission.m in Sources */,
-				6212B601176AD7140040386F /* MissionObjective.m in Sources */,
 				6212B6C2176E4ED50040386F /* CCLabelTTF+adjustToFitRequiredSize.m in Sources */,
-				6212B6C5176E546D0040386F /* MissionProvider.m in Sources */,
-				6212B6C8176E6F850040386F /* KillAmountOfEnemiesInDistance.m in Sources */,
 				54170990177124400021A8C5 /* CCControl.m in Sources */,
 				54170991177124400021A8C5 /* CCControlButton.m in Sources */,
 				54170992177124400021A8C5 /* CCControlColourPicker.m in Sources */,
@@ -2008,6 +1975,10 @@
 				30C4355E178B2CEA00D6ABBD /* PineappleMonsterButton.m in Sources */,
 				30C43561178B2CFD00D6ABBD /* WatermelonMonsterButton.m in Sources */,
 				30C43564178B338F00D6ABBD /* MonsterButtonCache.m in Sources */,
+				30C0F536178DE93E009F40EF /* SelectLevelScreen.m in Sources */,
+				30C0F53B178DEA06009F40EF /* WinScreen.m in Sources */,
+				30C0F53E178DEA12009F40EF /* LoseScreen.m in Sources */,
+				30C0F546178E1E12009F40EF /* EquipScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

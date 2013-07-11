@@ -18,7 +18,7 @@
 
 @implementation PauseScreen
 
-- (id)initWithGame:(Game *)game 
+- (id)initWithGame
 {
     self = [super init];
     
@@ -50,36 +50,45 @@
         CCSprite *resumeButtonNormal = [CCSprite spriteWithFile:@"button_playbutton.png"];
         resumeMenuItem = [[CCMenuItemSprite alloc] initWithNormalSprite:resumeButtonNormal selectedSprite:nil disabledSprite:nil target:self selector:@selector(resumeButtonPressed)];
         
-        menu = [CCMenu menuWithItems:resumeMenuItem, nil];
-        [menu alignItemsHorizontally];
-        menu.position = ccp(0, - (0.5 * self.contentSize.height) + resumeButtonNormal.contentSize.height * 0.75);
+        
+        //add a select level button to go select a different level
+        selectLevel= [CCMenuItemFont itemWithString:@"Select Level" block:^(id sender) {
+            [self selectLevelButtonPressed];
+        }];
+        selectLevel.color = DEFAULT_FONT_COLOR;
+        
+        //add a main menu button to go back to the main menu
+        
+        mainMenu= [CCMenuItemFont itemWithString:@"Main Menu" block:^(id sender) {
+            [self mainMenuButtonPressed];
+        }];
+        mainMenu.color = DEFAULT_FONT_COLOR;
+        
+        //add all the buttons to the menu
+        menu = [CCMenu menuWithItems:resumeMenuItem,mainMenu, selectLevel, nil];
+        [menu alignItemsVertically];
+        menu.position = ccp(0,0);
         [self addChild:menu];
         
-        // add a missions node
-        missionNode = [[MissionsNode alloc] initWithMissions:game.missions];
-        missionNode.contentSize = CGSizeMake(240.f, 120.f);
-        missionNode.anchorPoint = ccp(0.5, 0.5);
-        missionNode.position = ccp(0, 0);
-        
-        // we want to use the 9Patch background on the pause screen
-        missionNode.usesScaleSpriteBackground = TRUE;
-        [self addChild:missionNode];
     }
     
     return self;
 }
 
-- (void)resumeButtonPressed
-{
-    [self hideAndResume];
-    [self.delegate resumeButtonPressed:self];
-}
-
+//is called when the paused button is called to move the pause layer into screen
 - (void)present
 {
     CCMoveTo *move = [CCMoveTo actionWithDuration:0.2f position:ccp(self.contentSize.width / 2, self.contentSize.height * 0.5)];
     [self runAction:move];
-    [missionNode updateCheckmarks];
+    
+}
+
+
+//if the resume button is pressed
+- (void)resumeButtonPressed
+{
+    [self hideAndResume];
+    [self.delegate resumeButtonPressed:self];
 }
 
 - (void)hideAndResume
@@ -99,6 +108,27 @@
         CCSequence *hideSequence = [CCSequence actions:move, removeFromParent, nil];
         [self runAction:hideSequence];
     }
+}
+
+//
+- (void)selectLevelButtonPressed
+{
+    //remove this layer before going to the next
+    self.visible = FALSE;
+     [self removeFromParentAndCleanup:TRUE];
+    //go to level selection layer
+    [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
+}
+
+
+
+- (void)mainMenuButtonPressed
+{
+    //remove this layer before going to the next
+    self.visible = FALSE;
+     [self removeFromParentAndCleanup:TRUE];
+    //go to mainmenu layer
+    [[[GameMechanics sharedGameMechanics] gameScene] goToMainMenu];
 }
 
 @end

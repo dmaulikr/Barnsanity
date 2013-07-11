@@ -50,13 +50,24 @@
 }
 -(void) reset{
     CCSpriteBatchNode *playerBatch;
+        CCSpriteBatchNode *enemyBatch;
     BasicPlayerMonster* player;
+    	BasicEnemyMonster* enemy;
     ShipBullets *bullet;
     CCARRAY_FOREACH([playerMonster children], playerBatch){
         CCARRAY_FOREACH([playerBatch children], player){
             [player reset];
         }
     }
+    
+    CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
+	{
+        CCARRAY_FOREACH([enemyBatch children], enemy)
+        {
+            [enemy reset];
+        }
+    }
+    
     CCARRAY_FOREACH([shipBullets children], bullet){
         [bullet reset];
     }

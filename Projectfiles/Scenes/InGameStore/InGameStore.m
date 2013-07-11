@@ -50,14 +50,14 @@
             {
                 // remember the item we are buying for the callback method
                 purchasedStoreItem = currentStoreItem;
-                
-                if ([currentStoreItem isKindOfClass:[CoinPurchaseStoreItem class]])
-                {
-                    /* if this is a coinPurchaseStoreItem, it means we need to do an In-App-Purchase.
-                       Other items are simply bought with In-App-Currency and do not require an In-App-Purchase */
-                    CoinPurchaseStoreItem *coinPurchaseItem = (CoinPurchaseStoreItem *) currentStoreItem;
-                    [MGWU testBuyProduct:coinPurchaseItem.productID withCallback:@selector(boughtProduct:) onTarget:self];
-                }
+//                
+//                if ([currentStoreItem isKindOfClass:[CoinPurchaseStoreItem class]])
+//                {
+//                    /* if this is a coinPurchaseStoreItem, it means we need to do an In-App-Purchase.
+//                       Other items are simply bought with In-App-Currency and do not require an In-App-Purchase */
+//                    CoinPurchaseStoreItem *coinPurchaseItem = (CoinPurchaseStoreItem *) currentStoreItem;
+//                    [MGWU testBuyProduct:coinPurchaseItem.productID withCallback:@selector(boughtProduct:) onTarget:self];
+//                }
             }];
             [menuEntries addObject:menuItem];
         }

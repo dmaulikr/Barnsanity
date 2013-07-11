@@ -47,6 +47,20 @@
     [self setPosition:newPosition];
 }
 
+-(void) destroy{
+    //turn invisible
+    self.visible = FALSE;
+    self.alive=FALSE;
+    self.move=FALSE;
+    self.position = ccp(-MAX_INT, 0);
+    
+    //stop all actions and pause update
+    [self stopAllActions];
+    
+    //flip image back to original position
+    self.flipX=0;
+}
+
 - (void)draw
 {
     [super draw];

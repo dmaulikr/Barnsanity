@@ -26,4 +26,5 @@
 - (void)spawnAt:(float) angleOfLocation;
 - (void)gotHit:(int)damage;
 - (void)attack;
+-(void) reset;
 @end

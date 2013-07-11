@@ -61,20 +61,9 @@
     self.hitPoints -=damage;
     //if hitpoint is 0 or less then the monster dies
     if(self.hitPoints<=0){
-        //turn invisible
-        self.visible = FALSE;
-        self.alive=FALSE;
-        self.move=FALSE;
-        self.position = ccp(-MAX_INT, 0);
-        
-        //stop update and actions
-        [self stopAllActions];
-        
+        [self destroy];
         //reward gold
         [[GameMechanics sharedGameMechanics] game].gold+=reward+[[GameMechanics sharedGameMechanics] game].goldBonusPerMonster;
-        
-        //flip the image back to original position
-         self.flipX=0;
 
     }else if(blinkDidRun==FALSE || [blink isDone]){
         blinkDidRun=TRUE;
@@ -83,6 +72,9 @@
     
 }
 
+-(void)reset{
+    [self destroy];
+}
 
 
 

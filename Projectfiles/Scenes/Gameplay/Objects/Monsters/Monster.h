@@ -62,4 +62,5 @@
 - (void)gotHit:(int)damage;
 - (void)attack;
 -(void)changePosition;
+-(void)destroy;
 @end
