@@ -26,7 +26,7 @@
     {
         self.contentSize = [[CCDirector sharedDirector] winSize];
         // position of screen, animate to screen
-        self.position = ccp(self.contentSize.width / 2, self.contentSize.height * 1.5);
+        self.position = ccp(self.contentSize.width / 2, self.contentSize.height * 0.5);
         
         // add a background image node
         backgroundNode = [[CCBackgroundColorNode alloc] init];
@@ -69,6 +69,7 @@
         [menu alignItemsVertically];
         menu.position = ccp(0,0);
         [self addChild:menu];
+    
         
     }
     
@@ -78,8 +79,8 @@
 //is called when the paused button is called to move the pause layer into screen
 - (void)present
 {
-    CCMoveTo *move = [CCMoveTo actionWithDuration:0.2f position:ccp(self.contentSize.width / 2, self.contentSize.height * 0.5)];
-    [self runAction:move];
+//    CCMoveTo *move = [CCMoveTo actionWithDuration:0.2f position:ccp(self.contentSize.width / 2, self.contentSize.height * 0.5)];
+//    [self runAction:move];
     
 }
 

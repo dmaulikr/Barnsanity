@@ -34,6 +34,7 @@
 -(void)saveGame;
 -(void)newGame;
 -(void)reset;
+-(void)subtractGoldby:(NSInteger) cost;
 -(void)increasePlayerBarn:(NSString*) category;
 -(void)increaseEnergy:(NSString*) category;
 -(void)increaseShip:(NSString*) category;

@@ -19,7 +19,7 @@
     CCMenuItemFont *continueButton;
     CCMenuItemFont *storeButton;
     CCMenuItemFont *newGameButton;
-    CCMenuItemFont *option;
+    CCMenuItemFont *volumeControl;
 }
 
 @end

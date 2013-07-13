@@ -18,7 +18,7 @@
     	// Loading the Entity's sprite using a file, is a ship for now but you can change this
     	if (self)
     	{
-            nameOfMonster=@"Orange";
+            self.nameOfMonster=@"Orange";
             [self setScale:.25];
             CCSprite *delayTimerImage=[[CCSprite alloc] initWithFile:@"button_topdown-button.png"];
             [delayTimerImage setColor:ccc3(2, 2, 200)];

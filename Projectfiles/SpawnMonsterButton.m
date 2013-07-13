@@ -22,9 +22,9 @@
 }
 
 -(void)updateDelay{
-    int level=[[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Player Monsters"] objectForKey:nameOfMonster] integerValue];
+    int level=[[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Player Monsters"] objectForKey:self.nameOfMonster] integerValue];
     if(level >= 0){
-        fireDelayInitial=[[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Monsters"] objectForKey:nameOfMonster] objectAtIndex:level]objectForKey:@"Delay"] integerValue];
+        fireDelayInitial=[[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Monsters"] objectForKey:self.nameOfMonster] objectAtIndex:level]objectForKey:@"Delay"] integerValue];
     }
     
 }

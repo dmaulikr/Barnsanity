@@ -10,12 +10,7 @@
 #import "GameMechanics.h"
 #import "STYLES.h"
 
-@interface SelectLevelScreen()
 
-- (void)decreaseLevelToPlay;
-- (void)increaseLevelToPlay;
-
-@end
 
 
 @implementation SelectLevelScreen
@@ -56,7 +51,7 @@
         
         //add an equip button to equip the weapon you want to use
         equip= [CCMenuItemFont itemWithString:@"Equip" block:^(id sender) {
-            
+            [self equipButtonPressed];
         }];
         equip.color = DEFAULT_FONT_COLOR;
         
@@ -68,7 +63,7 @@
         
         //add a store button to make purchases
         store= [CCMenuItemFont itemWithString:@"Store" block:^(id sender) {
-            
+            [self storeButtonPressed];
         }];
         store.color = DEFAULT_FONT_COLOR;
         
@@ -171,6 +166,22 @@
         levelToPlay++;
     }
     level.string=[NSString stringWithFormat:@"%d", levelToPlay];
+}
+
+-(void)storeButtonPressed{
+    //remove this layer before going to the next
+    self.visible = FALSE;
+    [self removeFromParentAndCleanup:TRUE];
+    //go to store layer
+        [[[GameMechanics sharedGameMechanics] gameScene] goToStore];
+}
+
+-(void)equipButtonPressed{
+    //remove this layer before going to the next
+    self.visible = FALSE;
+    [self removeFromParentAndCleanup:TRUE];
+    //go to equip layer
+    [[[GameMechanics sharedGameMechanics] gameScene] goToEquip];
 }
 
 @end

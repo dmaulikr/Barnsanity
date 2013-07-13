@@ -13,9 +13,9 @@
     int fireDelayInitial;
     int fireDelayTimer;
     float angleOfSpawn;
-    NSString *nameOfMonster;
     CCProgressTimer *delayTimer;
 }
+@property (nonatomic, assign) NSString *nameOfMonster;
 -(id) initWithEntityImage;
 -(void)pressed;
 -(void)updateDelay;

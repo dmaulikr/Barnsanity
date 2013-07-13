@@ -5,12 +5,13 @@
 //  Created by Benjamin Encz on 5/15/13.
 //  Copyright (c) 2013 MakeGamesWithUs Inc. Free to use for all purposes.
 //
-
+#import "EquipScreen.h"
 #import "GameplayLayer.h"
 #import "Game.h"
 #import "GameMechanics.h"
 #import "MainMenuLayer.h"
 //#import "Mission.h"
+#import "StoreScreenScene.h"
 #import "Store.h"
 #import "PopupProvider.h"
 #import "CCControlButton.h"
@@ -20,7 +21,7 @@
 #import "SelectLevelScreen.h"
 #import "WinScreen.h"
 #import "LoseScreen.h"
-
+#import "UpgradeScreen.h"
 #import "MonsterCache.h"
 //buttons
 #import "SpawnMonsterButton.h"
@@ -496,6 +497,26 @@ static CGRect screenRect;
     LoseScreen *loseLayer=[[LoseScreen alloc]initWithGame];
     [self addChild:loseLayer z:MAX_INT];
     [loseLayer present];
+    [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
+}
+
+-(void)goToStore{
+    [self disableGameplayButtons];
+    [self hideHUD:FALSE];
+    UpgradeScreen *upgradeLayer=[[UpgradeScreen alloc]initWithGame];
+    [self addChild:upgradeLayer z:MAX_INT];
+    [upgradeLayer present];
+
+    [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
+}
+
+-(void)goToEquip{
+    [self disableGameplayButtons];
+    [self hideHUD:FALSE];
+    EquipScreen *equipLayer=[[EquipScreen alloc]initWithGame];
+    [self addChild:equipLayer z:MAX_INT];
+    [equipLayer present];
+    
     [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
 }
 #pragma mark - UI

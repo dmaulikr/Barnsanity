@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		30553E6A178F67F2005192DB /* view.png in Resources */ = {isa = PBXBuildFile; fileRef = 30553E69178F67F2005192DB /* view.png */; };
+		30553E6E178FB87E005192DB /* UpgradeScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30553E6D178FB87E005192DB /* UpgradeScreen.m */; };
+		30553E71178FB88E005192DB /* SeedScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30553E70178FB88E005192DB /* SeedScreen.m */; };
+		30553E74178FB8D9005192DB /* UtilityScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30553E73178FB8D8005192DB /* UtilityScreen.m */; };
+		30553E7A178FBC78005192DB /* ItemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30553E79178FBC78005192DB /* ItemNode.m */; };
+		3067F49E1790C84B009B2586 /* StoreItemPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3067F49D1790C84B009B2586 /* StoreItemPage.m */; };
+		3067F4A11790F727009B2586 /* WeaponNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3067F4A01790F727009B2586 /* WeaponNode.m */; };
 		30C0F536178DE93E009F40EF /* SelectLevelScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0F535178DE93E009F40EF /* SelectLevelScreen.m */; };
 		30C0F53B178DEA06009F40EF /* WinScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0F53A178DEA06009F40EF /* WinScreen.m */; };
 		30C0F53E178DEA12009F40EF /* LoseScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0F53D178DEA12009F40EF /* LoseScreen.m */; };
@@ -61,6 +67,11 @@
 		30C43561178B2CFD00D6ABBD /* WatermelonMonsterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43560178B2CFB00D6ABBD /* WatermelonMonsterButton.m */; };
 		30C43564178B338F00D6ABBD /* MonsterButtonCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43563178B338E00D6ABBD /* MonsterButtonCache.m */; };
 		30C87024178CAA090057F878 /* monster1-topdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C87023178CAA090057F878 /* monster1-topdown.png */; };
+		30CAB74E179098D9003BD6AF /* MonsterItemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CAB74D179098D9003BD6AF /* MonsterItemNode.m */; };
+		30CAB751179098ED003BD6AF /* EnergyItemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CAB750179098ED003BD6AF /* EnergyItemNode.m */; };
+		30CAB754179098FD003BD6AF /* GoldItemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CAB753179098FD003BD6AF /* GoldItemNode.m */; };
+		30CAB75717909915003BD6AF /* ShipItemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CAB75617909915003BD6AF /* ShipItemNode.m */; };
+		30CAB75A1790993C003BD6AF /* PlayerBarnItemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CAB7591790993C003BD6AF /* PlayerBarnItemNode.m */; };
 		30E69475178750380048D2DE /* TimerDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E69474178750380048D2DE /* TimerDisplayNode.m */; };
 		30E69478178750490048D2DE /* EnergyDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E69477178750490048D2DE /* EnergyDisplayNode.m */; };
 		54170919177123A90021A8C5 /* mgwuSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 541708DD177123A90021A8C5 /* mgwuSDK.framework */; };
@@ -337,6 +348,18 @@
 
 /* Begin PBXFileReference section */
 		30553E69178F67F2005192DB /* view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view.png; sourceTree = "<group>"; };
+		30553E6C178FB87E005192DB /* UpgradeScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeScreen.h; sourceTree = "<group>"; };
+		30553E6D178FB87E005192DB /* UpgradeScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeScreen.m; sourceTree = "<group>"; };
+		30553E6F178FB88D005192DB /* SeedScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeedScreen.h; sourceTree = "<group>"; };
+		30553E70178FB88E005192DB /* SeedScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeedScreen.m; sourceTree = "<group>"; };
+		30553E72178FB8D8005192DB /* UtilityScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityScreen.h; sourceTree = "<group>"; };
+		30553E73178FB8D8005192DB /* UtilityScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityScreen.m; sourceTree = "<group>"; };
+		30553E78178FBC77005192DB /* ItemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemNode.h; sourceTree = "<group>"; };
+		30553E79178FBC78005192DB /* ItemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemNode.m; sourceTree = "<group>"; };
+		3067F49C1790C84A009B2586 /* StoreItemPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreItemPage.h; sourceTree = "<group>"; };
+		3067F49D1790C84B009B2586 /* StoreItemPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreItemPage.m; sourceTree = "<group>"; };
+		3067F49F1790F727009B2586 /* WeaponNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeaponNode.h; sourceTree = "<group>"; };
+		3067F4A01790F727009B2586 /* WeaponNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeaponNode.m; sourceTree = "<group>"; };
 		30C0F534178DE93E009F40EF /* SelectLevelScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLevelScreen.h; sourceTree = "<group>"; };
 		30C0F535178DE93E009F40EF /* SelectLevelScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLevelScreen.m; sourceTree = "<group>"; };
 		30C0F539178DEA06009F40EF /* WinScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinScreen.h; sourceTree = "<group>"; };
@@ -433,6 +456,16 @@
 		30C43562178B338D00D6ABBD /* MonsterButtonCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterButtonCache.h; sourceTree = "<group>"; };
 		30C43563178B338E00D6ABBD /* MonsterButtonCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterButtonCache.m; sourceTree = "<group>"; };
 		30C87023178CAA090057F878 /* monster1-topdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "monster1-topdown.png"; sourceTree = "<group>"; };
+		30CAB74C179098D9003BD6AF /* MonsterItemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterItemNode.h; sourceTree = "<group>"; };
+		30CAB74D179098D9003BD6AF /* MonsterItemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterItemNode.m; sourceTree = "<group>"; };
+		30CAB74F179098ED003BD6AF /* EnergyItemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnergyItemNode.h; sourceTree = "<group>"; };
+		30CAB750179098ED003BD6AF /* EnergyItemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnergyItemNode.m; sourceTree = "<group>"; };
+		30CAB752179098FD003BD6AF /* GoldItemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldItemNode.h; sourceTree = "<group>"; };
+		30CAB753179098FD003BD6AF /* GoldItemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoldItemNode.m; sourceTree = "<group>"; };
+		30CAB75517909915003BD6AF /* ShipItemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShipItemNode.h; sourceTree = "<group>"; };
+		30CAB75617909915003BD6AF /* ShipItemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShipItemNode.m; sourceTree = "<group>"; };
+		30CAB7581790993C003BD6AF /* PlayerBarnItemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerBarnItemNode.h; sourceTree = "<group>"; };
+		30CAB7591790993C003BD6AF /* PlayerBarnItemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerBarnItemNode.m; sourceTree = "<group>"; };
 		30E69473178750380048D2DE /* TimerDisplayNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDisplayNode.h; sourceTree = "<group>"; };
 		30E69474178750380048D2DE /* TimerDisplayNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDisplayNode.m; sourceTree = "<group>"; };
 		30E69476178750490048D2DE /* EnergyDisplayNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnergyDisplayNode.h; sourceTree = "<group>"; };
@@ -801,6 +834,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30553E6B178FB85C005192DB /* UpgradeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				30CAB74B179098C0003BD6AF /* Item */,
+				30553E6C178FB87E005192DB /* UpgradeScreen.h */,
+				30553E6D178FB87E005192DB /* UpgradeScreen.m */,
+				30553E6F178FB88D005192DB /* SeedScreen.h */,
+				30553E70178FB88E005192DB /* SeedScreen.m */,
+				30553E72178FB8D8005192DB /* UtilityScreen.h */,
+				30553E73178FB8D8005192DB /* UtilityScreen.m */,
+				3067F49C1790C84A009B2586 /* StoreItemPage.h */,
+				3067F49D1790C84B009B2586 /* StoreItemPage.m */,
+			);
+			name = UpgradeScreen;
+			sourceTree = "<group>";
+		};
 		30C0F532178DE8FD009F40EF /* SelectLevelScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -833,6 +882,8 @@
 			children = (
 				30C0F544178E1E12009F40EF /* EquipScreen.h */,
 				30C0F545178E1E12009F40EF /* EquipScreen.m */,
+				3067F49F1790F727009B2586 /* WeaponNode.h */,
+				3067F4A01790F727009B2586 /* WeaponNode.m */,
 			);
 			name = EquipScreen;
 			sourceTree = "<group>";
@@ -946,6 +997,25 @@
 				30C2D6B61784B602006D2634 /* NewGame_Levels.plist */,
 			);
 			name = "Game Information";
+			sourceTree = "<group>";
+		};
+		30CAB74B179098C0003BD6AF /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				30553E78178FBC77005192DB /* ItemNode.h */,
+				30553E79178FBC78005192DB /* ItemNode.m */,
+				30CAB74C179098D9003BD6AF /* MonsterItemNode.h */,
+				30CAB74D179098D9003BD6AF /* MonsterItemNode.m */,
+				30CAB74F179098ED003BD6AF /* EnergyItemNode.h */,
+				30CAB750179098ED003BD6AF /* EnergyItemNode.m */,
+				30CAB752179098FD003BD6AF /* GoldItemNode.h */,
+				30CAB753179098FD003BD6AF /* GoldItemNode.m */,
+				30CAB75517909915003BD6AF /* ShipItemNode.h */,
+				30CAB75617909915003BD6AF /* ShipItemNode.m */,
+				30CAB7581790993C003BD6AF /* PlayerBarnItemNode.h */,
+				30CAB7591790993C003BD6AF /* PlayerBarnItemNode.m */,
+			);
+			name = Item;
 			sourceTree = "<group>";
 		};
 		541708DC177123A90021A8C5 /* mgwuSDK.embeddedframework */ = {
@@ -1304,6 +1374,7 @@
 		62CD5DB31742D9AD002EC156 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				30553E6B178FB85C005192DB /* UpgradeScreen */,
 				30C0F543178E1DF6009F40EF /* EquipScreen */,
 				30C0F538178DE9BD009F40EF /* LoseScreen */,
 				30C0F537178DE996009F40EF /* WinScreen */,
@@ -1979,6 +2050,17 @@
 				30C0F53B178DEA06009F40EF /* WinScreen.m in Sources */,
 				30C0F53E178DEA12009F40EF /* LoseScreen.m in Sources */,
 				30C0F546178E1E12009F40EF /* EquipScreen.m in Sources */,
+				30553E6E178FB87E005192DB /* UpgradeScreen.m in Sources */,
+				30553E71178FB88E005192DB /* SeedScreen.m in Sources */,
+				30553E74178FB8D9005192DB /* UtilityScreen.m in Sources */,
+				30553E7A178FBC78005192DB /* ItemNode.m in Sources */,
+				30CAB74E179098D9003BD6AF /* MonsterItemNode.m in Sources */,
+				30CAB751179098ED003BD6AF /* EnergyItemNode.m in Sources */,
+				30CAB754179098FD003BD6AF /* GoldItemNode.m in Sources */,
+				30CAB75717909915003BD6AF /* ShipItemNode.m in Sources */,
+				30CAB75A1790993C003BD6AF /* PlayerBarnItemNode.m in Sources */,
+				3067F49E1790C84B009B2586 /* StoreItemPage.m in Sources */,
+				3067F4A11790F727009B2586 /* WeaponNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

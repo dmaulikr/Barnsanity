@@ -80,6 +80,10 @@
     
 }
 
+-(void)subtractGoldby:(NSInteger) cost{
+    self.gold-=cost;
+}
+
 -(void)increasePlayerBarn:(NSString*) category{
     int level=[[[self.levelsOfEverything objectForKey:@"Player Barn"] objectForKey:category] integerValue];
     level++;

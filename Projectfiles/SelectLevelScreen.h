@@ -11,12 +11,6 @@
 #import "CCSpriteBackgroundNode.h"
 #import "CCBackgroundColorNode.h"
 
-//@class SelectLevelScreen;
-//@protocol SelectLevelScreenDelegate <NSObject>
-//
-//- (void)playButtonPressed:(SelectLevelScreen *)selectLevelScreen;
-//
-//@end
 
 @interface SelectLevelScreen : CCLayer
 {
@@ -40,8 +34,6 @@
     CCMenuItemFont *store;
     CCMenuItemSprite *volumeControl;
 }
-
-//@property (nonatomic, weak) id<SelectLevelScreenDelegate> delegate;
 
 - (id)initWithGame;
 -(void)present;

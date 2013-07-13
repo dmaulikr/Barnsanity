@@ -72,6 +72,8 @@
 
 -(void)goTolevelSelection;
 -(void)goToMainMenu;
+-(void)goToStore;
+-(void)goToEquip;
 // returns a GamePlayLayer, with an overlayed MainMenu
 + (id)scene;
 

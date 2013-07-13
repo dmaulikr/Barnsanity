@@ -70,15 +70,15 @@
         }];
         newGameButton.color = DEFAULT_FONT_COLOR;
         
-        
-        //add an option button to change settings
-        option= [CCMenuItemFont itemWithString:@"Option" block:^(id sender) {
-            //            [self optionButtonPressed];
-        }];
-        option.color = DEFAULT_FONT_COLOR;
+//        
+//        //add an option button to change settings
+//        option= [CCMenuItemFont itemWithString:@"Option" block:^(id sender) {
+//            //            [self optionButtonPressed];
+//        }];
+//        option.color = DEFAULT_FONT_COLOR;
         
         //add all buttons into the menu
-        startMenu = [CCMenu menuWithItems:newGameButton,continueButton, option, nil];
+        startMenu = [CCMenu menuWithItems:newGameButton,continueButton, nil];
         startMenu.position = ccp(screenCenter.x, screenCenter.y - 50);
         [startMenu alignItemsVertically];
         [self addChild: startMenu];

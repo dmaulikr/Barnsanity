@@ -2,6 +2,33 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Player Barn Health</key>
+	<array>
+		<integer>500</integer>
+		<integer>800</integer>
+		<integer>1500</integer>
+		<integer>2500</integer>
+		<integer>3500</integer>
+		<integer>5500</integer>
+	</array>
+	<key>Player Barn Armor</key>
+	<array>
+		<integer>0</integer>
+		<integer>1</integer>
+		<integer>3</integer>
+		<integer>5</integer>
+		<integer>8</integer>
+		<integer>13</integer>
+	</array>
+	<key>Player Barn Damage</key>
+	<array>
+		<integer>0</integer>
+		<integer>10</integer>
+		<integer>20</integer>
+		<integer>30</integer>
+		<integer>60</integer>
+		<integer>100</integer>
+	</array>
 	<key>Upgrade Cost</key>
 	<dict>
 		<key>Barn</key>
@@ -165,36 +192,6 @@
 				<integer>0</integer>
 			</array>
 		</dict>
-	</dict>
-	<key>Player Barn</key>
-	<dict>
-		<key>Damage</key>
-		<array>
-			<integer>0</integer>
-			<integer>10</integer>
-			<integer>20</integer>
-			<integer>30</integer>
-			<integer>60</integer>
-			<integer>100</integer>
-		</array>
-		<key>Armor</key>
-		<array>
-			<integer>0</integer>
-			<integer>1</integer>
-			<integer>3</integer>
-			<integer>5</integer>
-			<integer>8</integer>
-			<integer>13</integer>
-		</array>
-		<key>Health</key>
-		<array>
-			<integer>500</integer>
-			<integer>800</integer>
-			<integer>1500</integer>
-			<integer>2500</integer>
-			<integer>3500</integer>
-			<integer>5500</integer>
-		</array>
 	</dict>
 	<key>Energy</key>
 	<dict>

@@ -63,23 +63,26 @@
 	if ((self = [super init]))
 	{
         monsterButton = [[NSMutableDictionary alloc] init];
-        [monsterButton setObject: [[OrangeMonsterButton alloc] initWithEntityImage] forKey:(id<NSCopying>)[Orange class]];
-        [monsterButton setObject: [[AppleMonsterButton alloc] initWithEntityImage] forKey:(id<NSCopying>)[Apple class]];
-        [monsterButton setObject: [[StrawberryMonsterButton alloc] initWithEntityImage] forKey:(id<NSCopying>)[Strawberry class]];
-        [monsterButton setObject: [[CherryMonsterButton alloc] initWithEntityImage] forKey:(id<NSCopying>)[Cherry class]];
-        [monsterButton setObject: [[MangoMonsterButton alloc] initWithEntityImage] forKey:(id<NSCopying>)[Mango class]];
-        [monsterButton setObject: [[BananaMonsterButton alloc] initWithEntityImage] forKey:(id<NSCopying>)[Banana class]];
-        [monsterButton setObject: [[CoconutMonsterButton alloc] initWithEntityImage] forKey:(id<NSCopying>)[Coconut class]];
-        [monsterButton setObject: [[GrapeMonsterButton alloc] initWithEntityImage] forKey:(id<NSCopying>)[Grape class]];
-        [monsterButton setObject: [[PineappleMonsterButton alloc] initWithEntityImage] forKey:(id<NSCopying>)[Pineapple class]];
-        [monsterButton setObject: [[WatermelonMonsterButton alloc] initWithEntityImage] forKey:(id<NSCopying>)[Watermelon class]];
+        [monsterButton setObject: [[OrangeMonsterButton alloc] initWithEntityImage] forKey:@"Orange"];
+        [monsterButton setObject: [[AppleMonsterButton alloc] initWithEntityImage] forKey:@"Apple"];
+        [monsterButton setObject: [[StrawberryMonsterButton alloc] initWithEntityImage] forKey:@"Strawberry"];
+        [monsterButton setObject: [[CherryMonsterButton alloc] initWithEntityImage] forKey:@"Cherry"];
+        [monsterButton setObject: [[MangoMonsterButton alloc] initWithEntityImage] forKey:@"Mango"];
+        [monsterButton setObject: [[BananaMonsterButton alloc] initWithEntityImage] forKey:@"Banana"];
+        [monsterButton setObject: [[CoconutMonsterButton alloc] initWithEntityImage] forKey:@"Coconut"];
+        [monsterButton setObject: [[GrapeMonsterButton alloc] initWithEntityImage] forKey:@"Grape"];
+        [monsterButton setObject: [[PineappleMonsterButton alloc] initWithEntityImage] forKey:@"Pineapple"];
+        [monsterButton setObject: [[WatermelonMonsterButton alloc] initWithEntityImage] forKey:@"Watermelon"];
         
     }
     
 	return self;
 }
 
--(void)placeButton:(Class)buttonClass atLocation:(int) place{
+-(void)placeButton:(NSString *)buttonClass atLocation:(int) place{
+    if(buttonClass == nil){
+        [self removeChildByTag:place];
+    }else{
     if([self getChildByTag:place] != nil){
         [self removeChildByTag:place];
     }
@@ -87,7 +90,7 @@
     [self addChild:button z:MAX_INT-1 tag:place];
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     button.position=ccp(screenSize.width-button.contentSize.width/5-5,screenSize.height-button.contentSize.height/4-(place * 50));
-    
+    }
 }
 
 -(void)reset{
