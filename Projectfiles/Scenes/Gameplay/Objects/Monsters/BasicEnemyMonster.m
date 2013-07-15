@@ -21,19 +21,20 @@
     
     //set up spawn locaiton
     //angle of the spawn
-    angle=angleOfLocation;
+    self.angle=angleOfLocation;
+    self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
     // Select a spawn location
-    float xPos=radiusToSpawn*cos(angle);
-    float yPos=radiusToSpawn*sin(angle);
-    if(angle<=M_PI){
-        moveDirection=right;
+    float xPos=radiusToSpawn*cos(self.angle);
+    float yPos=radiusToSpawn*sin(self.angle);
+    if(self.angle<=M_PI){
+        self.moveDirection=right;
     }else{
-        moveDirection=left;
+        self.moveDirection=left;
         self.flipX=180;
     }
     //set the location
     self.position = CGPointMake(xPos, yPos);
-    self.rotation=CC_RADIANS_TO_DEGREES(-angle+M_PI_2);
+    self.rotation=CC_RADIANS_TO_DEGREES(-self.angle+M_PI_2);
     
 	// Finally set yourself to be visible, this also flag the enemy as "in use"
 	self.visible = YES;
@@ -43,6 +44,8 @@
     self.attacking=FALSE;
     hitDidRun=FALSE;
     blinkDidRun=FALSE;
+    CGPoint monsterCenter = ccp(self.position.x + self.contentSize.width / 2, self.position.y + self.contentSize.height / 2);
+    self.hitZone = CGRectMake(monsterCenter.x, monsterCenter.y ,0,0);
 	
 }
 

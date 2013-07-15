@@ -115,7 +115,7 @@
     
     //get energy regeneration for this level
     int level=[[self.levelsOfEverything  objectForKey:@"Energy Regeneration"]integerValue];
-    self.energyPerSec=[[[[self.gameInfo objectForKey:@"Energy"] objectForKey:@"Energy Regeneration"] objectAtIndex:level]integerValue];
+    self.energyPerSec=[[[self.gameInfo objectForKey:@"Energy Regeneration"] objectAtIndex:level]integerValue];
     //get max energy
     level=[[self.levelsOfEverything objectForKey:@"Energy Max"] integerValue];
     self.energyMax=[[[self.gameInfo  objectForKey:@"Energy Max"] objectAtIndex:level] integerValue];

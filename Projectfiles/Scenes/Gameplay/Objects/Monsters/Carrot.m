@@ -96,6 +96,9 @@
         self.areaOfEffectDamage=[[monsterInfo objectForKey:@"AreaOfEffect Damage"]integerValue];
         reward=[[monsterInfo objectForKey:@"Gold Reward"] integerValue];
         
+        self.boundingAngle=atanf((self.contentSize.width/2)/(radiusToSpawn+self.contentSize.height/2));
+        self.hitZoneAngle=atanf((self.contentSize.width/2)/(radiusToSpawn+self.contentSize.height/2));
+        
     }
     
     return self;
@@ -117,5 +120,6 @@
     self.hitZone = CGRectMake(monsterCenter.x - 0.5 * hitZoneSize.width, monsterCenter.y - 0.5 * hitZoneSize.width, hitZoneSize.width, hitZoneSize.height);
     
 }
+
 
 @end

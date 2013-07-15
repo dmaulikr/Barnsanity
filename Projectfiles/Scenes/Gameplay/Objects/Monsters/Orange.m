@@ -74,7 +74,8 @@
         
         //get the radius of the world
         radiusToSpawn=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
-        
+        self.boundingAngle=atanf((self.contentSize.width/2)/(radiusToSpawn+self.contentSize.height/2));
+        self.hitZoneAngle=atanf((self.contentSize.width/2)/(radiusToSpawn+self.contentSize.height/2));
         blink = [CCBlink actionWithDuration:.4f blinks:2];
         
         //for the prototype
@@ -99,11 +100,12 @@
 {
     [self changePosition];
     // calculate a hit zone
-    CGPoint monsterCenter = ccp(self.position.x + self.contentSize.width / 2, self.position.y + self.contentSize.height / 2);
-    CGSize hitZoneSize = CGSizeMake(self.contentSize.width/2, self.contentSize.height/2);
-    self.hitZone = CGRectMake(monsterCenter.x - 0.5 * hitZoneSize.width, monsterCenter.y - 0.5 * hitZoneSize.width, hitZoneSize.width, hitZoneSize.height);
+//    CGPoint monsterCenter = ccp(self.position.x + self.contentSize.width / 2, self.position.y + self.contentSize.height / 2);
+//    CGSize hitZoneSize = CGSizeMake(self.contentSize.width/2, self.contentSize.height/2);
+//    self.hitZone = CGRectMake(monsterCenter.x - 0.5 * hitZoneSize.width, monsterCenter.y - 0.5 * hitZoneSize.height, hitZoneSize.width, hitZoneSize.height);
     
 }
+
 
 
 @end

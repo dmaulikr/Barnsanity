@@ -77,25 +77,29 @@
 		CCSpriteFrame* frame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"animation_knight-1.png"];
         /* A batch node allows drawing a lot of different sprites with on single draw cycle. Therefore it is necessary,
          that all sprites are added as child nodes to the batch node and that all use a texture contained in the batch node texture. */
-		CCSpriteBatchNode *enemyBatch = [CCSpriteBatchNode batchNodeWithTexture:frame.texture];
-        CCSpriteBatchNode *playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
+        
+//		CCSpriteBatchNode *enemyBatch = [CCSpriteBatchNode batchNodeWithTexture:frame.texture];
+//        CCSpriteBatchNode *playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
+        
+        CCNode *enemyBatch=[[CCNode alloc]init];
+        CCNode *playerBatch=[[CCNode alloc]init];
 		[enemyMonsters addChild:enemyBatch];
         
         [monster setObject:enemyBatch forKey:(id<NSCopying>)[Carrot class]];
         [playerMonster addChild:playerBatch];
         [monster setObject:playerBatch forKey:(id<NSCopying>)[Orange class]];
         
-        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
-        [playerMonster addChild:playerBatch];
-        [monster setObject:playerBatch forKey:(id<NSCopying>)[Apple class]];
-        
-        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
-        [playerMonster addChild:playerBatch];
-        [monster setObject:playerBatch forKey:(id<NSCopying>)[Strawberry class]];
-        
-        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
-        [playerMonster addChild:playerBatch];
-        [monster setObject:playerBatch forKey:(id<NSCopying>)[Cherry class]];
+//        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
+//        [playerMonster addChild:playerBatch];
+//        [monster setObject:playerBatch forKey:(id<NSCopying>)[Apple class]];
+//        
+//        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
+//        [playerMonster addChild:playerBatch];
+//        [monster setObject:playerBatch forKey:(id<NSCopying>)[Strawberry class]];
+//        
+//        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
+//        [playerMonster addChild:playerBatch];
+//        [monster setObject:playerBatch forKey:(id<NSCopying>)[Cherry class]];
         
     
         
@@ -114,9 +118,12 @@
 }
 
 -(void) reset{
+    updateCount=0;
     self.enemyBarnUnderAttack=FALSE;
-    CCSpriteBatchNode *playerBatch;
-    CCSpriteBatchNode *enemyBatch;
+//    CCSpriteBatchNode *playerBatch;
+//    CCSpriteBatchNode *enemyBatch;
+    CCNode *playerBatch;
+    CCNode *enemyBatch;
     BasicPlayerMonster* player;
     BasicEnemyMonster* enemy;
     ShipBullets *bullet;
@@ -146,8 +153,10 @@
     
     [self pauseSchedulerAndActions];
     
-    CCSpriteBatchNode *enemyBatch;
-    CCSpriteBatchNode *playerBatch;
+//    CCSpriteBatchNode *enemyBatch;
+//    CCSpriteBatchNode *playerBatch;
+    CCNode *playerBatch;
+    CCNode *enemyBatch;
     // checks the collision between enemy units and player units
 	BasicEnemyMonster* enemy;
     BasicPlayerMonster* player;
@@ -173,8 +182,10 @@
     
     [self resumeSchedulerAndActions];
     
-    CCSpriteBatchNode *enemyBatch;
-    CCSpriteBatchNode *playerBatch;
+//    CCSpriteBatchNode *enemyBatch;
+//    CCSpriteBatchNode *playerBatch;
+    CCNode *playerBatch;
+    CCNode *enemyBatch;
     // checks the collision between enemy units and player units
 	BasicEnemyMonster* enemy;
     BasicPlayerMonster* player;
@@ -241,11 +252,14 @@
     
 }
 
+
+
 -(void) spawnPlayerOfType:(Class)PlayerTypeClass atAngle:(float) angleOfLocation{
     /* the 'enemies' dictionary stores an array of available enemies for each enemy type.
      We use the class of the enemy as key for the dictionary, to receive an array of all existing enimies of that type.
      We use a CCArray since it has a better performance than an NSArray. */
-	CCSpriteBatchNode* playerOfType = [monster objectForKey:PlayerTypeClass];
+//	CCSpriteBatchNode*
+   CCNode* playerOfType = [monster objectForKey:PlayerTypeClass];
     BasicPlayerMonster* player;
     
     /* we try to reuse existing enimies, therefore we use this flag, to keep track if we found an enemy we can
@@ -279,7 +293,8 @@
     /* the 'enemies' dictionary stores an array of available enemies for each enemy type.
      We use the class of the enemy as key for the dictionary, to receive an array of all existing enimies of that type.
      We use a CCArray since it has a better performance than an NSArray. */
-	CCSpriteBatchNode* enemiesOfType = [monster objectForKey:enemyTypeClass];
+//	CCSpriteBatchNode*
+   CCNode* enemiesOfType = [monster objectForKey:enemyTypeClass];
     BasicEnemyMonster* enemy;
     
     /* we try to reuse existing enimies, therefore we use this flag, to keep track if we found an enemy we can
@@ -309,10 +324,44 @@
         [enemy spawnAt:angleOfLocation];
     }
 }
+
+-(BOOL)collisionBetweenMonstersWithAngle:(Monster* )attackingMonster andMonster:(Monster *)defendingMonster{
+    float hitZoneAngle1;
+    float hitZoneAngle2;
+    float boundAngle1;
+    float boundAngle2;
+    if(attackingMonster.moveDirection==left){
+        hitZoneAngle1=attackingMonster.angle;
+        hitZoneAngle2=attackingMonster.angle+attackingMonster.hitZoneAngle;
+    }else{
+        hitZoneAngle2=attackingMonster.angle;
+        hitZoneAngle1=attackingMonster.angle+attackingMonster.hitZoneAngle;
+    }
+
+    if(defendingMonster.moveDirection==left){
+        boundAngle1=defendingMonster.angle-defendingMonster.boundingAngle;
+        boundAngle2=defendingMonster.angle+defendingMonster.boundingAngle;
+    }else{
+        boundAngle2=defendingMonster.angle-defendingMonster.boundingAngle;
+        boundAngle1=defendingMonster.angle+defendingMonster.boundingAngle;
+    }
+    
+    if((hitZoneAngle1<=boundAngle2 && hitZoneAngle1 >=boundAngle1) || (hitZoneAngle2<=boundAngle2 && hitZoneAngle2 >=boundAngle1)||(boundAngle1>=hitZoneAngle1 && boundAngle1<= hitZoneAngle2)){
+        return TRUE;
+    }else{
+        return FALSE;
+    }
+    
+    
+}
+
+
 -(void) checkForCollisions
 {
-    CCSpriteBatchNode *enemyBatch;
-    CCSpriteBatchNode *playerBatch;
+//    CCSpriteBatchNode *enemyBatch;
+//    CCSpriteBatchNode *playerBatch;
+    CCNode *playerBatch;
+    CCNode *enemyBatch;
     // checks the collision between enemy units and player units
 	BasicEnemyMonster* enemy;
     BasicPlayerMonster* player;
@@ -336,7 +385,7 @@
                         if(player.alive && (!enemy.attacked||enemy.areaOfEffect)){
                             CGRect playerBoundingBox = [player boundingBox];
                             
-                            if (CGRectIntersectsRect(enemyHitZone, playerBoundingBox))
+                            if ([self collisionBetweenMonstersWithAngle:enemy andMonster:player])
                             {
                                 
                                 //if the enemy is not attacking, then prompt the enemy unit to attack
@@ -412,8 +461,7 @@
                         if(enemy.alive && (!player.attacked || player.areaOfEffect)){
                             
                             CGRect enemyBoundingBox = [enemy boundingBox];
-                            if (CGRectIntersectsRect(playerHitZone, enemyBoundingBox))
-                            {
+                            if ([self collisionBetweenMonstersWithAngle:player andMonster:enemy]){
                                 //if the enemy is not attacking, then prompt the enemy unit to attack
                                 if (player.attacking == FALSE)
                                 {

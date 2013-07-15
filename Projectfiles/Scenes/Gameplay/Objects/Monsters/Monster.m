@@ -32,17 +32,18 @@
 
 -(void)changePosition{
     //move the monster M_PI/480 in a direction
-    if(moveDirection==left){
-        angle+=speedAngle;
+    if(self.moveDirection==left){
+        _angle+=speedAngle;
     }else{
-        angle-=speedAngle;
+        _angle-=speedAngle;
     }
-    float deltaX=radiusToSpawn*cos(angle);
-    float deltaY=radiusToSpawn*sin(angle);
+    self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
+    float deltaX=radiusToSpawn*cos(_angle);
+    float deltaY=radiusToSpawn*sin(_angle);
     CGPoint newPosition = ccp(deltaX, deltaY);
     
     
-    self.rotation=CC_RADIANS_TO_DEGREES(-angle+M_PI_2);
+    self.rotation=CC_RADIANS_TO_DEGREES(-_angle+M_PI_2);
     
     [self setPosition:newPosition];
 }
@@ -63,18 +64,20 @@
 
 //- (void)draw
 //{
-//    [super draw];
 //    
-//#ifdef DEBUG
-//    // visualize the hit zone
-//    
-//    ccDrawColor4B(100, 0, 255, 255); //purple, values range from 0 to 255
-//    CGPoint origin = ccp(self.hitZone.origin.x - self.position.x, self.hitZone.origin.y - self.position.y);
-//    CGPoint destination = ccp(origin.x + self.hitZone.size.width, origin.y + self.hitZone.size.height);
-//    ccDrawRect(origin, destination);
-//    
-//    
-//#endif
+////
+////    
+////    [super draw];
+////    
+////#ifdef DEBUG
+////    // visualize the hit zone
+////        CGPoint monsterCenter = ccp(self.position.x + self.contentSize.width / 2, self.position.y + self.contentSize.height / 2);
+////    ccColor4F rectColor = ccc4f(100, 0, 255, 255); //parameters correspond to red, green, blue, and alpha (transparancy)
+////    ccDrawSolidRect(ccp(monsterCenter.x-sinf(self.boundingRadius),monsterCenter.y-cosf(self.boundingRadius)), ccp(monsterCenter.x+sinf(self.boundingRadius),monsterCenter.y+cosf(self.boundingRadius)), rectColor);
+////    
+////    
+////    
+////#endif
 //}
 
 @end

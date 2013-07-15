@@ -26,7 +26,8 @@
     if(level >= 0){
         fireDelayInitial=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:self.nameOfMonster] objectAtIndex:level]objectForKey:@"Delay"] integerValue];
     }
-    
+    fireDelayTimer=0;
+delayTimer.percentage=0;
 }
 
 -(void) updateTimer:(NSTimer *) theTimer {

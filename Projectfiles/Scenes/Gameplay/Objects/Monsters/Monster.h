@@ -17,11 +17,9 @@
     //radius of the world
     float radiusToSpawn;
     //angle of the position the unit is at
-    float angle;
     //the change in angle as the unit moves
     float speedAngle;
-    //the direction the unit moves toward
-    bool moveDirection;
+
     //animations of the character
     NSMutableArray *animationFramesRunning;
     CCAction *run;
@@ -34,10 +32,12 @@
 }
 
 //information about the monster
-
+@property (nonatomic, assign) float angle;
 //units health info
 @property (nonatomic, assign) NSInteger hitPoints;
 @property (nonatomic, assign) NSInteger hitPointsInit;
+    //the direction the unit moves toward
+@property (nonatomic, assign) BOOL moveDirection;
 //whether the unit is visible
 @property (nonatomic, assign) BOOL visible;
 //whether the unit is visible
@@ -51,6 +51,8 @@
 //whether the unit should move
 @property (nonatomic, assign) BOOL move;
 // defines a hit zone, which is smaller as the sprite, only if this hit zone is hit the knight is injured
+@property (nonatomic, assign) float boundingAngle;
+@property (nonatomic, assign) float hitZoneAngle;
 @property (nonatomic, assign) CGRect hitZone;
 //whether the unit is attacked
 @property (nonatomic, assign) BOOL areaOfEffect;
@@ -63,4 +65,5 @@
 - (void)attack;
 -(void)changePosition;
 -(void)destroy;
+-(BOOL)collisionWithHitZone:(Monster *)monster;
 @end

@@ -141,19 +141,25 @@
  
 }
 
-//- (void)draw
-//{
-//    [super draw];
-//    
-//#ifdef DEBUG
-//    // visualize the hit zone
-//    
-//     ccDrawColor4B(100, 0, 255, 255); //purple, values range from 0 to 255
-//     CGPoint origin = ccp(self.hitZone.origin.x - self.position.x, self.hitZone.origin.y - self.position.y);
-//     CGPoint destination = ccp(origin.x + self.hitZone.size.width, origin.y + self.hitZone.size.height);
-//     ccDrawRect(origin, destination);
-//     
-//    
-//#endif
-//}
+
+
+- (void)draw
+{
+    
+    
+    [super draw];
+    
+#ifdef DEBUG
+    // visualize the hit zone
+    
+    ccDrawColor4B(100, 0, 255, 255); //purple, values range from 0 to 255
+    CGPoint origin = ccp(self.hitZone.origin.x - self.position.x, self.hitZone.origin.y - self.position.y);
+    CGPoint destination = ccp(origin.x + self.hitZone.size.width, origin.y + self.hitZone.size.height);
+    ccDrawRect(origin, destination);
+    
+    ccColor4F rectColor = ccc4f(100, 0, 255, 255); //parameters correspond to red, green, blue, and alpha (transparancy)
+    ccDrawSolidRect(ccp(self.boundingBoxCenter.x-self.boundingBox.size.width/2,self.boundingBoxCenter.y-self.boundingBox.size.height/2), ccp(self.boundingBoxCenter.x+self.boundingBox.size.width/2,self.boundingBoxCenter.y+self.boundingBox.size.height/2), rectColor);
+    
+#endif
+}
 @end

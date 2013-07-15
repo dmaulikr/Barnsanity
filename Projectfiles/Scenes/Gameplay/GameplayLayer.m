@@ -32,6 +32,9 @@
 #import "World.h"
 #import "Ship.h"
 
+#import "Orange.h"
+#import "Carrot.h"
+
 static CGRect screenRect;
 
 // defines how many update cycles run, before the missions get an update about the current game state
@@ -220,6 +223,20 @@ static CGRect screenRect;
     [[MonsterButtonCache sharedMonsterButtonCache] reset];
     /* setup initial values */
     centerOfRotation.rotation=0;
+//    
+//    Orange *test1=[[Orange alloc]initWithMonsterPicture];
+//    Carrot *test2=[[Carrot alloc]initWithMonsterPicture];
+//    [centerOfRotation addChild:test1 z:MAX_INT];
+//    [centerOfRotation addChild:test2 z:MAX_INT];
+//    [test1 spawnAt:M_PI+1];
+//    [test2 spawnAt:M_PI];
+//    
+//    Orange *test12=[[Orange alloc]initWithMonsterPicture];
+//    Carrot *test22=[[Carrot alloc]initWithMonsterPicture];
+//    [centerOfRotation addChild:test12 z:MAX_INT];
+//    [centerOfRotation addChild:test22 z:MAX_INT];
+//    [test12 spawnAt:-M_PI];
+//    [test22 spawnAt:-M_PI+1];
 }
 
 
