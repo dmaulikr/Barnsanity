@@ -14,6 +14,8 @@
 #import "SeedScreen.h"
 #import "UtilityScreen.h"
 #import "StoreItemPage.h"
+#import "ScoreboardEntryNode.h"
+#import "ItemDescriptionDisplayNode.h"
 
 @interface UpgradeScreen : CCLayer
 {
@@ -24,6 +26,8 @@
     CCMenuItemSprite *nextPage;
      CCMenu *page;
     
+    ScoreboardEntryNode *goldDisplay;
+    
     CCMenuItemFont *upgrade;
     CCMenuItemFont *back;
     
@@ -33,9 +37,12 @@
     StoreItemPage *currentPage;
     int currentPageNumber;
     
+    ItemDescriptionDisplayNode *desciption;
+    int countOfDescription;
+    
 }
 
 - (id)initWithGame;
 -(void)present;
--(void)showDescriptionOfSelectedItem:(ItemNode*)item;
+-(void)showSelectedItem:(ItemNode*)item;
 @end

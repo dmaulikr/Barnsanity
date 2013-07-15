@@ -7,7 +7,7 @@
 //
 
 #import "CCNode.h"
-
+#define MAXSPAWNBUTTONS 4
 @interface MonsterButtonCache : CCNode
 {
     //a dictionary to hold the array of different monster units
@@ -15,4 +15,6 @@
 }
 + (id)sharedMonsterButtonCache;
 -(void)placeButton:(Class)buttonClass atLocation:(int) place;
+-(void)pressedButton:(int) place;
+-(NSMutableArray*)returnButtonsUsed;
 @end

@@ -14,12 +14,11 @@
     CGPoint startTitleLabelTargetPoint;
     
     CCMenu *startMenu;
-    
+
     //buttons for the menu
     CCMenuItemFont *continueButton;
-    CCMenuItemFont *storeButton;
     CCMenuItemFont *newGameButton;
-    CCMenuItemFont *volumeControl;
+
 }
 
 @end

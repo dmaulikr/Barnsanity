@@ -1,19 +1,16 @@
 //
-//  LoseScreen.m
+//  StatisticScreen.m
 //  Veggy_V_Fruit
 //
-//  Created by Danny on 7/10/13.
+//  Created by Danny on 7/14/13.
 //  Copyright (c) 2013 MakeGamesWithUs Inc. All rights reserved.
 //
 
-#import "LoseScreen.h"
+#import "StatisticScreen.h"
 #import "GameMechanics.h"
 #import "STYLES.h"
 
-
-
-@implementation LoseScreen
-
+@implementation StatisticScreen
 - (id)initWithGame
 {
     self = [super init];
@@ -35,32 +32,35 @@
         backgroundNode.anchorPoint = ccp(0.5, 0.5);
         
         // add title label
-        CCLabelTTF *storeItemLabel = [CCLabelTTF labelWithString:@"Defeat"
+        CCLabelTTF *storeItemLabel = [CCLabelTTF labelWithString:@"Victory!"
                                                         fontName:DEFAULT_FONT
                                                         fontSize:32];
         storeItemLabel.color = DEFAULT_FONT_COLOR;
         storeItemLabel.position = ccp(0, 0.5 * self.contentSize.height - 25);
         [self addChild:storeItemLabel];
         
+        
+        
+        
+        
+        
         // add a resume button
         
-        selectLevel= [CCMenuItemFont itemWithString:@"Select Level" block:^(id sender) {
+        accept= [CCMenuItemFont itemWithString:@"Accept" block:^(id sender) {
             [self selectLevelButtonPressed];
         }];
-        selectLevel.color = DEFAULT_FONT_COLOR;
+        accept.color = DEFAULT_FONT_COLOR;
         
-
         
-        menu = [CCMenu menuWithItems:selectLevel, nil];
+        menu = [CCMenu menuWithItems:accept, nil];
         [menu alignItemsVertically];
         menu.position = ccp(0,-100);
         [self addChild:menu];
-
+        
     }
     
     return self;
 }
-
 
 
 - (void)present
@@ -78,6 +78,5 @@
     //go to level selection layer
     [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
 }
-
 
 @end

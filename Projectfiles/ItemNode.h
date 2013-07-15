@@ -10,19 +10,20 @@
 #import "GameMechanics.h"
 @interface ItemNode : CCSprite
 {
-    NSString *nameOfItem;
-    //requirement
-    NSString *unlockingItem;
-    NSInteger requiredLevel;
 }
 @property (nonatomic, assign) BOOL ableToBuy;
+@property (nonatomic, assign) BOOL ableToUpgrade;
 @property (nonatomic, assign) BOOL bought;
 @property (nonatomic, assign) BOOL selected;
 @property (nonatomic, assign) NSInteger level;
 @property (nonatomic, assign) NSInteger price;
-@property (nonatomic, assign) NSString *description;
+@property (nonatomic, assign) NSString *nameOfItem;
+@property (nonatomic, assign) NSString *unlockingItem;
+@property (nonatomic, assign) NSInteger requiredLevel;
+@property (nonatomic, assign) NSString *itemDescription;
+@property (nonatomic, assign) NSString *levelDescription;
 
--(id)initWithImageFile:(NSString *)filename unitName:(NSString *) nameOfThisItem unlockingItemName: (NSString*)nameOfUnlocking withRequiredLevel:(NSInteger) requiredLvl;
+-(id)initWithImageFile:(NSString *)filename unitName:(NSString *) nameOfThisItem;
 
 -(void) reset;
 -(void)select;

@@ -107,7 +107,7 @@
                 self.position = ccp(-MAX_INT, 0);
         
         if(self.enemy){
-            [[GameMechanics sharedGameMechanics] game].gold+=reward+[[GameMechanics sharedGameMechanics] game].goldBonusPerMonster;
+            [[GameMechanics sharedGameMechanics] game].goldForLevel+=reward+[[GameMechanics sharedGameMechanics] game].goldBonusPerMonster;
         }
     }else if(blinkDidRun==FALSE || [blink isDone]){
         blinkDidRun=TRUE;
@@ -131,30 +131,29 @@
         self.damage=[[monsterInfo objectForKey:@"Damage"]integerValue];
         armor=[[monsterInfo objectForKey:@"Armor"] integerValue];
     }else{
-        NSDictionary *monsterlevel=[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Player Barn"];
-        int level=[[monsterlevel objectForKey:@"Health"]integerValue];
-        self.hitPointsInit=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Barn"]objectForKey:@"Health"]   objectAtIndex:level] integerValue];
-        level=[[monsterlevel objectForKey:@"Damage"] integerValue];
-        self.damage=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Barn"]objectForKey:@"Damage"]   objectAtIndex:level]integerValue];
-        level=[[monsterlevel objectForKey:@"Armor"] integerValue];
-        armor=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Barn"]objectForKey:@"Armor"]   objectAtIndex:level] integerValue];
+        int level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Player Barn Health"]integerValue];
+        self.hitPointsInit=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Barn Health"]   objectAtIndex:level] integerValue];
+        level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Player Barn Damage"] integerValue];
+        self.damage=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Barn Damage"]   objectAtIndex:level]integerValue];
+        level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Player Barn Armor"] integerValue];
+        armor=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Player Barn Armor"]   objectAtIndex:level] integerValue];
     }
  
 }
 
-- (void)draw
-{
-    [super draw];
-    
-#ifdef DEBUG
-    // visualize the hit zone
-    
-     ccDrawColor4B(100, 0, 255, 255); //purple, values range from 0 to 255
-     CGPoint origin = ccp(self.hitZone.origin.x - self.position.x, self.hitZone.origin.y - self.position.y);
-     CGPoint destination = ccp(origin.x + self.hitZone.size.width, origin.y + self.hitZone.size.height);
-     ccDrawRect(origin, destination);
-     
-    
-#endif
-}
+//- (void)draw
+//{
+//    [super draw];
+//    
+//#ifdef DEBUG
+//    // visualize the hit zone
+//    
+//     ccDrawColor4B(100, 0, 255, 255); //purple, values range from 0 to 255
+//     CGPoint origin = ccp(self.hitZone.origin.x - self.position.x, self.hitZone.origin.y - self.position.y);
+//     CGPoint destination = ccp(origin.x + self.hitZone.size.width, origin.y + self.hitZone.size.height);
+//     ccDrawRect(origin, destination);
+//     
+//    
+//#endif
+//}
 @end

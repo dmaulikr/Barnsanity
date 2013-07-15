@@ -2,56 +2,42 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Player Barn</key>
-	<dict>
-		<key>Damage</key>
-		<integer>0</integer>
-		<key>Armor</key>
-		<integer>0</integer>
-		<key>Health</key>
-		<integer>0</integer>
-	</dict>
-	<key>Energy</key>
-	<dict>
-		<key>Max Energy</key>
-		<integer>0</integer>
-		<key>Energy Regeneration</key>
-		<integer>0</integer>
-	</dict>
+	<key>Watermelon</key>
+	<integer>0</integer>
+	<key>Grape</key>
+	<integer>0</integer>
+	<key>Coconut</key>
+	<integer>0</integer>
+	<key>Banana</key>
+	<integer>0</integer>
+	<key>Mango</key>
+	<integer>0</integer>
+	<key>Cherry</key>
+	<integer>0</integer>
+	<key>Strawberry</key>
+	<integer>0</integer>
+	<key>Apple</key>
+	<integer>0</integer>
+	<key>Orange</key>
+	<integer>0</integer>
+	<key>Ship AreaOfEffect Damage</key>
+	<integer>0</integer>
+	<key>Ship Firerate</key>
+	<integer>0</integer>
+	<key>Ship Damage</key>
+	<integer>0</integer>
+	<key>Energy Regeneration</key>
+	<integer>0</integer>
+	<key>Energy Max</key>
+	<integer>0</integer>
+	<key>Player Barn Health</key>
+	<integer>0</integer>
+	<key>Player Barn Armor</key>
+	<integer>0</integer>
+	<key>Player Barn Damage</key>
+	<integer>0</integer>
 	<key>Gold Bonus</key>
 	<integer>0</integer>
-	<key>Ship</key>
-	<dict>
-		<key>Damage</key>
-		<integer>0</integer>
-		<key>Firerate</key>
-		<integer>0</integer>
-		<key>AreaOfEffect Damage</key>
-		<integer>0</integer>
-	</dict>
-	<key>Player Monsters</key>
-	<dict>
-		<key>Orange</key>
-		<integer>0</integer>
-		<key>Apple</key>
-		<integer>-1</integer>
-		<key>Strawberry</key>
-		<integer>-2</integer>
-		<key>Cherry</key>
-		<integer>-2</integer>
-		<key>Mango</key>
-		<integer>-2</integer>
-		<key>Banana</key>
-		<integer>-2</integer>
-		<key>Coconut</key>
-		<integer>-2</integer>
-		<key>Grape</key>
-		<integer>-2</integer>
-		<key>Pineapple</key>
-		<integer>-2</integer>
-		<key>Watermelon</key>
-		<integer>-2</integer>
-	</dict>
 	<key>Game Levels</key>
 	<integer>0</integer>
 </dict>

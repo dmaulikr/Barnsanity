@@ -7,20 +7,15 @@
 //
 
 #import "CCScene.h"
-#import "StoreTableViewCell.h"
 #import "PauseScreen.h"
-#import "InGameStore.h"
 #import "ScoreboardEntryNode.h"
-#import "PopUp.h"
-#import "OrangeMonsterButton.h"
-#import "MonsterCache.h"
 #import "Ship.h"
 #import "TimerDisplayNode.h"
 #import "EnergyDisplayNode.h"
 
 
 @class TimerDisplayNode;
-@interface GameplayLayer : CCLayer <StoreDisplayNeedsUpdate, PauseScreenDelegate>
+@interface GameplayLayer : CCLayer <PauseScreenDelegate>
 {
     //for rotation of the sprites
     CGFloat rotationVelocity;
@@ -28,31 +23,19 @@
     bool touchingworld;
     CGPoint previousTouch, currentTouch;
     CGSize screenSize;
-    
     bool shipFire;
     Ship *ship;
     CCNode *centerOfRotation;
-    OrangeMonsterButton *monsterButton;
     ScoreboardEntryNode *pointsDisplayNode;
     ScoreboardEntryNode *inAppCurrencyDisplayNode;
     TimerDisplayNode *timer;
     EnergyDisplayNode *energy;
     // groups health, coins and points display
     CCNode *hudNode;
-    
-    /* Skip Ahead Button */
-    CCMenu *skipAheadMenu;
-    CCMenuItemSprite *skipAheadMenuItem;
-    
+        
     /* Pause Button */
     CCMenu *pauseButtonMenu;
     CCMenuItemSprite *pauseButtonMenuItem;
-    
-    /* "GO ON?" popup */
-    PopUp *goOnPopUp;
-    
-    /* "Buy more coins"-Popup */
-    InGameStore *inGameStore;
     
     Game *game;
     
@@ -70,10 +53,12 @@
  */
 - (void)startGame;
 
+//going to different screens
 -(void)goTolevelSelection;
 -(void)goToMainMenu;
 -(void)goToStore;
 -(void)goToEquip;
+
 // returns a GamePlayLayer, with an overlayed MainMenu
 + (id)scene;
 
@@ -81,12 +66,10 @@
 + (id)noMenuScene;
 
 // makes the Heads-Up-Display (healthInfo, pointInfo, etc.) appear. Can be animated.
-- (void)showHUD:(BOOL)animated;
+- (void)showHUD;
 
 // hides the Heads-Up-Display (healthInfo, pointInfo, etc.). Can be animated.
-- (void)hideHUD:(BOOL)animated;
-
-@property (nonatomic, assign) MonsterCache *monsterCache;
+- (void)hideHUD;
 
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;

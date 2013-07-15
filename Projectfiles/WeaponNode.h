@@ -17,6 +17,7 @@
 @property (nonatomic, assign) BOOL selected;
 @property (nonatomic, assign) NSInteger slotPriority;
 @property (nonatomic, assign) NSInteger level;
+
 @property (nonatomic, assign) NSString *description;
 @property (nonatomic, assign) NSString *nameOfItem;
 

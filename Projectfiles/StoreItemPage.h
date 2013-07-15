@@ -28,7 +28,7 @@
 
 - (id)initWithGame;
 -(void)present;
--(void)upgradeSelectedItem;
+-(BOOL)upgradeSelectedItem;
 -(void)selectItem:(ItemNode *)itemSelected;
 -(void)removePage;
 @end

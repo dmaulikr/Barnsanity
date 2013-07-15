@@ -93,13 +93,42 @@
     }
 }
 
+-(void)pressedButton:(int)place{
+    [(SpawnMonsterButton*)[self getChildByTag:place] pressed];
+}
+
+-(NSMutableArray*)returnButtonsUsed{
+    NSMutableArray *returnArray=[[NSMutableArray alloc]initWithCapacity:MAXSPAWNBUTTONS];
+    for(int i=0;i<MAXSPAWNBUTTONS;i++){
+        SpawnMonsterButton *temp=[self getChildByTag:i];
+        if(temp==nil){
+            [returnArray addObject:@""];
+        }else{
+            [returnArray addObject:temp.nameOfMonster];
+        }
+    }
+
+}
+
 -(void)reset{
     NSArray *monsterTypes = [monsterButton allValues];
     for (SpawnMonsterButton *monsterTypeClass in monsterTypes)
     {
         [monsterTypeClass updateDelay];
     }
+    [self loadButtons];
+
 }
+
+-(void)loadButtons{
+    NSMutableArray *buttonSlot=[[GameMechanics sharedGameMechanics]game].seedsUsed;
+    for(int i=0;i<MAXSPAWNBUTTONS;i++){
+        if(!([buttonSlot[i] isEqual:@""])){
+            [self placeButton:buttonSlot[i] atLocation:i];
+        }
+    }
+}
+
 
 
 @end

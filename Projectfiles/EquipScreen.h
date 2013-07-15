@@ -11,7 +11,7 @@
 #import "CCSpriteBackgroundNode.h"
 #import "CCBackgroundColorNode.h"
 #import "WeaponNode.h"
-
+#import "ItemDescriptionDisplayNode.h"
 
 
 @interface EquipScreen : CCLayer
@@ -21,16 +21,20 @@ CCMenu *menu;
 CCMenuItemFont *equip;
 CCMenuItemFont *unequip;
 CCMenuItemFont *back;
-
     
+    int countOfDescription;
+
+    ItemDescriptionDisplayNode *desciption;
     WeaponNode *selectedItem;
 
     NSMutableArray *weaponSlot;
     
     CCMenu *weapon;
     
-    NSMutableArray *itemNodes;
+    NSMutableDictionary *itemNodes;
     NSMutableArray *itemButtons;
+    
+    int countOfEquiped;
 
 }
 

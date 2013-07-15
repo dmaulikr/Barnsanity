@@ -14,7 +14,7 @@
     // Loading the Entity's sprite using a file, is a ship for now but you can change this
     if ((self = [super initWithFile:@"button_topdown-button.png"]))
     {
-        nameOfMonster=@"Watermelon";
+        self.nameOfMonster=@"Watermelon";
         [self setScale:.25];
         //include updates
         [self performSelector:@selector(updateTimer:) withObject:nil afterDelay:1.0];

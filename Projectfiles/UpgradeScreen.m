@@ -20,11 +20,11 @@
     {
         self.contentSize = [[CCDirector sharedDirector] winSize];
         // position of screen, animate to screen
-        self.position = ccp(self.contentSize.width / 2, self.contentSize.height * 1.5);
+        self.position = ccp(self.contentSize.width / 2, self.contentSize.height * .5);
         
         // add a background image node
         backgroundNode = [[CCBackgroundColorNode alloc] init];
-        backgroundNode.backgroundColor = ccc4(100, 100, 100, 100);
+        backgroundNode.backgroundColor = ccc4(150, 150, 150, 150);
         backgroundNode.contentSize = self.contentSize;
         [self addChild:backgroundNode];
         
@@ -37,7 +37,7 @@
                                                         fontName:DEFAULT_FONT
                                                         fontSize:16];
         storeItemLabel.color = DEFAULT_FONT_COLOR;
-        storeItemLabel.position = ccp(0, 0.5 * self.contentSize.height - 25);
+        storeItemLabel.position = ccp(-0.25 * self.contentSize.width - 25, 0.5 * self.contentSize.height - 25);
         [self addChild:storeItemLabel];
         
         
@@ -85,19 +85,25 @@
         
         upgradePages=[[NSMutableArray alloc]init];
         //for the seed page
-        SeedScreen* seedScreenLayer=[[SeedScreen alloc]initWithGame];
-        seedScreenLayer.position=ccp(0,0);
-        [upgradePages addObject:seedScreenLayer];
-        //starts at the seed page
-        [self addChild:seedScreenLayer z:MAX_INT tag:0];
-        currentPage=seedScreenLayer;
+        [upgradePages addObject:[SeedScreen class]];
         currentPageNumber=0;
-        //for the utility page
-        UtilityScreen* utilityScreenLayer=[[UtilityScreen alloc]initWithGame];
-        utilityScreenLayer.position=ccp(0,0);
-        [upgradePages addObject:utilityScreenLayer];
-        utilityScreenLayer.visible=FALSE;
+        [upgradePages addObject:[UtilityScreen class]];
+        currentPage=[(StoreItemPage *) [upgradePages[currentPageNumber] alloc] initWithGame];
+        currentPage.position=ccp(0,0);
+        [self addChild:currentPage z:MAX_INT];
         
+        // add scoreboard entry for points
+        goldDisplay = [[ScoreboardEntryNode alloc] initWithfontFile:@"avenir24.fnt"];
+        goldDisplay.position= ccp( 0.25 * self.contentSize.width - 25, 0.5 * self.contentSize.height - 25);
+        goldDisplay.scoreStringFormat = @"Gold: %d";
+        [self addChild:goldDisplay];
+        [goldDisplay setScore:[[GameMechanics sharedGameMechanics]game].gold];
+        
+        countOfDescription=4;
+        desciption=[[ItemDescriptionDisplayNode alloc]initWithImage:@"detail.png" andFont:@"avenir24.fnt" andNumberRow:countOfDescription];
+        [desciption setScale:.7];
+        desciption.position=ccp(0,-0.5 * self.contentSize.height+50);
+        [self addChild:desciption];
     }
     
     return self;
@@ -115,9 +121,9 @@
 -(void)nextPageButtonPressed{
     [currentPage removePage];
     currentPageNumber++;
-    currentPage=upgradePages[currentPageNumber];
-    currentPage.visible=TRUE;
-    [self addChild:currentPage z:MAX_INT tag:0];
+    currentPage=[(StoreItemPage *) [upgradePages[currentPageNumber] alloc] initWithGame];
+    currentPage.position=ccp(0,0);
+    [self addChild:currentPage z:MAX_INT];
     
     if(currentPageNumber+1 == upgradePages.count){
         nextPage.visible=FALSE;
@@ -134,9 +140,9 @@
 -(void)previousPageButtonPressed{
     [currentPage removePage];
     currentPageNumber--;
-    currentPage=upgradePages[currentPageNumber];
-    currentPage.visible=TRUE;
-    [self addChild:currentPage z:MAX_INT tag:0];
+    currentPage=[(StoreItemPage *) [upgradePages[currentPageNumber] alloc] initWithGame];
+    currentPage.position=ccp(0,0);
+    [self addChild:currentPage z:MAX_INT];
     
     if(currentPageNumber+1 == 1){
         previousPage.visible=FALSE;
@@ -148,22 +154,39 @@
     
 }
 -(void) backButtonPressed{
-           //remove this layer before going to the level selection layer
-        self.visible = FALSE;
-        [self removeFromParentAndCleanup:TRUE];
-        
-        //go to level selection layer
-        [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
-
+    //remove this layer before going to the level selection layer
+    self.visible = FALSE;
+    [self removeFromParentAndCleanup:TRUE];
+    //save game
+    [[[GameMechanics sharedGameMechanics] game]saveGame];
+    //go to level selection layer
+    [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
+    
 }
 
 
 -(void) upgradeButtonPressed{
-    [currentPage upgradeSelectedItem];
+    if([currentPage upgradeSelectedItem]){
+        
+    }
+    [goldDisplay setScore:[[GameMechanics sharedGameMechanics]game].gold];
 }
 
--(void)showDescriptionOfSelectedItem: (ItemNode *)item{
+-(void)showSelectedItem: (ItemNode *)item{
+    selectedItem=item;
+    NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
     
+    temp[0]=[NSString stringWithFormat:@"Level %d %@", selectedItem.level, selectedItem.nameOfItem];
+    temp[1]=[NSString stringWithFormat:@"Cost: %d", selectedItem.price];
+    temp[2]=[NSString stringWithFormat:@"Requirment: level %d %@", selectedItem.requiredLevel, selectedItem.unlockingItem];
+    temp[3]=[NSString stringWithFormat:@"%@", selectedItem.levelDescription];
+    [desciption setDescription:temp];
+    
+    if(selectedItem.ableToUpgrade){
+        upgrade.visible=TRUE;
+    }else{
+        upgrade.visible=FALSE;
+    }
 }
 
 @end

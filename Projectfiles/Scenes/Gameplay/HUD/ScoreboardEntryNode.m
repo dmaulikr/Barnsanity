@@ -23,6 +23,7 @@
         
         scoreLabel.anchorPoint = ccp(0,0.5);
         [self addChild:scoreLabel];
+        [self scheduleUpdate];
         
 
     }
@@ -36,5 +37,6 @@
     
     scoreLabel.string = [NSString stringWithFormat:_scoreStringFormat, score];
 }
+
 
 @end

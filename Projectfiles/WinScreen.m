@@ -21,7 +21,7 @@
     {
         self.contentSize = [[CCDirector sharedDirector] winSize];
         // position of screen, animate to screen
-        self.position = ccp(self.contentSize.width / 2, self.contentSize.height * 1.5);
+        self.position = ccp(self.contentSize.width / 2, self.contentSize.height * .5);
         
         // add a background image node
         backgroundNode = [[CCBackgroundColorNode alloc] init];
@@ -40,6 +40,11 @@
         storeItemLabel.color = DEFAULT_FONT_COLOR;
         storeItemLabel.position = ccp(0, 0.5 * self.contentSize.height - 25);
         [self addChild:storeItemLabel];
+        
+        
+        
+        
+        
         
         // add a resume button
         

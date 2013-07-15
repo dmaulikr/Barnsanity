@@ -1,0 +1,1179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Gold Bonus</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Player Barn Damage</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Player Barn Armor</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Player Barn Health</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Energy Max</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Energy Regeneration</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Ship Damage</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Ship Firerate</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Ship AreaOfEffect Damage</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Orange</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Apple</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Orange</string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Strawberry</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Apple</string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Cherry</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Strawberry</string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Mango</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Cherry</string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Banana</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Mango</string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Coconut</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Banana</string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Grape</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Coconut</string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Pineapple</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Grape</string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>Watermelon</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Pineapple</string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+</dict>
+</plist>

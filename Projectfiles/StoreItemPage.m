@@ -45,24 +45,25 @@
         [selectedItem deselect];
         selectedItem=itemSelected;
         [selectedItem select];
-        [(UpgradeScreen *)[self parent] showDescriptionOfSelectedItem:selectedItem] ;
+        [(UpgradeScreen *)[self parent] showSelectedItem:selectedItem] ;
     }
 }
 
--(void)upgradeSelectedItem{
-    if(![selectedItem upgrade]){
-        
-    }else{
+-(BOOL)upgradeSelectedItem{
+    if([selectedItem upgrade]){
         ItemNode *temp;
         for(int i =0; i<itemNodes.count;i++){
             temp=itemNodes[i];
             [temp reset];
-         }
+        }
+        return TRUE;
+    }else{
+        return FALSE;
     }
 }
 
 -(void)removePage{
     self.visible=FALSE;
-    [self removeFromParent];
+    [self removeFromParentAndCleanup:TRUE];
 }
 @end

@@ -42,7 +42,7 @@
 }
 
 -(void)reset{
-    int level=[[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship"] objectForKey:@"Firerate"] integerValue];
-    fireDelayInitial=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Ship"]objectForKey:@"Firerate"]   objectAtIndex:level] integerValue];
+    int level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship Firerate"] integerValue];
+    fireDelayInitial=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo]objectForKey:@"Ship Firerate"]   objectAtIndex:level] integerValue];
 }
 @end

@@ -29,6 +29,7 @@
 }
 @property (nonatomic, weak) Barn *enemyBarn;
 @property (nonatomic, weak) Barn *playerBarn;
+@property (nonatomic, assign) BOOL  *enemyBarnUnderAttack;
 
 + (id)sharedMonsterCache;
 

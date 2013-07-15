@@ -85,10 +85,10 @@
 
 -(void)reset{
     [self gotHit];
-    int level=[[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship"] objectForKey:@"Damage"] integerValue];
-    self.damage=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Ship"]objectForKey:@"Damage"]   objectAtIndex:level] integerValue];
-    level=[[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship"] objectForKey:@"AreaOfEffect Damage"]integerValue];
-    self.areaOfEffectDamage=[[[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Ship"]objectForKey:@"AreaOfEffect Damage"]   objectAtIndex:level]integerValue];
+    int level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship Damage"] integerValue];
+    self.damage=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo]objectForKey:@"Ship Damage"]   objectAtIndex:level] integerValue];
+    level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship AreaOfEffect Damage"]integerValue];
+    self.areaOfEffectDamage=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo]objectForKey:@"AreaOfEffect Damage"]   objectAtIndex:level]integerValue];
     
 }
 

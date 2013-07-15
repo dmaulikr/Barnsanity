@@ -48,31 +48,7 @@
      */
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
--(void) reset{
-    CCSpriteBatchNode *playerBatch;
-        CCSpriteBatchNode *enemyBatch;
-    BasicPlayerMonster* player;
-    	BasicEnemyMonster* enemy;
-    ShipBullets *bullet;
-    CCARRAY_FOREACH([playerMonster children], playerBatch){
-        CCARRAY_FOREACH([playerBatch children], player){
-            [player reset];
-        }
-    }
-    
-    CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
-	{
-        CCARRAY_FOREACH([enemyBatch children], enemy)
-        {
-            [enemy reset];
-        }
-    }
-    
-    CCARRAY_FOREACH([shipBullets children], bullet){
-        [bullet reset];
-    }
-    
-}
+
 -(id) init
 {
 	if ((self = [super init]))
@@ -135,6 +111,33 @@
 	}
 	
 	return self;
+}
+
+-(void) reset{
+    self.enemyBarnUnderAttack=FALSE;
+    CCSpriteBatchNode *playerBatch;
+    CCSpriteBatchNode *enemyBatch;
+    BasicPlayerMonster* player;
+    BasicEnemyMonster* enemy;
+    ShipBullets *bullet;
+    CCARRAY_FOREACH([playerMonster children], playerBatch){
+        CCARRAY_FOREACH([playerBatch children], player){
+            [player reset];
+        }
+    }
+    
+    CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
+	{
+        CCARRAY_FOREACH([enemyBatch children], enemy)
+        {
+            [enemy reset];
+        }
+    }
+    
+    CCARRAY_FOREACH([shipBullets children], bullet){
+        [bullet reset];
+    }
+    
 }
 
 - (void)gamePaused
@@ -392,7 +395,7 @@
     
     //COLLISION FOR PLAYER UNITS
     
-    
+        self.enemyBarnUnderAttack=FALSE;
     // iterate over all enemies (all child nodes of this enemy batch)
     CCARRAY_FOREACH([playerMonster children], playerBatch){
         CCARRAY_FOREACH([playerBatch children], player){
@@ -436,6 +439,7 @@
                         
                         if (CGRectIntersectsRect(playerHitZone, barnBoundingBox))
                         {
+                            self.enemyBarnUnderAttack=TRUE;
                             if (player.attacking == FALSE)
                             {
                                 player.attacked=TRUE;
@@ -547,10 +551,26 @@
             // we get the spawn frequency for this specific monster type
             int spawnFrequency = [[GameMechanics sharedGameMechanics] spawnRateForEnemyMonsterType:monsterTypeClass];
             // if the updateCount reached the spawnFrequency we spawn a new enemy
+            if([[GameMechanics sharedGameMechanics]game].timeInSec<=[[GameMechanics sharedGameMechanics]game].timeForCrazyMode){
+                spawnFrequency=spawnFrequency/2;
+            }
             if (updateCount % spawnFrequency == 0)
             {
-                
-                [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI_2+CCRANDOM_0_1()*M_PI];
+                if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
+                if(self.enemyBarnUnderAttack){
+                    [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI];
+                }else{
+                    
+                    [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI_2+CCRANDOM_0_1()*M_PI_2];
+                }
+                }else{
+                    if(self.enemyBarnUnderAttack){
+                        [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI+(M_PI/16)-CCRANDOM_0_1()*(M_PI/8)];
+                    }else{
+                        
+                        [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI_2+CCRANDOM_0_1()*M_PI];
+                    }
+                }
             }
         }
         

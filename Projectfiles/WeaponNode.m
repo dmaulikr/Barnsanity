@@ -15,9 +15,11 @@
     if(self){
         self.nameOfItem=nameOfThisItem;
         self.slotPriority=priority;
-        self.level=[[[[[[GameMechanics sharedGameMechanics] game] levelsOfEverything] objectForKey:@"Player Monsters" ] objectForKey:self.nameOfItem] integerValue];
+        self.level=[[[[[GameMechanics sharedGameMechanics] game] levelsOfEverything] objectForKey:self.nameOfItem] integerValue];
         if(self.level>=0){
             self.ableToUse=TRUE;
+                        self.description=[[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:self.nameOfItem]objectAtIndex:self.level]objectForKey:@"Item Description"];
+
         }
 
     }

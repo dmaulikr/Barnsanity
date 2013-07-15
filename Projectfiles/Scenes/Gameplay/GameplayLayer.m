@@ -5,40 +5,32 @@
 //  Created by Benjamin Encz on 5/15/13.
 //  Copyright (c) 2013 MakeGamesWithUs Inc. Free to use for all purposes.
 //
-#import "EquipScreen.h"
+
 #import "GameplayLayer.h"
 #import "Game.h"
 #import "GameMechanics.h"
-#import "MainMenuLayer.h"
-//#import "Mission.h"
-#import "StoreScreenScene.h"
-#import "Store.h"
 #import "PopupProvider.h"
 #import "CCControlButton.h"
 #import "StyleManager.h"
 #import "NotificationBox.h"
+#import "CCTouchDelegateProtocol.h"
+
+//Screnes
 #import "PauseScreen.h"
 #import "SelectLevelScreen.h"
 #import "WinScreen.h"
 #import "LoseScreen.h"
 #import "UpgradeScreen.h"
-#import "MonsterCache.h"
-//buttons
-#import "SpawnMonsterButton.h"
-#import "Orange.h"
-#import "Apple.h"
-#import "Strawberry.h"
-#import "Cherry.h"
+#import "EquipScreen.h"
+#import "MainMenuLayer.h"
 
-#import "Carrot.h"
+//Caches
+#import "MonsterCache.h"
 #import "MonsterButtonCache.h"
+
 //units
 #import "World.h"
-#import "BasicEnemyMonster.h"
-#import "BasicPlayerMonster.h"
-#import "Barn.h"
 #import "Ship.h"
-#import "CCTouchDelegateProtocol.h"
 
 static CGRect screenRect;
 
@@ -46,26 +38,11 @@ static CGRect screenRect;
 #define MISSION_UPDATE_FREQUENCY 10
 
 @interface GameplayLayer()
-/*
- Tells the game to display the skipAhead button for N seconds.
- After the N seconds the button will automatically dissapear.
- */
-- (void)presentSkipAheadButtonWithDuration:(NSTimeInterval)duration;
-
-/*
- called when skipAheadButton has been touched
- */
-- (void)skipAheadButtonPressed;
 
 /*
  called when pause button was pressed
  */
 - (void)pauseButtonPressed;
-
-/*
- called when the player has chosen if he wants to continue the game (for paying coins) or not
- */
-- (void)goOnPopUpButtonClicked:(CCControlButton *)sender;
 
 @end
 
@@ -162,7 +139,6 @@ static CGRect screenRect;
         hudNode = [CCNode node];
         [self addChild:hudNode];
         
-        
         //create node for monster button objects
         [hudNode addChild:[MonsterButtonCache sharedMonsterButtonCache]];
         
@@ -220,7 +196,7 @@ static CGRect screenRect;
 {
     [self resetGame];
     [self enableGamePlayButtons];
-    [self showHUD:TRUE];
+    [self showHUD];
     [[GameMechanics sharedGameMechanics] setGameState:GameStateRunning];
 }
 
@@ -249,8 +225,6 @@ static CGRect screenRect;
 
 - (void) update:(ccTime)delta
 {
-    // update the amount of in-App currency in pause mode, too
-    inAppCurrencyDisplayNode.score = [Store availableAmountInAppCurrency];
     
     if ([[GameMechanics sharedGameMechanics] gameState] == GameStateRunning)
     {
@@ -261,42 +235,67 @@ static CGRect screenRect;
 
 - (void)updateRunning:(ccTime)delta
 {
-    pointsDisplayNode.score=game.gold;
+    //update
+    pointsDisplayNode.score=game.goldForLevel;
     [energy setEnergy:game.energy];
     
-    //for rotation deceleration
-    if(rotationVelocity!=0.0){
-        centerOfRotation.rotation+=rotationVelocity;
-        if(rotationVelocity>0){
-            rotationVelocity-=2;
-            if(rotationVelocity<1){
-                rotationVelocity=0;
-            }
-        }else{
-            rotationVelocity+=2;
-            if(rotationVelocity>-1){
-                rotationVelocity=0;
+    if(game.difficulty==EASY){
+        if(centerOfRotation.rotation>=-200 && centerOfRotation.rotation<=200 ){
+            //for rotation deceleration
+            if(rotationVelocity!=0.0){
+                centerOfRotation.rotation+=rotationVelocity;
+                if(rotationVelocity>0){
+                    rotationVelocity-=1;
+                    if(rotationVelocity<1){
+                        rotationVelocity=0;
+                    }
+                }else{
+                    rotationVelocity+=1;
+                    if(rotationVelocity>-1){
+                        rotationVelocity=0;
+                    }
+                }
             }
         }
-    }
-    
-    if(shipFire){
-        [ship fireBullet];
-    }
-    centerOfRotation.rotation=fmodf(centerOfRotation.rotation, 360);
-    
-    //if player barn's hitpoint is 0 or less OR time runs out go to lose screen
-    if ([[MonsterCache sharedMonsterCache] playerBarn].hitPoints <= 0 || (game.timeInSec <=0))
-    {
-        [self goToLoseScreen];
-    }else if ([[MonsterCache sharedMonsterCache] enemyBarn].hitPoints <= 0)
-    {
-        // if enemy barn's hit point is 0 or less go to win screen
-        [self goToWinScreen];
+    }else{
+        //for rotation deceleration
+        if(rotationVelocity!=0.0){
+            centerOfRotation.rotation+=rotationVelocity;
+            if(rotationVelocity>0){
+                rotationVelocity-=1;
+                if(rotationVelocity<1){
+                    rotationVelocity=0;
+                }
+            }else{
+                rotationVelocity+=1;
+                if(rotationVelocity>-1){
+                    rotationVelocity=0;
+                }
+            }
+        }
+        
+        //if continously fire bullets from the ship
+        if(shipFire){
+            [ship fireBullet];
+        }
+        
+        //make rotation stay between -360 to 360
+        centerOfRotation.rotation=fmodf(centerOfRotation.rotation, 360);
+        
+        //if player barn's hitpoint is 0 or less OR time runs out go to lose screen
+        if ([[MonsterCache sharedMonsterCache] playerBarn].hitPoints <= 0)
+        {
+            [self goToLoseScreen];
+        }else if ([[MonsterCache sharedMonsterCache] enemyBarn].hitPoints <= 0 || (game.timeInSec <=0))
+        {
+            // if enemy barn's hit point is 0 or less go to win screen
+            [self goToWinScreen];
+        }
     }
 }
 
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    BOOL touchSpawnButtons=FALSE;
     //stop the rotation
     rotationVelocity=0;
     UITouch *touch = [[event allTouches] anyObject];
@@ -311,22 +310,21 @@ static CGRect screenRect;
     if(ccpLengthSQ(ccpSub(circleCenter,touchPoint)) <([centerOfRotation getChildByTag:1].contentSize.height/2*[centerOfRotation getChildByTag:1 ].contentSize.height/2) )
     {
         touchingworld=true;
-    }else if(CGRectContainsPoint([[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:0 ].boundingBox, touchPoint)){
-        touchingworld=false;
-        [(SpawnMonsterButton*)[[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:0 ] pressed];
-    }else if(CGRectContainsPoint([[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:1 ].boundingBox, touchPoint)){
-        touchingworld=false;
-        [(SpawnMonsterButton*)[[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:1 ] pressed];
-    }else if(CGRectContainsPoint([[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:2 ].boundingBox, touchPoint)){
-        touchingworld=false;
-        [(SpawnMonsterButton*)[[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:2 ] pressed];
-    }else if(CGRectContainsPoint([[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:3 ].boundingBox, touchPoint)){
-        touchingworld=false;
-        [(SpawnMonsterButton*)[[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:3 ] pressed];
     }else{
-        touchingworld=false;
-        shipFire=TRUE;
+        for(int i =0; i<MAXSPAWNBUTTONS;i++){
+            if(CGRectContainsPoint([[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:i ].boundingBox, touchPoint)){
+                touchingworld=false;
+                [[MonsterButtonCache sharedMonsterButtonCache] pressedButton:i];
+                touchSpawnButtons=TRUE;
+            }
+        }
         
+        
+        if(!touchSpawnButtons){
+            touchingworld=false;
+            shipFire=TRUE;
+            
+        }
     }
     
 }
@@ -349,7 +347,14 @@ static CGRect screenRect;
         //calculate delta angle
         deltaRotation=(currentAngle - previousAngle);
         //rotate the world
-        centerOfRotation.rotation+=2.15*deltaRotation;
+        if(game.difficulty==EASY){
+            if(centerOfRotation.rotation>=-200 && centerOfRotation.rotation<=200 ){
+                centerOfRotation.rotation+=2.15*deltaRotation;
+            }
+        }else{
+            centerOfRotation.rotation+=2.15*deltaRotation;
+        }
+        
         previousTouch=currentTouch;
     }
     
@@ -390,7 +395,7 @@ static CGRect screenRect;
     } else
     {
         // start game directly
-        [self showHUD:TRUE];
+        [self showHUD];
         [self startGame];
     }
 }
@@ -404,7 +409,7 @@ static CGRect screenRect;
 
 
 
-- (void)showHUD:(BOOL)animated
+- (void)showHUD
 {
     // TODO: implement animated
     hudNode.visible = TRUE;
@@ -412,7 +417,7 @@ static CGRect screenRect;
     centerOfRotation.visible=TRUE;
 }
 
-- (void)hideHUD:(BOOL)animated
+- (void)hideHUD
 {
     // TODO: implement animated
     hudNode.visible = FALSE;
@@ -437,7 +442,7 @@ static CGRect screenRect;
 {
     // enable the pause button again, since the pause menu is hidden now
     [self enableGamePlayButtons];
-    [self showHUD:TRUE];
+    [self showHUD];
 }
 
 
@@ -445,7 +450,7 @@ static CGRect screenRect;
 {
     // disable pause button while the pause menu is shown, since we want to avoid, that the pause button can be hit twice.
     [self disableGameplayButtons];
-    [self hideHUD:FALSE];
+    [self hideHUD];
     PauseScreen *pauseScreen = [[PauseScreen alloc] initWithGame];
     pauseScreen.delegate = self;
     [self addChild:pauseScreen z:10];
@@ -462,9 +467,8 @@ static CGRect screenRect;
 {
     // disable pause button while the pause menu is shown, since we want to avoid, that the pause button can be hit twice.
     [self disableGameplayButtons];
-    [self hideHUD:FALSE];
+    [self hideHUD];
     SelectLevelScreen *levelSelectionScreen = [[SelectLevelScreen alloc] initWithGame];
-    //    levelSelectionScreen.delegate = self;
     [self addChild:levelSelectionScreen z:MAX_INT];
     [levelSelectionScreen present];
     [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
@@ -472,7 +476,7 @@ static CGRect screenRect;
 
 -(void)goToMainMenu{
     [self disableGameplayButtons];
-    [self hideHUD:FALSE];
+    [self hideHUD];
     MainMenuLayer *mainMenuLayer = [[MainMenuLayer alloc] init];
     [self addChild:mainMenuLayer z:MAX_INT];
     [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
@@ -480,171 +484,40 @@ static CGRect screenRect;
 
 -(void) goToWinScreen{
     [self disableGameplayButtons];
-    [self hideHUD:FALSE];
-    if(game.gameplayLevel == game.maxGamePlayLevel){
-        [game increaseGameLevel];
-    }
+    [self hideHUD];
+    [game beatLevel];
     [game saveGame];
     WinScreen *winLayer=[[WinScreen alloc]initWithGame];
     [self addChild:winLayer z:MAX_INT];
-    [winLayer present];
     [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
 }
 
 -(void) goToLoseScreen{
     [self disableGameplayButtons];
-    [self hideHUD:FALSE];
+    [self hideHUD];
+    [game loseLevel];
+    [game saveGame];
     LoseScreen *loseLayer=[[LoseScreen alloc]initWithGame];
     [self addChild:loseLayer z:MAX_INT];
-    [loseLayer present];
     [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
 }
 
 -(void)goToStore{
     [self disableGameplayButtons];
-    [self hideHUD:FALSE];
+    [self hideHUD];
     UpgradeScreen *upgradeLayer=[[UpgradeScreen alloc]initWithGame];
     [self addChild:upgradeLayer z:MAX_INT];
-    [upgradeLayer present];
-
+    
     [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
 }
 
 -(void)goToEquip{
     [self disableGameplayButtons];
-    [self hideHUD:FALSE];
+    [self hideHUD];
     EquipScreen *equipLayer=[[EquipScreen alloc]initWithGame];
     [self addChild:equipLayer z:MAX_INT];
-    [equipLayer present];
-    
     [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
 }
-#pragma mark - UI
 
-- (void)presentGoOnPopUp
-{
-    [[GameMechanics sharedGameMechanics] setGameState:GameStatePaused];
-    CCScale9Sprite *backgroundImage = [StyleManager goOnPopUpBackground];
-    goOnPopUp = [PopupProvider presentPopUpWithContentString:nil backgroundImage:backgroundImage target:self selector:@selector(goOnPopUpButtonClicked:) buttonTitles:@[@"OK", @"No"]];
-    [self disableGameplayButtons];
-}
-
-
-
-
-#pragma mark - Delegate Methods
-
-/*
- This method is called, when purchases on the In-Game-Store occur.
- Then we need to update the coins display on the HUD.
- */
-- (void)storeDisplayNeedsUpdate
-{
-    inAppCurrencyDisplayNode.score = [Store availableAmountInAppCurrency];
-}
-
-- (void)goOnPopUpButtonClicked:(CCControlButton *)sender
-{
-    CCLOG(@"Button clicked.");
-    if (sender.tag == 0)
-    {
-        if ([Store hasSufficientFundsForGoOnAction])
-        {
-            // OK button selected
-            [goOnPopUp dismiss];
-            [self executeGoOnAction];
-            [self enableGamePlayButtons];
-        } else
-        {
-            // game is paused in this state already, we only need to present the more coins screen
-            // dismiss the popup; presented again when we return from the 'Buy More Coins'-Screen
-            [goOnPopUp dismiss];
-            [self presentMoreCoinsPopUpWithTarget:self selector:@selector(returnedFromMoreCoinsScreenFromGoOnAction)];
-        }
-    } else if (sender.tag == 1)
-    {
-        // Cancel button selected
-        [goOnPopUp dismiss];
-        game.gold ++;
-        
-        // IMPORTANT: set game state to 'GameStateMenu', otherwise menu animations will no be played
-        [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
-//        
-//        RecapScreenScene *recap = [[RecapScreenScene alloc] initWithGame:game];
-//        [[CCDirector sharedDirector] replaceScene:recap];
-    }
-}
-
-
-#pragma mark - Game Logic
-
-- (void)executeGoOnAction
-{
-    [Store purchaseGoOnAction];
-    [[GameMechanics sharedGameMechanics] setGameState:GameStateRunning];
-    [NotificationBox presentNotificationBoxOnNode:self withText:@"Going on!" duration:1.f];
-}
-
-//- (void)startSkipAheadMode
-//{
-//    BOOL successful = [Store purchaseSkipAheadAction];
-//
-//    /*
-//     Only enter the skip ahead mode if the purchase was successful (player had enough coins).
-//     This is checked previously, but we want to got sure that the player can never access this item
-//     without paying.
-//     */
-//    if (successful)
-//    {
-//        [self scheduleOnce: @selector(endSkipAheadMode) delay:5.f];
-//
-//        // present a notification, to inform the user, that he is in skip ahead mode
-//        [NotificationBox presentNotificationBoxOnNode:self withText:@"Skip Ahead Mode!" duration:4.5f];
-//    }
-//}
-//
-//- (void)endSkipAheadMode
-//{
-//
-//}
-
-- (void)presentMoreCoinsPopUpWithTarget:(id)target selector:(SEL)selector
-{
-    CCLOG(@"You need more coins!");
-    NSArray *inGameStoreItems = [Store inGameStoreStoreItems];
-    
-    /*
-     The inGameStore is initialized with a callback method, which is called,
-     once the closebutton is pressed.
-     */
-    inGameStore = [[InGameStore alloc] initWithStoreItems:inGameStoreItems backgroundImage:@"InGameStore_background.png" closeButtonImage:@"InGameStore_close.png" target:target selector:selector];
-    /* The delegate adds a further callback, called when Items are purchased on the store, and we need to update our coin display */
-    inGameStore.delegate = self;
-    
-    inGameStore.position = ccp(self.contentSize.width / 2, self.contentSize.height + 0.5 * inGameStore.contentSize.height);
-    CGPoint targetPosition = ccp(self.contentSize.width / 2, self.contentSize.height /2);
-    
-    CCMoveTo *moveTo = [CCMoveTo actionWithDuration:1.f position:targetPosition];
-    [self addChild:inGameStore z:MAX_INT];
-    
-    [inGameStore runAction:moveTo];
-}
-
-
-/* called when the 'More Coins Screen' has been closed, after previously beeing opened by
- attempting to buy a 'Skip Ahead' action */
-- (void)returnedFromMoreCoinsScreenFromSkipAheadAction
-{
-    // hide store and resume game
-    [inGameStore removeFromParent];
-    [[GameMechanics sharedGameMechanics] setGameState:GameStateRunning];
-    [self enableGamePlayButtons];
-}
-
-- (void)returnedFromMoreCoinsScreenFromGoOnAction
-{
-    [inGameStore removeFromParent];
-    [self presentGoOnPopUp];
-}
 
 @end

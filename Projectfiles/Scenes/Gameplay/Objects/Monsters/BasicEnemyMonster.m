@@ -25,7 +25,7 @@
     // Select a spawn location
     float xPos=radiusToSpawn*cos(angle);
     float yPos=radiusToSpawn*sin(angle);
-    if(angle<M_PI){
+    if(angle<=M_PI){
         moveDirection=right;
     }else{
         moveDirection=left;
@@ -62,8 +62,9 @@
     //if hitpoint is 0 or less then the monster dies
     if(self.hitPoints<=0){
         [self destroy];
+                [[GameMechanics sharedGameMechanics]game].enemiesMonsterKilled=+1;
         //reward gold
-        [[GameMechanics sharedGameMechanics] game].gold+=reward+[[GameMechanics sharedGameMechanics] game].goldBonusPerMonster;
+        [[GameMechanics sharedGameMechanics] game].goldForLevel+=reward+[[GameMechanics sharedGameMechanics] game].goldBonusPerMonster;
 
     }else if(blinkDidRun==FALSE || [blink isDone]){
         blinkDidRun=TRUE;

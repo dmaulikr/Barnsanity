@@ -7,11 +7,9 @@
 //
 
 #import "MainMenuLayer.h"
-#import "StoreScreenScene.h"
 #import "GameplayLayer.h"
 #import "Leaderboard.h"
 #import "STYLES.h"
-#import "Store.h"
 #import "GameMechanics.h"
 
 #define TITLE_LABEL @"Endless Runner Demo Game"
@@ -70,18 +68,13 @@
         }];
         newGameButton.color = DEFAULT_FONT_COLOR;
         
-//        
-//        //add an option button to change settings
-//        option= [CCMenuItemFont itemWithString:@"Option" block:^(id sender) {
-//            //            [self optionButtonPressed];
-//        }];
-//        option.color = DEFAULT_FONT_COLOR;
-        
         //add all buttons into the menu
         startMenu = [CCMenu menuWithItems:newGameButton,continueButton, nil];
         startMenu.position = ccp(screenCenter.x, screenCenter.y - 50);
         [startMenu alignItemsVertically];
         [self addChild: startMenu];
+        
+        
 	}
     
 	return self;
@@ -111,18 +104,6 @@
     [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
 }
 
-- (void) optionButtonPressed
-{
-    
-    //        self.visible = FALSE;
-    //        [self removeFromParent];
-    
-    
-    self.visible=FALSE;
-    /** Start the game and display the HUD */
-    [[[GameMechanics sharedGameMechanics] gameScene] startGame];
-    [[[GameMechanics sharedGameMechanics] gameScene] showHUD:TRUE];
-}
 
 
 #pragma mark - Scene Lifecyle
