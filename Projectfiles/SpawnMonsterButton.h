@@ -14,9 +14,11 @@
     int fireDelayTimer;
     float angleOfSpawn;
     CCProgressTimer *delayTimer;
+    CCLabelBMFont *scoreLabel;
 }
 @property (nonatomic, assign) NSString *nameOfMonster;
--(id) initWithEntityImage;
+@property (nonatomic, assign) NSInteger cost;
+-(id) initWithEntityImage:(NSString*)fileName andMonster:(NSString *)monsterName;
 -(void)pressed;
 -(void)updateDelay;
 

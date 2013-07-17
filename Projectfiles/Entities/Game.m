@@ -17,7 +17,7 @@
     
     if (self)
     {
-        
+        self.playerMonsterList=[[NSArray alloc]initWithObjects:@"Orange",@"Apple",@"Strawberry",@"Cherry",@"Mango",@"Banana",@"Coconut",@"Grape",@"Pineapple",@"Watermelon",nil];
         NSString *stats = [[NSBundle mainBundle] pathForResource:@"GameInfo" ofType:@"plist"];
         self.gameInfo=[NSDictionary dictionaryWithContentsOfFile:stats];
         NSString *gameItems = [[NSBundle mainBundle] pathForResource:@"ItemDescription" ofType:@"plist"];

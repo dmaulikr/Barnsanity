@@ -70,15 +70,45 @@
         CCFiniteTimeAction *finishHit = [CCCallBlock actionWithBlock:^{
             self.attacking = FALSE;
             // restart running animation
-//            [self stopAction:run];
+            [self stopAction:run];
                 [self runAction:run];
             
         }];
         
         attack = [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] , hitAction, [CCDelayTime actionWithDuration:.5] ,finishHit, nil];
         
+        CCFiniteTimeAction *planting = [CCCallBlock actionWithBlock:^{
+            
+            self.attacking = FALSE;
+            self.move=FALSE;
+            self.ableToAttack=FALSE;
+            float boundAngle1=[[MonsterCache sharedMonsterCache] enemyBarn].boundingZoneAngle1;
+            float boundAngle2=[[MonsterCache sharedMonsterCache] enemyBarn].boundingZoneAngle2;
+            if(self.angle<=boundAngle1 && self.angle>= boundAngle2){
+                self.invincible=TRUE;
+            }else{
+                self.invincible=FALSE;
+            }
+        }];
+        
+        CCFiniteTimeAction *spawning = [CCCallBlock actionWithBlock:^{
+            //            [self stopAction:plant];
+                
+            self.attacking = FALSE;
+            self.move=TRUE;
+            self.ableToAttack=TRUE;
+            self.invincible=FALSE;
+            [self stopAction:run];
+            [self runAction:run];
+        }];
+        
+        plant=[CCSequence actions:planting,[CCDelayTime actionWithDuration:1],spawning, nil];
+        
+//
+//        
+//        spawn=[CCSequence actions:spawning, nil];
         //get the radius of the world
-        radiusToSpawn=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
+        radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
         
         [self setScale:.5];
         
@@ -91,13 +121,14 @@
         NSDictionary *monsterInfo=[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Enemy Monsters"]objectForKey:nameOfMonster ];
         self.hitPointsInit=[[monsterInfo objectForKey:@"Health"] integerValue];
         self.damage=[[monsterInfo objectForKey:@"Damage"]integerValue];
-        speedAngle=[[monsterInfo objectForKey:@"Move Speed"] doubleValue] * (M_PI/1860);
+        speed=[[monsterInfo objectForKey:@"Move Speed"] doubleValue] * (M_PI/1860);
         self.areaOfEffect=[[monsterInfo objectForKey:@"AreaOfEffect"] boolValue];
         self.areaOfEffectDamage=[[monsterInfo objectForKey:@"AreaOfEffect Damage"]integerValue];
         reward=[[monsterInfo objectForKey:@"Gold Reward"] integerValue];
         
-        self.boundingAngle=atanf((self.contentSize.width/2)/(radiusToSpawn+self.contentSize.height/2));
-        self.hitZoneAngle=atanf((self.contentSize.width/2)/(radiusToSpawn+self.contentSize.height/2));
+        self.boundingZone=atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2;
+        self.hitZone=atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/4;
+
         
     }
     
@@ -107,19 +138,10 @@
 - (void)update:(ccTime)delta
 {
     if(self.move && self.alive){
-        [self updateRunningMode:delta];
+        [self changePosition];
     }
 }
 
-- (void)updateRunningMode:(ccTime)delta
-{
-            [self changePosition];
-    // calculate a hit zone
-    CGPoint monsterCenter = ccp(self.position.x + self.contentSize.width / 2, self.position.y + self.contentSize.height / 2);
-    CGSize hitZoneSize = CGSizeMake(self.contentSize.width/2, self.contentSize.height/2);
-    self.hitZone = CGRectMake(monsterCenter.x - 0.5 * hitZoneSize.width, monsterCenter.y - 0.5 * hitZoneSize.width, hitZoneSize.width, hitZoneSize.height);
-    
-}
 
 
 @end

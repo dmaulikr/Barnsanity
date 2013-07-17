@@ -41,13 +41,13 @@
 
 -(void)pressed{
     if(fireDelayTimer<=0){
-        int cost = [[GameMechanics sharedGameMechanics] spawnCostForPlayerMonsterType:[Cherry class]];
+        int cost = [[GameMechanics sharedGameMechanics] spawnCostForPlayerMonsterType:self.nameOfMonster];
         if(cost<=[[GameMechanics sharedGameMechanics]game].energy){
             [[GameMechanics sharedGameMechanics]game].energy-=cost;
 
         angleOfSpawn = fmodf([[[GameMechanics sharedGameMechanics] gameScene]  getChildByTag:1].rotation, 360);
         if((angleOfSpawn <=0 && angleOfSpawn >= -180)||(angleOfSpawn >180 && angleOfSpawn < 359)){
-            [[MonsterCache sharedMonsterCache] spawn:[Cherry class] atAngle:angleOfSpawn];
+            [[MonsterCache sharedMonsterCache] spawn:self.nameOfMonster atAngle:angleOfSpawn];
             fireDelayTimer=fireDelayInitial;
             delayTimer.percentage=100;
             float newPercentage=((float)(fireDelayTimer-1)/(float)fireDelayInitial)*100;

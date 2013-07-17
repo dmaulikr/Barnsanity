@@ -29,6 +29,7 @@
 	// Loading the Entity's sprite using a file, is a ship for now but you can change this
 	if ((self = [super initWithFile:@"world.png"]))
 	{
+        [self setScale:2];
 	}
 	return self;
 }

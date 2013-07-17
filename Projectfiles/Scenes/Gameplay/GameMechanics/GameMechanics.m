@@ -7,26 +7,7 @@
 //
 
 #import "GameMechanics.h"
-#import "Orange.h"
-#import "Apple.h"
-#import "Strawberry.h"
-#import "Cherry.h"
-#import "Mango.h"
-#import "Banana.h"
-#import "Coconut.h"
-#import "Grape.h"
-#import "Pineapple.h"
-#import "Watermelon.h"
-#import "Carrot.h"
-#import "Broccoli.h"
-#import "Corn.h"
-#import "Tomato.h"
-#import "Potato.h"
-#import "PeaPod.h"
-#import "Pea.h"
-#import "Pumpkin.h"
-#import "Beet.h"
-#import "Asparagus.h"
+
 @implementation GameMechanics
 
 @synthesize spawnRatesByEnemyMonsterType;
@@ -60,22 +41,22 @@
 }
 
 
-- (void)setSpawnRate:(int)spawnRate forEnemyMonsterType:(Class)monsterType {
+- (void)setSpawnRate:(int)spawnRate forEnemyMonsterType:(NSString *)monsterType {
     NSNumber *spawnRateNumber = [NSNumber numberWithInt:spawnRate];
-    [spawnRatesByEnemyMonsterType setObject:spawnRateNumber forKey:(id<NSCopying>)monsterType];
+    [spawnRatesByEnemyMonsterType setObject:spawnRateNumber forKey:monsterType];
 }
 
-- (int)spawnRateForEnemyMonsterType:(Class)monsterType {
-    return [[spawnRatesByEnemyMonsterType objectForKey:(id<NSCopying>)monsterType] intValue];
+- (int)spawnRateForEnemyMonsterType:(NSString *)monsterType {
+    return [[spawnRatesByEnemyMonsterType objectForKey:monsterType] intValue];
 }
 
-- (void)setSpawnCost:(int)spawnCost forPlayerMonsterType:(Class)monsterType{
+- (void)setSpawnCost:(int)spawnCost forPlayerMonsterType:(NSString *)monsterType{
     NSNumber *spawnCostNumber = [NSNumber numberWithInt:spawnCost];
-    [spawnCostByPlayerMonsterType setObject:spawnCostNumber forKey:(id<NSCopying>)monsterType];
+    [spawnCostByPlayerMonsterType setObject:spawnCostNumber forKey:monsterType];
 }
 
-- (int)spawnCostForPlayerMonsterType:(Class)monsterType{
-    return [[spawnCostByPlayerMonsterType objectForKey:(id<NSCopying>)monsterType] intValue];
+- (int)spawnCostForPlayerMonsterType:(NSString *)monsterType{
+    return [[spawnCostByPlayerMonsterType objectForKey:monsterType] intValue];
 }
 
 
@@ -91,43 +72,43 @@
     NSDictionary *monsterInfo=[[[_game gameInfo] objectForKey:@"Game Levels"] objectAtIndex:level];
     spawnRate=[[monsterInfo objectForKey:@"Carrot"] integerValue];
     if(spawnRate >0){
-        [self setSpawnRate:spawnRate forEnemyMonsterType:[Carrot class]];
+        [self setSpawnRate:spawnRate forEnemyMonsterType:@"Carrot"];
     }
     spawnRate=[[monsterInfo objectForKey:@"Broccoli"] integerValue];
     if(spawnRate >0){
-        [self setSpawnRate:spawnRate forEnemyMonsterType:[Broccoli class]];
+        [self setSpawnRate:spawnRate forEnemyMonsterType:@"Broccoli"];
     }
     spawnRate=[[monsterInfo objectForKey:@"Corn"] integerValue];
     if(spawnRate >0){
-        [self setSpawnRate:spawnRate forEnemyMonsterType:[Corn class]];
+        [self setSpawnRate:spawnRate forEnemyMonsterType:@"Corn"];
     }
     spawnRate=[[monsterInfo objectForKey:@"Tomato"] integerValue];
     if(spawnRate >0){
-        [self setSpawnRate:spawnRate forEnemyMonsterType:[Tomato class]];
+        [self setSpawnRate:spawnRate forEnemyMonsterType:@"Tomato"];
     }
     spawnRate=[[monsterInfo objectForKey:@"Potato"] integerValue];
     if(spawnRate >0){
-        [self setSpawnRate:spawnRate forEnemyMonsterType:[Potato class]];
+        [self setSpawnRate:spawnRate forEnemyMonsterType:@"Potato"];
     }
     spawnRate=[[monsterInfo objectForKey:@"Peapod"] integerValue];
     if(spawnRate >0){
-        [self setSpawnRate:spawnRate forEnemyMonsterType:[PeaPod class]];
+        [self setSpawnRate:spawnRate forEnemyMonsterType:@"Peapod"];
     }
     spawnRate=[[monsterInfo objectForKey:@"Pea"] integerValue];
     if(spawnRate >0){
-        [self setSpawnRate:spawnRate forEnemyMonsterType:[Pea class]];
+        [self setSpawnRate:spawnRate forEnemyMonsterType:@"Pea"];
     }
     spawnRate=[[monsterInfo objectForKey:@"Pumpkin"] integerValue];
     if(spawnRate >0){
-        [self setSpawnRate:spawnRate forEnemyMonsterType:[Pumpkin class]];
+        [self setSpawnRate:spawnRate forEnemyMonsterType:@"Pumpkin"];
     }
     spawnRate=[[monsterInfo objectForKey:@"Beet"] integerValue];
     if(spawnRate >0){
-        [self setSpawnRate:spawnRate forEnemyMonsterType:[Beet class]];
+        [self setSpawnRate:spawnRate forEnemyMonsterType:@"Beet"];
     }
     spawnRate=[[monsterInfo objectForKey:@"Asparagus"] integerValue];
     if(spawnRate >0){
-        [self setSpawnRate:spawnRate forEnemyMonsterType:[Asparagus class]];
+        [self setSpawnRate:spawnRate forEnemyMonsterType:@"Asparagus"];
     }
     
     //set up spawn cost for player monster
@@ -135,52 +116,52 @@
     level=[[[_game levelsOfEverything] objectForKey:@"Orange"] integerValue];
     if(level >=0){
         spawnRate= [[[[[_game gameInfo] objectForKey:@"Orange"] objectAtIndex:level] objectForKey:@"Energy Cost"]integerValue];
-        [self setSpawnCost:spawnRate forPlayerMonsterType:[Orange class]];
+        [self setSpawnCost:spawnRate forPlayerMonsterType:@"Orange"];
     }
     level=[[[_game levelsOfEverything]  objectForKey:@"Apple"] integerValue];
     if(level >=0){
         spawnRate= [[[[[_game gameInfo] objectForKey:@"Apple"] objectAtIndex:level] objectForKey:@"Energy Cost"]integerValue];
-        [self setSpawnCost:spawnRate forPlayerMonsterType:[Apple class]];
+        [self setSpawnCost:spawnRate forPlayerMonsterType:@"Apple"];
     }
     level=[[[_game levelsOfEverything]  objectForKey:@"Strawberry"] integerValue];
     if(level >=0){
         spawnRate= [[[[[_game gameInfo] objectForKey:@"Strawberry"] objectAtIndex:level] objectForKey:@"Energy Cost"]integerValue];
-        [self setSpawnCost:spawnRate forPlayerMonsterType:[Strawberry class]];
+        [self setSpawnCost:spawnRate forPlayerMonsterType:@"Strawberry"];
     }
     level=[[[_game levelsOfEverything] objectForKey:@"Cherry"] integerValue];
     if(level >=0){
         spawnRate= [[[[[_game gameInfo] objectForKey:@"Cherry"] objectAtIndex:level] objectForKey:@"Energy Cost"]integerValue];
-        [self setSpawnCost:spawnRate forPlayerMonsterType:[Cherry class]];
+        [self setSpawnCost:spawnRate forPlayerMonsterType:@"Cherry"];
     }
     level=[[[_game levelsOfEverything]  objectForKey:@"Mango"] integerValue];
     if(level >=0){
         spawnRate= [[[[[_game gameInfo] objectForKey:@"Mango"] objectAtIndex:level] objectForKey:@"Energy Cost"]integerValue];
-        [self setSpawnCost:spawnRate forPlayerMonsterType:[Mango class]];
+        [self setSpawnCost:spawnRate forPlayerMonsterType:@"Mango"];
     }
     level=[[[_game levelsOfEverything]  objectForKey:@"Banana"] integerValue];
     if(level >=0){
         spawnRate= [[[[[_game gameInfo] objectForKey:@"Banana"] objectAtIndex:level] objectForKey:@"Energy Cost"]integerValue];
-        [self setSpawnCost:spawnRate forPlayerMonsterType:[Banana class]];
+        [self setSpawnCost:spawnRate forPlayerMonsterType:@"Banana"];
     }
     level=[[[_game levelsOfEverything] objectForKey:@"Coconut"] integerValue];
     if(level >=0){
         spawnRate= [[[[[_game gameInfo] objectForKey:@"Coconut"] objectAtIndex:level] objectForKey:@"Energy Cost"]integerValue];
-        [self setSpawnCost:spawnRate forPlayerMonsterType:[Coconut class]];
+        [self setSpawnCost:spawnRate forPlayerMonsterType:@"Coconut"];
     }
     level=[[[_game levelsOfEverything]  objectForKey:@"Grape"] integerValue];
     if(level >=0){
         spawnRate= [[[[[_game gameInfo] objectForKey:@"Grape"] objectAtIndex:level] objectForKey:@"Energy Cost"]integerValue];
-        [self setSpawnCost:spawnRate forPlayerMonsterType:[Grape class]];
+        [self setSpawnCost:spawnRate forPlayerMonsterType:@"Grape"];
     }
     level=[[[_game levelsOfEverything] objectForKey:@"Pineapple"] integerValue];
     if(level >0){
         spawnRate= [[[[[_game gameInfo] objectForKey:@"Pineapple"] objectAtIndex:level] objectForKey:@"Energy Cost"]integerValue];
-        [self setSpawnCost:spawnRate forPlayerMonsterType:[Pineapple class]];
+        [self setSpawnCost:spawnRate forPlayerMonsterType:@"Pineapple"];
     }
     level=[[[_game levelsOfEverything]  objectForKey:@"Watermelon"] integerValue];
     if(level >=0){
         spawnRate= [[[[[_game gameInfo] objectForKey:@"Watermelon"] objectAtIndex:level] objectForKey:@"Energy Cost"]integerValue];
-        [self setSpawnCost:spawnRate forPlayerMonsterType:[Watermelon class]];
+        [self setSpawnCost:spawnRate forPlayerMonsterType:@"Watermelon"];
     }}
 
 - (void)setGameState:(GameState)gameState

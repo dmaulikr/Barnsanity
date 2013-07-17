@@ -65,23 +65,68 @@
         CCFiniteTimeAction *finishHit = [CCCallBlock actionWithBlock:^{
             self.attacking = FALSE;
             // restart running animation
-//            [self stopAction:run];
+            [self stopAction:run];
                 [self runAction:run];
             
         }];
         
         attack = [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] , hitAction, [CCDelayTime actionWithDuration:.5] ,finishHit, nil];
+
+        
+        CCFiniteTimeAction *planting = [CCCallBlock actionWithBlock:^{
+            self.attacking = FALSE;
+            self.move=FALSE;
+            self.ableToAttack=FALSE;
+            float boundAngle1=[[MonsterCache sharedMonsterCache] playerBarn].boundingZoneAngle1;
+            float boundAngle2=[[MonsterCache sharedMonsterCache] playerBarn].boundingZoneAngle2;
+            if(self.angle<=boundAngle1 && self.angle>= boundAngle2){
+                self.invincible=TRUE;
+            }else{
+                self.invincible=FALSE;
+            }
+            spawnDelayTimer=spawnDelayInitial;
+            delayTimer.percentage=100;
+            float newPercentage=((float)(spawnDelayTimer-1)/(float)spawnDelayInitial)*100;
+            [delayTimer runAction:[CCProgressFromTo actionWithDuration:1.0f from:delayTimer.percentage to:newPercentage]];
+            
+        }];
+        plant=[CCSequence actions:planting, nil];
+        
+        CCFiniteTimeAction *spawning = [CCCallBlock actionWithBlock:^{
+            [self stopAction:plant];
+            self.attacking = FALSE;
+            self.move=TRUE;
+            self.ableToAttack=TRUE;
+            self.invincible=FALSE;
+            [self stopAction:run];
+            [self runAction:run];
+            
+        }];
+        
+        spawn=[CCSequence actions:spawning, nil];
         
         //get the radius of the world
-        radiusToSpawn=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
-        self.boundingAngle=atanf((self.contentSize.width/2)/(radiusToSpawn+self.contentSize.height/2));
-        self.hitZoneAngle=atanf((self.contentSize.width/2)/(radiusToSpawn+self.contentSize.height/2));
+        radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
+        self.boundingZone=atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2;
+        self.hitZone=atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/4;
         blink = [CCBlink actionWithDuration:.4f blinks:2];
         
         //for the prototype
         [self setScale:.5];
         [self scheduleUpdate];
         [self reset];
+        
+        CCSprite *delayTimerImage=[[CCSprite alloc] initWithFile:@"n2pY1.png"];
+        [delayTimerImage setColor:ccc3(2, 2, 200)];
+        delayTimer=[CCProgressTimer progressWithSprite:delayTimerImage];
+        [delayTimer setScale:.5];
+        delayTimer.type =kCCProgressTimerTypeBar;
+        delayTimer.midpoint = ccp(0,0.5);
+        delayTimer.barChangeRate = ccp(1, 0);
+        delayTimer.percentage=0;
+        delayTimer.position=ccp(delayTimerImage.contentSize.width/4,2*self.contentSize.height/2+10);
+        [self addChild:delayTimer];
+                [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
         
         
     }
@@ -92,19 +137,10 @@
 - (void)update:(ccTime)delta
 {
     if(self.move && self.alive){
-        [self updateRunningMode:delta];
+        [self changePosition];
     }
 }
 
-- (void)updateRunningMode:(ccTime)delta
-{
-    [self changePosition];
-    // calculate a hit zone
-//    CGPoint monsterCenter = ccp(self.position.x + self.contentSize.width / 2, self.position.y + self.contentSize.height / 2);
-//    CGSize hitZoneSize = CGSizeMake(self.contentSize.width/2, self.contentSize.height/2);
-//    self.hitZone = CGRectMake(monsterCenter.x - 0.5 * hitZoneSize.width, monsterCenter.y - 0.5 * hitZoneSize.height, hitZoneSize.width, hitZoneSize.height);
-    
-}
 
 
 

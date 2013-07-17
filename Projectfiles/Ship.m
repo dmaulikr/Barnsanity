@@ -33,6 +33,10 @@
     }
 }
 
+-(void)fireSeedForMonster:(NSString*)name{
+    [[MonsterCache sharedMonsterCache] createSeed:name];
+}
+
 -(void)update:(ccTime)delta{
     if(self.visible){
         if(fireDelayTimer>0){

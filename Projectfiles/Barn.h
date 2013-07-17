@@ -6,12 +6,9 @@
 //
 //
 
-#import "CCSprite.h"
+#import "Entity.h"
 
-@interface Barn : CCSprite{
-    //the radius of the world
-    float radiusOfWorld;
-    
+@interface Barn : Entity{
     int reward;
     int armor;
     BOOL hitDidRun;
@@ -19,6 +16,7 @@
     CCProgressTimer *healthBar;
     CCBlink *blink;
     BOOL blinkDidRun;
+    NSMutableArray *animationFramesAttack;
     CCSequence *attack;
     
 }
@@ -29,8 +27,7 @@
 //checks if the unit is visible
 @property (nonatomic, assign) BOOL visible;
 @property (nonatomic, assign) BOOL attacking;
-//the hitzone of the unit
-@property (nonatomic, assign) CGRect hitZone;
+
 //whether the unit is an enemy's unit or not
 @property (nonatomic, assign) BOOL enemy;
 

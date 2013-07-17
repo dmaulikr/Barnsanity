@@ -48,10 +48,10 @@ typedef NS_ENUM(NSInteger, GameState) {
 
 
 
-- (void)setSpawnRate:(int)spawnRate forEnemyMonsterType:(Class)monsterType;
-- (int)spawnRateForEnemyMonsterType:(Class)monsterType;
-- (void)setSpawnCost:(int)spawnCost forPlayerMonsterType:(Class)monsterType;
-- (int)spawnCostForPlayerMonsterType:(Class)monsterType;
+- (void)setSpawnRate:(int)spawnRate forEnemyMonsterType:(NSString *)monsterType;
+- (int)spawnRateForEnemyMonsterType:(NSString *)monsterType;
+- (void)setSpawnCost:(int)spawnCost forPlayerMonsterType:(NSString *)monsterType;
+- (int)spawnCostForPlayerMonsterType:(NSString *)monsterType;
 
 // Resets the complete State of the sharedGameMechanics. Should be called whenever a new game is started.
 - (void)resetGame;

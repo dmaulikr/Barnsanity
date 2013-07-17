@@ -72,7 +72,7 @@
         [self addChild:menu];
         
         countOfDescription=2;
-        desciption=[[ItemDescriptionDisplayNode alloc]initWithImage:@"detail.png" andFont:@"avenir24.fnt" andNumberRow:countOfDescription];
+        desciption=[[ItemDescriptionDisplayNode alloc]initWithImage:@"detail.jpg" andFont:@"avenir24.fnt" andNumberRow:countOfDescription];
         [desciption setScale:.7];
         desciption.position=ccp(0,-0.5 * self.contentSize.height+50);
         [self addChild:desciption];

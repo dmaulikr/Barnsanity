@@ -14,5 +14,6 @@
 }
 - (id)initWithMonsterPicture;
 -(void)fireBullet;
+-(void)fireSeedForMonster:(NSString*)name;
 -(void)reset;
 @end

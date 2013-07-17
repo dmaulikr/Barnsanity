@@ -21,9 +21,10 @@
     CCNode *enemyMonsters;
     CCNode *playerMonster;
     CCNode *shipBullets;
+    CCNode *seeds;
     //a dictionary to hold the array of different monster units
     NSMutableDictionary* monster;
-    
+    NSMutableDictionary* monsterClass;
     // count the updates (used to determine when monsters should be spawned)
     int updateCount;
 }
@@ -37,9 +38,12 @@
 -(void)spawnBarn;
 
 //player monster
--(void) spawn:(Class)PlayerTypeClass atAngle:(float) angleOfLocation;
+-(void) spawn:(NSString*)PlayerTypeClass atAngle:(float) angleOfLocation;
 
 //create ship bullet
 -(void)createShipBullet;
+
+//create seed
+-(void)createSeed:(NSString*)monsterName;
 
 @end

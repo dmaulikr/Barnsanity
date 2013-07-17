@@ -27,7 +27,7 @@
     if(fireDelayTimer<=0){
         angleOfSpawn = fmodf([[[GameMechanics sharedGameMechanics] gameScene]  getChildByTag:1].rotation, 360);
         if((angleOfSpawn <=0 && angleOfSpawn >= -180)||(angleOfSpawn >180 && angleOfSpawn < 359)){
-            [[MonsterCache sharedMonsterCache] spawn:[Mango class] atAngle:angleOfSpawn];
+            [[MonsterCache sharedMonsterCache] spawn:self.nameOfMonster atAngle:angleOfSpawn];
             fireDelayTimer=fireDelayInitial;
         }
     }

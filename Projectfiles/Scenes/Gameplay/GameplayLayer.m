@@ -93,6 +93,7 @@ static CGRect screenRect;
     
     if (self)
     {
+        
         self.isTouchEnabled = YES;
         //get the rectangle that describes the edges of the screen
         screenSize = [[CCDirector sharedDirector] winSize];
@@ -118,23 +119,27 @@ static CGRect screenRect;
         
         
         //create the ship object
-        ship=[[Ship alloc] initWithMonsterPicture];
-        ship.position=ccp(screenSize.width/2,screenSize.height-ship.contentSize.height/4);
-        [self addChild:ship z:MAX_INT-1 tag:0];
+        self.ship=[[Ship alloc] initWithMonsterPicture];
+        self.ship.position=ccp(screenSize.width/2,screenSize.height-self.ship.contentSize.height/4);
+        [self addChild:self.ship z:MAX_INT-1 tag:0];
         
         //set the world image
         World *planet=[World createEntity];
-        self.radiusOfWorld=planet.contentSize.width/2;
+        self.radiusOfWorld=planet.contentSize.width;
         
         //create a node where the all mosnter sprites will rotate around
         centerOfRotation=[CCNode node];
-        centerOfRotation.position= ccp(screenSize.width/2, -planet.contentSize.height/3);
+        centerOfRotation.position= ccp(screenSize.width/2, -self.radiusOfWorld/1.5);
         [self addChild:centerOfRotation z:1 tag:1];
         //include the planet into the rotation node
         [centerOfRotation addChild:planet z:1 tag:1];
         
         //create the game mechanic object
         [GameMechanics sharedGameMechanics];
+        game = [[Game alloc] init];
+        [[GameMechanics sharedGameMechanics] setGameScene:self];
+        [[GameMechanics sharedGameMechanics] setGame:game];
+        
         //include the node that creates and hold all monster object
         [centerOfRotation addChild:[MonsterCache sharedMonsterCache] z:2 tag:2];
         
@@ -166,9 +171,6 @@ static CGRect screenRect;
         pauseButtonMenu.position = ccp(20, screenSize.height - 70);
         [hudNode addChild:pauseButtonMenu];
         
-        game = [[Game alloc] init];
-        [[GameMechanics sharedGameMechanics] setGameScene:self];
-        [[GameMechanics sharedGameMechanics] setGame:game];
         
         [self scheduleUpdate];
         
@@ -216,7 +218,7 @@ static CGRect screenRect;
     //reset timer
     [timer resetTimer:game.timeInSec];
     //reset the ship
-    [ship reset];
+    [self.ship reset];
     //reset energy info
     [energy resetEnergy:game.energyMax increasedAt:game.energyPerSec];
     //reset the monster buttons and their delays
@@ -293,21 +295,21 @@ static CGRect screenRect;
         
         //if continously fire bullets from the ship
         if(shipFire){
-            [ship fireBullet];
+            [self.ship fireBullet];
         }
         
         //make rotation stay between -360 to 360
         centerOfRotation.rotation=fmodf(centerOfRotation.rotation, 360);
         
         //if player barn's hitpoint is 0 or less OR time runs out go to lose screen
-        if ([[MonsterCache sharedMonsterCache] playerBarn].hitPoints <= 0)
-        {
-            [self goToLoseScreen];
-        }else if ([[MonsterCache sharedMonsterCache] enemyBarn].hitPoints <= 0 || (game.timeInSec <=0))
-        {
-            // if enemy barn's hit point is 0 or less go to win screen
-            [self goToWinScreen];
-        }
+//        if ([[MonsterCache sharedMonsterCache] playerBarn].hitPoints <= 0)
+//        {
+//            [self goToLoseScreen];
+//        }else if ([[MonsterCache sharedMonsterCache] enemyBarn].hitPoints <= 0 || (game.timeInSec <=0))
+//        {
+//            // if enemy barn's hit point is 0 or less go to win screen
+//            [self goToWinScreen];
+//        }
     }
 }
 
@@ -324,8 +326,9 @@ static CGRect screenRect;
     touchPoint.y= -touchPoint.y+screenSize.height;
     
     //if the distance between the touch and the center of the circle is less than the radius then this is true
-    if(ccpLengthSQ(ccpSub(circleCenter,touchPoint)) <([centerOfRotation getChildByTag:1].contentSize.height/2*[centerOfRotation getChildByTag:1 ].contentSize.height/2) )
+    if(ccpLengthSQ(ccpSub(circleCenter,touchPoint)) <(self.radiusOfWorld*self.radiusOfWorld))
     {
+//        ([centerOfRotation getChildByTag:1].contentSize.height/2*[centerOfRotation getChildByTag:1 ].contentSize.height/2)
         touchingworld=true;
     }else{
         for(int i =0; i<MAXSPAWNBUTTONS;i++){
@@ -430,7 +433,7 @@ static CGRect screenRect;
 {
     // TODO: implement animated
     hudNode.visible = TRUE;
-    ship.visible=TRUE;
+    self.ship.visible=TRUE;
     centerOfRotation.visible=TRUE;
 }
 
@@ -438,7 +441,7 @@ static CGRect screenRect;
 {
     // TODO: implement animated
     hudNode.visible = FALSE;
-    ship.visible=FALSE;
+    self.ship.visible=FALSE;
     centerOfRotation.visible=FALSE;
 }
 

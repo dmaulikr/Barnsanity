@@ -10,13 +10,29 @@
 #import "GameMechanics.h"
 #import "BasicEnemyMonster.h"
 #import "BasicPlayerMonster.h"
-#import "Monster.H"
+#import "Entity.h"
 #import "ShipBullets.h"
-#import "Carrot.h"
 #import "Orange.h"
 #import "Apple.h"
 #import "Strawberry.h"
 #import "Cherry.h"
+#import "Mango.h"
+#import "Banana.h"
+#import "Coconut.h"
+#import "Grape.h"
+#import "Pineapple.h"
+#import "Watermelon.h"
+#import "Carrot.h"
+#import "Broccoli.h"
+#import "Corn.h"
+#import "Tomato.h"
+#import "Potato.h"
+#import "PeaPod.h"
+#import "Pea.h"
+#import "Pumpkin.h"
+#import "Beet.h"
+#import "Asparagus.h"
+#import "Seed.h"
 
 #define ENEMY_MAX 300
 
@@ -62,9 +78,11 @@
         enemyMonsters= [[CCNode alloc] init];
         playerMonster =[[CCNode alloc] init];
         shipBullets = [[CCNode alloc] init];
+        seeds=[[CCNode alloc] init];
         [self addChild:enemyMonsters];
         [self addChild:playerMonster];
         [self addChild:shipBullets];
+        [self addChild:seeds];
         
         //create the dictionary for all monster units
         monster = [[NSMutableDictionary alloc] init];
@@ -85,9 +103,9 @@
         CCNode *playerBatch=[[CCNode alloc]init];
 		[enemyMonsters addChild:enemyBatch];
         
-        [monster setObject:enemyBatch forKey:(id<NSCopying>)[Carrot class]];
+        [monster setObject:enemyBatch forKey:@"Carrot"];
         [playerMonster addChild:playerBatch];
-        [monster setObject:playerBatch forKey:(id<NSCopying>)[Orange class]];
+        [monster setObject:playerBatch forKey:@"Orange"];
         
 //        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
 //        [playerMonster addChild:playerBatch];
@@ -101,7 +119,28 @@
 //        [playerMonster addChild:playerBatch];
 //        [monster setObject:playerBatch forKey:(id<NSCopying>)[Cherry class]];
         
-    
+        monsterClass = [[NSMutableDictionary alloc] init];
+        [monsterClass setObject:[Orange class] forKey:@"Orange"];
+        [monsterClass setObject: [Apple class]  forKey:@"Apple"];
+        [monsterClass setObject: [Strawberry class]  forKey:@"Strawberry"];
+        [monsterClass setObject: [Cherry class]  forKey:@"Cherry"];
+        [monsterClass setObject: [Mango class]  forKey:@"Mango"];
+        [monsterClass setObject: [Banana class]  forKey:@"Banana"];
+        [monsterClass setObject: [Coconut class]  forKey:@"Coconut"];
+        [monsterClass setObject: [Grape class]  forKey:@"Grape"];
+        [monsterClass setObject: [Pineapple class] forKey:@"Pineapple"];
+        [monsterClass setObject: [Watermelon class]  forKey:@"Watermelon"];
+        
+        [monsterClass setObject:[Carrot class] forKey:@"Carrot"];
+        [monsterClass setObject: [Broccoli class]  forKey:@"Broccoli"];
+        [monsterClass setObject: [Corn class]  forKey:@"Corn"];
+        [monsterClass setObject: [Tomato class]  forKey:@"Tomato"];
+        [monsterClass setObject: [Potato class]  forKey:@"Potato"];
+        [monsterClass setObject: [PeaPod class]  forKey:@"PeaPod"];
+        [monsterClass setObject: [Pea class]  forKey:@"Pea"];
+        [monsterClass setObject: [Pumpkin class]  forKey:@"Pumpkin"];
+        [monsterClass setObject: [Beet class] forKey:@"Beet"];
+        [monsterClass setObject: [Asparagus class]  forKey:@"Asparagus"];
         
         /**
          A Notification can be used to broadcast an information to all objects of a game, that are interested in it.
@@ -127,6 +166,7 @@
     BasicPlayerMonster* player;
     BasicEnemyMonster* enemy;
     ShipBullets *bullet;
+    Seed *seed;
     CCARRAY_FOREACH([playerMonster children], playerBatch){
         CCARRAY_FOREACH([playerBatch children], player){
             [player reset];
@@ -143,6 +183,10 @@
     
     CCARRAY_FOREACH([shipBullets children], bullet){
         [bullet reset];
+    }
+    
+    CCARRAY_FOREACH([seeds children], seed){
+        [seed reset];
     }
     
 }
@@ -247,54 +291,87 @@
     }
     
 }
--(void) spawn:(Class)PlayerTypeClass atAngle:(float) angleOfLocation{
-        [self spawnPlayerOfType:PlayerTypeClass atAngle:(float) angleOfLocation];
+
+
+-(void)createSeed:(NSString*)monsterName{
+    CCArray *seedsArray=[seeds children];
+    Seed* seed;
+    
+    /* we try to reuse existing enimies, therefore we use this flag, to keep track if we found an enemy we can
+     respawn or if we need to create a new one */
+    BOOL foundAvailablePlayerToSpawn = FALSE;
+    // if the enemiesOfType array exists, iterate over all already existing enemies of the provided type and check if one of them can be respawned
+
+        CCARRAY_FOREACH(seedsArray, seed)
+        {
+            // find the first free enemy and respawn it
+            if (seed.visible == NO)
+            {
+                [seed spawnMonster:monsterName];
+               // remember, that we will not need to create a new enemy
+                foundAvailablePlayerToSpawn = TRUE;
+                break;
+            }
+        }
+    
+    
+    // if we haven't been able to find a enemy to respawn, we need to create one
+    if (!foundAvailablePlayerToSpawn)
+    {
+        // initialize an enemy of the provided class
+        seed=[(Seed *) [Seed alloc] initWithMonsterPicture];
+        [seeds addChild:seed];
+        [seed spawnMonster:monsterName];
+    }
+}
+-(void) spawn:(NSString*)PlayerTypeClass atAngle:(float) angleOfLocation{
+    [self spawnPlayerOfType:PlayerTypeClass atAngle:(float) angleOfLocation];
     
 }
 
 
 
--(void) spawnPlayerOfType:(Class)PlayerTypeClass atAngle:(float) angleOfLocation{
+-(void) spawnPlayerOfType:(NSString*)PlayerTypeClass atAngle:(float) angleOfLocation{
     /* the 'enemies' dictionary stores an array of available enemies for each enemy type.
      We use the class of the enemy as key for the dictionary, to receive an array of all existing enimies of that type.
      We use a CCArray since it has a better performance than an NSArray. */
-//	CCSpriteBatchNode*
-   CCNode* playerOfType = [monster objectForKey:PlayerTypeClass];
+    //      CCSpriteBatchNode*
+    CCNode* playerOfType = [monster objectForKey:PlayerTypeClass];
     BasicPlayerMonster* player;
     
     /* we try to reuse existing enimies, therefore we use this flag, to keep track if we found an enemy we can
      respawn or if we need to create a new one */
     BOOL foundAvailablePlayerToSpawn = FALSE;
     // if the enemiesOfType array exists, iterate over all already existing enemies of the provided type and check if one of them can be respawned
-        CCARRAY_FOREACH([playerOfType children], player)
+    CCARRAY_FOREACH([playerOfType children], player)
+    {
+        // find the first free enemy and respawn it
+        if (player.visible == NO)
         {
-            // find the first free enemy and respawn it
-            if (player.visible == NO)
-            {
-                [player spawnAt:angleOfLocation];
-                // remember, that we will not need to create a new enemy
-                foundAvailablePlayerToSpawn = TRUE;
-                break;
-            }
+            [player spawnAt:angleOfLocation];
+            // remember, that we will not need to create a new enemy
+            foundAvailablePlayerToSpawn = TRUE;
+            break;
         }
+    }
     
     // if we haven't been able to find a enemy to respawn, we need to create one
     if (!foundAvailablePlayerToSpawn)
     {
         // initialize an enemy of the provided class
-        BasicPlayerMonster* player =  [(BasicPlayerMonster *) [PlayerTypeClass alloc] initWithMonsterPicture];
+        BasicPlayerMonster* player =  [(BasicPlayerMonster *) [[monsterClass objectForKey:PlayerTypeClass] alloc] initWithMonsterPicture];
         [playerOfType addChild:player];
         [player spawnAt:angleOfLocation];
     }
 }
 
--(void) spawnEnemyOfType:(Class)enemyTypeClass atAngle:(float) angleOfLocation
+-(void) spawnEnemyOfType:(NSString*)enemyTypeClass atAngle:(float) angleOfLocation
 {
     /* the 'enemies' dictionary stores an array of available enemies for each enemy type.
      We use the class of the enemy as key for the dictionary, to receive an array of all existing enimies of that type.
      We use a CCArray since it has a better performance than an NSArray. */
-//	CCSpriteBatchNode*
-   CCNode* enemiesOfType = [monster objectForKey:enemyTypeClass];
+    //      CCSpriteBatchNode*
+    CCNode* enemiesOfType = [monster objectForKey:enemyTypeClass];
     BasicEnemyMonster* enemy;
     
     /* we try to reuse existing enimies, therefore we use this flag, to keep track if we found an enemy we can
@@ -302,51 +379,54 @@
     BOOL foundAvailableEnemyToSpawn = FALSE;
     
     // if the enemiesOfType array exists, iterate over all already existing enemies of the provided type and check if one of them can be respawned
-        CCARRAY_FOREACH([enemiesOfType children], enemy)
+    CCARRAY_FOREACH([enemiesOfType children], enemy)
+    {
+        // find the first free enemy and respawn it
+        if (enemy.visible == NO)
         {
-            // find the first free enemy and respawn it
-            if (enemy.visible == NO)
-            {
-                [enemy spawnAt:angleOfLocation];
-                // remember, that we will not need to create a new enemy
-                foundAvailableEnemyToSpawn = TRUE;
-                break;
-            }
+            [enemy spawnAt:angleOfLocation];
+            // remember, that we will not need to create a new enemy
+            foundAvailableEnemyToSpawn = TRUE;
+            break;
         }
+    }
     
     
     // if we haven't been able to find a enemy to respawn, we need to create one
     if (!foundAvailableEnemyToSpawn)
     {
         // initialize an enemy of the provided class
-        BasicEnemyMonster *enemy =  [(BasicEnemyMonster *) [enemyTypeClass alloc] initWithMonsterPicture];
+        BasicEnemyMonster *enemy =  [(BasicEnemyMonster *) [[monsterClass objectForKey:enemyTypeClass] alloc] initWithMonsterPicture];
         [enemiesOfType addChild:enemy];
         [enemy spawnAt:angleOfLocation];
     }
 }
+-(BOOL)collisionBetweenMonstersWithAngle:(Entity* )attacker andMonster:(Entity *)defender{
+//    float hitZoneAngle1;
+//    float hitZoneAngle2;
+//    float boundAngle1;
+//    float boundAngle2;
+//    if(attacker.moveDirection==left){
+//        hitZoneAngle1=attacker.angle;
+//        hitZoneAngle2=attacker.angle+attacker.hitZoneAngle;
+//        //if attaker is moving left then defender must be coming from the right
+//        boundAngle2=defender.angle-defender.boundingAngle;
+//        boundAngle1=defender.angle+defender.boundingAngle;
+//    }else{
+//        hitZoneAngle2=attacker.angle;
+//        hitZoneAngle1=attacker.angle+attacker.hitZoneAngle;
+//        //if attaker is moving right then defender must be coming from the left
+//        boundAngle1=defender.angle-defender.boundingAngle;
+//        boundAngle2=defender.angle+defender.boundingAngle;
+//    }
+    if(//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
+       (attacker.hitZoneAngle1<=defender.boundingZoneAngle1 && attacker.hitZoneAngle1 >=defender.boundingZoneAngle2) ||
+       //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
+       (attacker.hitZoneAngle2 <=defender.boundingZoneAngle1 && attacker.hitZoneAngle2 >=defender.boundingZoneAngle2)||
+       //if the first bounding angle is within the hit zone angles, checks if bounding angles is with the hit zone
+       (defender.boundingZoneAngle1<=attacker.hitZoneAngle1 && defender.boundingZoneAngle1>= attacker.hitZoneAngle2)||
+       (defender.boundingZoneAngle2<=attacker.hitZoneAngle1 && defender.boundingZoneAngle2>= attacker.hitZoneAngle2)){
 
--(BOOL)collisionBetweenMonstersWithAngle:(Monster* )attackingMonster andMonster:(Monster *)defendingMonster{
-    float hitZoneAngle1;
-    float hitZoneAngle2;
-    float boundAngle1;
-    float boundAngle2;
-    if(attackingMonster.moveDirection==left){
-        hitZoneAngle1=attackingMonster.angle;
-        hitZoneAngle2=attackingMonster.angle+attackingMonster.hitZoneAngle;
-    }else{
-        hitZoneAngle2=attackingMonster.angle;
-        hitZoneAngle1=attackingMonster.angle+attackingMonster.hitZoneAngle;
-    }
-
-    if(defendingMonster.moveDirection==left){
-        boundAngle1=defendingMonster.angle-defendingMonster.boundingAngle;
-        boundAngle2=defendingMonster.angle+defendingMonster.boundingAngle;
-    }else{
-        boundAngle2=defendingMonster.angle-defendingMonster.boundingAngle;
-        boundAngle1=defendingMonster.angle+defendingMonster.boundingAngle;
-    }
-    
-    if((hitZoneAngle1<=boundAngle2 && hitZoneAngle1 >=boundAngle1) || (hitZoneAngle2<=boundAngle2 && hitZoneAngle2 >=boundAngle1)||(boundAngle1>=hitZoneAngle1 && boundAngle1<= hitZoneAngle2)){
         return TRUE;
     }else{
         return FALSE;
@@ -375,15 +455,13 @@
         CCARRAY_FOREACH([enemyBatch children], enemy)
         {
             // only check for collisions if the enemy is visible
-            if (enemy.alive && !enemy.attacking)
+            if (enemy.ableToAttack && enemy.alive && !enemy.attacking)
             {
                 enemy.attacked=FALSE;
-                CGRect enemyHitZone = [enemy hitZone];
                 CCARRAY_FOREACH([playerMonster children], playerBatch){
                     CCARRAY_FOREACH([playerBatch children], player){
                         //check if the enemy hitzone intersect players unit
-                        if(player.alive && (!enemy.attacked||enemy.areaOfEffect)){
-                            CGRect playerBoundingBox = [player boundingBox];
+                        if(!player.invincible && player.alive && (!enemy.attacked||enemy.areaOfEffect)){
                             
                             if ([self collisionBetweenMonstersWithAngle:enemy andMonster:player])
                             {
@@ -406,12 +484,10 @@
                 }
                 
                 //if the enemy unit still havent attacked yet, check if they are colliding with the barn
-                if(!enemy.attacked||enemy.areaOfEffect){
+                if(enemy.ableToAttack && (!enemy.attacked ||enemy.areaOfEffect)){
                     
                     if(_playerBarn.visible){
-                        CGRect barnBoundingBox = [_playerBarn boundingBox];
-                        
-                        if (CGRectIntersectsRect(enemyHitZone, barnBoundingBox))
+                        if ([self collisionBetweenMonstersWithAngle:enemy andMonster:self.playerBarn])
                         {
                             //if the enemy is not attacking, then prompt the enemy unit to attack
                             if (enemy.attacking == FALSE)
@@ -428,15 +504,16 @@
                     }
                 }
                 
+                if(!enemy.attacked){
+                    enemy.move=TRUE;
+                }else{
+                    enemy.move=FALSE;
+                }
                 
             }
         
         //if the enemy unit didnt attack this iteration then attacked will be false, so the enemy unit should move, else it did attack and should not move while battling
-        if(!enemy.attacked){
-            enemy.move=TRUE;
-        }else{
-            enemy.move=FALSE;
-        }
+
     }
     }
     
@@ -449,18 +526,14 @@
     CCARRAY_FOREACH([playerMonster children], playerBatch){
         CCARRAY_FOREACH([playerBatch children], player){
             // only check for collisions if the enemy is visible
-            if (player.alive && !player.attacking)
+            if (player.ableToAttack && player.alive && !player.attacking)
             {
                 player.attacked=FALSE;
-                CGRect playerHitZone = [player hitZone];
-                
                 CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
                 {
                     CCARRAY_FOREACH([enemyBatch children], enemy)
                     {
-                        if(enemy.alive && (!player.attacked || player.areaOfEffect)){
-                            
-                            CGRect enemyBoundingBox = [enemy boundingBox];
+                        if(!enemy.invincible && enemy.alive && (!player.attacked || player.areaOfEffect)){
                             if ([self collisionBetweenMonstersWithAngle:player andMonster:enemy]){
                                 //if the enemy is not attacking, then prompt the enemy unit to attack
                                 if (player.attacking == FALSE)
@@ -478,14 +551,12 @@
                     }
                     
                 }
-                
+    
                 
                 //if the player unit still havent attacked yet, check if they are colliding with the barn
-                if(!player.attacked || player.areaOfEffect){
+                if(player.ableToAttack && (!player.attacked || player.areaOfEffect)){
                     if(_enemyBarn.visible){
-                        CGRect barnBoundingBox = [_enemyBarn boundingBox];
-                        
-                        if (CGRectIntersectsRect(playerHitZone, barnBoundingBox))
+                        if ([self collisionBetweenMonstersWithAngle:player andMonster:self.enemyBarn])
                         {
                             self.enemyBarnUnderAttack=TRUE;
                             if (player.attacking == FALSE)
@@ -501,12 +572,13 @@
                         
                     }
                 }
+                if(!player.attacked ){
+                    player.move=TRUE;
+                }else{
+                    player.move=FALSE;
+                }
             }
-            if(!player.attacked ){
-                player.move=TRUE;
-            }else{
-                player.move=FALSE;
-            }
+
         }
     }
     
@@ -519,7 +591,7 @@
             {
                 CCARRAY_FOREACH([enemyBatch children], enemy)
                 {
-                    if(enemy.alive && (!bullet.attacked || bullet.areaOfEffect)){
+                    if(!enemy.invincible && enemy.alive && (!bullet.attacked || bullet.areaOfEffect)){
                         CGRect enemyBoundingBox = [enemy boundingBox];
                         if (CGRectIntersectsRect(enemyBoundingBox,bulletBoundingBox))
                         {
@@ -540,15 +612,13 @@
         }
     }
     
-    CGRect barnHitZone;
+    
     if(_enemyBarn.visible){
-     barnHitZone = [_enemyBarn hitZone];
     /*Collision Detection for Barns*/
     CCARRAY_FOREACH([playerMonster children], playerBatch){
         CCARRAY_FOREACH([playerBatch children], player){
             if(player.alive && !_enemyBarn.attacking){
-                CGRect enemyBoundingBox = [player boundingBox];
-                if (CGRectIntersectsRect(barnHitZone,enemyBoundingBox))
+                if ([self collisionBetweenMonstersWithAngle:self.enemyBarn andMonster:player])
                 {
                     if(!_enemyBarn.attacking){
                         [_enemyBarn attack];
@@ -561,15 +631,13 @@
     }
     
     if(_playerBarn.visible){
-    barnHitZone = [_playerBarn hitZone];
     /*Collision Detection for Barns*/
     CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
     {
         CCARRAY_FOREACH([enemyBatch children], enemy)
         {
             if(enemy.alive && !_playerBarn.attacking){
-                CGRect enemyBoundingBox = [enemy boundingBox];
-                if (CGRectIntersectsRect(barnHitZone,enemyBoundingBox))
+                if ([self collisionBetweenMonstersWithAngle:self.playerBarn andMonster:enemy])
                 {
                     if(!_playerBarn.attacking){
                         [_playerBarn attack];
@@ -594,7 +662,7 @@
         // first we get all available monster types
         NSArray *monsterTypes = [[[GameMechanics sharedGameMechanics] spawnRatesByEnemyMonsterType] allKeys];
         
-        for (Class monsterTypeClass in monsterTypes)
+        for (NSString *monsterTypeClass in monsterTypes)
         {
             // we get the spawn frequency for this specific monster type
             int spawnFrequency = [[GameMechanics sharedGameMechanics] spawnRateForEnemyMonsterType:monsterTypeClass];

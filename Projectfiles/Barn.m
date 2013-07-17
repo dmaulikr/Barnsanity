@@ -24,18 +24,27 @@
         
         //for the specific image
         [self setScale:.5];
-        //create the hit zone of the unit
-        CGPoint center = ccp(self.position.x + self.contentSize.width / 2, self.position.y + self.contentSize.height / 2);
-        CGSize hitZoneSize = CGSizeMake(self.contentSize.width/2, self.contentSize.height/2);
-        self.hitZone = CGRectMake(center.x - 0.5 * hitZoneSize.width, center.y - 0.5 * hitZoneSize.width, hitZoneSize.width, hitZoneSize.height);
         
         //set which side is this unit
         self.enemy=enemySide;
         if(self.enemy){
-            [self setColor:ccc3(255, 255, 0)];
-        }else{
             [self setColor:ccc3(255, 0, 0)];
+        }else{
+             [self setColor:ccc3(255, 255, 0)];
         }
+        
+        CCFiniteTimeAction *startHit = [CCCallBlock actionWithBlock:^{
+            // stop running animation
+            self.attacking = TRUE;
+        }];
+        
+        CCFiniteTimeAction *finishHit = [CCCallBlock actionWithBlock:^{
+            self.attacking = FALSE;
+
+            
+        }];
+        
+        attack= [CCSequence actions:startHit,[CCDelayTime actionWithDuration:3] ,finishHit, nil];
         
         //health bar
         CCSprite *health=[[CCSprite alloc] initWithFile:@"n2pY1.png"];
@@ -48,9 +57,11 @@
         healthBar.midpoint = ccp(0,0.5);
         healthBar.barChangeRate = ccp(1, 0);
         
+            radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
+        self.boundingZone=1.7*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2));
+        self.hitZone=2*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2));
         
         blink = [CCBlink actionWithDuration:.4f blinks:2];
-        attack = [CCSequence actions:[CCDelayTime actionWithDuration:1.5], nil];
         
         //include updates
         [self scheduleUpdate];
@@ -64,17 +75,25 @@
     //resume update and set up stats
     [self reset];
     [self resumeSchedulerAndActions];
-    
+    self.angle=angle;
     //set up spawn location
     //get the radius of the world
-    radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
     //calculate the x and y position based on the angle given
-    float xPos=radiusOfWorld*cos(angle);
-    float yPos=radiusOfWorld*sin(angle);
+    float xPos=radiusOfWorld*cos(self.angle);
+    float yPos=radiusOfWorld*sin(self.angle);
     //set the position
     self.position=CGPointMake(xPos,yPos);
     //calculate the rotation of the image base of the angle
-    self.rotation=CC_RADIANS_TO_DEGREES(-angle+M_PI_2);
+    self.rotation=CC_RADIANS_TO_DEGREES(-self.angle+M_PI_2);
+    
+    self.hitZoneAngle1=self.angle+self.hitZone;
+    self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
+    self.hitZoneAngle2=self.angle-self.hitZone;
+    self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
+    self.boundingZoneAngle1=self.angle+self.boundingZone;
+    self.boundingZoneAngle1=fmodf(self.boundingZoneAngle1+2*M_PI, 2*M_PI);
+    self.boundingZoneAngle2=self.angle-self.boundingZone;
+    self.boundingZoneAngle2=fmodf(self.boundingZoneAngle2+2*M_PI, 2*M_PI);
     
     self.hitPoints=self.hitPointsInit;
     //have the barn visible
@@ -82,6 +101,7 @@
     self.attacking=FALSE;
     blinkDidRun=FALSE;
     hitDidRun=FALSE;
+    
     
     //set the health bar
     healthBar.percentage=100;
@@ -116,11 +136,6 @@
 }
 
 -(void)update:(ccTime)delta{
-    self.attacking=FALSE;
-    // calculate a hit zone
-    CGPoint monsterCenter = ccp(self.position.x + self.contentSize.width / 2, self.position.y + self.contentSize.height / 2);
-    CGSize hitZoneSize = CGSizeMake(self.contentSize.width/2, self.contentSize.height/2);
-    self.hitZone = CGRectMake(monsterCenter.x - 0.5 * hitZoneSize.width, monsterCenter.y - 0.5 * hitZoneSize.width, hitZoneSize.width, hitZoneSize.height);
 }
 
 -(void)reset{
@@ -142,24 +157,4 @@
 }
 
 
-
-- (void)draw
-{
-    
-    
-    [super draw];
-    
-#ifdef DEBUG
-    // visualize the hit zone
-    
-    ccDrawColor4B(100, 0, 255, 255); //purple, values range from 0 to 255
-    CGPoint origin = ccp(self.hitZone.origin.x - self.position.x, self.hitZone.origin.y - self.position.y);
-    CGPoint destination = ccp(origin.x + self.hitZone.size.width, origin.y + self.hitZone.size.height);
-    ccDrawRect(origin, destination);
-    
-    ccColor4F rectColor = ccc4f(100, 0, 255, 255); //parameters correspond to red, green, blue, and alpha (transparancy)
-    ccDrawSolidRect(ccp(self.boundingBoxCenter.x-self.boundingBox.size.width/2,self.boundingBoxCenter.y-self.boundingBox.size.height/2), ccp(self.boundingBoxCenter.x+self.boundingBox.size.width/2,self.boundingBoxCenter.y+self.boundingBox.size.height/2), rectColor);
-    
-#endif
-}
 @end

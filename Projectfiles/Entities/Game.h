@@ -61,7 +61,7 @@
 
 //seeds in slot
 @property (nonatomic, strong) NSMutableArray *seedsUsed;
-
+@property (nonatomic, strong) NSMutableArray *playerMonsterList;
 
 -(BOOL)loadGame;
 -(void)saveGame;

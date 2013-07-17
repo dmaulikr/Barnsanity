@@ -8,26 +8,7 @@
 
 #import "MonsterButtonCache.h"
 #import "SpawnMonsterButton.h"
-#import "OrangeMonsterButton.h"
-#import "AppleMonsterButton.h"
-#import "StrawberryMonsterButton.h"
-#import "CherryMonsterButton.h"
-#import "MangoMonsterButton.h"
-#import "BananaMonsterButton.h"
-#import "CoconutMonsterButton.h"
-#import "GrapeMonsterButton.h"
-#import "WatermelonMonsterButton.h"
-#import "PineappleMonsterButton.h"
-#import "Orange.h"
-#import "Apple.h"
-#import "Strawberry.h"
-#import "Cherry.h"
-#import "Mango.h"
-#import "Banana.h"
-#import "Coconut.h"
-#import "Grape.h"
-#import "Pineapple.h"
-#import "Watermelon.h"
+#import "GameMechanics.h"
 
 @implementation MonsterButtonCache
 
@@ -63,16 +44,16 @@
 	if ((self = [super init]))
 	{
         monsterButton = [[NSMutableDictionary alloc] init];
-        [monsterButton setObject: [[OrangeMonsterButton alloc] initWithEntityImage] forKey:@"Orange"];
-        [monsterButton setObject: [[AppleMonsterButton alloc] initWithEntityImage] forKey:@"Apple"];
-        [monsterButton setObject: [[StrawberryMonsterButton alloc] initWithEntityImage] forKey:@"Strawberry"];
-        [monsterButton setObject: [[CherryMonsterButton alloc] initWithEntityImage] forKey:@"Cherry"];
-        [monsterButton setObject: [[MangoMonsterButton alloc] initWithEntityImage] forKey:@"Mango"];
-        [monsterButton setObject: [[BananaMonsterButton alloc] initWithEntityImage] forKey:@"Banana"];
-        [monsterButton setObject: [[CoconutMonsterButton alloc] initWithEntityImage] forKey:@"Coconut"];
-        [monsterButton setObject: [[GrapeMonsterButton alloc] initWithEntityImage] forKey:@"Grape"];
-        [monsterButton setObject: [[PineappleMonsterButton alloc] initWithEntityImage] forKey:@"Pineapple"];
-        [monsterButton setObject: [[WatermelonMonsterButton alloc] initWithEntityImage] forKey:@"Watermelon"];
+        [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Orange"] forKey:@"Orange"];
+        [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Apple"] forKey:@"Apple"];
+        [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Strawberry"]forKey:@"Strawberry"];
+        [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Cherry"] forKey:@"Cherry"];
+        [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Mango"] forKey:@"Mango"];
+        [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Banana"] forKey:@"Banana"];
+        [monsterButton setObject:[[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Coconut"] forKey:@"Coconut"];
+        [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Grape"] forKey:@"Grape"];
+        [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Pineapple"] forKey:@"Pineapple"];
+        [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Watermelon"] forKey:@"Watermelon"];
         
     }
     

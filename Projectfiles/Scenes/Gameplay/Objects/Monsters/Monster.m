@@ -33,23 +33,40 @@
 -(void)changePosition{
     //move the monster M_PI/480 in a direction
     if(self.moveDirection==left){
-        _angle+=speedAngle;
+        self.angle+=speed;
+            self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
+        self.hitZoneAngle1=self.angle+self.hitZone;
+        self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
+        self.hitZoneAngle2=self.angle;
+        self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
     }else{
-        _angle-=speedAngle;
+       self.angle-=speed;
+            self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
+        self.hitZoneAngle1=self.angle;
+        self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
+        self.hitZoneAngle2=self.angle-self.hitZone;
+        self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
     }
-    self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
-    float deltaX=radiusToSpawn*cos(_angle);
-    float deltaY=radiusToSpawn*sin(_angle);
+    
+    self.boundingZoneAngle1=self.angle+self.boundingZone;
+    self.boundingZoneAngle1=fmodf(self.boundingZoneAngle1+2*M_PI, 2*M_PI);
+    self.boundingZoneAngle2=self.angle-self.boundingZone;
+    self.boundingZoneAngle2=fmodf(self.boundingZoneAngle2+2*M_PI, 2*M_PI);
+    
+    
+    float deltaX=radiusOfWorld*cos(self.angle);
+    float deltaY=radiusOfWorld*sin(self.angle);
     CGPoint newPosition = ccp(deltaX, deltaY);
     
     
-    self.rotation=CC_RADIANS_TO_DEGREES(-_angle+M_PI_2);
+    self.rotation=CC_RADIANS_TO_DEGREES(-self.angle+M_PI_2);
     
     [self setPosition:newPosition];
 }
 
 -(void) destroy{
     //turn invisible
+    
     self.visible = FALSE;
     self.alive=FALSE;
     self.move=FALSE;
@@ -58,8 +75,6 @@
     //stop all actions and pause update
     [self stopAllActions];
     
-    //flip image back to original position
-    self.flipX=0;
 }
 
 //- (void)draw

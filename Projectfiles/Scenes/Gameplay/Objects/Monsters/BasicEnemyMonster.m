@@ -15,7 +15,6 @@
 {
     //start update and run action
     [self stopAllActions];
-    [self runAction:run];
     //set health point
     self.hitPoints=self.hitPointsInit;
     
@@ -24,28 +23,41 @@
     self.angle=angleOfLocation;
     self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
     // Select a spawn location
-    float xPos=radiusToSpawn*cos(self.angle);
-    float yPos=radiusToSpawn*sin(self.angle);
-    if(self.angle<=M_PI){
-        self.moveDirection=right;
-    }else{
-        self.moveDirection=left;
-        self.flipX=180;
-    }
+    float xPos=radiusOfWorld*cos(self.angle);
+    float yPos=radiusOfWorld*sin(self.angle);
     //set the location
     self.position = CGPointMake(xPos, yPos);
     self.rotation=CC_RADIANS_TO_DEGREES(-self.angle+M_PI_2);
     
+    if(self.angle<=M_PI){
+                self.flipX=0;
+        self.moveDirection=right;
+        self.hitZoneAngle1=self.angle;
+        self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
+        self.hitZoneAngle2=self.angle-self.hitZone;
+        self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
+    }else{
+        self.moveDirection=left;
+        self.flipX=180;
+        self.hitZoneAngle1=self.angle+self.hitZone;
+        self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
+        self.hitZoneAngle2=self.angle;
+        self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
+    }
+    
+    self.boundingZoneAngle1=self.angle+self.boundingZone;
+    self.boundingZoneAngle1=fmodf(self.boundingZoneAngle1+2*M_PI, 2*M_PI);
+    self.boundingZoneAngle2=self.angle-self.boundingZone;
+    self.boundingZoneAngle2=fmodf(self.boundingZoneAngle2+2*M_PI, 2*M_PI);
+    
 	// Finally set yourself to be visible, this also flag the enemy as "in use"
 	self.visible = YES;
-    self.move=TRUE;
     self.alive=TRUE;
     self.attacked=FALSE;
     self.attacking=FALSE;
     hitDidRun=FALSE;
     blinkDidRun=FALSE;
-    CGPoint monsterCenter = ccp(self.position.x + self.contentSize.width / 2, self.position.y + self.contentSize.height / 2);
-    self.hitZone = CGRectMake(monsterCenter.x, monsterCenter.y ,0,0);
+    [self runAction:plant];
 	
 }
 

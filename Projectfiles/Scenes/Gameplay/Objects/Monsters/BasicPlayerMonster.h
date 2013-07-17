@@ -12,7 +12,7 @@
 @interface BasicPlayerMonster : Monster
 
 {
-    
+    CCProgressTimer *delayTimer;
 }
 
 - (id)initWithMonsterPicture;

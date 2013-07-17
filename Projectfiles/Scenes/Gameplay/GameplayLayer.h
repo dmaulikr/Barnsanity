@@ -24,7 +24,6 @@
     CGPoint previousTouch, currentTouch;
     CGSize screenSize;
     bool shipFire;
-    Ship *ship;
     CCNode *centerOfRotation;
     ScoreboardEntryNode *pointsDisplayNode;
     ScoreboardEntryNode *inAppCurrencyDisplayNode;
@@ -47,6 +46,7 @@
 // defines if the main menu shall be displayed, or if the game shall start directly. By default the menu is displayed.
 @property (nonatomic, assign) BOOL showMainMenu;
 @property (nonatomic, assign) float radiusOfWorld;
+@property (nonatomic, assign) Ship *ship;
 
 /**
  Tells the game to start
