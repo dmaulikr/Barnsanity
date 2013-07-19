@@ -20,7 +20,7 @@
     {
         self.scoreStringFormat = @"%d";
         scoreLabel = [CCLabelBMFont labelWithString:@"" fntFile:fontFile];
-        
+        [scoreLabel setColor:ccc3(255, 255, 255)];
         scoreLabel.anchorPoint = ccp(0,0.5);
         [self addChild:scoreLabel];
         [self scheduleUpdate];

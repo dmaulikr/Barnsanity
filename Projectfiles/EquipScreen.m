@@ -47,15 +47,13 @@
             [self equipButtonPressed];
         }];
         equip.color = DEFAULT_FONT_COLOR;
-        [equip setScale:.5];
-        equip.position=ccp(210,0);
+        equip.position=ccp(200,0);
         equip.visible=FALSE;
         unequip= [CCMenuItemFont itemWithString:@"Unequip" block:^(id sender) {
             [self unequipButtonPressed];
         }];
         unequip.color = DEFAULT_FONT_COLOR;
-        [unequip setScale:.5];
-        unequip.position=ccp(210,0);
+        unequip.position=ccp(200,0);
         unequip.visible=FALSE;
         
         //add a store button to make purchases
@@ -63,7 +61,6 @@
             [self backButtonPressed];
         }];
         back.color = DEFAULT_FONT_COLOR;
-        [back setScale:.5];
         back.position=ccp(-200,0);
         
         //add all buttons to the menu
@@ -170,6 +167,10 @@
         
         //go to level selection layer
         [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
+    }else{
+        NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:1];
+        temp[0]=[NSString stringWithFormat:@"Must Equip At Least One Weapon"];
+        [desciption setDescription:temp];
     }
     
 }
@@ -211,7 +212,7 @@
 -(void)showDescriptionOfSelectedItem: (WeaponNode *)item{
     NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
     
-    temp[0]=[NSString stringWithFormat:@"Level %d %@", item.level, item.nameOfItem];
+    temp[0]=[NSString stringWithFormat:@"Level %d %@", item.level+1, item.nameOfItem];
     temp[1]=[NSString stringWithFormat:@"%@", item.description];
     [desciption setDescription:temp];
 }

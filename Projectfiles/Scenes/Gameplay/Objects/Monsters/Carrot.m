@@ -108,7 +108,7 @@
 //        
 //        spawn=[CCSequence actions:spawning, nil];
         //get the radius of the world
-        radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
+
         
         [self setScale:.5];
         
@@ -121,13 +121,13 @@
         NSDictionary *monsterInfo=[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Enemy Monsters"]objectForKey:nameOfMonster ];
         self.hitPointsInit=[[monsterInfo objectForKey:@"Health"] integerValue];
         self.damage=[[monsterInfo objectForKey:@"Damage"]integerValue];
-        speed=[[monsterInfo objectForKey:@"Move Speed"] doubleValue] * (M_PI/1860);
+        speed=[[monsterInfo objectForKey:@"Move Speed"] doubleValue] ;
         self.areaOfEffect=[[monsterInfo objectForKey:@"AreaOfEffect"] boolValue];
         self.areaOfEffectDamage=[[monsterInfo objectForKey:@"AreaOfEffect Damage"]integerValue];
         reward=[[monsterInfo objectForKey:@"Gold Reward"] integerValue];
         
-        self.boundingZone=atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2;
-        self.hitZone=atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/4;
+        self.radiusToSpawnDelta=20;
+                self.range=2;
 
         
     }

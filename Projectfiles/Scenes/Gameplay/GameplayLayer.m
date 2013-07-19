@@ -34,7 +34,9 @@
 
 #import "Orange.h"
 #import "Carrot.h"
-
+#import "STYLES.h"
+#import "CCSpriteBackgroundNode.h"
+#import "CCBackgroundColorNode.h"
 static CGRect screenRect;
 
 // defines how many update cycles run, before the missions get an update about the current game state
@@ -115,8 +117,13 @@ static CGRect screenRect;
         
         //background image
         CCSprite *background=[[CCSprite alloc] initWithFile:@"sky_background_by_09shootingstar90-d4oq6xw.png"];
-        [self addChild:background z:0];
-        
+       [self addChild:background z:0];
+
+        barnUnderAttack=[[AlertSign alloc]initWithEntityImage];
+        barnUnderAttack.position= ccp(-MAX_INT, 0);
+        [barnUnderAttack setScale:.6];
+        [self addChild:barnUnderAttack];
+        barnUnderAttack.visible=FALSE;
         
         //create the ship object
         self.ship=[[Ship alloc] initWithMonsterPicture];
@@ -124,12 +131,11 @@ static CGRect screenRect;
         [self addChild:self.ship z:MAX_INT-1 tag:0];
         
         //set the world image
-        World *planet=[World createEntity];
-        self.radiusOfWorld=planet.contentSize.width;
+        planet=[World createEntity];
+
         
         //create a node where the all mosnter sprites will rotate around
         centerOfRotation=[CCNode node];
-        centerOfRotation.position= ccp(screenSize.width/2, -self.radiusOfWorld/1.5);
         [self addChild:centerOfRotation z:1 tag:1];
         //include the planet into the rotation node
         [centerOfRotation addChild:planet z:1 tag:1];
@@ -150,28 +156,32 @@ static CGRect screenRect;
         //create node for monster button objects
         [hudNode addChild:[MonsterButtonCache sharedMonsterButtonCache]];
         
-        // add scoreboard entry for points
-        pointsDisplayNode = [[ScoreboardEntryNode alloc] initWithfontFile:@"avenir24.fnt"];
-        pointsDisplayNode.position = ccp(10, screenSize.height - 50);
-        pointsDisplayNode.scoreStringFormat = @"Gold: %d";
-        [hudNode addChild:pointsDisplayNode z:MAX_INT-1];
+//        // add scoreboard entry for points
+//        pointsDisplayNode = [[ScoreboardEntryNode alloc] initWithfontFile:@"avenir24.fnt"];
+//        pointsDisplayNode.position = ccp(10, screenSize.height -60);
+//        pointsDisplayNode.scoreStringFormat = @"Gold: %d";
+//        [pointsDisplayNode setScale:1.5];
+//        [hudNode addChild:pointsDisplayNode z:MAX_INT-1];
         //include timer
         timer=[[TimerDisplayNode alloc] initWithfontFile:@"avenir24.fnt"];
-        timer.position = ccp(10, screenSize.height - 30);
+        timer.position = ccp(10, screenSize.height - 40);
+        [timer setScale:1.5];
         [hudNode addChild:timer z:MAX_INT-1];
         //include energy
         energy=[[EnergyDisplayNode alloc] initWithfontFile:@"avenir24.fnt"];
-        energy.position = ccp(10, screenSize.height - 40);
+        energy.position = ccp(10, screenSize.height - 20);
+        [energy setScale:1.5];
         [hudNode addChild:energy z:MAX_INT-1];
         // set up pause button
         CCSprite *pauseButton = [CCSprite spriteWithFile:@"pause.png"];
         CCSprite *pauseButtonPressed = [CCSprite spriteWithFile:@"pause-pressed.png"];
         pauseButtonMenuItem = [CCMenuItemSprite itemWithNormalSprite:pauseButton selectedSprite:pauseButtonPressed target:self selector:@selector(pauseButtonPressed)];
         pauseButtonMenu = [CCMenu menuWithItems:pauseButtonMenuItem, nil];
-        pauseButtonMenu.position = ccp(20, screenSize.height - 70);
+        pauseButtonMenu.position = ccp(20, screenSize.height - 80);
         [hudNode addChild:pauseButtonMenu];
-        
-        
+        sizeOfArray=5;
+        touchDeltas=[[NSMutableArray alloc] initWithCapacity:sizeOfArray];
+        count=0;
         [self scheduleUpdate];
         
         /**
@@ -202,11 +212,21 @@ static CGRect screenRect;
     [self resetGame];
     [self enableGamePlayButtons];
     [self showHUD];
+            barnUnderAttack.visible=FALSE;
     [[GameMechanics sharedGameMechanics] setGameState:GameStateRunning];
 }
 
 - (void)resetGame
 {
+    [planet reset];
+    if(game.difficulty ==EASY){
+        
+        self.radiusOfWorld=planet.contentSize.width*2;
+        centerOfRotation.position= ccp(screenSize.width/2, -self.radiusOfWorld/1.17);
+    }else{
+        self.radiusOfWorld=planet.contentSize.width*1.25;
+        centerOfRotation.position= ccp(screenSize.width/2, -self.radiusOfWorld/1.15);
+    }
     //reset all spawn rates and spawn cost for monsters
     [[GameMechanics sharedGameMechanics] resetGame];
     //reset game info for this level
@@ -225,20 +245,10 @@ static CGRect screenRect;
     [[MonsterButtonCache sharedMonsterButtonCache] reset];
     /* setup initial values */
     centerOfRotation.rotation=0;
-//    
-//    Orange *test1=[[Orange alloc]initWithMonsterPicture];
-//    Carrot *test2=[[Carrot alloc]initWithMonsterPicture];
-//    [centerOfRotation addChild:test1 z:MAX_INT];
-//    [centerOfRotation addChild:test2 z:MAX_INT];
-//    [test1 spawnAt:M_PI+1];
-//    [test2 spawnAt:M_PI];
-//    
-//    Orange *test12=[[Orange alloc]initWithMonsterPicture];
-//    Carrot *test22=[[Carrot alloc]initWithMonsterPicture];
-//    [centerOfRotation addChild:test12 z:MAX_INT];
-//    [centerOfRotation addChild:test22 z:MAX_INT];
-//    [test12 spawnAt:-M_PI];
-//    [test22 spawnAt:-M_PI+1];
+    shipFireToggle=FALSE;
+    shipFire=FALSE;
+    rotationVelocity=0;
+
 }
 
 
@@ -257,67 +267,80 @@ static CGRect screenRect;
     //update
     pointsDisplayNode.score=game.goldForLevel;
     [energy setEnergy:game.energy];
-    
-    if(game.difficulty==EASY){
-        if(centerOfRotation.rotation>=-200 && centerOfRotation.rotation<=200 ){
+    if([[MonsterCache sharedMonsterCache] playerBarnUnderAttack]){
+        barnUnderAttack.position= ccp(70, screenSize.height - 80);
+    }else{
+        barnUnderAttack.position= ccp(-MAX_INT, 0);
+    }
+           centerOfRotation.rotation=fmodf(centerOfRotation.rotation, 360);
+        if(game.difficulty==EASY && (centerOfRotation.rotation>=-135 && centerOfRotation.rotation<=120) ){
             //for rotation deceleration
-            if(rotationVelocity!=0.0){
-                centerOfRotation.rotation+=rotationVelocity;
-                if(rotationVelocity>0){
-                    rotationVelocity-=1;
-                    if(rotationVelocity<1){
-                        rotationVelocity=0;
-                    }
+            if(fabsf(rotationVelocity)>2){
+                if(deltaRotation<0){
+                    centerOfRotation.rotation-=3*rotationVelocity*delta;
+                    
                 }else{
-                    rotationVelocity+=1;
-                    if(rotationVelocity>-1){
-                        rotationVelocity=0;
-                    }
+                    centerOfRotation.rotation+=3*rotationVelocity*delta;
+                }
+                if(rotationVelocity>5){
+                    rotationVelocity=rotationVelocity-(rotationVelocity/15);
+                }else{
+                    rotationVelocity=rotationVelocity-(rotationVelocity/1.2);
                 }
             }
-        }
+        
     }else{
         //for rotation deceleration
-        if(rotationVelocity!=0.0){
-            centerOfRotation.rotation+=rotationVelocity;
-            if(rotationVelocity>0){
-                rotationVelocity-=1;
-                if(rotationVelocity<1){
-                    rotationVelocity=0;
-                }
+        if(fabsf(rotationVelocity)>2){
+            if(deltaRotation<0){
+                centerOfRotation.rotation-=2*rotationVelocity*delta;
+                
             }else{
-                rotationVelocity+=1;
-                if(rotationVelocity>-1){
-                    rotationVelocity=0;
-                }
+                centerOfRotation.rotation+=2*rotationVelocity*delta;
+            }
+            if(rotationVelocity>5){
+                rotationVelocity=rotationVelocity-(rotationVelocity/20);
+            }else{
+                rotationVelocity=rotationVelocity-(rotationVelocity/2);
             }
         }
-        
+
+        }
+    
         //if continously fire bullets from the ship
-        if(shipFire){
+        if(shipFire || shipFireToggle){
             [self.ship fireBullet];
         }
         
         //make rotation stay between -360 to 360
-        centerOfRotation.rotation=fmodf(centerOfRotation.rotation, 360);
+    if(game.difficulty==EASY){
+        if(centerOfRotation.rotation<-135){
+            centerOfRotation.rotation=-135;
+            deltaRotation=deltaRotation*-1;
+            rotationVelocity=rotationVelocity-(rotationVelocity/1.2);
+        }else if(centerOfRotation.rotation>120){
+            centerOfRotation.rotation=120;
+            deltaRotation=deltaRotation*-1;
+            rotationVelocity=rotationVelocity-(rotationVelocity/1.2);
+        }
+    }
         
         //if player barn's hitpoint is 0 or less OR time runs out go to lose screen
-//        if ([[MonsterCache sharedMonsterCache] playerBarn].hitPoints <= 0)
-//        {
-//            [self goToLoseScreen];
-//        }else if ([[MonsterCache sharedMonsterCache] enemyBarn].hitPoints <= 0 || (game.timeInSec <=0))
-//        {
-//            // if enemy barn's hit point is 0 or less go to win screen
-//            [self goToWinScreen];
-//        }
+        if ([[MonsterCache sharedMonsterCache] playerBarn].hitPoints <= 0)
+        {
+            [self goToLoseScreen];
+        }else if ([[MonsterCache sharedMonsterCache] enemyBarn].hitPoints <= 0 || (game.timeInSec <=0))
+        {
+            // if enemy barn's hit point is 0 or less go to win screen
+            [self goToWinScreen];
+        }
     }
-}
+
 
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     BOOL touchSpawnButtons=FALSE;
     //stop the rotation
-    rotationVelocity=0;
-    UITouch *touch = [[event allTouches] anyObject];
+    UITouch *touch = [touches anyObject];
     CGPoint touchPoint = [touch locationInView:[touch view]];
     previousTouch=touchPoint;
     //get the center of the world
@@ -328,8 +351,10 @@ static CGRect screenRect;
     //if the distance between the touch and the center of the circle is less than the radius then this is true
     if(ccpLengthSQ(ccpSub(circleCenter,touchPoint)) <(self.radiusOfWorld*self.radiusOfWorld))
     {
-//        ([centerOfRotation getChildByTag:1].contentSize.height/2*[centerOfRotation getChildByTag:1 ].contentSize.height/2)
+
+        rotationVelocity=0;
         touchingworld=true;
+        count=0;
     }else{
         for(int i =0; i<MAXSPAWNBUTTONS;i++){
             if(CGRectContainsPoint([[MonsterButtonCache sharedMonsterButtonCache] getChildByTag:i ].boundingBox, touchPoint)){
@@ -341,8 +366,16 @@ static CGRect screenRect;
         
         
         if(!touchSpawnButtons){
-            touchingworld=false;
-            shipFire=TRUE;
+            if(CGRectContainsPoint(self.ship.boundingBox,touchPoint)){
+                [self.ship fireBomb];
+//                if(shipFireToggle==TRUE){
+//                    shipFireToggle=FALSE;
+//                }else{
+//                shipFireToggle=TRUE;
+//                }
+            }else{
+                shipFire=TRUE;
+            }
             
         }
     }
@@ -352,7 +385,7 @@ static CGRect screenRect;
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     
     if(touchingworld){
-        UITouch *touch = [[event allTouches] anyObject];
+            UITouch *touch = [touches anyObject];
         currentTouch = [touch locationInView: [touch view]];
         
         //calculate the angle for the first(previous) touch location
@@ -368,22 +401,24 @@ static CGRect screenRect;
         deltaRotation=(currentAngle - previousAngle);
         //rotate the world
         if(game.difficulty==EASY){
-            if(centerOfRotation.rotation>=-200 && centerOfRotation.rotation<=200 ){
-                centerOfRotation.rotation+=2.15*deltaRotation;
+            if(centerOfRotation.rotation>=-135 && centerOfRotation.rotation<=120 ){
+                centerOfRotation.rotation+=1.5*deltaRotation;
             }
         }else{
-            centerOfRotation.rotation+=2.15*deltaRotation;
+            centerOfRotation.rotation+=1.5*deltaRotation;
         }
-        
+        touchDeltas[count]=[NSNumber numberWithFloat:deltaRotation];
+        count=(count+1)%sizeOfArray;
         previousTouch=currentTouch;
+        previousTime=event.timestamp;
     }
     
 }
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     
-    UITouch *touch = [[event allTouches] anyObject];
+       UITouch *touch = [touches anyObject];
     currentTouch = [touch locationInView: [touch view]];
-    
+    currentTime=event.timestamp;
     if(touchingworld){
         //calculate the angle for the first(previous) touch location
         CGPoint firstVector = ccpSub( previousTouch, centerOfRotation.position);
@@ -393,9 +428,17 @@ static CGRect screenRect;
         CGPoint vector = ccpSub(currentTouch, centerOfRotation.position);
         CGFloat rotateAngle = -ccpToAngle(vector);
         CGFloat currentAngle = CC_RADIANS_TO_DEGREES(rotateAngle);
-        //calculate the velocity for which the world will spin after the touch ends
-        rotationVelocity=3*(currentAngle - previousAngle);
         
+        //calculate the velocity for which the world will spin after the touch ends
+        deltaRotation=(currentAngle - previousAngle);
+        touchDeltas[count]=[NSNumber numberWithFloat:deltaRotation];
+        float sum=0;
+        for(int i=0;i<touchDeltas.count;i++){
+            sum+=[touchDeltas[i] floatValue];
+        }
+        deltaRotation=sum/touchDeltas.count;
+        deltaTime=currentTime-previousTime;
+        rotationVelocity=fabsf(deltaRotation/deltaTime);
         touchingworld = false;
     }else if(shipFire){
         shipFire=FALSE;
@@ -443,10 +486,18 @@ static CGRect screenRect;
     hudNode.visible = FALSE;
     self.ship.visible=FALSE;
     centerOfRotation.visible=FALSE;
+    barnUnderAttack.position= ccp(-MAX_INT, 0);
+    
 }
 
+-(void)hideInfo{
+        hudNode.visible = FALSE;
+        barnUnderAttack.position= ccp(-MAX_INT, 0);
+}
 
-
+-(void)showInfo{
+        hudNode.visible = TRUE;
+}
 /* Pausing the game functions */
 
 - (void)disableGameplayButtons
@@ -504,22 +555,22 @@ static CGRect screenRect;
 
 -(void) goToWinScreen{
     [self disableGameplayButtons];
-    [self hideHUD];
+    [self hideInfo];
     [game beatLevel];
     [game saveGame];
     WinScreen *winLayer=[[WinScreen alloc]initWithGame];
     [self addChild:winLayer z:MAX_INT];
-    [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
+        [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
 }
 
 -(void) goToLoseScreen{
     [self disableGameplayButtons];
-    [self hideHUD];
+    [self hideInfo];
     [game loseLevel];
     [game saveGame];
     LoseScreen *loseLayer=[[LoseScreen alloc]initWithGame];
     [self addChild:loseLayer z:MAX_INT];
-    [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
+        [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
 }
 
 -(void)goToStore{

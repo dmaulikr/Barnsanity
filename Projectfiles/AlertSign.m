@@ -1,18 +1,14 @@
 //
-//  World.m
-//  AngryVeggie
+//  AlertSign.m
+//  Veggy_V_Fruit
 //
-//  Created by Danny on 6/18/13.
+//  Created by Danny on 7/18/13.
+//  Copyright (c) 2013 MakeGamesWithUs Inc. All rights reserved.
 //
-//
 
-#import "World.h"
-#import "GamePlayLayer.h"
+#import "AlertSign.h"
 
-@implementation World
-
-
-//This is the method other classes should call to create an instance of Entity
+@implementation AlertSign
 +(id) createEntity
 {
 	id myEntity = [[self alloc] initWithEntityImage];
@@ -27,19 +23,14 @@
 -(id) initWithEntityImage
 {
 	// Loading the Entity's sprite using a file, is a ship for now but you can change this
-	if ((self = [super initWithFile:@"world.png"]))
+	if ((self = [super initWithFile:@"skipahead.png"]))
 	{
+        [self runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:2.0f blinks:1]]];
 
 	}
 	return self;
 }
 
--(void)reset{
-    if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
-        [self setScale:4];
-    }else{
-        [self setScale:3];
-    }
-}
+
 
 @end

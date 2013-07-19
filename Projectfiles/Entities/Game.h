@@ -16,7 +16,7 @@
 #define EASY 0
 @interface Game : NSObject
 
-@property (nonatomic, assign) NSInteger meters;
+
 
 @property (nonatomic, assign) NSInteger difficulty;
 //scores

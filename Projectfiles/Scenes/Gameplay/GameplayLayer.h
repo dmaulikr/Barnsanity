@@ -12,18 +12,22 @@
 #import "Ship.h"
 #import "TimerDisplayNode.h"
 #import "EnergyDisplayNode.h"
-
+#import "World.h"
+#import "AlertSign.h"
 
 @class TimerDisplayNode;
 @interface GameplayLayer : CCLayer <PauseScreenDelegate>
 {
     //for rotation of the sprites
     CGFloat rotationVelocity;
+    
     CGFloat deltaRotation;
+    
     bool touchingworld;
     CGPoint previousTouch, currentTouch;
     CGSize screenSize;
     bool shipFire;
+    BOOL shipFireToggle;
     CCNode *centerOfRotation;
     ScoreboardEntryNode *pointsDisplayNode;
     ScoreboardEntryNode *inAppCurrencyDisplayNode;
@@ -40,7 +44,19 @@
     
     /* used to trigger events, that need to run every X update cycles*/
     int updateCount;
+    NSTimeInterval previousTime;
+    NSTimeInterval currentTime;
+    NSTimeInterval deltaTime;
+    float degreePerTime;
     
+    NSMutableArray *touchDeltas;
+    int count;
+    int sizeOfArray;
+    
+    AlertSign *barnUnderAttack;
+    UITouch *touchWorld;
+    World *planet;
+
 }
 
 // defines if the main menu shall be displayed, or if the game shall start directly. By default the menu is displayed.

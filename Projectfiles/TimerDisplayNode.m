@@ -19,6 +19,7 @@
         self.stringFormat = @"Time: %02d:%02d";
         timeLabel = [CCLabelBMFont labelWithString:@"" fntFile:fontFile];
         timeLabel.anchorPoint = ccp(0,0.5);
+        [timeLabel setColor:ccc3(255, 255, 255)];
         [self addChild:timeLabel];
         [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
 

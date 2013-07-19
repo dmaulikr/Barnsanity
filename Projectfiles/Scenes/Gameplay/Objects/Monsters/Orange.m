@@ -106,9 +106,6 @@
         spawn=[CCSequence actions:spawning, nil];
         
         //get the radius of the world
-        radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
-        self.boundingZone=atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2;
-        self.hitZone=atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/4;
         blink = [CCBlink actionWithDuration:.4f blinks:2];
         
         //for the prototype
@@ -119,7 +116,7 @@
         CCSprite *delayTimerImage=[[CCSprite alloc] initWithFile:@"n2pY1.png"];
         [delayTimerImage setColor:ccc3(2, 2, 200)];
         delayTimer=[CCProgressTimer progressWithSprite:delayTimerImage];
-        [delayTimer setScale:.5];
+        [delayTimer setScale:.7];
         delayTimer.type =kCCProgressTimerTypeBar;
         delayTimer.midpoint = ccp(0,0.5);
         delayTimer.barChangeRate = ccp(1, 0);
@@ -128,7 +125,8 @@
         [self addChild:delayTimer];
                 [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
         
-        
+                self.radiusToSpawnDelta=20;
+        self.range=2;
     }
     
     return self;

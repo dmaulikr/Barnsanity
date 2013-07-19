@@ -12,4 +12,5 @@
 
 +(id) createEntity;
 -(id) initWithEntityImage;
+-(void)reset;
 @end

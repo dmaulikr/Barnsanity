@@ -33,6 +33,9 @@
 #import "Beet.h"
 #import "Asparagus.h"
 #import "Seed.h"
+#import "Walls.h"
+#import "Tree.h"
+#import "ScareCrow.h"
 
 #define ENEMY_MAX 300
 
@@ -78,11 +81,16 @@
         enemyMonsters= [[CCNode alloc] init];
         playerMonster =[[CCNode alloc] init];
         shipBullets = [[CCNode alloc] init];
+        wallObjects=[[CCNode alloc] init];
         seeds=[[CCNode alloc] init];
         [self addChild:enemyMonsters];
         [self addChild:playerMonster];
+        [self addChild:wallObjects];
         [self addChild:shipBullets];
         [self addChild:seeds];
+        
+        theBomb=[[Bomb alloc]initWithMonsterPicture];
+        [self addChild:theBomb];
         
         //create the dictionary for all monster units
         monster = [[NSMutableDictionary alloc] init];
@@ -96,8 +104,8 @@
         /* A batch node allows drawing a lot of different sprites with on single draw cycle. Therefore it is necessary,
          that all sprites are added as child nodes to the batch node and that all use a texture contained in the batch node texture. */
         
-//		CCSpriteBatchNode *enemyBatch = [CCSpriteBatchNode batchNodeWithTexture:frame.texture];
-//        CCSpriteBatchNode *playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
+        //		CCSpriteBatchNode *enemyBatch = [CCSpriteBatchNode batchNodeWithTexture:frame.texture];
+        //        CCSpriteBatchNode *playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
         
         CCNode *enemyBatch=[[CCNode alloc]init];
         CCNode *playerBatch=[[CCNode alloc]init];
@@ -107,17 +115,24 @@
         [playerMonster addChild:playerBatch];
         [monster setObject:playerBatch forKey:@"Orange"];
         
-//        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
-//        [playerMonster addChild:playerBatch];
-//        [monster setObject:playerBatch forKey:(id<NSCopying>)[Apple class]];
-//        
-//        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
-//        [playerMonster addChild:playerBatch];
-//        [monster setObject:playerBatch forKey:(id<NSCopying>)[Strawberry class]];
-//        
-//        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
-//        [playerMonster addChild:playerBatch];
-//        [monster setObject:playerBatch forKey:(id<NSCopying>)[Cherry class]];
+        CCNode *treeNode=[[CCNode alloc]init];
+        CCNode *crowNode=[[CCNode alloc]init];
+		[wallObjects addChild:treeNode];
+        [monster setObject:treeNode forKey:@"Tree"];
+        [wallObjects addChild:crowNode];
+        [monster setObject:crowNode forKey:@"ScareCrow"];
+        
+        //        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
+        //        [playerMonster addChild:playerBatch];
+        //        [monster setObject:playerBatch forKey:(id<NSCopying>)[Apple class]];
+        //
+        //        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
+        //        [playerMonster addChild:playerBatch];
+        //        [monster setObject:playerBatch forKey:(id<NSCopying>)[Strawberry class]];
+        //
+        //        playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
+        //        [playerMonster addChild:playerBatch];
+        //        [monster setObject:playerBatch forKey:(id<NSCopying>)[Cherry class]];
         
         monsterClass = [[NSMutableDictionary alloc] init];
         [monsterClass setObject:[Orange class] forKey:@"Orange"];
@@ -142,6 +157,8 @@
         [monsterClass setObject: [Beet class] forKey:@"Beet"];
         [monsterClass setObject: [Asparagus class]  forKey:@"Asparagus"];
         
+        [monsterClass setObject: [Tree class]  forKey:@"Tree"];
+        [monsterClass setObject: [ScareCrow class]  forKey:@"ScareCrow"];
         /**
          A Notification can be used to broadcast an information to all objects of a game, that are interested in it.
          Here we sign up for the 'GamePaused' and 'GameResumed' information, that is broadcasted by the GameMechanics class. Whenever the game pauses or resumes, we get informed and can react accordingly.
@@ -159,14 +176,19 @@
 -(void) reset{
     updateCount=0;
     self.enemyBarnUnderAttack=FALSE;
-//    CCSpriteBatchNode *playerBatch;
-//    CCSpriteBatchNode *enemyBatch;
+    self.playerBarnUnderAttack=FALSE;
+    //    CCSpriteBatchNode *playerBatch;
+    //    CCSpriteBatchNode *enemyBatch;
     CCNode *playerBatch;
     CCNode *enemyBatch;
+    CCNode *wallBatch;
     BasicPlayerMonster* player;
     BasicEnemyMonster* enemy;
     ShipBullets *bullet;
     Seed *seed;
+    Walls *wall;
+    
+    [theBomb reset];
     CCARRAY_FOREACH([playerMonster children], playerBatch){
         CCARRAY_FOREACH([playerBatch children], player){
             [player reset];
@@ -189,6 +211,13 @@
         [seed reset];
     }
     
+    CCARRAY_FOREACH([wallObjects children], wallBatch)
+	{
+        CCARRAY_FOREACH([wallBatch children], wall)
+        {
+            [wall reset];
+        }
+    }
 }
 
 - (void)gamePaused
@@ -197,8 +226,8 @@
     
     [self pauseSchedulerAndActions];
     
-//    CCSpriteBatchNode *enemyBatch;
-//    CCSpriteBatchNode *playerBatch;
+    //    CCSpriteBatchNode *enemyBatch;
+    //    CCSpriteBatchNode *playerBatch;
     CCNode *playerBatch;
     CCNode *enemyBatch;
     // checks the collision between enemy units and player units
@@ -226,8 +255,8 @@
     
     [self resumeSchedulerAndActions];
     
-//    CCSpriteBatchNode *enemyBatch;
-//    CCSpriteBatchNode *playerBatch;
+    //    CCSpriteBatchNode *enemyBatch;
+    //    CCSpriteBatchNode *playerBatch;
     CCNode *playerBatch;
     CCNode *enemyBatch;
     // checks the collision between enemy units and player units
@@ -253,9 +282,18 @@
 
 
 -(void)spawnBarn{
-    
-    [_enemyBarn constructAt:M_PI ];
-    [_playerBarn constructAt:0 ];
+    if([[GameMechanics sharedGameMechanics]game].difficulty ==EASY){
+        [_enemyBarn constructAt:5*M_PI_4 ];
+        [_playerBarn constructAt:fmodf(-M_PI_4+2*M_PI, 2*M_PI) ];
+    }else{
+        [_enemyBarn constructAt:M_PI ];
+        [_playerBarn constructAt:0 ];
+    }
+}
+-(void)createBomb{
+    if(!theBomb.visible){
+        [theBomb spawn];
+    }
 }
 
 -(void)createShipBullet{
@@ -301,18 +339,18 @@
      respawn or if we need to create a new one */
     BOOL foundAvailablePlayerToSpawn = FALSE;
     // if the enemiesOfType array exists, iterate over all already existing enemies of the provided type and check if one of them can be respawned
-
-        CCARRAY_FOREACH(seedsArray, seed)
+    
+    CCARRAY_FOREACH(seedsArray, seed)
+    {
+        // find the first free enemy and respawn it
+        if (seed.visible == NO)
         {
-            // find the first free enemy and respawn it
-            if (seed.visible == NO)
-            {
-                [seed spawnMonster:monsterName];
-               // remember, that we will not need to create a new enemy
-                foundAvailablePlayerToSpawn = TRUE;
-                break;
-            }
+            [seed spawnMonster:monsterName];
+            // remember, that we will not need to create a new enemy
+            foundAvailablePlayerToSpawn = TRUE;
+            break;
         }
+    }
     
     
     // if we haven't been able to find a enemy to respawn, we need to create one
@@ -349,6 +387,7 @@
         if (player.visible == NO)
         {
             [player spawnAt:angleOfLocation];
+            //            [playerOfType reorderChild:player z:(NSInteger)((2*player.radiusToSpawn)-player.radiusToSpawn)];
             // remember, that we will not need to create a new enemy
             foundAvailablePlayerToSpawn = TRUE;
             break;
@@ -360,8 +399,8 @@
     {
         // initialize an enemy of the provided class
         BasicPlayerMonster* player =  [(BasicPlayerMonster *) [[monsterClass objectForKey:PlayerTypeClass] alloc] initWithMonsterPicture];
-        [playerOfType addChild:player];
         [player spawnAt:angleOfLocation];
+        [playerOfType addChild:player];
     }
 }
 
@@ -397,28 +436,65 @@
     {
         // initialize an enemy of the provided class
         BasicEnemyMonster *enemy =  [(BasicEnemyMonster *) [[monsterClass objectForKey:enemyTypeClass] alloc] initWithMonsterPicture];
-        [enemiesOfType addChild:enemy];
         [enemy spawnAt:angleOfLocation];
+        [enemiesOfType addChild:enemy];
     }
 }
+
+-(void) spawnWall:(NSString*)wallType atAngle:(float) angleOfLocation
+{
+    /* the 'enemies' dictionary stores an array of available enemies for each enemy type.
+     We use the class of the enemy as key for the dictionary, to receive an array of all existing enimies of that type.
+     We use a CCArray since it has a better performance than an NSArray. */
+    //      CCSpriteBatchNode*
+    CCNode* wallOfType = [monster objectForKey:wallType];
+    Walls* wall;
+    
+    /* we try to reuse existing enimies, therefore we use this flag, to keep track if we found an enemy we can
+     respawn or if we need to create a new one */
+    BOOL foundAvailableEnemyToSpawn = FALSE;
+    
+    // if the enemiesOfType array exists, iterate over all already existing enemies of the provided type and check if one of them can be respawned
+    CCARRAY_FOREACH([wallOfType children], wall)
+    {
+        // find the first free enemy and respawn it
+        if (wall.visible == NO)
+        {
+            [wall spawnAt:angleOfLocation];
+            // remember, that we will not need to create a new enemy
+            foundAvailableEnemyToSpawn = TRUE;
+            break;
+        }
+    }
+    
+    
+    // if we haven't been able to find a enemy to respawn, we need to create one
+    if (!foundAvailableEnemyToSpawn)
+    {
+        // initialize an enemy of the provided class
+        Walls *wall =  [(Walls *) [[monsterClass objectForKey:wallType] alloc] initWithMonsterPicture];
+        [wall spawnAt:angleOfLocation];
+        [wallOfType addChild:wall];
+    }
+}
+
+-(BOOL)monsterNearBarn:(Barn *)defender andMonster:(Monster *)attacker{
+    if(//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
+       (attacker.hitZoneAngle1<=(defender.boundingZoneAngle1+3*defender.boundingZone) && attacker.hitZoneAngle1 >=(defender.boundingZoneAngle2-3*defender.boundingZone)) ||
+       //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
+       (attacker.hitZoneAngle2 <=(defender.boundingZoneAngle1+3*defender.boundingZone) && attacker.hitZoneAngle2 >=(defender.boundingZoneAngle2-3*defender.boundingZone))||
+       //if the first bounding angle is within the hit zone angles, checks if bounding angles is with the hit zone
+       ((defender.boundingZoneAngle1+3*defender.boundingZone)<=attacker.hitZoneAngle1 && (defender.boundingZoneAngle1+3*defender.boundingZone)>= attacker.hitZoneAngle2)||
+       ((defender.boundingZoneAngle2-3*defender.boundingZone)<=attacker.hitZoneAngle1 && (defender.boundingZoneAngle2-3*defender.boundingZone)>= attacker.hitZoneAngle2)){
+        
+        return TRUE;
+    }else{
+        return FALSE;
+    }
+}
+
 -(BOOL)collisionBetweenMonstersWithAngle:(Entity* )attacker andMonster:(Entity *)defender{
-//    float hitZoneAngle1;
-//    float hitZoneAngle2;
-//    float boundAngle1;
-//    float boundAngle2;
-//    if(attacker.moveDirection==left){
-//        hitZoneAngle1=attacker.angle;
-//        hitZoneAngle2=attacker.angle+attacker.hitZoneAngle;
-//        //if attaker is moving left then defender must be coming from the right
-//        boundAngle2=defender.angle-defender.boundingAngle;
-//        boundAngle1=defender.angle+defender.boundingAngle;
-//    }else{
-//        hitZoneAngle2=attacker.angle;
-//        hitZoneAngle1=attacker.angle+attacker.hitZoneAngle;
-//        //if attaker is moving right then defender must be coming from the left
-//        boundAngle1=defender.angle-defender.boundingAngle;
-//        boundAngle2=defender.angle+defender.boundingAngle;
-//    }
+    
     if(//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
        (attacker.hitZoneAngle1<=defender.boundingZoneAngle1 && attacker.hitZoneAngle1 >=defender.boundingZoneAngle2) ||
        //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
@@ -426,7 +502,7 @@
        //if the first bounding angle is within the hit zone angles, checks if bounding angles is with the hit zone
        (defender.boundingZoneAngle1<=attacker.hitZoneAngle1 && defender.boundingZoneAngle1>= attacker.hitZoneAngle2)||
        (defender.boundingZoneAngle2<=attacker.hitZoneAngle1 && defender.boundingZoneAngle2>= attacker.hitZoneAngle2)){
-
+        
         return TRUE;
     }else{
         return FALSE;
@@ -435,17 +511,81 @@
     
 }
 
+-(BOOL)collisionBullets:(ShipBullets* )attacker andMonster:(Entity *)defender{
+    
+    if((//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
+        (attacker.hitZoneAngle1<=defender.boundingZoneAngle1 && attacker.hitZoneAngle1 >=defender.boundingZoneAngle2) ||
+        //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
+        (attacker.hitZoneAngle2 <=defender.boundingZoneAngle1 && attacker.hitZoneAngle2 >=defender.boundingZoneAngle2)||
+        //if the first bounding angle is within the hit zone angles, checks if bounding angles is with the hit zone
+        (defender.boundingZoneAngle1<=attacker.hitZoneAngle1 && defender.boundingZoneAngle1>= attacker.hitZoneAngle2)||
+        (defender.boundingZoneAngle2<=attacker.hitZoneAngle1 && defender.boundingZoneAngle2>= attacker.hitZoneAngle2))
+       && attacker.distanceFromWorld-attacker.contentSize.height/7 <= [[GameMechanics sharedGameMechanics]gameScene].radiusOfWorld+defender.contentSize.height/7){
+        
+        return TRUE;
+    }else{
+        return FALSE;
+    }
+    
+    
+}
 
 -(void) checkForCollisions
 {
-//    CCSpriteBatchNode *enemyBatch;
-//    CCSpriteBatchNode *playerBatch;
+    //    CCSpriteBatchNode *enemyBatch;
+    //    CCSpriteBatchNode *playerBatch;
     CCNode *playerBatch;
     CCNode *enemyBatch;
+    CCNode *wallBatch;
     // checks the collision between enemy units and player units
 	BasicEnemyMonster* enemy;
     BasicPlayerMonster* player;
     ShipBullets *bullet;
+    Walls *wall;
+    BOOL monsterNearBarn=FALSE;
+    
+    //CHECK IF THE BOMB HIT
+    if(theBomb.visible && theBomb.readyToDamage){
+        CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
+        {
+            CCARRAY_FOREACH([enemyBatch children], enemy)
+            {
+                if(enemy.alive && !enemy.invincible){
+                    if ([self collisionBetweenMonstersWithAngle:theBomb andMonster:enemy]){
+                        [enemy gotHit:theBomb.damage];
+                    }
+                }
+            }
+        }
+        
+        CCARRAY_FOREACH([playerMonster children], playerBatch){
+            CCARRAY_FOREACH([playerBatch children], player){
+                if(player.alive && !player.invincible){
+                    if ([self collisionBetweenMonstersWithAngle:theBomb andMonster:player]){
+                        [player gotHit:theBomb.damage];
+                    }
+                }
+            }
+            
+        }
+        
+        CCARRAY_FOREACH([wallObjects children], wallBatch)
+        {
+            CCARRAY_FOREACH([wallBatch children], wall)
+            {
+                if(wall.visible && !wall.invincible){
+                    if ([self collisionBetweenMonstersWithAngle:player andMonster:wall]){
+                            [wall gotHit:theBomb.damage];
+                        }
+                    }
+                }
+                
+            }
+        
+        [theBomb gotHit];
+    }
+    
+    
     
     //COLLISIONS FOR ENEMY UNITS
     
@@ -458,29 +598,52 @@
             if (enemy.ableToAttack && enemy.alive && !enemy.attacking)
             {
                 enemy.attacked=FALSE;
-                CCARRAY_FOREACH([playerMonster children], playerBatch){
-                    CCARRAY_FOREACH([playerBatch children], player){
-                        //check if the enemy hitzone intersect players unit
-                        if(!player.invincible && player.alive && (!enemy.attacked||enemy.areaOfEffect)){
-                            
-                            if ([self collisionBetweenMonstersWithAngle:enemy andMonster:player])
-                            {
-                                
+                CCARRAY_FOREACH([wallObjects children], wallBatch)
+                {
+                    CCARRAY_FOREACH([wallBatch children], wall)
+                    {
+                        if(wall.visible && !wall.invincible){
+                            if ([self collisionBetweenMonstersWithAngle:enemy andMonster:wall]){
                                 //if the enemy is not attacking, then prompt the enemy unit to attack
                                 if (enemy.attacking == FALSE)
                                 {
                                     enemy.attacked=TRUE;
                                     [enemy attack];
-                                    [player gotHit:enemy.damage];
+                                    [wall gotHit:enemy.damage];
                                 }else if(enemy.attacking && enemy.areaOfEffect){
-                                    [player gotHit:enemy.areaOfEffectDamage];
+                                    [wall gotHit:enemy.areaOfEffectDamage];
                                 }
-                                
                             }
                         }
                         
                     }
-                    
+                }
+                
+                if(enemy.ableToAttack && (!enemy.attacked ||enemy.areaOfEffect)){
+                    CCARRAY_FOREACH([playerMonster children], playerBatch){
+                        CCARRAY_FOREACH([playerBatch children], player){
+                            //check if the enemy hitzone intersect players unit
+                            if(!player.invincible && player.alive && (!enemy.attacked||enemy.areaOfEffect)){
+                                
+                                if ([self collisionBetweenMonstersWithAngle:enemy andMonster:player])
+                                {
+                                    
+                                    //if the enemy is not attacking, then prompt the enemy unit to attack
+                                    if (enemy.attacking == FALSE)
+                                    {
+                                        enemy.attacked=TRUE;
+                                        [enemy attack];
+                                        [player gotHit:enemy.damage];
+                                    }else if(enemy.attacking && enemy.areaOfEffect){
+                                        [player gotHit:enemy.areaOfEffectDamage];
+                                    }
+                                    
+                                }
+                            }
+                            
+                        }
+                        
+                    }
                 }
                 
                 //if the enemy unit still havent attacked yet, check if they are colliding with the barn
@@ -500,7 +663,7 @@
                             }
                             
                         }
-                    
+                        
                     }
                 }
                 
@@ -511,17 +674,17 @@
                 }
                 
             }
-        
-        //if the enemy unit didnt attack this iteration then attacked will be false, so the enemy unit should move, else it did attack and should not move while battling
-
-    }
+            
+            //if the enemy unit didnt attack this iteration then attacked will be false, so the enemy unit should move, else it did attack and should not move while battling
+            
+        }
     }
     
     
     
     //COLLISION FOR PLAYER UNITS
     
-        self.enemyBarnUnderAttack=FALSE;
+    
     // iterate over all enemies (all child nodes of this enemy batch)
     CCARRAY_FOREACH([playerMonster children], playerBatch){
         CCARRAY_FOREACH([playerBatch children], player){
@@ -529,29 +692,53 @@
             if (player.ableToAttack && player.alive && !player.attacking)
             {
                 player.attacked=FALSE;
-                CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
+                
+                CCARRAY_FOREACH([wallObjects children], wallBatch)
                 {
-                    CCARRAY_FOREACH([enemyBatch children], enemy)
+                    CCARRAY_FOREACH([wallBatch children], wall)
                     {
-                        if(!enemy.invincible && enemy.alive && (!player.attacked || player.areaOfEffect)){
-                            if ([self collisionBetweenMonstersWithAngle:player andMonster:enemy]){
+                        if(wall.visible && !wall.invincible){
+                            if ([self collisionBetweenMonstersWithAngle:player andMonster:wall]){
                                 //if the enemy is not attacking, then prompt the enemy unit to attack
                                 if (player.attacking == FALSE)
                                 {
                                     player.attacked=TRUE;
                                     [player attack];
-                                    [enemy gotHit:player.damage];
+                                    [wall gotHit:player.damage];
                                 }else if(player.attacking && player.areaOfEffect){
-                                    [enemy gotHit:player.areaOfEffectDamage];
+                                    [wall gotHit:player.areaOfEffectDamage];
                                 }
-                                
-                                
                             }
                         }
+                        
                     }
-                    
                 }
-    
+                
+                if(player.ableToAttack && (!player.attacked || player.areaOfEffect)){
+                    CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
+                    {
+                        CCARRAY_FOREACH([enemyBatch children], enemy)
+                        {
+                            if(!enemy.invincible && enemy.alive && (!player.attacked || player.areaOfEffect)){
+                                if ([self collisionBetweenMonstersWithAngle:player andMonster:enemy]){
+                                    //if the enemy is not attacking, then prompt the enemy unit to attack
+                                    if (player.attacking == FALSE)
+                                    {
+                                        player.attacked=TRUE;
+                                        [player attack];
+                                        [enemy gotHit:player.damage];
+                                    }else if(player.attacking && player.areaOfEffect){
+                                        [enemy gotHit:player.areaOfEffectDamage];
+                                    }
+                                    
+                                    
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+                
                 
                 //if the player unit still havent attacked yet, check if they are colliding with the barn
                 if(player.ableToAttack && (!player.attacked || player.areaOfEffect)){
@@ -572,13 +759,14 @@
                         
                     }
                 }
+                
                 if(!player.attacked ){
                     player.move=TRUE;
                 }else{
                     player.move=FALSE;
                 }
             }
-
+            
         }
     }
     
@@ -586,14 +774,12 @@
     
     CCARRAY_FOREACH([shipBullets children], bullet){
         if (bullet.visible && !bullet.attacked) {
-            CGRect bulletBoundingBox= [bullet boundingBox];
             CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
             {
                 CCARRAY_FOREACH([enemyBatch children], enemy)
                 {
                     if(!enemy.invincible && enemy.alive && (!bullet.attacked || bullet.areaOfEffect)){
-                        CGRect enemyBoundingBox = [enemy boundingBox];
-                        if (CGRectIntersectsRect(enemyBoundingBox,bulletBoundingBox))
+                        if ([self collisionBullets:bullet andMonster:enemy])
                         {
                             if(!bullet.attacked){
                                 [enemy gotHit:bullet.damage];
@@ -613,40 +799,88 @@
     }
     
     
+    
+    //COLLISION WITH ENEMY BARN WITH PLAYER
     if(_enemyBarn.visible){
-    /*Collision Detection for Barns*/
-    CCARRAY_FOREACH([playerMonster children], playerBatch){
-        CCARRAY_FOREACH([playerBatch children], player){
-            if(player.alive && !_enemyBarn.attacking){
-                if ([self collisionBetweenMonstersWithAngle:self.enemyBarn andMonster:player])
-                {
-                    if(!_enemyBarn.attacking){
-                        [_enemyBarn attack];
-                        [player gotHit:_enemyBarn.damage];
+        /*Collision Detection for Barns*/
+        CCARRAY_FOREACH([playerMonster children], playerBatch){
+            CCARRAY_FOREACH([playerBatch children], player){
+                if(player.alive && !_enemyBarn.attacking){
+                    if ([self collisionBetweenMonstersWithAngle:self.enemyBarn andMonster:player])
+                    {
+                        if(!_enemyBarn.attacking){
+                            [_enemyBarn attack];
+                            [player gotHit:_enemyBarn.damage];
+                        }
                     }
                 }
             }
         }
-    }
     }
     
+    //COLLISION WITH PLAYER BARN WITH ENEMY
     if(_playerBarn.visible){
-    /*Collision Detection for Barns*/
-    CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
-    {
-        CCARRAY_FOREACH([enemyBatch children], enemy)
+        /*Collision Detection for Barns*/
+        CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
         {
-            if(enemy.alive && !_playerBarn.attacking){
-                if ([self collisionBetweenMonstersWithAngle:self.playerBarn andMonster:enemy])
-                {
-                    if(!_playerBarn.attacking){
-                        [_playerBarn attack];
-                        [enemy gotHit:_playerBarn.damage];
+            CCARRAY_FOREACH([enemyBatch children], enemy)
+            {
+                if(enemy.alive && !_playerBarn.attacking){
+                    if ([self collisionBetweenMonstersWithAngle:self.playerBarn andMonster:enemy])
+                    {
+                        if(!_playerBarn.attacking){
+                            [_playerBarn attack];
+                            [enemy gotHit:_playerBarn.damage];
+                        }
                     }
                 }
             }
         }
     }
+    
+    //check if enemy is approaching the player barn
+    if(self.playerBarn.visible){
+        monsterNearBarn=FALSE;
+        CCARRAY_FOREACH([enemyMonsters children], enemyBatch){
+            CCARRAY_FOREACH([enemyBatch children], enemy){
+                // only check for collisions if the enemy is visible
+                if (enemy.alive)
+                {
+                    if([self monsterNearBarn:self.playerBarn andMonster:enemy]){
+                        monsterNearBarn=TRUE;
+                        break;
+                    }
+                }
+            }
+        }
+        if(monsterNearBarn){
+            self.playerBarnUnderAttack=TRUE;
+        }else{
+            self.playerBarnUnderAttack=FALSE;
+        }
+    }
+    
+    //check if player is approaching the enemy barn
+    if(self.enemyBarn.visible){
+        monsterNearBarn=FALSE;
+        CCARRAY_FOREACH([playerMonster children], playerBatch){
+            CCARRAY_FOREACH([playerBatch children], player){
+                // only check for collisions if the enemy is visible
+                if (player.alive)
+                {
+                    if([self monsterNearBarn:self.enemyBarn andMonster:player]){
+                        monsterNearBarn=TRUE;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        if(monsterNearBarn){
+            self.enemyBarnUnderAttack=TRUE;
+        }else{
+            self.enemyBarnUnderAttack=FALSE;
+        }
     }
     
 }
@@ -655,7 +889,7 @@
 -(void) update:(ccTime)delta
 {
     // only execute the block, if the game is in 'running' mode
-    if ([[GameMechanics sharedGameMechanics] gameState] == GameStateRunning)
+    if ([[GameMechanics sharedGameMechanics] gameState] == GameStateRunning )
     {
         updateCount++;
         
@@ -670,15 +904,20 @@
             if([[GameMechanics sharedGameMechanics]game].timeInSec<=[[GameMechanics sharedGameMechanics]game].timeForCrazyMode){
                 spawnFrequency=spawnFrequency/2;
             }
+            
+            if([[GameMechanics sharedGameMechanics]game].difficulty==HARD){
+                spawnFrequency=spawnFrequency/1.5;
+            }
+            
             if (updateCount % spawnFrequency == 0)
             {
                 if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
-                if(self.enemyBarnUnderAttack){
-                    [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI];
-                }else{
-                    
-                    [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI_2+CCRANDOM_0_1()*M_PI_2];
-                }
+                    if(self.enemyBarnUnderAttack){
+                        [self spawnEnemyOfType:monsterTypeClass atAngle:(5*M_PI_4-self.enemyBarn.boundingZone/2)];
+                    }else{
+                        
+                        [self spawnEnemyOfType:monsterTypeClass atAngle:(M_PI_2+(CCRANDOM_0_1()*2.5*M_PI_4 ))];
+                    }
                 }else{
                     if(self.enemyBarnUnderAttack){
                         [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI+(M_PI/16)-CCRANDOM_0_1()*(M_PI/8)];
@@ -688,6 +927,33 @@
                     }
                 }
             }
+        }
+        
+        
+        if (rand() %(9000) == 7777){
+
+                if(CCRANDOM_0_1() <=.2){
+                    if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
+                        [self spawnWall:@"Tree" atAngle:M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4];
+                    }else{
+                        if(CCRANDOM_0_1() >=.5){
+                            [self spawnWall:@"Tree" atAngle:M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4/2];
+                        }else{
+                            [self spawnWall:@"Tree" atAngle:3*M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4/2];
+                        }
+                    }
+                }else{
+                if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
+                    [self spawnWall:@"ScareCrow" atAngle:M_PI_2+CCRANDOM_MINUS1_1()*M_PI_2];
+                }else{
+                    if(CCRANDOM_0_1() >=.5){
+                        [self spawnWall:@"ScareCrow" atAngle:M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4];
+                    }else{
+                        [self spawnWall:@"ScareCrow" atAngle:3*M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4];
+                    }
+                }
+            }
+        
         }
         
         

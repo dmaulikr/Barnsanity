@@ -25,6 +25,14 @@
 		30C0F53B178DEA06009F40EF /* WinScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0F53A178DEA06009F40EF /* WinScreen.m */; };
 		30C0F53E178DEA12009F40EF /* LoseScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0F53D178DEA12009F40EF /* LoseScreen.m */; };
 		30C0F546178E1E12009F40EF /* EquipScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0F545178E1E12009F40EF /* EquipScreen.m */; };
+		30C0FBAA17987AE900C3FDFF /* AlertSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0FBA917987AE800C3FDFF /* AlertSign.m */; };
+		30C0FBAE17988B3200C3FDFF /* Walls.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0FBAD17988B3200C3FDFF /* Walls.m */; };
+		30C0FBB117988DF100C3FDFF /* Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0FBB017988DF000C3FDFF /* Tree.m */; };
+		30C0FBB417988E0E00C3FDFF /* ScareCrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0FBB317988E0E00C3FDFF /* ScareCrow.m */; };
+		30C0FBB617988F7700C3FDFF /* palmtree.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C0FBB517988F7700C3FDFF /* palmtree.png */; };
+		30C0FBB817988FAB00C3FDFF /* mailbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C0FBB717988FAB00C3FDFF /* mailbox.png */; };
+		30C0FBBB1798D7E500C3FDFF /* Bomb.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0FBBA1798D7E400C3FDFF /* Bomb.m */; };
+		30C0FBBD1798D98600C3FDFF /* monster4.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C0FBBC1798D98600C3FDFF /* monster4.png */; };
 		30C2D6761784B1BA006D2634 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C2D6751784B1BA006D2634 /* Monster.m */; };
 		30C2D6791784B1FC006D2634 /* BasicPlayerMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C2D6781784B1FC006D2634 /* BasicPlayerMonster.m */; };
 		30C2D67C1784B237006D2634 /* Orange.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C2D67B1784B237006D2634 /* Orange.m */; };
@@ -370,6 +378,19 @@
 		30C0F53D178DEA12009F40EF /* LoseScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoseScreen.m; sourceTree = "<group>"; };
 		30C0F544178E1E12009F40EF /* EquipScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquipScreen.h; sourceTree = "<group>"; };
 		30C0F545178E1E12009F40EF /* EquipScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquipScreen.m; sourceTree = "<group>"; };
+		30C0FBA817987AE800C3FDFF /* AlertSign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertSign.h; sourceTree = "<group>"; };
+		30C0FBA917987AE800C3FDFF /* AlertSign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertSign.m; sourceTree = "<group>"; };
+		30C0FBAC17988B3200C3FDFF /* Walls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Walls.h; sourceTree = "<group>"; };
+		30C0FBAD17988B3200C3FDFF /* Walls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Walls.m; sourceTree = "<group>"; };
+		30C0FBAF17988DF000C3FDFF /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tree.h; sourceTree = "<group>"; };
+		30C0FBB017988DF000C3FDFF /* Tree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tree.m; sourceTree = "<group>"; };
+		30C0FBB217988E0E00C3FDFF /* ScareCrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScareCrow.h; sourceTree = "<group>"; };
+		30C0FBB317988E0E00C3FDFF /* ScareCrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScareCrow.m; sourceTree = "<group>"; };
+		30C0FBB517988F7700C3FDFF /* palmtree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = palmtree.png; sourceTree = "<group>"; };
+		30C0FBB717988FAB00C3FDFF /* mailbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mailbox.png; sourceTree = "<group>"; };
+		30C0FBB91798D7E400C3FDFF /* Bomb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bomb.h; sourceTree = "<group>"; };
+		30C0FBBA1798D7E400C3FDFF /* Bomb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bomb.m; sourceTree = "<group>"; };
+		30C0FBBC1798D98600C3FDFF /* monster4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster4.png; sourceTree = "<group>"; };
 		30C2D6741784B1BA006D2634 /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Monster.h; sourceTree = "<group>"; };
 		30C2D6751784B1BA006D2634 /* Monster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Monster.m; sourceTree = "<group>"; };
 		30C2D6771784B1FC006D2634 /* BasicPlayerMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicPlayerMonster.h; sourceTree = "<group>"; };
@@ -852,6 +873,19 @@
 			name = EquipScreen;
 			sourceTree = "<group>";
 		};
+		30C0FBAB17988B1B00C3FDFF /* Walls */ = {
+			isa = PBXGroup;
+			children = (
+				30C0FBAC17988B3200C3FDFF /* Walls.h */,
+				30C0FBAD17988B3200C3FDFF /* Walls.m */,
+				30C0FBAF17988DF000C3FDFF /* Tree.h */,
+				30C0FBB017988DF000C3FDFF /* Tree.m */,
+				30C0FBB217988E0E00C3FDFF /* ScareCrow.h */,
+				30C0FBB317988E0E00C3FDFF /* ScareCrow.m */,
+			);
+			name = Walls;
+			sourceTree = "<group>";
+		};
 		30C2D6721784B17C006D2634 /* Enemy */ = {
 			isa = PBXGroup;
 			children = (
@@ -922,6 +956,7 @@
 		30C2D6841784B2C8006D2634 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				30C0FBAB17988B1B00C3FDFF /* Walls */,
 				30C2D6A21784B4C3006D2634 /* ShipBullets.h */,
 				30C2D6A31784B4C3006D2634 /* ShipBullets.m */,
 				30C2D6A51784B4D1006D2634 /* Ship.h */,
@@ -932,6 +967,10 @@
 				30C2D6AC1784B4E7006D2634 /* World.m */,
 				3057A288179637DE00448A68 /* Seed.h */,
 				3057A289179637DE00448A68 /* Seed.m */,
+				30C0FBA817987AE800C3FDFF /* AlertSign.h */,
+				30C0FBA917987AE800C3FDFF /* AlertSign.m */,
+				30C0FBB91798D7E400C3FDFF /* Bomb.h */,
+				30C0FBBA1798D7E400C3FDFF /* Bomb.m */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -1367,6 +1406,7 @@
 				62B7412A17631F6100D9BD34 /* skipahead.png */,
 				62B7412B17631F6100D9BD34 /* skipahead-pressed-hd.png */,
 				62B7412C17631F6100D9BD34 /* skipahead-hd.png */,
+				30C0FBBC1798D98600C3FDFF /* monster4.png */,
 				62F018E81745A8EE00BAF979 /* Objects */,
 				62F018CF1745749400BAF979 /* HUD */,
 				62F018A617445BEC00BAF979 /* bg1-hd.png */,
@@ -1556,6 +1596,8 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				30C0FBB717988FAB00C3FDFF /* mailbox.png */,
+				30C0FBB517988F7700C3FDFF /* palmtree.png */,
 				3057A28B1796388500448A68 /* cat1.png */,
 				30BC96431793698200C01381 /* detail.jpg */,
 				30BC96411793655500C01381 /* sign.png */,
@@ -1873,6 +1915,9 @@
 				30BC96421793655500C01381 /* sign.png in Resources */,
 				30BC96441793698200C01381 /* detail.jpg in Resources */,
 				3057A28C1796388500448A68 /* cat1.png in Resources */,
+				30C0FBB617988F7700C3FDFF /* palmtree.png in Resources */,
+				30C0FBB817988FAB00C3FDFF /* mailbox.png in Resources */,
+				30C0FBBD1798D98600C3FDFF /* monster4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1966,6 +2011,11 @@
 				30BC96481793BA8E00C01381 /* StatisticScreen.m in Sources */,
 				30827EE61795B6CB00BE3868 /* Entity.m in Sources */,
 				3057A28A179637DE00448A68 /* Seed.m in Sources */,
+				30C0FBAA17987AE900C3FDFF /* AlertSign.m in Sources */,
+				30C0FBAE17988B3200C3FDFF /* Walls.m in Sources */,
+				30C0FBB117988DF100C3FDFF /* Tree.m in Sources */,
+				30C0FBB417988E0E00C3FDFF /* ScareCrow.m in Sources */,
+				30C0FBBB1798D7E500C3FDFF /* Bomb.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

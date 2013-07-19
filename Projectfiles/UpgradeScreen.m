@@ -67,15 +67,14 @@
             
         }];
         upgrade.color = DEFAULT_FONT_COLOR;
-        [upgrade setScale:.5];
-        upgrade.position=ccp(210,0);
+        upgrade.position=ccp(200,0);
         
         //add a store button to make purchases
         back= [CCMenuItemFont itemWithString:@"Back" block:^(id sender) {
             [self backButtonPressed];
         }];
         back.color = DEFAULT_FONT_COLOR;
-        [back setScale:.5];
+
         back.position=ccp(-200,0);
         
         //add all buttons to the menu
@@ -166,8 +165,10 @@
 
 
 -(void) upgradeButtonPressed{
-    if([currentPage upgradeSelectedItem]){
-        
+    if(![currentPage upgradeSelectedItem]){
+        NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:1];
+        temp[0]=[NSString stringWithFormat:@"Not Enough Gold!"];
+        [desciption setDescription:temp];
     }
     [goldDisplay setScore:[[GameMechanics sharedGameMechanics]game].gold];
 }
@@ -176,7 +177,7 @@
     selectedItem=item;
     NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
     
-    temp[0]=[NSString stringWithFormat:@"Level %d %@", selectedItem.level, selectedItem.nameOfItem];
+    temp[0]=[NSString stringWithFormat:@"Level %d %@", selectedItem.level+1, selectedItem.nameOfItem];
     temp[1]=[NSString stringWithFormat:@"Cost: %d", selectedItem.price];
     temp[2]=[NSString stringWithFormat:@"Requirment: level %d %@", selectedItem.requiredLevel, selectedItem.unlockingItem];
     temp[3]=[NSString stringWithFormat:@"%@", selectedItem.levelDescription];

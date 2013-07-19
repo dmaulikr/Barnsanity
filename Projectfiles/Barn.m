@@ -23,7 +23,6 @@
 	{
         
         //for the specific image
-        [self setScale:.5];
         
         //set which side is this unit
         self.enemy=enemySide;
@@ -57,9 +56,6 @@
         healthBar.midpoint = ccp(0,0.5);
         healthBar.barChangeRate = ccp(1, 0);
         
-            radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
-        self.boundingZone=1.7*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2));
-        self.hitZone=2*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2));
         
         blink = [CCBlink actionWithDuration:.4f blinks:2];
         
@@ -72,10 +68,14 @@
 
 -(void)constructAt:(float) angle{
     
+    
     //resume update and set up stats
     [self reset];
     [self resumeSchedulerAndActions];
-    self.angle=angle;
+    radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
+    self.boundingZone=2.5*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2));
+    self.hitZone=3*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2));
+    self.angle=fmodf(angle+2*M_PI, 2*M_PI);
     //set up spawn location
     //get the radius of the world
     //calculate the x and y position based on the angle given
@@ -124,7 +124,7 @@
         [self stopAllActions];
         //turn invisible
         self.visible=FALSE;
-                self.position = ccp(-MAX_INT, 0);
+        self.position = ccp(-MAX_INT, 0);
         
         if(self.enemy){
             [[GameMechanics sharedGameMechanics] game].goldForLevel+=reward+[[GameMechanics sharedGameMechanics] game].goldBonusPerMonster;

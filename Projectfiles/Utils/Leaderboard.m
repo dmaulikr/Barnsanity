@@ -64,9 +64,9 @@
     Game *game = [[GameMechanics sharedGameMechanics] game];
     
     // check if the current distance is better then the highest one
-    if (game.meters > returnValue)
+    if (game.gold > returnValue)
     {
-        returnValue = game.meters;
+        returnValue = game.gold;
     }
     
     return returnValue;

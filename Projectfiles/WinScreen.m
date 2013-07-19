@@ -8,6 +8,7 @@
 
 #import "WinScreen.h"
 #import "GameMechanics.h"
+#import "MonsterCache.h"
 #import "STYLES.h"
 
 
@@ -25,7 +26,7 @@
         
         // add a background image node
         backgroundNode = [[CCBackgroundColorNode alloc] init];
-        backgroundNode.backgroundColor = ccc4(255, 255, 255, 255);
+        backgroundNode.backgroundColor = ccc4(150, 150, 150, 150);
         backgroundNode.contentSize = self.contentSize;
         [self addChild:backgroundNode];
         
@@ -41,8 +42,57 @@
         storeItemLabel.position = ccp(0, 0.5 * self.contentSize.height - 25);
         [self addChild:storeItemLabel];
         
+        NSString *scores=[NSString stringWithFormat:@"Total Score: %d",    [[GameMechanics sharedGameMechanics]game].score ];
+        CCLabelTTF *score = [CCLabelTTF labelWithString:scores
+                                                        fontName:DEFAULT_FONT
+                                                        fontSize:16];
+        score.color = DEFAULT_FONT_COLOR;
+        score.position = ccp(-self.contentSize.width/2+80, 0.5 * self.contentSize.height - 45);
+        [self addChild:score];
         
+        NSString *moreKilled;
+        if( [[GameMechanics sharedGameMechanics]game].enemiesMonsterKilled> [[GameMechanics sharedGameMechanics]game].playerMonsterKilled){
+            
+             moreKilled=[NSString stringWithFormat:@"More Kill Than Death: Yes"];
+        }else{
+            moreKilled=[NSString stringWithFormat:@"More Kill Than Death: No"];
+        }
+        CCLabelTTF *moreKillThanDeath = [CCLabelTTF labelWithString:moreKilled
+                                                           fontName:DEFAULT_FONT
+                                                           fontSize:16];
+        moreKillThanDeath.color = DEFAULT_FONT_COLOR;
+        moreKillThanDeath.position = ccp(-self.contentSize.width/2+80, 0.5 * self.contentSize.height - 65);
+        [self addChild:moreKillThanDeath];
+        NSString *barn;
+        if([[MonsterCache sharedMonsterCache] enemyBarn].hitPoints <= 0){
+            barn=[NSString stringWithFormat:@"Enemy Barn Destroyed: Yes"];
+        }else{
+            barn=[NSString stringWithFormat:@"Enemy Barn Destroyed: No"];
+        }
         
+        CCLabelTTF *barnDestroyed = [CCLabelTTF labelWithString:barn
+                                                       fontName:DEFAULT_FONT
+                                                       fontSize:16];
+        barnDestroyed.color = DEFAULT_FONT_COLOR;
+        barnDestroyed.position= ccp(-self.contentSize.width/2+80, 0.5 * self.contentSize.height - 85);
+        [self addChild:barnDestroyed];
+        
+        NSString *goldForLevel=[NSString stringWithFormat:@"Gold Earned: %d",[[GameMechanics sharedGameMechanics]game].goldForLevel];
+
+        CCLabelTTF *goldEarned = [CCLabelTTF labelWithString:goldForLevel
+                                                        fontName:DEFAULT_FONT
+                                                        fontSize:16];
+        goldEarned.color = DEFAULT_FONT_COLOR;
+        goldEarned.position = ccp(-self.contentSize.width/2+80, 0.5 * self.contentSize.height - 105);
+        [self addChild:goldEarned];
+        
+                NSString *total=[NSString stringWithFormat:@"Total Gold: %d",[[GameMechanics sharedGameMechanics]game].gold];
+        CCLabelTTF *totalGold = [CCLabelTTF labelWithString:total
+                                                        fontName:DEFAULT_FONT
+                                                        fontSize:16];
+        totalGold.color = DEFAULT_FONT_COLOR;
+        totalGold.position = ccp(-self.contentSize.width/2+80, 0.5 * self.contentSize.height - 125);
+        [self addChild:totalGold];
         
         
         
@@ -79,6 +129,7 @@
     [self removeFromParentAndCleanup:TRUE];
     //go to level selection layer
     [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
+
 }
 
 

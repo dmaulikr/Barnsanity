@@ -8,7 +8,7 @@
 
 #import "CCNode.h"
 #import "Barn.h"
-
+#import "Bomb.h"
 /**
  This class stores all enemies. This is necessary, to be able to draw all enemies on one BatchNode.
  Drawing all enemies on one BatchNode is important for performance reasons.
@@ -16,10 +16,11 @@
 
 @interface MonsterCache : CCNode
 {
-    
+    Bomb *theBomb;
     //batch for the different kind of monster units
     CCNode *enemyMonsters;
     CCNode *playerMonster;
+    CCNode *wallObjects;
     CCNode *shipBullets;
     CCNode *seeds;
     //a dictionary to hold the array of different monster units
@@ -31,6 +32,7 @@
 @property (nonatomic, weak) Barn *enemyBarn;
 @property (nonatomic, weak) Barn *playerBarn;
 @property (nonatomic, assign) BOOL  *enemyBarnUnderAttack;
+@property (nonatomic, assign) BOOL  *playerBarnUnderAttack;
 
 + (id)sharedMonsterCache;
 
@@ -45,5 +47,8 @@
 
 //create seed
 -(void)createSeed:(NSString*)monsterName;
+
+//create bomb
+-(void)createBomb;
 
 @end

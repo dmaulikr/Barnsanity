@@ -16,7 +16,7 @@
     // Loading the Entity's sprite using a file, is a ship for now but you can change this
     if ((self = [super initWithFile:@"cat3-topdown.png"]))
     {
-        [self setScale:.25];
+        [self setScale:.5];
         
         //include updates
         [self scheduleUpdate];
@@ -24,6 +24,13 @@
     }
     return self;
     
+}
+
+-(void)fireBomb{
+    if(!bombUsed){
+        [[MonsterCache sharedMonsterCache] createBomb];
+        bombUsed=TRUE;
+    }
 }
 
 -(void)fireBullet{
@@ -46,6 +53,7 @@
 }
 
 -(void)reset{
+    bombUsed=FALSE;
     int level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship Firerate"] integerValue];
     fireDelayInitial=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo]objectForKey:@"Ship Firerate"]   objectAtIndex:level] integerValue];
 }

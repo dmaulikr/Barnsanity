@@ -18,7 +18,7 @@
     if (self)
     {
         self.nameOfMonster=monsterName;
-        [self setScale:.25];
+        [self setScale:.7];
         CCSprite *delayTimerImage=[[CCSprite alloc] initWithFile:fileName];
         [delayTimerImage setColor:ccc3(2, 2, 200)];
         delayTimer=[CCProgressTimer progressWithSprite:delayTimerImage];
@@ -28,13 +28,13 @@
         [self addChild:delayTimer];
         [delayTimer setPosition:ccp(self.position.x+self.contentSize.width/2, self.position.y+self.contentSize.height/2)];
         //include updates
-        [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
+        [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
         [self pauseSchedulerAndActions];
         
         scoreLabel = [CCLabelBMFont labelWithString:@"" fntFile:@"avenir24.fnt"];
         scoreLabel.anchorPoint = ccp(0,0.5);
         
-        [scoreLabel setScale:5.0f];
+        [scoreLabel setScale:3.0f];
         [scoreLabel setPosition:ccp(self.position.x+self.contentSize.width/4, self.position.y+self.contentSize.height/2)];
         [self addChild:scoreLabel];
         fireDelayInitial=1;
@@ -53,7 +53,7 @@
                 fireDelayTimer=fireDelayInitial;
                 delayTimer.percentage=100;
                 float newPercentage=((float)(fireDelayTimer-1)/(float)fireDelayInitial)*100;
-                [delayTimer runAction:[CCProgressFromTo actionWithDuration:1.0f from:delayTimer.percentage to:newPercentage]];
+                [delayTimer runAction:[CCProgressFromTo actionWithDuration:.5f from:delayTimer.percentage to:newPercentage]];
                 [self resumeSchedulerAndActions];
             }
         }

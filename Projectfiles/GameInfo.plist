@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Bomb Damage</key>
+	<array>
+		<integer>250</integer>
+	</array>
 	<key>Watermelon</key>
 	<array>
 		<dict>
@@ -681,15 +685,15 @@
 	<array>
 		<dict>
 			<key>Health</key>
-			<integer>150</integer>
+			<integer>200</integer>
 			<key>Energy Cost</key>
-			<integer>10</integer>
+			<integer>13</integer>
 			<key>Move Speed</key>
 			<integer>2</integer>
 			<key>Delay</key>
 			<integer>2</integer>
 			<key>Damage</key>
-			<integer>10</integer>
+			<integer>5</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
@@ -763,14 +767,14 @@
 	</array>
 	<key>Ship Firerate</key>
 	<array>
-		<integer>30</integer>
+		<integer>25</integer>
 		<integer>25</integer>
 		<integer>20</integer>
 		<integer>15</integer>
 	</array>
 	<key>Ship Damage</key>
 	<array>
-		<integer>90</integer>
+		<integer>7</integer>
 		<integer>7</integer>
 		<integer>10</integer>
 		<integer>15</integer>
@@ -779,7 +783,7 @@
 	</array>
 	<key>Energy Regeneration</key>
 	<array>
-		<integer>2</integer>
+		<integer>1</integer>
 		<integer>6</integer>
 		<integer>15</integer>
 		<integer>30</integer>
@@ -836,11 +840,11 @@
 		<key>Carrot</key>
 		<dict>
 			<key>Health</key>
-			<integer>200</integer>
+			<integer>250</integer>
 			<key>Move Speed</key>
 			<integer>2</integer>
 			<key>Damage</key>
-			<integer>15</integer>
+			<integer>8</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
@@ -1007,6 +1011,10 @@
 	<key>Game Levels</key>
 	<array>
 		<dict>
+			<key>ScareCrow</key>
+			<integer>50</integer>
+			<key>Tree</key>
+			<integer>150</integer>
 			<key>Barn</key>
 			<dict>
 				<key>Armor</key>
@@ -1014,10 +1022,10 @@
 				<key>Health</key>
 				<integer>600</integer>
 				<key>Damage</key>
-				<integer>40</integer>
+				<integer>10</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>600</integer>
+			<integer>700</integer>
 			<key>Broccoli</key>
 			<integer>0</integer>
 			<key>Corn</key>

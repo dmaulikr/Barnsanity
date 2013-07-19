@@ -2,6 +2,81 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Bomb Damage</key>
+	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string></string>
+			<key>Required Item</key>
+			<string></string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+	</array>
 	<key>Gold Bonus</key>
 	<array>
 		<dict>

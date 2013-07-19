@@ -15,7 +15,9 @@
     if (self)
     {
         CCSprite *background=[[CCSprite alloc]initWithFile:fileName];
+        [background setScale:2];
         [self addChild:background];
+        
         
         labels=[[NSMutableArray alloc]initWithCapacity:numRows];
         
@@ -23,9 +25,9 @@
             CCLabelBMFont *temp = [CCLabelBMFont labelWithString:@"" fntFile:fontfile];
             temp.anchorPoint = ccp(0,0.5);
             float deltay=(((numRows-i)/(float)numRows)*background.contentSize.height/2);
-            temp.position=ccp(background.position.x-+background.contentSize.width/2+5,
-                              background.position.y+deltay-15);
-            [temp setScale:1.5];
+            temp.position=ccp(background.position.x-background.contentSize.width,
+                              background.position.y+deltay*2-18);
+            [temp setScale:2];
             [self addChild:temp z:1];
             labels[i]=temp;
         }

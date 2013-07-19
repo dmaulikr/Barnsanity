@@ -9,7 +9,7 @@
 #import "SelectLevelScreen.h"
 #import "GameMechanics.h"
 #import "STYLES.h"
-
+#import "ScoreboardEntryNode.h"
 
 
 
@@ -42,6 +42,23 @@
         storeItemLabel.color = DEFAULT_FONT_COLOR;
         storeItemLabel.position = ccp(0, 0.5 * self.contentSize.height - 25);
         [self addChild:storeItemLabel];
+        
+        
+        // add scoreboard entry for points
+        ScoreboardEntryNode *goldDisplay = [[ScoreboardEntryNode alloc] initWithfontFile:@"avenir24.fnt"];
+        goldDisplay.position= ccp( 0.25 * self.contentSize.width - 25, 0.5 * self.contentSize.height - 25);
+        goldDisplay.scoreStringFormat = @"Gold: %d";
+        [self addChild:goldDisplay];
+        [goldDisplay setScore:[[GameMechanics sharedGameMechanics]game].gold];
+        
+        // add scoreboard entry for points
+        ScoreboardEntryNode *scoreDisplay = [[ScoreboardEntryNode alloc] initWithfontFile:@"avenir24.fnt"];
+        scoreDisplay.position=ccp(-0.25 * self.contentSize.width - 25, 0.5 * self.contentSize.height - 25);
+        scoreDisplay.scoreStringFormat = @"Score: %d";
+        [self addChild:scoreDisplay];
+        [scoreDisplay setScore:[[GameMechanics sharedGameMechanics]game].score];
+        
+        
         
         // add a play button to play the level
         playLevel= [CCMenuItemFont itemWithString:@"Play" block:^(id sender) {
@@ -80,7 +97,7 @@
         
         //shows to the player which level they are selecting
         level = [CCLabelBMFont labelWithString:@"" fntFile:@"avenir24.fnt"];
-        level.string=[NSString stringWithFormat:@"%d", levelToPlay];
+        level.string=[NSString stringWithFormat:@"%d", levelToPlay+1];
         level.anchorPoint=ccp(0,0.5);
         level.position = ccp(-5, 0);
         [level setScale:3];
@@ -157,7 +174,7 @@
     if(levelToPlay >0){
         levelToPlay--;
     }
-    level.string=[NSString stringWithFormat:@"%d", levelToPlay];
+    level.string=[NSString stringWithFormat:@"%d", levelToPlay+1];
 }
 
 -(void)increaseLevelToPlay{
@@ -165,7 +182,7 @@
     if(levelToPlay < maxLevelToPlay){
         levelToPlay++;
     }
-    level.string=[NSString stringWithFormat:@"%d", levelToPlay];
+    level.string=[NSString stringWithFormat:@"%d", levelToPlay+1];
 }
 
 -(void)storeButtonPressed{

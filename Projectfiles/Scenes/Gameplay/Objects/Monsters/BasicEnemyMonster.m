@@ -15,6 +15,14 @@
 {
     //start update and run action
     [self stopAllActions];
+    
+    
+    radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
+        self.radiusToSpawn=radiusOfWorld+CCRANDOM_MINUS1_1()*self.radiusToSpawnDelta-10;
+    self.boundingZone= atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2;
+    self.hitZone=CCRANDOM_MINUS1_1()*(M_PI/300)+self.range*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/4;
+
+        [self setZOrder:(NSInteger)((2*radiusOfWorld)-self.radiusToSpawn)];
     //set health point
     self.hitPoints=self.hitPointsInit;
     
@@ -23,11 +31,20 @@
     self.angle=angleOfLocation;
     self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
     // Select a spawn location
-    float xPos=radiusOfWorld*cos(self.angle);
-    float yPos=radiusOfWorld*sin(self.angle);
+    float xPos=  self.radiusToSpawn*cos(self.angle);
+    float yPos=  self.radiusToSpawn*sin(self.angle);
     //set the location
     self.position = CGPointMake(xPos, yPos);
     self.rotation=CC_RADIANS_TO_DEGREES(-self.angle+M_PI_2);
+    
+    if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
+        self.flipX=0;
+        self.moveDirection=right;
+        self.hitZoneAngle1=self.angle;
+        self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
+        self.hitZoneAngle2=self.angle-self.hitZone;
+        self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
+    }else{
     
     if(self.angle<=M_PI){
                 self.flipX=0;
@@ -44,7 +61,7 @@
         self.hitZoneAngle2=self.angle;
         self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
     }
-    
+    }
     self.boundingZoneAngle1=self.angle+self.boundingZone;
     self.boundingZoneAngle1=fmodf(self.boundingZoneAngle1+2*M_PI, 2*M_PI);
     self.boundingZoneAngle2=self.angle-self.boundingZone;

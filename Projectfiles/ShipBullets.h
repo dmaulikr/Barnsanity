@@ -6,19 +6,24 @@
 //
 //
 
-#import "CCSprite.h"
+#import "Entity.h"
 
-@interface ShipBullets : CCSprite{
-    float radiusOfWorld;
+@interface ShipBullets : Entity{
     float distanceToSpawn;
-    float speed;
     float angle;
-    float distanceFromWorld;
+
 }
 
 //information about the monster
+@property (nonatomic, assign) float boundingZone;
+@property (nonatomic, assign) float boundingZoneAngle1;
+@property (nonatomic, assign) float boundingZoneAngle2;
+@property (nonatomic, assign) float hitZone;
+@property (nonatomic, assign) float hitZoneAngle1;
+@property (nonatomic, assign) float hitZoneAngle2;
 @property (nonatomic, assign) BOOL visible;
 @property (nonatomic, assign) NSInteger damage;
+@property (nonatomic, assign) float distanceFromWorld;
 //whether the unit is attacked
 @property (nonatomic, assign) BOOL areaOfEffect;
 //the amount of damage the unit does

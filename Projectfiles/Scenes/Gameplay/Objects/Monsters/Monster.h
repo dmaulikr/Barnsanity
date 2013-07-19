@@ -38,7 +38,11 @@
 }
 
 //information about the monster
+
+@property (nonatomic, assign) float radiusToSpawn;
+@property (nonatomic, assign) float radiusToSpawnDelta;
 @property (nonatomic, assign) float angle;
+@property (nonatomic, assign) float range;
 //units health info
 @property (nonatomic, assign) NSInteger hitPoints;
 @property (nonatomic, assign) NSInteger hitPointsInit;

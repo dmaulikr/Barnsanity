@@ -19,8 +19,9 @@
         self.stringFormat = @"Energy: %d/%d";
         energyLabel = [CCLabelBMFont labelWithString:@"" fntFile:fontFile];
         energyLabel.anchorPoint = ccp(0,0.5);
+        [energyLabel setColor:ccc3(255, 255, 255)];
         [self addChild:energyLabel];
-        [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
+        [NSTimer scheduledTimerWithTimeInterval:.75f target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
     }
     
     return self;
