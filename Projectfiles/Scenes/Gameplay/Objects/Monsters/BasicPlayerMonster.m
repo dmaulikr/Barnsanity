@@ -18,9 +18,9 @@
     [self stopAllActions];
     
     radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
-    self.radiusToSpawn=radiusOfWorld+CCRANDOM_MINUS1_1()*self.radiusToSpawnDelta-10;
+    self.radiusToSpawn=radiusOfWorld+CCRANDOM_MINUS1_1()*self.radiusToSpawnDelta-5;
     self.boundingZone=atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2;
-    self.hitZone=CCRANDOM_MINUS1_1()*(M_PI/300)+self.range*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/4;
+    self.hitZone=CCRANDOM_MINUS1_1()*(M_PI/500)+self.range*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/4;
     [self setZOrder:(NSInteger)((2*radiusOfWorld)-self.radiusToSpawn)];
     //set health
     self.hitPoints=self.hitPointsInit;
@@ -67,7 +67,7 @@
     self.boundingZoneAngle1=fmodf(self.boundingZoneAngle1+2*M_PI, 2*M_PI);
     self.boundingZoneAngle2=self.angle-self.boundingZone;
     self.boundingZoneAngle2=fmodf(self.boundingZoneAngle2+2*M_PI, 2*M_PI);
-    
+        self.damage+=CCRANDOM_MINUS1_1()*self.damageDelta;
     // Finally set yourself to be visible, this also flag the enemy as "in use"
     self.visible = YES;
     self.alive=TRUE;
@@ -106,11 +106,17 @@
 - (void)gotHit:(int)damage
 {
     //deduct hitpoint by damage
-    self.hitPoints -=damage;
+    //ableToAttack is set to false only when they are spawning in plant form,so if they get hit while in plant form, they take X2 damage
+    if(!self.ableToAttack){
+        self.hitPoints -=damage;
+    }else{
+        self.hitPoints-=2*damage;
+    }
     //if hitpoint is 0 or less then the monster dies
     if(self.hitPoints<=0){
-        [[GameMechanics sharedGameMechanics]game].playerMonsterKilled=+1;
-        [self destroy];
+//        [[GameMechanics sharedGameMechanics]game].playerMonsterKilled=+1;
+        [self stopAllActions];
+        [self runAction:death];
     }else if(blinkDidRun==FALSE || [blink isDone]){
         blinkDidRun=TRUE;
         [self runAction:blink];
@@ -131,6 +137,9 @@
         self.areaOfEffect=[[monsterInfo objectForKey:@"AreaOfEffect"] boolValue];
         self.areaOfEffectDamage=[[monsterInfo objectForKey:@"AreaOfEffect Damage"]integerValue];
         spawnDelayInitial=[[monsterInfo objectForKey:@"Delay"]integerValue];
+        self.radiusToSpawnDelta=[[[[[GameMechanics sharedGameMechanics]game] gameInfo] objectForKey:@"Spawn Radius Delta"]integerValue];
+        self.damageDelta=[[monsterInfo objectForKey:@"Damage Delta"]integerValue];
+        self.range=[[monsterInfo objectForKey:@"Range"]integerValue];
 
     }
 }

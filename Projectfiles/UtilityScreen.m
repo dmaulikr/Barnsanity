@@ -13,13 +13,10 @@
 -(void)setUpitems{
     int row=0;
     int col=0;
-    //itemnode for Player Barn
-    NSArray *playerMonsterList=[[NSArray alloc]initWithObjects:@"Player Barn Damage",@"Player Barn Armor",@"Player Barn Health",@"Ship Damage",@"Ship Firerate",@"Ship AreaOfEffect Damage",@"Energy Max",@"Energy Regeneration",@"Gold Bonus",@"Bomb Damage",nil];
+    //itemnode for all util upgrade name and create an item node for each item and place it on the screen
+    NSArray *playerMonsterList=[[GameMechanics sharedGameMechanics]game].utilUpgradeList;
     for(NSInteger i =0; i<  playerMonsterList.count;i++){
-        
         [itemNodes addObject:[[ItemNode alloc] initWithImageFile:@"basicbarrell.png" unitName:playerMonsterList[i]]];
-        
-        
         CCMenuItemSprite *temp=[CCMenuItemSprite itemWithNormalSprite:itemNodes[i] selectedSprite:nil block:^(id sender) {
             [self selectItem:itemNodes[i]];
         }];

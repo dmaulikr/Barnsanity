@@ -36,9 +36,9 @@
 
 -(void)reset{
     if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
-        [self setScale:4];
+        [self setScale:3.5];
     }else{
-        [self setScale:3];
+        [self setScale:3.25];
     }
 }
 

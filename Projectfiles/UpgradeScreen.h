@@ -22,22 +22,30 @@
     CCBackgroundColorNode *backgroundNode;
     CCMenu *menu;
     
+    //buttons to go between pages
     CCMenuItemSprite *previousPage;
     CCMenuItemSprite *nextPage;
      CCMenu *page;
     
+    //to display the gold
     ScoreboardEntryNode *goldDisplay;
     
+    //buttons for upgrade or go back
     CCMenuItemFont *upgrade;
     CCMenuItemFont *back;
     
+    //the item nodes that was selected
     ItemNode *selectedItem;
     
+    //all the pages of items
     NSMutableArray *upgradePages;
+    //the current page that is on the screen
     StoreItemPage *currentPage;
     int currentPageNumber;
     
+    //shows the description of the selected items
     ItemDescriptionDisplayNode *desciption;
+    //number of description to show
     int countOfDescription;
     
 }

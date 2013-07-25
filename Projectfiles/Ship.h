@@ -11,8 +11,9 @@
 @interface Ship : CCSprite{
     int fireDelayInitial;
     int fireDelayTimer;
-    BOOL bombUsed;
+
 }
+@property (nonatomic, assign)BOOL bombUsed;
 - (id)initWithMonsterPicture;
 -(void)fireBullet;
 -(void)fireBomb;

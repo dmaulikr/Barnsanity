@@ -8,6 +8,7 @@
 
 #import "Game.h"
 #import "MonsterCache.h"
+#import "GameMechanics.h"
 
 @implementation Game
 
@@ -17,97 +18,127 @@
     
     if (self)
     {
-        self.playerMonsterList=[[NSArray alloc]initWithObjects:@"Orange",@"Apple",@"Strawberry",@"Cherry",@"Mango",@"Banana",@"Coconut",@"Grape",@"Pineapple",@"Watermelon",nil];
+        //the name of all player's monster
+        self.playerMonsterList=[[NSArray alloc]initWithObjects:@"Orange",@"Apple",@"Strawberry",@"Coconut",@"Grape",@"Pineapple",@"Watermelon",nil];
+        //name of all enemy monsters
+        self.enemyMonsterList=[[NSArray alloc]initWithObjects:@"Carrot",@"Broccoli",@"Corn",@"Tomato",@"Potato",@"PeaPod",@"Pumpkin",@"Beet",@"Asparagus",@"Artichokes",@"Eggplant",nil];
+        //name of all util upgrades
+        self.utilUpgradeList=[[NSArray alloc]initWithObjects:@"Player Barn Damage",@"Player Barn Armor",@"Player Barn Health",@"Ship Damage",@"Ship Firerate",@"Energy Max",@"Energy Regeneration",@"Gold Bonus",@"Bomb Damage",nil];
+        //all information of the game
         NSString *stats = [[NSBundle mainBundle] pathForResource:@"GameInfo" ofType:@"plist"];
         self.gameInfo=[NSDictionary dictionaryWithContentsOfFile:stats];
+        //all information of item for upgrades
         NSString *gameItems = [[NSBundle mainBundle] pathForResource:@"ItemDescription" ofType:@"plist"];
         self.gameItemInfo=[NSDictionary dictionaryWithContentsOfFile:gameItems];
-        self.timeInSecInit=600;
-        self.timeForCrazyMode=120;
-        self.endLevelBonusScore=100;
-        self.endLevelBonusGold=100;
-        self.difficulty=EASY;
+//        //crazy mode begins at 2 min
+//        self.timeForCrazyMode=120;
+        self.gameSlot=1;
     }
     
     return self;
 }
 
--(BOOL)loadGame{
-    //    self.difficulty = [[NSUserDefaults standardUserDefaults] objectForKey:@"Difficulty"];
+-(void)loadGame{
+    //if there is a game loaded in the slot
+    BOOL loadGame =[[[NSUserDefaults standardUserDefaults] objectForKey:@"Game Exist"]boolValue];
+    if(loadGame){
+        //load all the data
+    self.difficulty = [[[NSUserDefaults standardUserDefaults] objectForKey:@"Difficulty"]integerValue];
     self.gold = [[[NSUserDefaults standardUserDefaults] objectForKey:@"Gold"]integerValue];
     self.score = [[[NSUserDefaults standardUserDefaults] objectForKey:@"Score"]integerValue];
     self.levelsOfEverything=[[NSUserDefaults standardUserDefaults] objectForKey:@"levelsOfEverything"];
     self.seedsUsed=[[NSUserDefaults standardUserDefaults] objectForKey:@"Seeds Used"];
-    self.totalEnemiesMonsterKilled=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Total Enemies Killed"]integerValue];
-    self.totalPlayerMonsterKilled=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Total Player Killed" ]integerValue];
+//    self.totalEnemiesMonsterKilled=[[data objectForKey:@"Total Enemies Killed"]integerValue];
+//    self.totalPlayerMonsterKilled=[[data objectForKey:@"Total Player Killed" ]integerValue];
     self.totalGold=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Total Gold"]integerValue];
-    
-    self.totalEnemiesMonsterKilled=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Total Enemies Killed"]integerValue];
-    self.totalPlayerMonsterKilled=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Total Player Killed"]integerValue];
     self.highScoreForGold=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Total Gold"]integerValue];
     self.highScoreForLevel=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Highest Score For Level"]integerValue];
     self.totalTimePlayed=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Total Time Played"]integerValue];
     self.totalGold=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Highest Gold For Level"]integerValue];
     
-    if(self.levelsOfEverything == nil){
-        return FALSE;
+    [self reset];
+        //if its still the first level, show tutorial
+    if(self.maxGamePlayLevel==0){
+        self.tutorial=TRUE;
     }else{
-        [self reset];
-        return TRUE;
+        self.tutorial=FALSE;
+    }
+ 
+    }else{
+        [self newGame];
     }
 }
 
 -(void)saveGame{
+
     [[NSUserDefaults standardUserDefaults] setObject: self.levelsOfEverything forKey:@"levelsOfEverything"];
-    //    [[NSUserDefaults standardUserDefaults] setInteger: self.difficulty forKey:@"Difficulty"];
+    //save all the data into the slot
+    [[NSUserDefaults standardUserDefaults] setObject: [NSNumber numberWithInt:self.difficulty] forKey:@"Difficulty"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.gold] forKey:@"Gold"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.score] forKey:@"Score"];
     [[NSUserDefaults standardUserDefaults] setObject:self.seedsUsed forKey:@"Seeds Used"];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.totalEnemiesMonsterKilled] forKey:@"Total Enemies Killed"];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.totalPlayerMonsterKilled] forKey:@"Total Player Killed"];
+//    [data setObject:[NSNumber numberWithInt:self.totalEnemiesMonsterKilled] forKey:@"Total Enemies Killed"];
+//    [data setObject:[NSNumber numberWithInt:self.totalPlayerMonsterKilled] forKey:@"Total Player Killed"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.totalGold] forKey:@"Total Gold"];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.totalEnemiesMonsterKilled] forKey:@"Total Enemies Killed"];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.totalPlayerMonsterKilled] forKey:@"Total Player Killed"];
-    [[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithInt:self.totalGold] forKey:@"Total Gold"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.totalTimePlayed] forKey:@"Total Time Played"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.highScoreForGold] forKey:@"Highest Score For Level"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.highScoreForLevel] forKey:@"Highest Gold For Level"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:1]forKey:@"Game Exist"];
 }
 
 -(void)newGame{
+    //its a new game, so turn on tutorial
+    self.tutorial=TRUE;
+    //load new game levels
     NSString *newGame = [[NSBundle mainBundle] pathForResource:@"NewGame_Levels" ofType:@"plist"];
     self.levelsOfEverything=[NSMutableDictionary dictionaryWithContentsOfFile:newGame];
     
-    self.gold=200;
+    //set start info
+    self.gold=0;
     self.score=0;
     self.totalEnemiesMonsterKilled=0;
     self.totalPlayerMonsterKilled=0;
     self.highScoreForGold=0;
     self.highScoreForLevel=0;
     self.totalTimePlayed=0;
-    self.totalGold=200;
+    self.totalGold=0;
     
-    //    [[NSUserDefaults standardUserDefaults] setInteger: self.difficulty forKey:@"Difficulty"];
+    //save the game into the slot
     self.seedsUsed=[[NSMutableArray alloc]initWithCapacity:MAXSPAWNBUTTONS];
     [self.seedsUsed addObject:@"Orange"];
     for(int i=1;i<MAXSPAWNBUTTONS;i++){
         [self.seedsUsed addObject:@""];
     }
+    [[NSUserDefaults standardUserDefaults] setObject: [NSNumber numberWithInt:self.difficulty] forKey:@"Difficulty"];
     [[NSUserDefaults standardUserDefaults] setObject: self.levelsOfEverything forKey:@"levelsOfEverything"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0]forKey:@"Score"];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:200] forKey:@"Gold"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:@"Gold"];
     [[NSUserDefaults standardUserDefaults] setObject: self.seedsUsed forKey:@"Seeds Used"];
     //for stats
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:@"Total Enemies Killed"];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:@"Total Player Killed"];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:200] forKey:@"Total Gold"];
+//    [data setObject:[NSNumber numberWithInt:0] forKey:@"Total Enemies Killed"];
+//    [data setObject:[NSNumber numberWithInt:0] forKey:@"Total Player Killed"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:@"Total Gold"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:@"Total Time Played"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0]forKey:@"Highest Score For Level"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0]forKey:@"Highest Gold For Level"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:1]forKey:@"Game Exist"];
     [self reset];
 }
 
 -(void)reset{
+    
+    if(self.difficulty==EASY){
+    //the initial time in sec for all levels
+        self.timeInSecInit=720;
+    }else{
+        //the initial time in sec for all levels
+        self.timeInSecInit=660;
+    }
+    //end level bonus for score
+    self.endLevelBonusScore=50;
+    //end level bonus for gold
+    self.endLevelBonusGold=150;
+    
     //time reset
     self.timeInSec=self.timeInSecInit;
     //energy reset
@@ -116,6 +147,9 @@
     //get energy regeneration for this level
     int level=[[self.levelsOfEverything  objectForKey:@"Energy Regeneration"]integerValue];
     self.energyPerSec=[[[self.gameInfo objectForKey:@"Energy Regeneration"] objectAtIndex:level]integerValue];
+    if(self.difficulty==HARD){
+        self.energyPerSec=self.energyPerSec*2;
+    }
     //get max energy
     level=[[self.levelsOfEverything objectForKey:@"Energy Max"] integerValue];
     self.energyMax=[[[self.gameInfo  objectForKey:@"Energy Max"] objectAtIndex:level] integerValue];
@@ -125,13 +159,12 @@
     level=[[self.levelsOfEverything objectForKey:@"Gold Bonus"] integerValue];
     self.goldBonusPerMonster=[[[self.gameInfo objectForKey:@"Gold Bonus"]  objectAtIndex:level] integerValue];
     
-    //enemiesKilled reset
-    self.enemiesMonsterKilled=0;
-    self.playerMonsterKilled=0;
+//    //enemiesKilled reset
+//    self.enemiesMonsterKilled=0;
+//    self.playerMonsterKilled=0;
     
     //set max level
     self.maxGamePlayLevel=[[self.levelsOfEverything objectForKey:@"Game Levels"] integerValue];
-    self.gameplayLevel=self.maxGamePlayLevel;
     
 }
 
@@ -147,28 +180,29 @@
 }
 
 -(void)beatLevel{
-    int multiplier=0;
+    float multiplier=0;
     //if new level muliplier is 1 else everything is halved
     if(self.gameplayLevel == self.maxGamePlayLevel){
         multiplier=1;
     }else{
-        multiplier=.5;
+        multiplier=.25;
     }
     
-    //    if(self.difficulty==HARD){
-    //        multiplier=multiplier*2;
-    //    }
+    if(self.difficulty==HARD){
+        multiplier=multiplier*1.35;
+    }
     
     self.goldForLevel=self.goldForLevel*multiplier;
     self.scorePerLevel=self.scorePerLevel*multiplier;
     
     //for beating level
-     self.goldForLevel=self.goldForLevel+self.endLevelBonusGold*multiplier;
-    
+    if(self.gameplayLevel == self.maxGamePlayLevel){
+        self.goldForLevel=self.goldForLevel+self.endLevelBonusGold;
+    }
     //if player kills more enemy than losing their own get endlevelbonus gold
-    if(self.enemiesMonsterKilled>self.playerMonsterKilled){
-        self.goldForLevel=self.goldForLevel+self.endLevelBonusGold*multiplier;
-        self.scorePerLevel=self.scorePerLevel+self.endLevelBonusScore*multiplier;
+    if(![[GameMechanics sharedGameMechanics]gameScene].ship.bombUsed){
+        self.goldForLevel=self.goldForLevel+self.endLevelBonusGold*.75*multiplier;
+        self.scorePerLevel=self.scorePerLevel+self.endLevelBonusScore*.75*multiplier;
     }
     
     //if the enemy barn is destroyed then get bonus
@@ -176,7 +210,9 @@
         self.goldForLevel=self.goldForLevel+self.endLevelBonusGold*multiplier;
         self.scorePerLevel=self.scorePerLevel+self.endLevelBonusScore*multiplier;
     }
-    
+    if(self.gameplayLevel == self.maxGamePlayLevel){
+        self.scorePerLevel=self.scorePerLevel+self.timeInSec*.25;
+    }
     
     //check if it is the high score for gold and score
     if(self.goldForLevel>self.highScoreForGold){
@@ -186,9 +222,9 @@
     if(self.goldForLevel>self.highScoreForGold){
         self.highScoreForGold=self.goldForLevel;
     }
-    //total the amount of enemy and player killed
-    self.totalEnemiesMonsterKilled=self.totalEnemiesMonsterKilled+self.enemiesMonsterKilled;
-    self.totalPlayerMonsterKilled=self.totalPlayerMonsterKilled+self.playerMonsterKilled;
+//    //total the amount of enemy and player killed
+//    self.totalEnemiesMonsterKilled=self.totalEnemiesMonsterKilled+self.enemiesMonsterKilled;
+//    self.totalPlayerMonsterKilled=self.totalPlayerMonsterKilled+self.playerMonsterKilled;
     //total time played
     self.totalTimePlayed=self.totalTimePlayed+(self.timeInSecInit-self.timeInSec);
     
@@ -204,9 +240,10 @@
         int newlevel=[[self.levelsOfEverything objectForKey:@"Game Levels"] integerValue];
         newlevel++;
         [self.levelsOfEverything  setObject:[NSNumber numberWithInt:newlevel] forKey:@"Game Levels"];
+        self.maxGamePlayLevel=newlevel;
     }
     
-
+    
 }
 
 -(void)loseLevel{
@@ -215,11 +252,6 @@
     self.totalPlayerMonsterKilled=self.totalPlayerMonsterKilled+self.playerMonsterKilled;
     //total time played
     self.totalTimePlayed=+(self.timeInSecInit-self.timeInSec);
-    
-    if(self.gameplayLevel>5){
-        //if you lose you lose a quater of your gold
-        [self subtractGoldby:self.gold/4];
-    }
 }
 
 

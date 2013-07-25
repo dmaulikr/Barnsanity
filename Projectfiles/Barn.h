@@ -23,11 +23,8 @@
 //the health of the unit
 @property (nonatomic, assign) NSInteger hitPoints;
 @property (nonatomic, assign) NSInteger hitPointsInit;
-@property (nonatomic, assign) NSInteger damage;
-//checks if the unit is visible
-@property (nonatomic, assign) BOOL visible;
 @property (nonatomic, assign) BOOL attacking;
-
+@property (nonatomic, assign) BOOL alive;
 //whether the unit is an enemy's unit or not
 @property (nonatomic, assign) BOOL enemy;
 

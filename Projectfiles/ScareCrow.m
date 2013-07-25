@@ -22,7 +22,7 @@
         //for the prototype
         [self setScale:.5];
         [self reset];
-        
+        reward=5;
         self.radiusToSpawnDelta=15;
     }
     

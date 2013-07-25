@@ -73,8 +73,7 @@
     {
         if(fireDelayTimer>0){
             fireDelayTimer--;
-//            float newPercentage=((float)(fireDelayTimer-1)/(float)fireDelayInitial)*100;
-//            [delayTimer runAction:[CCProgressFromTo actionWithDuration:1.0f from:delayTimer.percentage to:newPercentage]];
+
 
     }
     }

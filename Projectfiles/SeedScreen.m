@@ -17,12 +17,12 @@
 -(void)setUpitems{
     int row=0;
     int col=0;
-    NSArray *playerMonsterList=[[NSArray alloc]initWithObjects:@"Orange",@"Apple",@"Strawberry",@"Cherry",@"Mango",@"Banana",@"Coconut",@"Grape",@"Pineapple",@"Watermelon",nil];
+    //get all the player monsters name
+    NSArray *playerMonsterList=[[GameMechanics sharedGameMechanics]game].playerMonsterList;
+    //for each player monster create a item node and place it on the screen
     for(NSInteger i =0; i<  playerMonsterList.count;i++){
         
         [itemNodes addObject:[[ItemNode alloc] initWithImageFile:@"basicbarrell.png" unitName:playerMonsterList[i]]];
-        
-        
         CCMenuItemSprite *temp=[CCMenuItemSprite itemWithNormalSprite:itemNodes[i] selectedSprite:nil block:^(id sender) {
             [self selectItem:itemNodes[i]];
         }];

@@ -34,14 +34,14 @@
     //move the monster M_PI/480 in a direction
     if(self.moveDirection==left){
         self.angle+=speed* (M_PI/5000);
-            self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
+        self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
         self.hitZoneAngle1=self.angle+self.hitZone;
         self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
         self.hitZoneAngle2=self.angle;
         self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
     }else{
-       self.angle-=speed* (M_PI/5000);
-            self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
+        self.angle-=speed* (M_PI/5000);
+        self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
         self.hitZoneAngle1=self.angle;
         self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
         self.hitZoneAngle2=self.angle-self.hitZone;

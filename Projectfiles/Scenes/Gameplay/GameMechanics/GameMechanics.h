@@ -30,7 +30,6 @@ typedef NS_ENUM(NSInteger, GameState) {
 
 // determines the current state the game is in. Either menu mode (scene displayed beyond main menu) or gameplay mode.
 @property (nonatomic, assign) GameState gameState;
-@property (nonatomic, assign) float radiusOfWorld;
 
 // reference to the current game object
 @property (nonatomic, weak) Game *game;

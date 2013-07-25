@@ -15,9 +15,6 @@
 #import "Orange.h"
 #import "Apple.h"
 #import "Strawberry.h"
-#import "Cherry.h"
-#import "Mango.h"
-#import "Banana.h"
 #import "Coconut.h"
 #import "Grape.h"
 #import "Pineapple.h"
@@ -28,10 +25,11 @@
 #import "Tomato.h"
 #import "Potato.h"
 #import "PeaPod.h"
-#import "Pea.h"
 #import "Pumpkin.h"
 #import "Beet.h"
 #import "Asparagus.h"
+#import "Artichokes.h"
+#import "Eggplant.h"
 #import "Seed.h"
 #import "Walls.h"
 #import "Tree.h"
@@ -107,6 +105,8 @@
         //		CCSpriteBatchNode *enemyBatch = [CCSpriteBatchNode batchNodeWithTexture:frame.texture];
         //        CCSpriteBatchNode *playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
         
+         [monster setObject:shipBullets forKey:@"Ship Bullets"];
+        [monster setObject:seeds forKey:@"Seeds"];
         CCNode *enemyBatch=[[CCNode alloc]init];
         CCNode *playerBatch=[[CCNode alloc]init];
 		[enemyMonsters addChild:enemyBatch];
@@ -114,6 +114,15 @@
         [monster setObject:enemyBatch forKey:@"Carrot"];
         [playerMonster addChild:playerBatch];
         [monster setObject:playerBatch forKey:@"Orange"];
+        
+        enemyBatch=[[CCNode alloc]init];
+        playerBatch=[[CCNode alloc]init];
+		[enemyMonsters addChild:enemyBatch];
+        
+        [monster setObject:enemyBatch forKey:@"Broccoli"];
+        [playerMonster addChild:playerBatch];
+        [monster setObject:playerBatch forKey:@"Apple"];
+        
         
         CCNode *treeNode=[[CCNode alloc]init];
         CCNode *crowNode=[[CCNode alloc]init];
@@ -138,9 +147,6 @@
         [monsterClass setObject:[Orange class] forKey:@"Orange"];
         [monsterClass setObject: [Apple class]  forKey:@"Apple"];
         [monsterClass setObject: [Strawberry class]  forKey:@"Strawberry"];
-        [monsterClass setObject: [Cherry class]  forKey:@"Cherry"];
-        [monsterClass setObject: [Mango class]  forKey:@"Mango"];
-        [monsterClass setObject: [Banana class]  forKey:@"Banana"];
         [monsterClass setObject: [Coconut class]  forKey:@"Coconut"];
         [monsterClass setObject: [Grape class]  forKey:@"Grape"];
         [monsterClass setObject: [Pineapple class] forKey:@"Pineapple"];
@@ -152,13 +158,17 @@
         [monsterClass setObject: [Tomato class]  forKey:@"Tomato"];
         [monsterClass setObject: [Potato class]  forKey:@"Potato"];
         [monsterClass setObject: [PeaPod class]  forKey:@"PeaPod"];
-        [monsterClass setObject: [Pea class]  forKey:@"Pea"];
         [monsterClass setObject: [Pumpkin class]  forKey:@"Pumpkin"];
         [monsterClass setObject: [Beet class] forKey:@"Beet"];
         [monsterClass setObject: [Asparagus class]  forKey:@"Asparagus"];
-        
+        [monsterClass setObject: [Artichokes class] forKey:@"Artichokes"];
+        [monsterClass setObject: [Eggplant class]  forKey:@"Eggplant"];
         [monsterClass setObject: [Tree class]  forKey:@"Tree"];
         [monsterClass setObject: [ScareCrow class]  forKey:@"ScareCrow"];
+        
+        wallList=[[NSMutableArray alloc]init];
+        [wallList addObject:@"Tree"];
+        [wallList addObject:@"ScareCrow"];
         /**
          A Notification can be used to broadcast an information to all objects of a game, that are interested in it.
          Here we sign up for the 'GamePaused' and 'GameResumed' information, that is broadcasted by the GameMechanics class. Whenever the game pauses or resumes, we get informed and can react accordingly.
@@ -174,7 +184,10 @@
 }
 
 -(void) reset{
-    updateCount=0;
+    self.ableToSpawn=TRUE;
+    int level=[[[GameMechanics sharedGameMechanics]game]gameplayLevel];
+    wallSpawnProp=[[[[[[[GameMechanics sharedGameMechanics]game] gameInfo]objectForKey:@"Game Levels"] objectAtIndex:level ] objectForKey:@"Wall Spawn"]integerValue];
+    updateCount=450;
     self.enemyBarnUnderAttack=FALSE;
     self.playerBarnUnderAttack=FALSE;
     //    CCSpriteBatchNode *playerBatch;
@@ -279,10 +292,24 @@
 }
 
 
+-(BOOL)anyMonsterAliveOfType:(NSString *) monsterName{
+    CCNode* monsterType = [monster objectForKey:monsterName];
+    Entity *monsterToCheck;
 
+    CCARRAY_FOREACH([monsterType children], monsterToCheck)
+    {
+        // find the first free enemy and respawn it
+        if (monsterToCheck.alive == TRUE)
+        {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
 
 -(void)spawnBarn{
     if([[GameMechanics sharedGameMechanics]game].difficulty ==EASY){
+        
         [_enemyBarn constructAt:5*M_PI_4 ];
         [_playerBarn constructAt:fmodf(-M_PI_4+2*M_PI, 2*M_PI) ];
     }else{
@@ -297,7 +324,7 @@
 }
 
 -(void)createShipBullet{
-    CCArray *shipBullet=[shipBullets children];
+    CCNode *shipBullet= [monster objectForKey:@"Ship Bullets"];
     ShipBullets* bullet;
     
     /* we try to reuse existing enimies, therefore we use this flag, to keep track if we found an enemy we can
@@ -306,7 +333,7 @@
     // if the enemiesOfType array exists, iterate over all already existing enemies of the provided type and check if one of them can be respawned
     if (shipBullet != nil)
     {
-        CCARRAY_FOREACH(shipBullet, bullet)
+        CCARRAY_FOREACH([shipBullet children], bullet)
         {
             // find the first free enemy and respawn it
             if (bullet.visible == NO)
@@ -332,7 +359,7 @@
 
 
 -(void)createSeed:(NSString*)monsterName{
-    CCArray *seedsArray=[seeds children];
+    CCNode *seedsArray= [monster objectForKey:@"Seeds"];
     Seed* seed;
     
     /* we try to reuse existing enimies, therefore we use this flag, to keep track if we found an enemy we can
@@ -340,7 +367,7 @@
     BOOL foundAvailablePlayerToSpawn = FALSE;
     // if the enemiesOfType array exists, iterate over all already existing enemies of the provided type and check if one of them can be respawned
     
-    CCARRAY_FOREACH(seedsArray, seed)
+    CCARRAY_FOREACH([seedsArray children], seed)
     {
         // find the first free enemy and respawn it
         if (seed.visible == NO)
@@ -575,12 +602,12 @@
             {
                 if(wall.visible && !wall.invincible){
                     if ([self collisionBetweenMonstersWithAngle:player andMonster:wall]){
-                            [wall gotHit:theBomb.damage];
-                        }
+                        [wall gotHit:theBomb.damage];
                     }
                 }
-                
             }
+            
+        }
         
         [theBomb gotHit];
     }
@@ -792,9 +819,30 @@
                     }
                 }
             }
-            if(bullet.attacked){
-                [bullet gotHit];
+            
+            if((!bullet.attacked || bullet.areaOfEffect)){
+            CCARRAY_FOREACH([wallObjects children], wallBatch)
+            {
+                CCARRAY_FOREACH([wallBatch children], wall)
+                {
+                    if(wall.visible && !wall.invincible){
+                        if ([self collisionBullets:bullet andMonster:wall]){
+                            if(!bullet.attacked){
+                                [wall gotHit:bullet.damage];
+                                bullet.attacked=TRUE;
+                            }else if(bullet.areaOfEffect){
+                                [wall gotHit:bullet.areaOfEffectDamage];
+                            }
+                        }
+                    }
+                }
+                
             }
+                if(bullet.attacked){
+                    [bullet gotHit];
+                }
+            }
+            
         }
     }
     
@@ -831,6 +879,7 @@
                         if(!_playerBarn.attacking){
                             [_playerBarn attack];
                             [enemy gotHit:_playerBarn.damage];
+                            
                         }
                     }
                 }
@@ -891,70 +940,59 @@
     // only execute the block, if the game is in 'running' mode
     if ([[GameMechanics sharedGameMechanics] gameState] == GameStateRunning )
     {
-        updateCount++;
-        
-        // first we get all available monster types
-        NSArray *monsterTypes = [[[GameMechanics sharedGameMechanics] spawnRatesByEnemyMonsterType] allKeys];
-        
-        for (NSString *monsterTypeClass in monsterTypes)
-        {
-            // we get the spawn frequency for this specific monster type
-            int spawnFrequency = [[GameMechanics sharedGameMechanics] spawnRateForEnemyMonsterType:monsterTypeClass];
-            // if the updateCount reached the spawnFrequency we spawn a new enemy
-            if([[GameMechanics sharedGameMechanics]game].timeInSec<=[[GameMechanics sharedGameMechanics]game].timeForCrazyMode){
-                spawnFrequency=spawnFrequency/2;
-            }
+        if(self.ableToSpawn)
+            updateCount++;
             
-            if([[GameMechanics sharedGameMechanics]game].difficulty==HARD){
-                spawnFrequency=spawnFrequency/1.5;
-            }
+            // first we get all available monster types
+            NSArray *monsterTypes = [[[GameMechanics sharedGameMechanics] spawnRatesByEnemyMonsterType] allKeys];
             
-            if (updateCount % spawnFrequency == 0)
+            for (NSString *monsterTypeClass in monsterTypes)
             {
-                if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
-                    if(self.enemyBarnUnderAttack){
-                        [self spawnEnemyOfType:monsterTypeClass atAngle:(5*M_PI_4-self.enemyBarn.boundingZone/2)];
-                    }else{
-                        
-                        [self spawnEnemyOfType:monsterTypeClass atAngle:(M_PI_2+(CCRANDOM_0_1()*2.5*M_PI_4 ))];
-                    }
-                }else{
-                    if(self.enemyBarnUnderAttack){
-                        [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI+(M_PI/16)-CCRANDOM_0_1()*(M_PI/8)];
-                    }else{
-                        
-                        [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI_2+CCRANDOM_0_1()*M_PI];
-                    }
+                // we get the spawn frequency for this specific monster type
+                int spawnFrequency = [[GameMechanics sharedGameMechanics] spawnRateForEnemyMonsterType:monsterTypeClass];
+                // if the updateCount reached the spawnFrequency we spawn a new enemy
+//                if([[GameMechanics sharedGameMechanics]game].timeInSec<=[[GameMechanics sharedGameMechanics]game].timeForCrazyMode){
+//                    spawnFrequency=spawnFrequency/2;
+//                }
+                
+                if([[GameMechanics sharedGameMechanics]game].difficulty==HARD){
+                    spawnFrequency=spawnFrequency/1.43;
                 }
-            }
-        }
-        
-        
-        if (rand() %(9000) == 7777){
-
-                if(CCRANDOM_0_1() <=.2){
+                
+                if (updateCount % spawnFrequency == 0)
+                {
                     if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
-                        [self spawnWall:@"Tree" atAngle:M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4];
-                    }else{
-                        if(CCRANDOM_0_1() >=.5){
-                            [self spawnWall:@"Tree" atAngle:M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4/2];
+                        if(self.enemyBarnUnderAttack){
+                            [self spawnEnemyOfType:monsterTypeClass atAngle:(5*M_PI_4-self.enemyBarn.boundingZone/2)];
                         }else{
-                            [self spawnWall:@"Tree" atAngle:3*M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4/2];
+                            
+                            [self spawnEnemyOfType:monsterTypeClass atAngle:(M_PI_2+(CCRANDOM_0_1()*2.5*M_PI_4 ))];
+                        }
+                    }else{
+                        if(self.enemyBarnUnderAttack){
+                            [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI+CCRANDOM_MINUS1_1()*self.enemyBarn.boundingZone/2];
+                        }else{
+                            
+                            [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI_2+CCRANDOM_0_1()*M_PI];
                         }
                     }
-                }else{
+                }
+            }
+            
+            
+            if (wallSpawnProp>0 && rand() %(wallSpawnProp) == 1){
+                int walltype=rand() %(wallList.count);
                 if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
-                    [self spawnWall:@"ScareCrow" atAngle:M_PI_2+CCRANDOM_MINUS1_1()*M_PI_2];
+                    [self spawnWall:wallList[walltype] atAngle:M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4];
                 }else{
                     if(CCRANDOM_0_1() >=.5){
-                        [self spawnWall:@"ScareCrow" atAngle:M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4];
+                        [self spawnWall:wallList[walltype] atAngle:M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4/2];
                     }else{
-                        [self spawnWall:@"ScareCrow" atAngle:3*M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4];
+                        [self spawnWall:wallList[walltype] atAngle:3*M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4/2];
                     }
                 }
             }
         
-        }
         
         
         [self checkForCollisions];

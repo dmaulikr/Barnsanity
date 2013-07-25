@@ -26,6 +26,8 @@
     //a dictionary to hold the array of different monster units
     NSMutableDictionary* monster;
     NSMutableDictionary* monsterClass;
+    NSMutableArray *wallList;
+    NSInteger wallSpawnProp;
     // count the updates (used to determine when monsters should be spawned)
     int updateCount;
 }
@@ -33,6 +35,7 @@
 @property (nonatomic, weak) Barn *playerBarn;
 @property (nonatomic, assign) BOOL  *enemyBarnUnderAttack;
 @property (nonatomic, assign) BOOL  *playerBarnUnderAttack;
+@property (nonatomic, assign) BOOL ableToSpawn;
 
 + (id)sharedMonsterCache;
 
@@ -42,6 +45,8 @@
 //player monster
 -(void) spawn:(NSString*)PlayerTypeClass atAngle:(float) angleOfLocation;
 
+//enemy monster
+-(void) spawnEnemyOfType:(NSString*)enemyTypeClass atAngle:(float) angleOfLocation;
 //create ship bullet
 -(void)createShipBullet;
 
@@ -51,4 +56,12 @@
 //create bomb
 -(void)createBomb;
 
+//resume game
+- (void)gameResumed;
+
+//pause game
+- (void)gamePaused;
+
+//Check if there is any monster of a type alive
+-(BOOL)anyMonsterAliveOfType:(NSString *) monsterName;
 @end

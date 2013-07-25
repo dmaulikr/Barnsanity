@@ -42,7 +42,8 @@
         storeItemLabel.color = DEFAULT_FONT_COLOR;
         storeItemLabel.position = ccp(0, 0.5 * self.contentSize.height - 25);
         [self addChild:storeItemLabel];
-        
+
+
         
         // add scoreboard entry for points
         ScoreboardEntryNode *goldDisplay = [[ScoreboardEntryNode alloc] initWithfontFile:@"avenir24.fnt"];
@@ -53,7 +54,7 @@
         
         // add scoreboard entry for points
         ScoreboardEntryNode *scoreDisplay = [[ScoreboardEntryNode alloc] initWithfontFile:@"avenir24.fnt"];
-        scoreDisplay.position=ccp(-0.25 * self.contentSize.width - 25, 0.5 * self.contentSize.height - 25);
+        scoreDisplay.position=ccp(-0.25 * self.contentSize.width - 100, 0.5 * self.contentSize.height - 25);
         scoreDisplay.scoreStringFormat = @"Score: %d";
         [self addChild:scoreDisplay];
         [scoreDisplay setScore:[[GameMechanics sharedGameMechanics]game].score];
@@ -65,39 +66,28 @@
             [self playButtonPressed];
         }];
         playLevel.color = DEFAULT_FONT_COLOR;
+        playLevel.position=ccp(-100,0);
         
-        //add an equip button to equip the weapon you want to use
-        equip= [CCMenuItemFont itemWithString:@"Equip" block:^(id sender) {
-            [self equipButtonPressed];
-        }];
-        equip.color = DEFAULT_FONT_COLOR;
-        
-        //add a main menu button to go back to the main menu
-        mainMenu= [CCMenuItemFont itemWithString:@"Main Menu" block:^(id sender) {
-            [self mainMenuButtonPressed];
-        }];
-        mainMenu.color = DEFAULT_FONT_COLOR;
-        
-        //add a store button to make purchases
         store= [CCMenuItemFont itemWithString:@"Store" block:^(id sender) {
             [self storeButtonPressed];
         }];
         store.color = DEFAULT_FONT_COLOR;
-        
+        store.position=ccp(100,0);
+
+
         //add all buttons to the menu
-        menu = [CCMenu menuWithItems:playLevel,mainMenu,equip,store, nil];
-        [menu alignItemsHorizontally];
+        menu = [CCMenu menuWithItems:playLevel,store, nil];
         menu.position = ccp(0,-100);
         [self addChild:menu];
         
         //find the max level allowed (max level is the level the the player has not beaten yet)
         maxLevelToPlay=[[GameMechanics sharedGameMechanics]game].maxGamePlayLevel;
         //levelToPlay is the level the player chooses to play in can range from 0 to maxLevelToPlay
-        levelToPlay=[[GameMechanics sharedGameMechanics]game].gameplayLevel;
+        levelToPlay=maxLevelToPlay;
         
         //shows to the player which level they are selecting
         level = [CCLabelBMFont labelWithString:@"" fntFile:@"avenir24.fnt"];
-        level.string=[NSString stringWithFormat:@"%d", levelToPlay+1];
+        level.string=[NSString stringWithFormat:@"%d", levelToPlay];
         level.anchorPoint=ccp(0,0.5);
         level.position = ccp(-5, 0);
         [level setScale:3];
@@ -131,6 +121,14 @@
 //        volumeControl = [CCMenuItemSprite itemWithNormalSprite:volume selectedSprite:volume block:^(id sender) {
 //            [self volumeControl];
 //        }];
+        
+        requiredLevel = [CCLabelTTF labelWithString:@"Required Game Level 5"
+                                       fontName:DEFAULT_FONT
+                                       fontSize:14];
+        requiredLevel.color = DEFAULT_FONT_COLOR;
+        requiredLevel.position = ccp(0, -0.5 * self.contentSize.height + 30);
+        [self addChild:requiredLevel];
+        requiredLevel.visible=FALSE;
     }
     
     return self;
@@ -174,7 +172,7 @@
     if(levelToPlay >0){
         levelToPlay--;
     }
-    level.string=[NSString stringWithFormat:@"%d", levelToPlay+1];
+    level.string=[NSString stringWithFormat:@"%d", levelToPlay];
 }
 
 -(void)increaseLevelToPlay{
@@ -182,23 +180,22 @@
     if(levelToPlay < maxLevelToPlay){
         levelToPlay++;
     }
-    level.string=[NSString stringWithFormat:@"%d", levelToPlay+1];
+    level.string=[NSString stringWithFormat:@"%d", levelToPlay];
 }
 
 -(void)storeButtonPressed{
+    if(maxLevelToPlay>=5){
     //remove this layer before going to the next
     self.visible = FALSE;
     [self removeFromParentAndCleanup:TRUE];
     //go to store layer
         [[[GameMechanics sharedGameMechanics] gameScene] goToStore];
+    }else{
+        requiredLevel.visible=TRUE;
+    }
 }
 
--(void)equipButtonPressed{
-    //remove this layer before going to the next
-    self.visible = FALSE;
-    [self removeFromParentAndCleanup:TRUE];
-    //go to equip layer
-    [[[GameMechanics sharedGameMechanics] gameScene] goToEquip];
-}
+
+
 
 @end

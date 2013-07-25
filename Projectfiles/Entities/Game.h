@@ -14,11 +14,17 @@
  */
 #define HARD 1
 #define EASY 0
+#define numSlot 3
 @interface Game : NSObject
 
-
-
+//is true if it is the first time playing
+@property (nonatomic, assign) BOOL tutorial;
+//indicates the difficulty level of the game
 @property (nonatomic, assign) NSInteger difficulty;
+
+//which game slot to use
+@property (nonatomic, assign) NSInteger gameSlot;
+
 //scores
 @property (nonatomic, assign) NSInteger score;
 @property (nonatomic, assign) NSInteger scorePerLevel;
@@ -61,15 +67,26 @@
 
 //seeds in slot
 @property (nonatomic, strong) NSMutableArray *seedsUsed;
-@property (nonatomic, strong) NSMutableArray *playerMonsterList;
 
--(BOOL)loadGame;
+//names of all monsters and upgrades
+@property (nonatomic, strong) NSMutableArray *playerMonsterList;
+@property (nonatomic, strong) NSMutableArray *enemyMonsterList;
+@property (nonatomic, strong) NSMutableArray *utilUpgradeList;
+
+//loads the game
+-(void)loadGame;
+//saves the game
 -(void)saveGame;
+//when there is a new game
 -(void)newGame;
 -(void)reset;
+//subtract gold
 -(void)subtractGoldby:(NSInteger) cost;
+//increase level of the given category
 -(void)increaseLevel:(NSString*) category;
+//calculates the scores
 -(void)beatLevel;
+//calculates the loses
 -(void)loseLevel;
 
 @end

@@ -66,13 +66,14 @@
             self.attacking = FALSE;
             // restart running animation
             [self stopAction:run];
-                [self runAction:run];
+            [self runAction:run];
             
         }];
         
         attack = [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] , hitAction, [CCDelayTime actionWithDuration:.5] ,finishHit, nil];
-
         
+        
+        //****************planting animation**************
         CCFiniteTimeAction *planting = [CCCallBlock actionWithBlock:^{
             self.attacking = FALSE;
             self.move=FALSE;
@@ -92,6 +93,7 @@
         }];
         plant=[CCSequence actions:planting, nil];
         
+        //*************spawning*******************
         CCFiniteTimeAction *spawning = [CCCallBlock actionWithBlock:^{
             [self stopAction:plant];
             self.attacking = FALSE;
@@ -105,13 +107,20 @@
         
         spawn=[CCSequence actions:spawning, nil];
         
-        //get the radius of the world
-        blink = [CCBlink actionWithDuration:.4f blinks:2];
+        //****************death*****************
+        CCFiniteTimeAction *dying = [CCCallBlock actionWithBlock:^{
+            [self stopAction:run];
+            self.attacking = FALSE;
+            self.move=FALSE;
+            self.ableToAttack=FALSE;
+            self.invincible=TRUE;
+            [self destroy];
+            
+        }];
+        death=[CCSequence actions:dying, nil];
         
-        //for the prototype
-        [self setScale:.5];
-        [self scheduleUpdate];
-        [self reset];
+        //**********blink************
+        blink = [CCBlink actionWithDuration:.4f blinks:2];
         
         CCSprite *delayTimerImage=[[CCSprite alloc] initWithFile:@"n2pY1.png"];
         [delayTimerImage setColor:ccc3(2, 2, 200)];
@@ -123,10 +132,16 @@
         delayTimer.percentage=0;
         delayTimer.position=ccp(delayTimerImage.contentSize.width/4,2*self.contentSize.height/2+10);
         [self addChild:delayTimer];
-                [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
         
-                self.radiusToSpawnDelta=20;
-        self.range=2;
+        //for the prototype
+        [self setScale:.46];
+        //dark orange
+                [self setColor:ccc3(255,140,0)];
+        [self scheduleUpdate];
+        [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
+        [self reset];
+        
+        
     }
     
     return self;

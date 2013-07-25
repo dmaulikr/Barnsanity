@@ -16,6 +16,7 @@
 {
     CCBackgroundColorNode *backgroundNode;
     CCMenu *menu;
+    CCLabelTTF *requiredLevel;
     
     //level
     int levelToPlay;
@@ -31,6 +32,7 @@
     CCMenuItemFont *playLevel;
     CCMenuItemFont *equip;
     CCMenuItemFont *mainMenu;
+    CCMenuItemFont *save;
     CCMenuItemFont *store;
     CCMenuItemSprite *volumeControl;
 }

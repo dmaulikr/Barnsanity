@@ -15,9 +15,6 @@
 @interface Monster : Entity{
     NSString *nameOfMonster;
 
-    //angle of the position the unit is at
-    //the change in angle as the unit moves
-    float speedAngle;
 
     //animations of the character
     NSMutableArray *animationFramesRunning;
@@ -28,6 +25,7 @@
     CCSequence *plant;
     NSMutableArray *animationFramesSpawn;
     CCSequence *spawn;
+    CCSequence *death;
     BOOL hitDidRun;
     CCBlink *blink;
     BOOL blinkDidRun;
@@ -39,30 +37,19 @@
 
 //information about the monster
 
-@property (nonatomic, assign) float radiusToSpawn;
 @property (nonatomic, assign) float radiusToSpawnDelta;
-@property (nonatomic, assign) float angle;
 @property (nonatomic, assign) float range;
-//units health info
-@property (nonatomic, assign) NSInteger hitPoints;
-@property (nonatomic, assign) NSInteger hitPointsInit;
 
-//whether the unit is visible
-@property (nonatomic, assign) BOOL visible;
+
 //whether the unit is visible
 @property (nonatomic, assign) BOOL alive;
 //whether the unit is attacking
 @property (nonatomic, assign) BOOL attacking;
-//whether the unit is attacked
-@property (nonatomic, assign) BOOL attacked;
 //the amount of damage the unit does
-@property (nonatomic, assign) NSInteger damage;
+@property (nonatomic, assign) NSInteger damageDelta;
 //whether the unit should move
 @property (nonatomic, assign) BOOL move;
 //whether the unit is attacked
-@property (nonatomic, assign) BOOL areaOfEffect;
-//the amount of damage the unit does
-@property (nonatomic, assign) NSInteger areaOfEffectDamage;
 
 //whether the unit is attacking
 @property (nonatomic, assign) BOOL ableToAttack;

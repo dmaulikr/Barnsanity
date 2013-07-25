@@ -101,6 +101,7 @@
     self.attacking=FALSE;
     blinkDidRun=FALSE;
     hitDidRun=FALSE;
+    self.alive=TRUE;
     
     
     //set the health bar
@@ -115,20 +116,20 @@
 }
 -(void)gotHit:(int)damage{
     //decrease the health by the amount of damage
-    self.hitPoints-=(damage - armor);
+    if((damage - armor)>0){
+        self.hitPoints-=(damage - armor);
+    }
     //display health bar base of the amount of health left
-    [healthBar setPercentage:((float)_hitPoints/(float)_hitPointsInit)*100];
+    [healthBar setPercentage:((float)self.hitPoints/(float)self.hitPointsInit)*100];
     if(self.hitPoints<=0){
         //stop all update and actions
         [self pauseSchedulerAndActions];
         [self stopAllActions];
         //turn invisible
         self.visible=FALSE;
+        self.alive=FALSE;
         self.position = ccp(-MAX_INT, 0);
         
-        if(self.enemy){
-            [[GameMechanics sharedGameMechanics] game].goldForLevel+=reward+[[GameMechanics sharedGameMechanics] game].goldBonusPerMonster;
-        }
     }else if(blinkDidRun==FALSE || [blink isDone]){
         blinkDidRun=TRUE;
         [self runAction:blink];
@@ -136,6 +137,7 @@
 }
 
 -(void)update:(ccTime)delta{
+    
 }
 
 -(void)reset{

@@ -18,6 +18,7 @@
     //if hitpoint is 0 or less then the monster dies
     if(self.hitPoints<=0){
         self.invincible=TRUE;
+        [[GameMechanics sharedGameMechanics]game].goldForLevel= [[GameMechanics sharedGameMechanics]game].goldForLevel+reward;
         [self destroy];
     }else if(blinkDidRun==FALSE || [blink isDone]){
         blinkDidRun=TRUE;

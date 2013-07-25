@@ -16,12 +16,12 @@
     
     if (self)
     {
-        self.stringFormat = @"Energy: %d/%d";
+        self.stringFormat = @"Seeds: %d/%d";
         energyLabel = [CCLabelBMFont labelWithString:@"" fntFile:fontFile];
         energyLabel.anchorPoint = ccp(0,0.5);
-        [energyLabel setColor:ccc3(255, 255, 255)];
+        [energyLabel setColor:ccc3(0, 0, 0)];
+            [NSTimer scheduledTimerWithTimeInterval:.9 target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
         [self addChild:energyLabel];
-        [NSTimer scheduledTimerWithTimeInterval:.75f target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
     }
     
     return self;
@@ -31,7 +31,8 @@
 {
     self.energyPerSec=energyPerSec;
     self.energyMax=initialEnergyMax;
-    [self setEnergy:0];
+    self.run=TRUE;
+    [self setEnergy:5];
 }
 
 - (void)setEnergy:(int)energy
@@ -41,8 +42,9 @@
     energyLabel.string = [NSString stringWithFormat:_stringFormat, energy,self.energyMax];
 }
 
+
 -(void) updateTimer:(NSTimer *) theTimer{
-    if ([[GameMechanics sharedGameMechanics] gameState] == GameStateRunning)
+    if ([[GameMechanics sharedGameMechanics] gameState] == GameStateRunning && self.run)
     {
         if(_energy+_energyPerSec< _energyMax){
             [self setEnergy:(_energy+_energyPerSec)];

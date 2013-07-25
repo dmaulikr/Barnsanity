@@ -19,6 +19,7 @@
 {
     //reward for killing this unit
     int reward;
+    int energyReward;
 }
 
 
@@ -26,5 +27,6 @@
 - (void)spawnAt:(float) angleOfLocation;
 - (void)gotHit:(int)damage;
 - (void)attack;
+-(void)setStats;
 -(void) reset;
 @end

@@ -15,7 +15,7 @@
     if (self)
     {
         [self setScale:.12 ];
-        speed=3;
+        speed=2.5;
         
         [self reset];
         [self scheduleUpdate];
@@ -32,20 +32,20 @@
     float worldYPos=[[[GameMechanics sharedGameMechanics] gameScene] getChildByTag:1].position.y;
     float shipYPos=[[[GameMechanics sharedGameMechanics] gameScene] getChildByTag:0].position.y;
     
-    distanceToSpawn=fabsf(worldYPos-shipYPos);
+    self.radiusToSpawn=fabsf(worldYPos-shipYPos);
     
 
     self.hitZone=5*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/4;
     
     float angleOfRotation=[[[GameMechanics sharedGameMechanics] gameScene] getChildByTag:1].rotation;
-    self.distanceFromWorld=distanceToSpawn;
+    self.distanceFromWorld=self.radiusToSpawn;
     
     //angle of the spawn
     angle= M_PI_2+CC_DEGREES_TO_RADIANS(angleOfRotation);
     angle=fmodf(angle+2*M_PI, 2*M_PI);
     // Select a spawn location
-    float xPos=distanceToSpawn*cos(angle);
-    float yPos=distanceToSpawn*sin(angle);
+    float xPos=self.radiusToSpawn*cos(angle);
+    float yPos=self.radiusToSpawn*sin(angle);
     
     self.rotation=CC_RADIANS_TO_DEGREES(-angle+M_PI_2);
     self.position=ccp(xPos,yPos);

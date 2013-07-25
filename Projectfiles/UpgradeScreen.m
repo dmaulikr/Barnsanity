@@ -41,6 +41,8 @@
         [self addChild:storeItemLabel];
         
         
+        //add buttons to go between pages
+        
         //add a decrease level button to decrease the level to play with
         CCSprite *previousPageImage = [CCSprite spriteWithFile:@"button_playbutton.png"];
         previousPageImage.flipX=180;
@@ -57,14 +59,17 @@
             [self nextPageButtonPressed];
         }];
         nextPage.position=ccp(220, 0);
+    
         //add the increase and decrease button into the menu
         page=[CCMenu menuWithItems:previousPage, nextPage, nil];
         page.position=ccp(0,0);
         [self addChild:page];
         
+        //other buttons//
+        
         //add a main menu button to go back to the main menu
         upgrade= [CCMenuItemFont itemWithString:@"Upgrade" block:^(id sender) {
-            
+            [self upgradeButtonPressed];
         }];
         upgrade.color = DEFAULT_FONT_COLOR;
         upgrade.position=ccp(200,0);
@@ -82,6 +87,8 @@
         menu.position = ccp(0,-100);
         [self addChild:menu];
         
+       
+        //add the page for item nodes//
         upgradePages=[[NSMutableArray alloc]init];
         //for the seed page
         [upgradePages addObject:[SeedScreen class]];
@@ -91,13 +98,16 @@
         currentPage.position=ccp(0,0);
         [self addChild:currentPage z:MAX_INT];
         
-        // add scoreboard entry for points
+        
+        // add scoreboard entry for gold
         goldDisplay = [[ScoreboardEntryNode alloc] initWithfontFile:@"avenir24.fnt"];
         goldDisplay.position= ccp( 0.25 * self.contentSize.width - 25, 0.5 * self.contentSize.height - 25);
         goldDisplay.scoreStringFormat = @"Gold: %d";
         [self addChild:goldDisplay];
         [goldDisplay setScore:[[GameMechanics sharedGameMechanics]game].gold];
         
+        
+        //how much description to display on screen and add the description on the screen
         countOfDescription=4;
         desciption=[[ItemDescriptionDisplayNode alloc]initWithImage:@"detail.jpg" andFont:@"avenir24.fnt" andNumberRow:countOfDescription];
         [desciption setScale:.7];
@@ -156,8 +166,7 @@
     //remove this layer before going to the level selection layer
     self.visible = FALSE;
     [self removeFromParentAndCleanup:TRUE];
-    //save game
-    [[[GameMechanics sharedGameMechanics] game]saveGame];
+
     //go to level selection layer
     [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
     

@@ -18,10 +18,11 @@
     CCBackgroundColorNode *backgroundNode;
     CCMenu *menu;
     
+    //the item node that was selected
     ItemNode *selectedItem;
-    CCMenuItemSprite *item1;
-    
+    //array of all the itemnodes
     NSMutableArray *itemNodes;
+    //array of all the buttons made from the itemnodes
     NSMutableArray *itemButtons;
     
 }

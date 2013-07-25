@@ -107,7 +107,7 @@
 -(void)setUpitems{
     int row=0;
     int col=0;
-    NSArray *playerMonsterList=[[NSArray alloc]initWithObjects:@"Orange",@"Apple",@"Strawberry",@"Cherry",@"Mango",@"Banana",@"Coconut",@"Grape",@"Pineapple",@"Watermelon",nil];
+    NSArray *playerMonsterList=[[GameMechanics sharedGameMechanics]game].playerMonsterList;
     for(NSInteger i =0; i<  playerMonsterList.count;i++){
         WeaponNode *tempNode=[[WeaponNode alloc] initWithImageFile:@"basicbarrell.png" unitName:playerMonsterList[i] atSlotPriority:i];
         [itemNodes setObject:tempNode forKey:playerMonsterList[i]];
@@ -159,8 +159,6 @@
         
         //send the seeds chosen to the game class
         [[GameMechanics sharedGameMechanics]game].seedsUsed=savingSlot;
-        //save the game
-        [[[GameMechanics sharedGameMechanics]game]saveGame];
         //remove this layer before going to the level selection layer
         self.visible = FALSE;
         [self removeFromParentAndCleanup:TRUE];

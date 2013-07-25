@@ -43,13 +43,11 @@
 {
 	if ((self = [super init]))
 	{
+        //a dictionary to hold all the instance of the buttons
         monsterButton = [[NSMutableDictionary alloc] init];
         [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Orange"] forKey:@"Orange"];
         [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Apple"] forKey:@"Apple"];
         [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Strawberry"]forKey:@"Strawberry"];
-        [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Cherry"] forKey:@"Cherry"];
-        [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Mango"] forKey:@"Mango"];
-        [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Banana"] forKey:@"Banana"];
         [monsterButton setObject:[[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Coconut"] forKey:@"Coconut"];
         [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Grape"] forKey:@"Grape"];
         [monsterButton setObject: [[SpawnMonsterButton alloc] initWithEntityImage:@"button_topdown-button.png" andMonster:@"Pineapple"] forKey:@"Pineapple"];
@@ -61,20 +59,23 @@
 }
 
 -(void)placeButton:(NSString *)buttonClass atLocation:(int) place{
+    //if the spot is open, place the button in the slot
     if(buttonClass == nil){
         [self removeChildByTag:place];
     }else{
+        //if it is not open, remove the button that was there and place the new one there
     if([self getChildByTag:place] != nil){
         [self removeChildByTag:place];
     }
     SpawnMonsterButton *button=[monsterButton objectForKey:buttonClass];
     [self addChild:button z:MAX_INT-1 tag:place];
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
-    button.position=ccp(screenSize.width-button.contentSize.width/5-5,screenSize.height-button.contentSize.height/4-(place * 50));
+    button.position=ccp(screenSize.width-button.contentSize.width/5-15,screenSize.height-button.contentSize.height/4-(place * 60)-10);
     }
 }
 
 -(void)pressedButton:(int)place{
+    //notify the button that it is pressed
     [(SpawnMonsterButton*)[self getChildByTag:place] pressed];
 }
 
@@ -82,6 +83,7 @@
     NSMutableArray *returnArray=[[NSMutableArray alloc]initWithCapacity:MAXSPAWNBUTTONS];
     for(int i=0;i<MAXSPAWNBUTTONS;i++){
         SpawnMonsterButton *temp=[self getChildByTag:i];
+        //if the button slot is open, return @"", else return the name of the button's monster
         if(temp==nil){
             [returnArray addObject:@""];
         }else{
@@ -92,6 +94,7 @@
 }
 
 -(void)reset{
+    //update the delay on all monster
     NSArray *monsterTypes = [monsterButton allValues];
     for (SpawnMonsterButton *monsterTypeClass in monsterTypes)
     {
@@ -102,6 +105,7 @@
 }
 
 -(void)loadButtons{
+    //load the buttons to be used that is saved in game class
     NSMutableArray *buttonSlot=[[GameMechanics sharedGameMechanics]game].seedsUsed;
     for(int i=0;i<MAXSPAWNBUTTONS;i++){
         if(!([buttonSlot[i] isEqual:@""])){
@@ -109,7 +113,21 @@
         }
     }
 }
+-(void)deleteButtons{
+    for(int i=0;i<MAXSPAWNBUTTONS;i++){
+        [self removeChildByTag:i];
+    }
+}
 
+-(void)hideButtons{
+    self.visible=FALSE;
+}
+-(void)showButtons{
+     self.visible=TRUE;
+}
+-(SpawnMonsterButton*)getButton:(NSString *)monsterName{
+    return [monsterButton objectForKey:monsterName];
+}
 
 
 @end

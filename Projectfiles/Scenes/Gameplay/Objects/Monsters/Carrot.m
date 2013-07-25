@@ -38,12 +38,9 @@
         run = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:running]];
         
         
-        
         //Create an action with the animation that can then be assigned to a sprite
         run = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:running]];
         
-//        // run the animation
-//        [self runAction:run];
         
         // ************* STABBING ANIMATION ********************
         
@@ -77,6 +74,7 @@
         
         attack = [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] , hitAction, [CCDelayTime actionWithDuration:.5] ,finishHit, nil];
         
+        //*********Plant animation**********
         CCFiniteTimeAction *planting = [CCCallBlock actionWithBlock:^{
             
             self.attacking = FALSE;
@@ -91,6 +89,7 @@
             }
         }];
         
+        //************Spawn animation
         CCFiniteTimeAction *spawning = [CCCallBlock actionWithBlock:^{
             //            [self stopAction:plant];
                 
@@ -104,30 +103,29 @@
         
         plant=[CCSequence actions:planting,[CCDelayTime actionWithDuration:1],spawning, nil];
         
-//
-//        
-//        spawn=[CCSequence actions:spawning, nil];
-        //get the radius of the world
+        //*********Death************
+        CCFiniteTimeAction *dying = [CCCallBlock actionWithBlock:^{
+            [self stopAction:run];
+            self.attacking = FALSE;
+            self.move=FALSE;
+            self.ableToAttack=FALSE;
+            self.invincible=TRUE;
+            [self destroy];
+            
+        }];
+        death=[CCSequence actions:dying, nil];
 
         
-        [self setScale:.5];
-        
+        //*************blink***************
         blink = [CCBlink actionWithDuration:.4f blinks:2];
+        
         //for the prototype
-        [self setColor:ccc3(255, 0, 0)];
+        //dark salmon
+        [self setColor:ccc3(233,150,122)];
+        [self setScale:.46];
         //include update
         [self scheduleUpdate];
-        
-        NSDictionary *monsterInfo=[[[[[GameMechanics sharedGameMechanics]game]gameInfo] objectForKey:@"Enemy Monsters"]objectForKey:nameOfMonster ];
-        self.hitPointsInit=[[monsterInfo objectForKey:@"Health"] integerValue];
-        self.damage=[[monsterInfo objectForKey:@"Damage"]integerValue];
-        speed=[[monsterInfo objectForKey:@"Move Speed"] doubleValue] ;
-        self.areaOfEffect=[[monsterInfo objectForKey:@"AreaOfEffect"] boolValue];
-        self.areaOfEffectDamage=[[monsterInfo objectForKey:@"AreaOfEffect Damage"]integerValue];
-        reward=[[monsterInfo objectForKey:@"Gold Reward"] integerValue];
-        
-        self.radiusToSpawnDelta=20;
-                self.range=2;
+        [self setStats];
 
         
     }

@@ -20,4 +20,5 @@
 @property (nonatomic, assign) int energyPerSec;
 @property (nonatomic, assign) int energyMax;
 @property (nonatomic, strong) NSString *stringFormat;
+@property (nonatomic, assign) BOOL run;
 @end

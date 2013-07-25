@@ -28,11 +28,7 @@
     CGSize screenSize;
     bool shipFire;
     BOOL shipFireToggle;
-    CCNode *centerOfRotation;
     ScoreboardEntryNode *pointsDisplayNode;
-    ScoreboardEntryNode *inAppCurrencyDisplayNode;
-    TimerDisplayNode *timer;
-    EnergyDisplayNode *energy;
     // groups health, coins and points display
     CCNode *hudNode;
         
@@ -60,10 +56,15 @@
 }
 
 // defines if the main menu shall be displayed, or if the game shall start directly. By default the menu is displayed.
+@property (nonatomic, assign) BOOL ableToRotate;
+@property (nonatomic, assign) BOOL ableToShoot;
 @property (nonatomic, assign) BOOL showMainMenu;
 @property (nonatomic, assign) float radiusOfWorld;
 @property (nonatomic, assign) Ship *ship;
-
+@property (nonatomic, assign) MonsterButtonCache *monsterButton;
+@property (nonatomic, assign) CCNode *centerOfRotation;
+@property (nonatomic, assign) TimerDisplayNode *timer;
+@property (nonatomic, assign) EnergyDisplayNode *energy;
 /**
  Tells the game to start
  */
@@ -74,6 +75,7 @@
 -(void)goToMainMenu;
 -(void)goToStore;
 -(void)goToEquip;
+-(void)gotToConfirm;
 
 // returns a GamePlayLayer, with an overlayed MainMenu
 + (id)scene;
@@ -86,6 +88,9 @@
 
 // hides the Heads-Up-Display (healthInfo, pointInfo, etc.). Can be animated.
 - (void)hideHUD;
+
+- (void)disableGameplayButtons;
+- (void)enableGamePlayButtons;
 
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;

@@ -27,9 +27,9 @@
 }
 
 -(void)fireBomb{
-    if(!bombUsed){
+    if(!self.bombUsed){
         [[MonsterCache sharedMonsterCache] createBomb];
-        bombUsed=TRUE;
+        self.bombUsed=TRUE;
     }
 }
 
@@ -53,7 +53,7 @@
 }
 
 -(void)reset{
-    bombUsed=FALSE;
+    self.bombUsed=FALSE;
     int level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship Firerate"] integerValue];
     fireDelayInitial=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo]objectForKey:@"Ship Firerate"]   objectAtIndex:level] integerValue];
 }
