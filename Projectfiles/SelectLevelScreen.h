@@ -30,9 +30,7 @@
     
     //menu buttons
     CCMenuItemFont *playLevel;
-    CCMenuItemFont *equip;
-    CCMenuItemFont *mainMenu;
-    CCMenuItemFont *save;
+    CCMenuItemFont *option;
     CCMenuItemFont *store;
     CCMenuItemSprite *volumeControl;
 }

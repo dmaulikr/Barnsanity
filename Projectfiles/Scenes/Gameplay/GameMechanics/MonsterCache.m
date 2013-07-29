@@ -87,8 +87,8 @@
         [self addChild:shipBullets];
         [self addChild:seeds];
         
-        theBomb=[[Bomb alloc]initWithMonsterPicture];
-        [self addChild:theBomb];
+        self.theBomb=[[Bomb alloc]initWithMonsterPicture];
+        [self addChild:self.theBomb];
         
         //create the dictionary for all monster units
         monster = [[NSMutableDictionary alloc] init];
@@ -122,6 +122,62 @@
         [monster setObject:enemyBatch forKey:@"Broccoli"];
         [playerMonster addChild:playerBatch];
         [monster setObject:playerBatch forKey:@"Apple"];
+        
+        enemyBatch=[[CCNode alloc]init];
+        playerBatch=[[CCNode alloc]init];
+		[enemyMonsters addChild:enemyBatch];
+        
+        [monster setObject:enemyBatch forKey:@"Corn"];
+        [playerMonster addChild:playerBatch];
+        [monster setObject:playerBatch forKey:@"Strawberry"];
+        
+        enemyBatch=[[CCNode alloc]init];
+        playerBatch=[[CCNode alloc]init];
+		[enemyMonsters addChild:enemyBatch];
+        
+        [monster setObject:enemyBatch forKey:@"Tomato"];
+        [playerMonster addChild:playerBatch];
+        [monster setObject:playerBatch forKey:@"Coconut"];
+        
+        enemyBatch=[[CCNode alloc]init];
+        playerBatch=[[CCNode alloc]init];
+		[enemyMonsters addChild:enemyBatch];
+        
+        [monster setObject:enemyBatch forKey:@"Potato"];
+        [playerMonster addChild:playerBatch];
+        [monster setObject:playerBatch forKey:@"Grape"];
+        
+        enemyBatch=[[CCNode alloc]init];
+        playerBatch=[[CCNode alloc]init];
+		[enemyMonsters addChild:enemyBatch];
+        
+        [monster setObject:enemyBatch forKey:@"PeaPod"];
+        [playerMonster addChild:playerBatch];
+        [monster setObject:playerBatch forKey:@"Pineapple"];
+        
+        enemyBatch=[[CCNode alloc]init];
+        playerBatch=[[CCNode alloc]init];
+		[enemyMonsters addChild:enemyBatch];
+        
+        [monster setObject:enemyBatch forKey:@"Pumpkin"];
+        [playerMonster addChild:playerBatch];
+        [monster setObject:playerBatch forKey:@"Watermelon"];
+        
+        enemyBatch=[[CCNode alloc]init];
+		[enemyMonsters addChild:enemyBatch];
+        [monster setObject:enemyBatch forKey:@"Beet"];
+        
+        enemyBatch=[[CCNode alloc]init];
+		[enemyMonsters addChild:enemyBatch];
+        [monster setObject:enemyBatch forKey:@"Asparagus"];
+        
+        enemyBatch=[[CCNode alloc]init];
+		[enemyMonsters addChild:enemyBatch];
+        [monster setObject:enemyBatch forKey:@"Artichokes"];
+        
+        enemyBatch=[[CCNode alloc]init];
+		[enemyMonsters addChild:enemyBatch];
+        [monster setObject:enemyBatch forKey:@"Eggplant"];
         
         
         CCNode *treeNode=[[CCNode alloc]init];
@@ -201,7 +257,7 @@
     Seed *seed;
     Walls *wall;
     
-    [theBomb reset];
+    [self.theBomb reset];
     CCARRAY_FOREACH([playerMonster children], playerBatch){
         CCARRAY_FOREACH([playerBatch children], player){
             [player reset];
@@ -318,8 +374,8 @@
     }
 }
 -(void)createBomb{
-    if(!theBomb.visible){
-        [theBomb spawn];
+    if(!self.theBomb.visible){
+        [self.theBomb spawn];
     }
 }
 
@@ -572,14 +628,14 @@
     BOOL monsterNearBarn=FALSE;
     
     //CHECK IF THE BOMB HIT
-    if(theBomb.visible && theBomb.readyToDamage){
+    if(self.theBomb.visible && self.theBomb.readyToDamage){
         CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
         {
             CCARRAY_FOREACH([enemyBatch children], enemy)
             {
                 if(enemy.alive && !enemy.invincible){
-                    if ([self collisionBetweenMonstersWithAngle:theBomb andMonster:enemy]){
-                        [enemy gotHit:theBomb.damage];
+                    if ([self collisionBetweenMonstersWithAngle:self.theBomb andMonster:enemy]){
+                        [enemy gotHit:self.theBomb.damage];
                     }
                 }
             }
@@ -588,8 +644,8 @@
         CCARRAY_FOREACH([playerMonster children], playerBatch){
             CCARRAY_FOREACH([playerBatch children], player){
                 if(player.alive && !player.invincible){
-                    if ([self collisionBetweenMonstersWithAngle:theBomb andMonster:player]){
-                        [player gotHit:theBomb.damage];
+                    if ([self collisionBetweenMonstersWithAngle:self.theBomb andMonster:player]){
+                        [player gotHit:self.theBomb.damage];
                     }
                 }
             }
@@ -602,14 +658,14 @@
             {
                 if(wall.visible && !wall.invincible){
                     if ([self collisionBetweenMonstersWithAngle:player andMonster:wall]){
-                        [wall gotHit:theBomb.damage];
+                        [wall gotHit:self.theBomb.damage];
                     }
                 }
             }
             
         }
         
-        [theBomb gotHit];
+        [self.theBomb gotHit];
     }
     
     

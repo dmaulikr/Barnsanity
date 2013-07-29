@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Bomb Damage</key>
-	<integer>0</integer>
+	<integer>-1</integer>
 	<key>Pineapple</key>
 	<integer>-1</integer>
 	<key>Watermelon</key>
@@ -37,8 +37,6 @@
 	<key>Player Barn Health</key>
 	<integer>0</integer>
 	<key>Player Barn Armor</key>
-	<integer>0</integer>
-	<key>Player Barn Damage</key>
 	<integer>0</integer>
 	<key>Gold Bonus</key>
 	<integer>0</integer>

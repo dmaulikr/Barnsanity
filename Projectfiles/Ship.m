@@ -53,7 +53,11 @@
 }
 
 -(void)reset{
-    self.bombUsed=FALSE;
+    if([[GameMechanics sharedGameMechanics]game].maxGamePlayLevel>=10){
+        self.bombUsed=FALSE;
+    }else{
+         self.bombUsed=TRUE;
+    }
     int level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship Firerate"] integerValue];
     fireDelayInitial=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo]objectForKey:@"Ship Firerate"]   objectAtIndex:level] integerValue];
 }

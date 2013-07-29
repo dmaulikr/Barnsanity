@@ -35,7 +35,7 @@
     self.radiusToSpawn=fabsf(worldYPos-shipYPos);
     
 
-    self.hitZone=5*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/4;
+    self.hitZone=9*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/4;
     
     float angleOfRotation=[[[GameMechanics sharedGameMechanics] gameScene] getChildByTag:1].rotation;
     self.distanceFromWorld=self.radiusToSpawn;
@@ -59,11 +59,13 @@
     
     self.visible=TRUE;
     self.attacked=FALSE;
-            self.readyToDamage=FALSE;
+    self.readyToDamage=FALSE;
+    self.alive=TRUE;
 }
 
 - (void)gotHit{
     self.visible = FALSE;
+    self.alive=FALSE;
     self.position = ccp(-MAX_INT, 0);
 }
 
@@ -96,8 +98,13 @@
 -(void)reset{
     [self gotHit];
     int level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Bomb Damage"] integerValue];
+    if(level>=0){
     self.damage=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo]objectForKey:@"Bomb Damage"]   objectAtIndex:level] integerValue];
     self.areaOfEffectDamage=self.damage;
+    }else{
+        self.damage=0;
+        self.areaOfEffectDamage=0;
+    }
 }
 
 @end

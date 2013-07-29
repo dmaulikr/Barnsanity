@@ -1,8 +1,8 @@
 //
-//  UpgradeScreen.h
+//  TutorialScreen3.h
 //  Veggy_V_Fruit
 //
-//  Created by Danny on 7/11/13.
+//  Created by Danny on 7/25/13.
 //  Copyright (c) 2013 MakeGamesWithUs Inc. All rights reserved.
 //
 
@@ -13,16 +13,21 @@
 #import "ItemNode.h"
 #import "ScoreboardEntryNode.h"
 #import "ItemDescriptionDisplayNode.h"
+@interface TutorialScreen3 : CCLayer
 
-@interface UpgradeScreen : CCLayer
 {
+    CCMenuItemImage *hereIsStore;
+    CCMenuItemImage *hereIsSeedSection;
+    CCMenuItemImage *finishPurchase;
+    CCMenuItemImage *goShop;
+     CCMenu *tutorialMenu;
     CCBackgroundColorNode *backgroundNode;
     CCMenu *menu;
     
     //buttons to go between pages
     CCMenuItemSprite *previousPage;
     CCMenuItemSprite *nextPage;
-     CCMenu *page;
+    CCMenu *page;
     
     //to display the gold
     ScoreboardEntryNode *goldDisplay;
@@ -34,14 +39,14 @@
     CCMenuItemFont *back;
     
     //buttons for equip
-     CCMenuItemFont *equip;
-     CCMenuItemFont *unequip;
+    CCMenuItemFont *equip;
+    CCMenuItemFont *unequip;
     
     //the item nodes that was selected
     ItemNode *selectedItem;
     
     //weapon slot
-     NSMutableArray *weaponSlot;
+    NSMutableArray *weaponSlot;
     //all the pages of items
     NSMutableArray *upgradePages;
     int currentPageNumber;
@@ -51,10 +56,19 @@
     ItemDescriptionDisplayNode *desciption;
     //number of description to show
     int countOfDescription;
-     int countOfEquiped;
+    int countOfEquiped;
+    BOOL tutorialOn;
+    BOOL disableNext;
+    BOOL disablePrevious;
+    BOOL disableUpgrade;
+    BOOL disableSelect;
+    BOOL disableEquip;
+    BOOL disableUnequip;
+    BOOL disableBack;
 }
 
 - (id)initWithGame;
 -(void)present;
 -(void)showSelectedItem:(ItemNode*)item;
 @end
+

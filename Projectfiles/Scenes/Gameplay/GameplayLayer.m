@@ -21,11 +21,15 @@
 #import "WinScreen.h"
 #import "LoseScreen.h"
 #import "UpgradeScreen.h"
-#import "EquipScreen.h"
 #import "MainMenuLayer.h"
 #import "TutorialScreen1.h"
 #import "ConfirmScreen.h"
 #import "TutorialScreen2.h"
+#import "TutorialScreen3.h"
+#import "OptionScreen.h"
+#import "TutorialScreen4.h"
+#import "TutorialScreen5.h"
+#import "TutorialScreen6.h"
 
 //Caches
 #import "MonsterCache.h"
@@ -230,11 +234,24 @@ static CGRect screenRect;
     if(game.gameplayLevel==1){
         [self level1Tutorial];
     }
+    if(game.gameplayLevel==8){
+        [self level8Tutorial];
+    }
+    if(game.gameplayLevel==10){
+        [self level10Tutorial];
+    }
+    
+    if(game.gameplayLevel==20){
+        [self wholeWorldTutorial];
+    }
     
 }
 
 - (void)resetGame
 {
+    if(game.gameplayLevel==20){
+        game.difficulty=HARD;
+    }
     self.ableToShoot=TRUE;
     self.ableToRotate=TRUE;
     [planet reset];
@@ -313,15 +330,15 @@ static CGRect screenRect;
             //for rotation deceleration
             if(fabsf(rotationVelocity)>2){
                 if(deltaRotation<0){
-                    self.centerOfRotation.rotation-=3*rotationVelocity*delta;
+                    self.centerOfRotation.rotation-=2.1*rotationVelocity*delta;
                     
                 }else{
-                    self.centerOfRotation.rotation+=3*rotationVelocity*delta;
+                    self.centerOfRotation.rotation+=2.1*rotationVelocity*delta;
                 }
                 if(rotationVelocity>5){
-                    rotationVelocity=rotationVelocity-(rotationVelocity/30);
+                    rotationVelocity=rotationVelocity-(rotationVelocity/15);
                 }else{
-                    rotationVelocity=rotationVelocity-(rotationVelocity/4);
+                    rotationVelocity=rotationVelocity-(rotationVelocity/1.2);
                 }
             }
             
@@ -625,13 +642,6 @@ static CGRect screenRect;
     [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
 }
 
--(void)goToEquip{
-    [self disableGameplayButtons];
-    [self hideHUD];
-    EquipScreen *equipLayer=[[EquipScreen alloc]initWithGame];
-    [self addChild:equipLayer z:9];
-    [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
-}
 
 
 -(void)gotToConfirm{
@@ -639,6 +649,13 @@ static CGRect screenRect;
     [self hideHUD];
     ConfirmScreen *confirmLayer=[[ConfirmScreen alloc]init];
     [self addChild:confirmLayer z:9];
+    [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
+}
+-(void)goToOption{
+    [self disableGameplayButtons];
+    [self hideHUD];
+    OptionScreen *optionLayer=[[OptionScreen alloc]initWithGame];
+    [self addChild:optionLayer z:9];
     [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
 }
 
@@ -650,6 +667,27 @@ static CGRect screenRect;
 
 -(void)level1Tutorial{
     TutorialScreen2 *tutoritalLayer=[[TutorialScreen2 alloc]initWithGame];
+    [self addChild:tutoritalLayer z:8 tag:10];
+}
+
+-(void)shopTutorial{
+    TutorialScreen3 *tutoritalLayer=[[TutorialScreen3 alloc]initWithGame];
+    [self addChild:tutoritalLayer z:8 tag:10];
+}
+
+-(void)level8Tutorial{
+    [self disableGameplayButtons];
+    TutorialScreen4 *tutoritalLayer=[[TutorialScreen4 alloc]initWithGame];
+    [self addChild:tutoritalLayer z:8 tag:10];
+}
+
+-(void)level10Tutorial{
+    TutorialScreen5 *tutoritalLayer=[[TutorialScreen5 alloc]initWithGame];
+    [self addChild:tutoritalLayer z:8 tag:10];
+}
+
+-(void)wholeWorldTutorial{
+    TutorialScreen6 *tutoritalLayer=[[TutorialScreen6 alloc]initWithGame];
     [self addChild:tutoritalLayer z:8 tag:10];
 }
 

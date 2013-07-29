@@ -18,7 +18,7 @@
 @interface Game : NSObject
 
 //is true if it is the first time playing
-@property (nonatomic, assign) BOOL tutorial;
+@property (nonatomic, assign) BOOL activateStoreTutorial;
 //indicates the difficulty level of the game
 @property (nonatomic, assign) NSInteger difficulty;
 

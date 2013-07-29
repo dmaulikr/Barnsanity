@@ -57,13 +57,6 @@
     self.totalGold=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Highest Gold For Level"]integerValue];
     
     [self reset];
-        //if its still the first level, show tutorial
-    if(self.maxGamePlayLevel==0){
-        self.tutorial=TRUE;
-    }else{
-        self.tutorial=FALSE;
-    }
- 
     }else{
         [self newGame];
     }
@@ -87,8 +80,6 @@
 }
 
 -(void)newGame{
-    //its a new game, so turn on tutorial
-    self.tutorial=TRUE;
     //load new game levels
     NSString *newGame = [[NSBundle mainBundle] pathForResource:@"NewGame_Levels" ofType:@"plist"];
     self.levelsOfEverything=[NSMutableDictionary dictionaryWithContentsOfFile:newGame];
@@ -102,6 +93,7 @@
     self.highScoreForLevel=0;
     self.totalTimePlayed=0;
     self.totalGold=0;
+    self.difficulty=EASY;
     
     //save the game into the slot
     self.seedsUsed=[[NSMutableArray alloc]initWithCapacity:MAXSPAWNBUTTONS];
@@ -241,9 +233,15 @@
         newlevel++;
         [self.levelsOfEverything  setObject:[NSNumber numberWithInt:newlevel] forKey:@"Game Levels"];
         self.maxGamePlayLevel=newlevel;
+        if(newlevel==5){
+            self.activateStoreTutorial=TRUE;
+        }
+        if(newlevel==20){
+            self.difficulty=HARD;
+        }
     }
     
-    
+    [self saveGame];
 }
 
 -(void)loseLevel{
@@ -252,6 +250,7 @@
     self.totalPlayerMonsterKilled=self.totalPlayerMonsterKilled+self.playerMonsterKilled;
     //total time played
     self.totalTimePlayed=+(self.timeInSecInit-self.timeInSec);
+    [self saveGame];
 }
 
 

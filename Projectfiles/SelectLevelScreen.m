@@ -42,8 +42,8 @@
         storeItemLabel.color = DEFAULT_FONT_COLOR;
         storeItemLabel.position = ccp(0, 0.5 * self.contentSize.height - 25);
         [self addChild:storeItemLabel];
-
-
+        
+        
         
         // add scoreboard entry for points
         ScoreboardEntryNode *goldDisplay = [[ScoreboardEntryNode alloc] initWithfontFile:@"avenir24.fnt"];
@@ -66,17 +66,21 @@
             [self playButtonPressed];
         }];
         playLevel.color = DEFAULT_FONT_COLOR;
-        playLevel.position=ccp(-100,0);
+        playLevel.position=ccp(-150,0);
         
         store= [CCMenuItemFont itemWithString:@"Store" block:^(id sender) {
             [self storeButtonPressed];
         }];
         store.color = DEFAULT_FONT_COLOR;
-        store.position=ccp(100,0);
-
-
+        store.position=ccp(0,0);
+        
+        option= [CCMenuItemFont itemWithString:@"Option" block:^(id sender) {
+            [self optionPressed];
+        }];
+        option.color = DEFAULT_FONT_COLOR;
+        option.position=ccp(150,0);
         //add all buttons to the menu
-        menu = [CCMenu menuWithItems:playLevel,store, nil];
+        menu = [CCMenu menuWithItems:playLevel,store,option, nil];
         menu.position = ccp(0,-100);
         [self addChild:menu];
         
@@ -116,19 +120,22 @@
         levelSelection.position=ccp(0,0);
         [self addChild:levelSelection];
         
-//        //volume control button
-//        CCSprite *volume = [CCSprite spriteWithFile:@"view.png"];
-//        volumeControl = [CCMenuItemSprite itemWithNormalSprite:volume selectedSprite:volume block:^(id sender) {
-//            [self volumeControl];
-//        }];
+        //        //volume control button
+        //        CCSprite *volume = [CCSprite spriteWithFile:@"view.png"];
+        //        volumeControl = [CCMenuItemSprite itemWithNormalSprite:volume selectedSprite:volume block:^(id sender) {
+        //            [self volumeControl];
+        //        }];
         
         requiredLevel = [CCLabelTTF labelWithString:@"Required Game Level 5"
-                                       fontName:DEFAULT_FONT
-                                       fontSize:14];
+                                           fontName:DEFAULT_FONT
+                                           fontSize:14];
         requiredLevel.color = DEFAULT_FONT_COLOR;
         requiredLevel.position = ccp(0, -0.5 * self.contentSize.height + 30);
         [self addChild:requiredLevel];
         requiredLevel.visible=FALSE;
+        if([[GameMechanics sharedGameMechanics]game].activateStoreTutorial){
+            [store runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.0f blinks:1]]];
+        }
     }
     
     return self;
@@ -184,17 +191,31 @@
 }
 
 -(void)storeButtonPressed{
-    if(maxLevelToPlay>=5){
-    //remove this layer before going to the next
+//    if(maxLevelToPlay>=5){
+        if([[GameMechanics sharedGameMechanics]game].activateStoreTutorial){
+            //remove this layer before going to the next
+            self.visible = FALSE;
+            [self removeFromParentAndCleanup:TRUE];
+            //go to store layer
+            [[[GameMechanics sharedGameMechanics] gameScene] shopTutorial];
+        }else{
+            //remove this layer before going to the next
+            self.visible = FALSE;
+            [self removeFromParentAndCleanup:TRUE];
+            //go to store layer
+            [[[GameMechanics sharedGameMechanics] gameScene] goToStore];
+        }
+//    }else{
+//        requiredLevel.visible=TRUE;
+//    }
+}
+
+-(void)optionPressed{
     self.visible = FALSE;
     [self removeFromParentAndCleanup:TRUE];
     //go to store layer
-        [[[GameMechanics sharedGameMechanics] gameScene] goToStore];
-    }else{
-        requiredLevel.visible=TRUE;
-    }
+    [[[GameMechanics sharedGameMechanics] gameScene] goToOption];
 }
-
 
 
 

@@ -133,8 +133,10 @@
     [self removeFromParentAndCleanup:TRUE];
     [[[GameMechanics sharedGameMechanics]gameScene]enableGamePlayButtons];
     [[GameMechanics sharedGameMechanics]gameScene].energy.visible=TRUE;
+    [[MonsterButtonCache sharedMonsterButtonCache] showButtons];
     [[[[GameMechanics sharedGameMechanics]gameScene]energy ]resetEnergy:[[GameMechanics sharedGameMechanics]game].energyMax increasedAt:[[GameMechanics sharedGameMechanics]game].energyPerSec];
     [[MonsterCache sharedMonsterCache] setAbleToSpawn:TRUE];
+    [[GameMechanics sharedGameMechanics]gameScene].ableToRotate=TRUE;
 }
 
 

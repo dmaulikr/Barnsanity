@@ -851,7 +851,7 @@
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
-			<integer>4</integer>
+			<integer>5</integer>
 		</dict>
 		<dict>
 			<key>Price</key>

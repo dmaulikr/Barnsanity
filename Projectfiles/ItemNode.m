@@ -15,7 +15,11 @@
     self=[super initWithFile:filename];
     if(self){
         _nameOfItem=nameOfThisItem;
-
+        notBought=[[CCSprite alloc]initWithFile:filename];
+        [notBought setColor:ccc3(211,211,211)];
+        notBought.position=ccp(0,0);
+        [self addChild:notBought];
+        notBought.visible=FALSE;
         [self reset];
 //        [self setScale:.25];
     }
@@ -78,15 +82,18 @@
                 //it matches so youre able to buy/ upgrade it
                 self.ableToBuy=TRUE;
                 self.ableToUpgrade=TRUE;
+                notBought.visible=TRUE;
             }else{
                 //it does not match so you can not buy or upgrade it
                 self.ableToUpgrade=FALSE;
                 self.ableToBuy=FALSE;
+                notBought.visible=FALSE;
             }
         }else{
             //it is maxed out without being bought
             self.ableToUpgrade=FALSE;
             self.ableToBuy=FALSE;
+            notBought.visible=FALSE;
             
         }
     }
@@ -112,12 +119,23 @@
     return FALSE;
 }
 
+-(void)equipAtSlot{
+    if(self.bought && self.ableToEquip){
+        self.equiped=TRUE;
+    }
+}
+-(void)unequip{
+    if(self.bought && self.ableToEquip){
+        self.equiped=FALSE;
+    }
+}
+
 -(void)draw{
     if(!self.ableToBuy ){
         [self setColor:ccc3(0,0,0)];
     }else{
-        if(!self.bought){
-            [self setColor:ccc3(211,211,211)];
+        if(self.equiped){
+            
         }
         if(self.selected){
             ccColor4F rectColor = ccc4f(255, 255, 255, 255); //parameters correspond to red, green, blue, and alpha (transparancy)

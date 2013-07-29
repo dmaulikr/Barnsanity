@@ -95,7 +95,7 @@
         [self addChild:swipe];
         
         //button to spawn plant
-        firstButton=[CCSprite spriteWithFile:@"button_topdown-button.png"];
+        firstButton=[CCSprite spriteWithFile:@"OrangeButton.png"];
         [firstButton setScale:.7];
         monsterButton=[CCMenuItemSprite itemWithNormalSprite:firstButton selectedSprite:nil block:^(id sender) {
             if(checkPoint3 || checkPoint7){
@@ -187,7 +187,7 @@
             }else if(checkPoint6 && count-waitCount >=70){
                 play.visible=FALSE;
                 [[GameMechanics sharedGameMechanics]gameScene].ableToRotate=TRUE;
-                [[MonsterCache sharedMonsterCache]spawnEnemyOfType:@"Carrot" atAngle:M_PI+M_PI_4/2];
+//                [[MonsterCache sharedMonsterCache]spawnEnemyOfType:@"Carrot" atAngle:M_PI+M_PI_4/2];
                 [[MonsterCache sharedMonsterCache] setAbleToSpawn:TRUE];
                 [[[GameMechanics sharedGameMechanics]gameScene] energy].run=TRUE;
                 [[[GameMechanics sharedGameMechanics]gameScene]enableGamePlayButtons];
@@ -214,7 +214,6 @@
     self.visible = FALSE;
     [self removeFromParentAndCleanup:TRUE];
     [[[GameMechanics sharedGameMechanics]gameScene]enableGamePlayButtons];
-    [[GameMechanics sharedGameMechanics]game].tutorial=FALSE;
     [[[GameMechanics sharedGameMechanics]gameScene]goTolevelSelection];
     
 }

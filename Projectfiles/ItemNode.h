@@ -10,13 +10,17 @@
 #import "GameMechanics.h"
 @interface ItemNode : CCSprite
 {
+    CCSprite *notBought;
 }
 @property (nonatomic, assign) BOOL ableToBuy;
 @property (nonatomic, assign) BOOL ableToUpgrade;
 @property (nonatomic, assign) BOOL bought;
+@property (nonatomic, assign) BOOL ableToEquip;
+@property (nonatomic, assign) BOOL equiped;
 @property (nonatomic, assign) BOOL selected;
 @property (nonatomic, assign) NSInteger level;
 @property (nonatomic, assign) NSInteger price;
+@property (nonatomic, assign) NSInteger slotPriority;
 @property (nonatomic, assign) NSString *nameOfItem;
 @property (nonatomic, assign) NSString *unlockingItem;
 @property (nonatomic, assign) NSInteger requiredLevel;
@@ -28,5 +32,7 @@
 -(void) reset;
 -(void)select;
 -(void)deselect;
+-(void)equipAtSlot;
+-(void)unequip;
 -(BOOL)upgrade;
 @end

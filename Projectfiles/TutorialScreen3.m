@@ -1,16 +1,16 @@
 //
-//  UpgradeScreen.m
+//  TutorialScreen3.m
 //  Veggy_V_Fruit
 //
-//  Created by Danny on 7/11/13.
+//  Created by Danny on 7/25/13.
 //  Copyright (c) 2013 MakeGamesWithUs Inc. All rights reserved.
 //
 
-#import "UpgradeScreen.h"
+#import "TutorialScreen3.h"
 #import "GameMechanics.h"
 #import "STYLES.h"
+@implementation TutorialScreen3
 
-@implementation UpgradeScreen
 - (id)initWithGame
 {
     self = [super init];
@@ -122,8 +122,65 @@
         [self addChild:desciption];
         weaponSlot=[[NSMutableArray alloc]initWithCapacity:MAXSPAWNBUTTONS];
         
-         [self setUpitemsWithList:[[GameMechanics sharedGameMechanics]game].utilUpgradeList];
+        [self setUpitemsWithList:[[GameMechanics sharedGameMechanics]game].utilUpgradeList];
         
+        hereIsStore=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial3-1.png"] selectedSprite:nil block:^(id sender) {
+            disableNext=FALSE;
+            disablePrevious=TRUE;
+            disableUpgrade=TRUE;
+            disableSelect=TRUE;
+            disableEquip=TRUE;
+            disableUnequip=TRUE;
+            [nextPage runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.5f blinks:1]]];
+            hereIsStore.visible=FALSE;
+        
+        }];
+
+        hereIsStore.position=ccp(0,0);
+        
+        hereIsSeedSection=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial3-2.png"] selectedSprite:nil block:^(id sender) {
+            disableNext=TRUE;
+            disablePrevious=TRUE;
+            disableUpgrade=FALSE;
+            disableSelect=FALSE;
+            disableEquip=FALSE;
+            disableUnequip=FALSE;
+            ItemNode* temp=[currentItemNodes objectForKey:@"Apple"];
+            [temp runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.5f blinks:1]]];
+            hereIsSeedSection.visible=FALSE;
+        }];
+        hereIsSeedSection.visible=FALSE;
+        hereIsSeedSection.position=ccp(0,0);
+        finishPurchase=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial3-3.png"] selectedSprite:nil block:^(id sender) {
+            finishPurchase.visible=FALSE;
+            goShop.visible=TRUE;
+        }];
+        finishPurchase.visible=FALSE;
+        finishPurchase.position=ccp(0,0);
+        goShop=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial3-4.png"] selectedSprite:nil block:^(id sender) {
+            disableNext=FALSE;
+            disablePrevious=FALSE;
+            disableUpgrade=FALSE;
+            disableSelect=FALSE;
+            disableEquip=FALSE;
+            disableUnequip=FALSE;
+            goShop.visible=FALSE;
+            tutorialOn=FALSE;
+        }];
+        goShop.visible=FALSE;
+        goShop.position=ccp(0,0);
+        tutorialMenu=[CCMenu menuWithItems:hereIsStore,hereIsSeedSection,finishPurchase,goShop, nil];
+        tutorialMenu.position=ccp(0,0);
+        [self addChild:tutorialMenu z:10];
+        
+         disableNext=TRUE;
+         disablePrevious=TRUE;
+         disableUpgrade=TRUE;
+        disableSelect=TRUE;
+        disableEquip=TRUE;
+        disableUnequip=TRUE;
+        disableBack=FALSE;
+        tutorialOn=TRUE;
     }
     
     return self;
@@ -160,6 +217,10 @@
 }
 
 -(void)nextPageButtonPressed{
+    if(!disableNext){
+        if(tutorialOn){
+            hereIsSeedSection.visible=TRUE;
+        }
     [self setUpitemsWithList:[[GameMechanics sharedGameMechanics]game].playerMonsterList];
     //enable all the seed itemsNodes equipable
     NSMutableArray *itemNodes=[currentItemNodes allValues];
@@ -191,10 +252,14 @@
     temp[3]=@"";
     [desciption setDescription:temp];
     seedSlots.visible=TRUE;
+        upgrade.visible=FALSE;
     [seedSlots setScore:MAXSPAWNBUTTONS-countOfEquiped];
+        [nextPage stopAllActions];
+    }
 }
 
 -(void)previousPageButtonPressed{
+        if(!disablePrevious){
     [self setUpitemsWithList:[[GameMechanics sharedGameMechanics]game].utilUpgradeList];
     previousPage.visible=FALSE;
     nextPage.visible=TRUE;
@@ -204,22 +269,25 @@
     temp[2]=@"";
     temp[3]=@"";
     [desciption setDescription:temp];
+            upgrade.visible=FALSE;
     equip.visible=FALSE;
     unequip.visible=FALSE;
     seedSlots.visible=FALSE;
+        }
 }
 -(void) backButtonPressed{
+    if(!disableBack){
     if([weaponSlot count]==0){
         //remove this layer before going to the level selection layer
         self.visible = FALSE;
         [self removeFromParentAndCleanup:TRUE];
-        [[[GameMechanics sharedGameMechanics]game]saveGame];
+        
         //go to level selection layer
         [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
     }else if(countOfEquiped>0)
     {
         //must equip at least one weapon before leaving
-
+        
         //sort the weapon slot according to the node's priority
         NSMutableArray *savingSlot=[[NSMutableArray alloc] initWithCapacity:MAXSPAWNBUTTONS];
         for(int i=0;i<MAXSPAWNBUTTONS;i++){
@@ -245,15 +313,15 @@
             }
             
         }
-            
-            //send the seeds chosen to the game class
-            [[GameMechanics sharedGameMechanics]game].seedsUsed=savingSlot;
         
-
+        //send the seeds chosen to the game class
+        [[GameMechanics sharedGameMechanics]game].seedsUsed=savingSlot;
+        
+        
         //remove this layer before going to the level selection layer
         self.visible = FALSE;
         [self removeFromParentAndCleanup:TRUE];
-        [[[GameMechanics sharedGameMechanics]game]saveGame];
+        
         //go to level selection layer
         [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
     }else{
@@ -264,10 +332,19 @@
         temp[3]=@"";
         [desciption setDescription:temp];
     }
+    }
+    
 }
 
 
 -(void) upgradeButtonPressed{
+        if(!disableUpgrade){
+            if([selectedItem.nameOfItem isEqual: @"Apple"] && tutorialOn){
+                [equip runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.5f blinks:1]]];
+                [upgrade stopAllActions];
+                disableBack=TRUE;
+                equip.visible=TRUE;
+            }
     if([selectedItem upgrade]){
         ItemNode *temp;
         NSMutableArray *itemNodes=[currentItemNodes allValues];
@@ -285,11 +362,24 @@
         [desciption setDescription:temp];
     }
     [goldDisplay setScore:[[GameMechanics sharedGameMechanics]game].gold];
+        }
 }
 
 -(void) equipButtonPressed{
-    
+    if(!disableEquip){
     //if the number of slot for weapon is less than the max number of spawn button you can have, equip the weapon
+        if([selectedItem.nameOfItem isEqual: @"Apple"] && tutorialOn){
+            [equip stopAllActions];
+            finishPurchase.visible=TRUE;
+            disableNext=TRUE;
+            disablePrevious=TRUE;
+            disableUpgrade=TRUE;
+            disableSelect=TRUE;
+            disableEquip=TRUE;
+            disableUnequip=TRUE;
+            disableBack=FALSE;
+            [[GameMechanics sharedGameMechanics]game].activateStoreTutorial=FALSE;
+        }
     if(countOfEquiped < MAXSPAWNBUTTONS){
         for(int i=0;i<MAXSPAWNBUTTONS;i++){
             //insert it at the first open slot
@@ -304,9 +394,11 @@
     }
     [seedSlots setScore:MAXSPAWNBUTTONS-countOfEquiped];
 }
+}
 
 
 -(void) unequipButtonPressed{
+    if(!disableUnequip){
     if(countOfEquiped > 0){
         for(int i=0;i<MAXSPAWNBUTTONS;i++){
             if([weaponSlot[i]isEqual:selectedItem.nameOfItem]){
@@ -319,16 +411,27 @@
         }
     }
     [seedSlots setScore:MAXSPAWNBUTTONS-countOfEquiped];
+    }
 }
 
 
 -(void)selectItem:(ItemNode *)itemSelected{
+        if(!disableSelect){
+            
     if(itemSelected.ableToBuy){
         [selectedItem deselect];
         selectedItem=itemSelected;
         [selectedItem select];
         [self showSelectedItem:selectedItem] ;
     }
+            if([selectedItem.nameOfItem isEqual:@"Apple"] && tutorialOn){
+                [upgrade runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.5f blinks:1]]];
+                [selectedItem stopAllActions];
+                disableSelect=TRUE;
+                
+                equip.visible=FALSE;
+            }
+        }
 }
 
 -(void)showSelectedItem: (ItemNode *)item{
@@ -352,13 +455,12 @@
     }else if(selectedItem.ableToEquip && selectedItem.equiped){
         equip.visible=FALSE;
         unequip.visible=TRUE;
-    }else if(!selectedItem.equiped && countOfEquiped==MAXSPAWNBUTTONS){
-        equip.visible=FALSE;
-        unequip.visible=FALSE;
     }else if(!selectedItem.ableToEquip || !selectedItem.bought){
         equip.visible=FALSE;
         unequip.visible=FALSE;
     }
+        
 }
 
 @end
+

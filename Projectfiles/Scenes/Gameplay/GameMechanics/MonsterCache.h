@@ -16,7 +16,6 @@
 
 @interface MonsterCache : CCNode
 {
-    Bomb *theBomb;
     //batch for the different kind of monster units
     CCNode *enemyMonsters;
     CCNode *playerMonster;
@@ -36,7 +35,7 @@
 @property (nonatomic, assign) BOOL  *enemyBarnUnderAttack;
 @property (nonatomic, assign) BOOL  *playerBarnUnderAttack;
 @property (nonatomic, assign) BOOL ableToSpawn;
-
+@property (nonatomic, weak)  Bomb *theBomb;
 + (id)sharedMonsterCache;
 
 //barn
@@ -47,6 +46,10 @@
 
 //enemy monster
 -(void) spawnEnemyOfType:(NSString*)enemyTypeClass atAngle:(float) angleOfLocation;
+
+//spawn walls
+
+-(void) spawnWall:(NSString*)wallType atAngle:(float) angleOfLocation;
 //create ship bullet
 -(void)createShipBullet;
 
@@ -61,6 +64,8 @@
 
 //pause game
 - (void)gamePaused;
+
+
 
 //Check if there is any monster of a type alive
 -(BOOL)anyMonsterAliveOfType:(NSString *) monsterName;
