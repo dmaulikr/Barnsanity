@@ -170,7 +170,7 @@ static CGRect screenRect;
         //        [pointsDisplayNode setScale:1.5];
         //        [hudNode addChild:pointsDisplayNode z:MAX_INT-1];
         //include timer
-//        self.timer=[[TimerDisplayNode alloc] initWithfontFile:@"avenir24.fnt"];
+        self.timer=[[TimerDisplayNode alloc] initWithfontFile:@"avenir24.fnt"];
 //        self.timer.position = ccp(10, screenSize.height - 40);
 //        [self.timer setScale:1.5];
 //        [hudNode addChild:self.timer z:8];
@@ -314,10 +314,10 @@ static CGRect screenRect;
             //for rotation deceleration
             if(fabsf(rotationVelocity)>2){
                 if(deltaRotation<0){
-                    self.centerOfRotation.rotation-=2*rotationVelocity*delta;
+                    self.centerOfRotation.rotation-=2.2*rotationVelocity*delta;
                     
                 }else{
-                    self.centerOfRotation.rotation+=2*rotationVelocity*delta;
+                    self.centerOfRotation.rotation+=2.2*rotationVelocity*delta;
                 }
                 if(rotationVelocity>5){
                     rotationVelocity=rotationVelocity-(rotationVelocity/15);
@@ -330,10 +330,10 @@ static CGRect screenRect;
             //for rotation deceleration
             if(fabsf(rotationVelocity)>2){
                 if(deltaRotation<0){
-                    self.centerOfRotation.rotation-=2.1*rotationVelocity*delta;
+                    self.centerOfRotation.rotation-=2.2*rotationVelocity*delta;
                     
                 }else{
-                    self.centerOfRotation.rotation+=2.1*rotationVelocity*delta;
+                    self.centerOfRotation.rotation+=2.2*rotationVelocity*delta;
                 }
                 if(rotationVelocity>5){
                     rotationVelocity=rotationVelocity-(rotationVelocity/15);
@@ -376,9 +376,10 @@ static CGRect screenRect;
 
 
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    NSArray *allTouches=[touches allObjects];
+    for(int i=0;i<allTouches.count;i++){
+    UITouch *touch =allTouches[i];
     BOOL touchSpawnButtons=FALSE;
-    //stop the rotation
-    UITouch *touch = [touches anyObject];
     CGPoint touchPoint = [touch locationInView:[touch view]];
     //get the center of the world
     CGPoint circleCenter=self.centerOfRotation.position;
@@ -419,7 +420,7 @@ static CGRect screenRect;
             
         }
     }
-    
+    }
 }
 
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{

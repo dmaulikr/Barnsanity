@@ -9,6 +9,8 @@
 #import "OptionScreen.h"
 #import "GameMechanics.h"
 #import "STYLES.h"
+#import "PopupProvider.h"
+#import "StyleManager.h"
 
 @implementation OptionScreen
 - (id)initWithGame
@@ -54,25 +56,52 @@
         menu = [CCMenu menuWithItems:back,resetGame, nil];
         menu.position = ccp(0,0);
         [self addChild:menu];
-        
+        disableMenuButtons=FALSE;
             }
     
     return self;
 }
 -(void)backButtonPressed{
+    if(!disableMenuButtons){
     //remove this layer before going to the next
     self.visible = FALSE;
     [self removeFromParentAndCleanup:TRUE];
     //go to store layer
     [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
+    }
 }
 -(void)resetGameButtonPressed{
-    //remove this layer before going to the next
-    self.visible = FALSE;
-    [self removeFromParentAndCleanup:TRUE];
-    [[[GameMechanics sharedGameMechanics]game]newGame];
-    //go to store layer
-    [[[GameMechanics sharedGameMechanics] gameScene] goToMainMenu];
+    if(!disableMenuButtons){
+        [self presentGoOnPopUp];
+    }
+}
+
+- (void)presentGoOnPopUp
+{
+    CCScale9Sprite *backgroundImage = [StyleManager goOnPopUpBackground];
+    goOnPopUp = [PopupProvider presentPopUpWithContentString:nil backgroundImage:backgroundImage target:self selector:@selector(goOnPopUpButtonClicked:) buttonTitles:@[@"Yes", @"No"]];
+    disableMenuButtons=TRUE;
+    back.visible=FALSE;
+    resetGame.visible=FALSE;
+}
+
+- (void)goOnPopUpButtonClicked:(CCControlButton *)sender
+{
+    disableMenuButtons=FALSE;
+    back.visible=TRUE;
+    resetGame.visible=TRUE;
+    [goOnPopUp dismiss];
+    if (sender.tag == 0)
+    {
+        //remove this layer before going to the next
+        self.visible = FALSE;
+        [self removeFromParentAndCleanup:TRUE];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0]forKey:@"Game Exist"];
+        
+        //go to store layer
+        [[[GameMechanics sharedGameMechanics] gameScene] goToMainMenu];
+    }
+    
 }
 
 @end

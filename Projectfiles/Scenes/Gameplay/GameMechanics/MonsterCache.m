@@ -603,7 +603,7 @@
         //if the first bounding angle is within the hit zone angles, checks if bounding angles is with the hit zone
         (defender.boundingZoneAngle1<=attacker.hitZoneAngle1 && defender.boundingZoneAngle1>= attacker.hitZoneAngle2)||
         (defender.boundingZoneAngle2<=attacker.hitZoneAngle1 && defender.boundingZoneAngle2>= attacker.hitZoneAngle2))
-       && attacker.distanceFromWorld-attacker.contentSize.height/7 <= [[GameMechanics sharedGameMechanics]gameScene].radiusOfWorld+defender.contentSize.height/7){
+       && attacker.distanceFromWorld-attacker.contentSize.height/9 <= [[GameMechanics sharedGameMechanics]gameScene].radiusOfWorld+defender.contentSize.height/9){
         
         return TRUE;
     }else{
@@ -1007,29 +1007,29 @@
                 // we get the spawn frequency for this specific monster type
                 int spawnFrequency = [[GameMechanics sharedGameMechanics] spawnRateForEnemyMonsterType:monsterTypeClass];
                 // if the updateCount reached the spawnFrequency we spawn a new enemy
-//                if([[GameMechanics sharedGameMechanics]game].timeInSec<=[[GameMechanics sharedGameMechanics]game].timeForCrazyMode){
-//                    spawnFrequency=spawnFrequency/2;
-//                }
-                
-                if([[GameMechanics sharedGameMechanics]game].difficulty==HARD){
-                    spawnFrequency=spawnFrequency/1.43;
+                if([[GameMechanics sharedGameMechanics]game].timeInSec<=[[GameMechanics sharedGameMechanics]game].timeForCrazyMode){
+                    spawnFrequency=spawnFrequency/2;
                 }
+                
+//                if([[GameMechanics sharedGameMechanics]game].difficulty==HARD){
+//                    spawnFrequency=spawnFrequency/1.43;
+//                }
                 
                 if (updateCount % spawnFrequency == 0)
                 {
                     if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
                         if(self.enemyBarnUnderAttack){
-                            [self spawnEnemyOfType:monsterTypeClass atAngle:(5*M_PI_4-self.enemyBarn.boundingZone/2)];
+                            [self spawnEnemyOfType:monsterTypeClass atAngle:(5*M_PI_4-self.enemyBarn.boundingZone/1.2)];
                         }else{
                             
-                            [self spawnEnemyOfType:monsterTypeClass atAngle:(M_PI_2+(CCRANDOM_0_1()*2.5*M_PI_4 ))];
+                            [self spawnEnemyOfType:monsterTypeClass atAngle:(M_PI_2+M_PI_4/2+(CCRANDOM_0_1()*2.5*M_PI_4 ))];
                         }
                     }else{
                         if(self.enemyBarnUnderAttack){
-                            [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI+CCRANDOM_MINUS1_1()*self.enemyBarn.boundingZone/2];
+                            [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI+CCRANDOM_MINUS1_1()*self.enemyBarn.boundingZone/1.2];
                         }else{
                             
-                            [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI_2+CCRANDOM_0_1()*M_PI];
+                            [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI_2+M_PI_4/2+CCRANDOM_0_1()*3*M_PI_4];
                         }
                     }
                 }

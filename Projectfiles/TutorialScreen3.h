@@ -55,6 +55,7 @@
     //shows the description of the selected items
     ItemDescriptionDisplayNode *desciption;
     //number of description to show
+    int itemPage;
     int countOfDescription;
     int countOfEquiped;
     BOOL tutorialOn;

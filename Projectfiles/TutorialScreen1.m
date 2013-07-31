@@ -100,7 +100,7 @@
         monsterButton=[CCMenuItemSprite itemWithNormalSprite:firstButton selectedSprite:nil block:^(id sender) {
             if(checkPoint3 || checkPoint7){
             float angleOfSpawn = fmodf([[[GameMechanics sharedGameMechanics] gameScene]  getChildByTag:1].rotation, 360);
-            if((angleOfSpawn <=0 && angleOfSpawn >= -180)||(angleOfSpawn >180 && angleOfSpawn < 359)){
+            if((angleOfSpawn <=-22.5 && angleOfSpawn >= -157.5)||(angleOfSpawn >202.5 && angleOfSpawn < 337.5)){
                 if(10<=[[GameMechanics sharedGameMechanics]game].energy){
                     [[GameMechanics sharedGameMechanics]game].energy-=10;
                     [[[[GameMechanics sharedGameMechanics]gameScene]ship]fireSeedForMonster:@"Orange"];
@@ -185,9 +185,10 @@
                     }
                 }
             }else if(checkPoint6 && count-waitCount >=70){
+                
                 play.visible=FALSE;
                 [[GameMechanics sharedGameMechanics]gameScene].ableToRotate=TRUE;
-//                [[MonsterCache sharedMonsterCache]spawnEnemyOfType:@"Carrot" atAngle:M_PI+M_PI_4/2];
+                [[MonsterCache sharedMonsterCache]spawnEnemyOfType:@"Carrot" atAngle:M_PI+M_PI_4/2];
                 [[MonsterCache sharedMonsterCache] setAbleToSpawn:TRUE];
                 [[[GameMechanics sharedGameMechanics]gameScene] energy].run=TRUE;
                 [[[GameMechanics sharedGameMechanics]gameScene]enableGamePlayButtons];

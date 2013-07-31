@@ -10,6 +10,7 @@
 #import "Game.h"
 #import "CCSpriteBackgroundNode.h"
 #import "CCBackgroundColorNode.h"
+#import "PopUp.h"
 //#import "MissionsNode.h"
 
 @class PauseScreen;
@@ -30,6 +31,8 @@
     CCMenuItemSprite *resumeMenuItem;
     CCMenuItemFont *mainMenu;
     CCMenuItemFont *selectLevel;
+    PopUp *goOnPopUp;
+    BOOL disableMenuButtons;
 }
 
 @property (nonatomic, weak) id<PauseScreenDelegate> delegate;

@@ -52,6 +52,7 @@
     //number of description to show
     int countOfDescription;
      int countOfEquiped;
+    int itemPage;
 }
 
 - (id)initWithGame;

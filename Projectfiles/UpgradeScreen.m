@@ -10,7 +10,10 @@
 #import "GameMechanics.h"
 #import "STYLES.h"
 
+#define UTIL 0
+#define WEAPON 1
 @implementation UpgradeScreen
+
 - (id)initWithGame
 {
     self = [super init];
@@ -123,7 +126,7 @@
         weaponSlot=[[NSMutableArray alloc]initWithCapacity:MAXSPAWNBUTTONS];
         
          [self setUpitemsWithList:[[GameMechanics sharedGameMechanics]game].utilUpgradeList];
-        
+        itemPage=UTIL;
     }
     
     return self;
@@ -161,6 +164,7 @@
 
 -(void)nextPageButtonPressed{
     [self setUpitemsWithList:[[GameMechanics sharedGameMechanics]game].playerMonsterList];
+    itemPage=WEAPON;
     //enable all the seed itemsNodes equipable
     NSMutableArray *itemNodes=[currentItemNodes allValues];
     for(int i=0; i<itemNodes.count;i++){
@@ -195,21 +199,66 @@
 }
 
 -(void)previousPageButtonPressed{
-    [self setUpitemsWithList:[[GameMechanics sharedGameMechanics]game].utilUpgradeList];
-    previousPage.visible=FALSE;
-    nextPage.visible=TRUE;
-    NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
-    temp[0]=@"";
-    temp[1]=@"";
-    temp[2]=@"";
-    temp[3]=@"";
-    [desciption setDescription:temp];
-    equip.visible=FALSE;
-    unequip.visible=FALSE;
-    seedSlots.visible=FALSE;
+    if(countOfEquiped>0)
+    {
+        //must equip at least one weapon before leaving
+        
+        //sort the weapon slot according to the node's priority
+        NSMutableArray *savingSlot=[[NSMutableArray alloc] initWithCapacity:MAXSPAWNBUTTONS];
+        for(int i=0;i<MAXSPAWNBUTTONS;i++){
+            ItemNode *nodeWithMinPriority=nil;
+            ItemNode *currentNode=nil;
+            int minPriority=MAX_INT;
+            int minPriorityIndexLocation=-1;
+            for(int j=0;j<MAXSPAWNBUTTONS;j++){
+                if(![weaponSlot[j] isEqual:@""]){
+                    currentNode=[currentItemNodes objectForKey:weaponSlot[j]];
+                    if(currentNode.slotPriority < minPriority){
+                        nodeWithMinPriority=currentNode;
+                        minPriority=currentNode.slotPriority;
+                        minPriorityIndexLocation=j;
+                    }
+                }
+            }
+            if(nodeWithMinPriority==nil){
+                savingSlot[i]=@"";
+            }else{
+                weaponSlot[minPriorityIndexLocation]=@"";
+                savingSlot[i]=nodeWithMinPriority.nameOfItem;
+            }
+            
+        }
+        
+        //send the seeds chosen to the game class
+        [[GameMechanics sharedGameMechanics]game].seedsUsed=savingSlot;
+        [[[GameMechanics sharedGameMechanics]game]saveGame];
+        itemPage=UTIL;
+        [self setUpitemsWithList:[[GameMechanics sharedGameMechanics]game].utilUpgradeList];
+        previousPage.visible=FALSE;
+        nextPage.visible=TRUE;
+        NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
+        temp[0]=@"";
+        temp[1]=@"";
+        temp[2]=@"";
+        temp[3]=@"";
+        [desciption setDescription:temp];
+        equip.visible=FALSE;
+        unequip.visible=FALSE;
+        seedSlots.visible=FALSE;
+        
+    }else{
+        NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
+        temp[0]=[NSString stringWithFormat:@"Must Equip At Least One Weapon"];
+        temp[1]=@"";
+        temp[2]=@"";
+        temp[3]=@"";
+        [desciption setDescription:temp];
+    }
+    
+
 }
 -(void) backButtonPressed{
-    if([weaponSlot count]==0){
+    if(itemPage==UTIL){
         //remove this layer before going to the level selection layer
         self.visible = FALSE;
         [self removeFromParentAndCleanup:TRUE];
@@ -346,8 +395,8 @@
         upgrade.visible=FALSE;
     }
     
-    if(selectedItem.ableToEquip && !selectedItem.equiped && countOfEquiped<MAXSPAWNBUTTONS){
-        equip.visible=TRUE;
+    if(!selectedItem.ableToEquip || !selectedItem.bought){
+        equip.visible=FALSE;
         unequip.visible=FALSE;
     }else if(selectedItem.ableToEquip && selectedItem.equiped){
         equip.visible=FALSE;
@@ -357,6 +406,9 @@
         unequip.visible=FALSE;
     }else if(!selectedItem.ableToEquip || !selectedItem.bought){
         equip.visible=FALSE;
+        unequip.visible=FALSE;
+    }else if(selectedItem.ableToEquip && !selectedItem.equiped && countOfEquiped<MAXSPAWNBUTTONS){
+        equip.visible=TRUE;
         unequip.visible=FALSE;
     }
 }

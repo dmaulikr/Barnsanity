@@ -50,6 +50,7 @@
         score.position = ccp(-self.contentSize.width/2+80, 0.5 * self.contentSize.height - 45);
         [self addChild:score];
         
+        if([[GameMechanics sharedGameMechanics]game].gameplayLevel>=10){
         NSString *moreKilled;
         if([[GameMechanics sharedGameMechanics]gameScene].ship.bombUsed){
         moreKilled=[NSString stringWithFormat:@"Bomb Used: Yes"];
@@ -63,6 +64,7 @@
         moreKillThanDeath.color = DEFAULT_FONT_COLOR;
         moreKillThanDeath.position = ccp(-self.contentSize.width/2+80, 0.5 * self.contentSize.height - 65);
         [self addChild:moreKillThanDeath];
+        }
         NSString *barn;
         if([[MonsterCache sharedMonsterCache] enemyBarn].hitPoints <= 0){
             barn=[NSString stringWithFormat:@"Enemy Barn Destroyed: Yes"];

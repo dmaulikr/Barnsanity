@@ -16,8 +16,9 @@
     if(self){
         _nameOfItem=nameOfThisItem;
         notBought=[[CCSprite alloc]initWithFile:filename];
-        [notBought setColor:ccc3(211,211,211)];
-        notBought.position=ccp(0,0);
+        [notBought setColor:ccc3(220,220,220)];
+        notBought.position=ccp(self.position.x+self.contentSize.width/2,self.position.y+self.contentSize.height/2);
+        
         [self addChild:notBought];
         notBought.visible=FALSE;
         [self reset];

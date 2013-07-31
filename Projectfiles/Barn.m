@@ -74,7 +74,7 @@
     [self resumeSchedulerAndActions];
     radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
     self.boundingZone=2.5*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2));
-    self.hitZone=3*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2));
+    self.hitZone=9*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2));
     self.angle=fmodf(angle+2*M_PI, 2*M_PI);
     //set up spawn location
     //get the radius of the world

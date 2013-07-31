@@ -9,6 +9,9 @@
 #import "TutorialScreen3.h"
 #import "GameMechanics.h"
 #import "STYLES.h"
+
+#define UTIL 0
+#define WEAPON 1
 @implementation TutorialScreen3
 
 - (id)initWithGame
@@ -133,9 +136,9 @@
             disableUnequip=TRUE;
             [nextPage runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.5f blinks:1]]];
             hereIsStore.visible=FALSE;
-        
+            
         }];
-
+        
         hereIsStore.position=ccp(0,0);
         
         hereIsSeedSection=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial3-2.png"] selectedSprite:nil block:^(id sender) {
@@ -172,10 +175,11 @@
         tutorialMenu=[CCMenu menuWithItems:hereIsStore,hereIsSeedSection,finishPurchase,goShop, nil];
         tutorialMenu.position=ccp(0,0);
         [self addChild:tutorialMenu z:10];
+        itemPage=UTIL;
         
-         disableNext=TRUE;
-         disablePrevious=TRUE;
-         disableUpgrade=TRUE;
+        disableNext=TRUE;
+        disablePrevious=TRUE;
+        disableUpgrade=TRUE;
         disableSelect=TRUE;
         disableEquip=TRUE;
         disableUnequip=TRUE;
@@ -221,153 +225,197 @@
         if(tutorialOn){
             hereIsSeedSection.visible=TRUE;
         }
-    [self setUpitemsWithList:[[GameMechanics sharedGameMechanics]game].playerMonsterList];
-    //enable all the seed itemsNodes equipable
-    NSMutableArray *itemNodes=[currentItemNodes allValues];
-    for(int i=0; i<itemNodes.count;i++){
-        ItemNode *tempItemNode=itemNodes[i];
-        tempItemNode.ableToEquip=TRUE;
-        tempItemNode.equiped=FALSE;
-    }
-    //load all the already equiped
-    countOfEquiped=0;
-    NSMutableArray *currentButtonSlots=[[GameMechanics sharedGameMechanics]game].seedsUsed;
-    for(int i=0; i< MAXSPAWNBUTTONS;i++){
-        
-        if(![currentButtonSlots[i]isEqual: @""]){
-            ItemNode *tempNode=[currentItemNodes objectForKey:currentButtonSlots[i]];
-            weaponSlot[i]=tempNode.nameOfItem;
-            [tempNode equipAtSlot];
-            countOfEquiped++;
-        }else{
-            weaponSlot[i]=@"";
+        itemPage=WEAPON;
+        [self setUpitemsWithList:[[GameMechanics sharedGameMechanics]game].playerMonsterList];
+        //enable all the seed itemsNodes equipable
+        NSMutableArray *itemNodes=[currentItemNodes allValues];
+        for(int i=0; i<itemNodes.count;i++){
+            ItemNode *tempItemNode=itemNodes[i];
+            tempItemNode.ableToEquip=TRUE;
+            tempItemNode.equiped=FALSE;
         }
-    }
-    previousPage.visible=TRUE;
-    nextPage.visible=FALSE;
-    NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
-    temp[0]=@"";
-    temp[1]=@"";
-    temp[2]=@"";
-    temp[3]=@"";
-    [desciption setDescription:temp];
-    seedSlots.visible=TRUE;
+        //load all the already equiped
+        countOfEquiped=0;
+        NSMutableArray *currentButtonSlots=[[GameMechanics sharedGameMechanics]game].seedsUsed;
+        for(int i=0; i< MAXSPAWNBUTTONS;i++){
+            
+            if(![currentButtonSlots[i]isEqual: @""]){
+                ItemNode *tempNode=[currentItemNodes objectForKey:currentButtonSlots[i]];
+                weaponSlot[i]=tempNode.nameOfItem;
+                [tempNode equipAtSlot];
+                countOfEquiped++;
+            }else{
+                weaponSlot[i]=@"";
+            }
+        }
+        previousPage.visible=TRUE;
+        nextPage.visible=FALSE;
+        NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
+        temp[0]=@"";
+        temp[1]=@"";
+        temp[2]=@"";
+        temp[3]=@"";
+        [desciption setDescription:temp];
+        seedSlots.visible=TRUE;
         upgrade.visible=FALSE;
-    [seedSlots setScore:MAXSPAWNBUTTONS-countOfEquiped];
+        [seedSlots setScore:MAXSPAWNBUTTONS-countOfEquiped];
         [nextPage stopAllActions];
     }
 }
 
 -(void)previousPageButtonPressed{
-        if(!disablePrevious){
-    [self setUpitemsWithList:[[GameMechanics sharedGameMechanics]game].utilUpgradeList];
-    previousPage.visible=FALSE;
-    nextPage.visible=TRUE;
-    NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
-    temp[0]=@"";
-    temp[1]=@"";
-    temp[2]=@"";
-    temp[3]=@"";
-    [desciption setDescription:temp];
-            upgrade.visible=FALSE;
-    equip.visible=FALSE;
-    unequip.visible=FALSE;
-    seedSlots.visible=FALSE;
+    if(!disablePrevious){
+        if(countOfEquiped>0)
+        {
+            //must equip at least one weapon before leaving
+            
+            //sort the weapon slot according to the node's priority
+            NSMutableArray *savingSlot=[[NSMutableArray alloc] initWithCapacity:MAXSPAWNBUTTONS];
+            for(int i=0;i<MAXSPAWNBUTTONS;i++){
+                ItemNode *nodeWithMinPriority=nil;
+                ItemNode *currentNode=nil;
+                int minPriority=MAX_INT;
+                int minPriorityIndexLocation=-1;
+                for(int j=0;j<MAXSPAWNBUTTONS;j++){
+                    if(![weaponSlot[j] isEqual:@""]){
+                        currentNode=[currentItemNodes objectForKey:weaponSlot[j]];
+                        if(currentNode.slotPriority < minPriority){
+                            nodeWithMinPriority=currentNode;
+                            minPriority=currentNode.slotPriority;
+                            minPriorityIndexLocation=j;
+                        }
+                    }
+                }
+                if(nodeWithMinPriority==nil){
+                    savingSlot[i]=@"";
+                }else{
+                    weaponSlot[minPriorityIndexLocation]=@"";
+                    savingSlot[i]=nodeWithMinPriority.nameOfItem;
+                }
+                
+            }
+            
+            //send the seeds chosen to the game class
+            [[GameMechanics sharedGameMechanics]game].seedsUsed=savingSlot;
+            [[[GameMechanics sharedGameMechanics]game]saveGame];
+             itemPage=UTIL;
+            [self setUpitemsWithList:[[GameMechanics sharedGameMechanics]game].utilUpgradeList];
+            previousPage.visible=FALSE;
+            nextPage.visible=TRUE;
+            NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
+            temp[0]=@"";
+            temp[1]=@"";
+            temp[2]=@"";
+            temp[3]=@"";
+            [desciption setDescription:temp];
+            equip.visible=FALSE;
+            unequip.visible=FALSE;
+            seedSlots.visible=FALSE;
+        }else{
+            NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
+            temp[0]=[NSString stringWithFormat:@"Must Equip At Least One Weapon"];
+            temp[1]=@"";
+            temp[2]=@"";
+            temp[3]=@"";
+            [desciption setDescription:temp];
         }
+
+        
+    }
 }
 -(void) backButtonPressed{
     if(!disableBack){
-    if([weaponSlot count]==0){
-        //remove this layer before going to the level selection layer
-        self.visible = FALSE;
-        [self removeFromParentAndCleanup:TRUE];
-        
-        //go to level selection layer
-        [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
-    }else if(countOfEquiped>0)
-    {
-        //must equip at least one weapon before leaving
-        
-        //sort the weapon slot according to the node's priority
-        NSMutableArray *savingSlot=[[NSMutableArray alloc] initWithCapacity:MAXSPAWNBUTTONS];
-        for(int i=0;i<MAXSPAWNBUTTONS;i++){
-            ItemNode *nodeWithMinPriority=nil;
-            ItemNode *currentNode=nil;
-            int minPriority=MAX_INT;
-            int minPriorityIndexLocation=-1;
-            for(int j=0;j<MAXSPAWNBUTTONS;j++){
-                if(![weaponSlot[j] isEqual:@""]){
-                    currentNode=[currentItemNodes objectForKey:weaponSlot[j]];
-                    if(currentNode.slotPriority < minPriority){
-                        nodeWithMinPriority=currentNode;
-                        minPriority=currentNode.slotPriority;
-                        minPriorityIndexLocation=j;
+           if(itemPage==UTIL){
+            //remove this layer before going to the level selection layer
+            self.visible = FALSE;
+            [self removeFromParentAndCleanup:TRUE];
+            [[[GameMechanics sharedGameMechanics]game]saveGame];
+            //go to level selection layer
+            [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
+        }else if(countOfEquiped>0)
+        {
+            //must equip at least one weapon before leaving
+            
+            //sort the weapon slot according to the node's priority
+            NSMutableArray *savingSlot=[[NSMutableArray alloc] initWithCapacity:MAXSPAWNBUTTONS];
+            for(int i=0;i<MAXSPAWNBUTTONS;i++){
+                ItemNode *nodeWithMinPriority=nil;
+                ItemNode *currentNode=nil;
+                int minPriority=MAX_INT;
+                int minPriorityIndexLocation=-1;
+                for(int j=0;j<MAXSPAWNBUTTONS;j++){
+                    if(![weaponSlot[j] isEqual:@""]){
+                        currentNode=[currentItemNodes objectForKey:weaponSlot[j]];
+                        if(currentNode.slotPriority < minPriority){
+                            nodeWithMinPriority=currentNode;
+                            minPriority=currentNode.slotPriority;
+                            minPriorityIndexLocation=j;
+                        }
                     }
                 }
-            }
-            if(nodeWithMinPriority==nil){
-                savingSlot[i]=@"";
-            }else{
-                weaponSlot[minPriorityIndexLocation]=@"";
-                savingSlot[i]=nodeWithMinPriority.nameOfItem;
+                if(nodeWithMinPriority==nil){
+                    savingSlot[i]=@"";
+                }else{
+                    weaponSlot[minPriorityIndexLocation]=@"";
+                    savingSlot[i]=nodeWithMinPriority.nameOfItem;
+                }
+                
             }
             
+            //send the seeds chosen to the game class
+            [[GameMechanics sharedGameMechanics]game].seedsUsed=savingSlot;
+            
+            
+            //remove this layer before going to the level selection layer
+            self.visible = FALSE;
+            [self removeFromParentAndCleanup:TRUE];
+            [[[GameMechanics sharedGameMechanics]game]saveGame];
+            //go to level selection layer
+            [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
+        }else{
+            NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
+            temp[0]=[NSString stringWithFormat:@"Must Equip At Least One Weapon"];
+            temp[1]=@"";
+            temp[2]=@"";
+            temp[3]=@"";
+            [desciption setDescription:temp];
         }
-        
-        //send the seeds chosen to the game class
-        [[GameMechanics sharedGameMechanics]game].seedsUsed=savingSlot;
-        
-        
-        //remove this layer before going to the level selection layer
-        self.visible = FALSE;
-        [self removeFromParentAndCleanup:TRUE];
-        
-        //go to level selection layer
-        [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
-    }else{
-        NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
-        temp[0]=[NSString stringWithFormat:@"Must Equip At Least One Weapon"];
-        temp[1]=@"";
-        temp[2]=@"";
-        temp[3]=@"";
-        [desciption setDescription:temp];
-    }
     }
     
 }
 
 
 -(void) upgradeButtonPressed{
-        if(!disableUpgrade){
-            if([selectedItem.nameOfItem isEqual: @"Apple"] && tutorialOn){
-                [equip runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.5f blinks:1]]];
-                [upgrade stopAllActions];
-                disableBack=TRUE;
-                equip.visible=TRUE;
+    if(!disableUpgrade){
+        if([selectedItem.nameOfItem isEqual: @"Apple"] && tutorialOn){
+            [equip runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.5f blinks:1]]];
+            [upgrade stopAllActions];
+            disableBack=TRUE;
+            equip.visible=TRUE;
+        }
+        if([selectedItem upgrade]){
+            ItemNode *temp;
+            NSMutableArray *itemNodes=[currentItemNodes allValues];
+            for(int i =0; i<itemNodes.count;i++){
+                temp=itemNodes[i];
+                [temp reset];
+                [self selectItem:selectedItem];
             }
-    if([selectedItem upgrade]){
-        ItemNode *temp;
-        NSMutableArray *itemNodes=[currentItemNodes allValues];
-        for(int i =0; i<itemNodes.count;i++){
-            temp=itemNodes[i];
-            [temp reset];
-            [self selectItem:selectedItem];
+        }else{
+            NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
+            temp[0]=[NSString stringWithFormat:@"Not Enough Gold"];
+            temp[1]=@"";
+            temp[2]=@"";
+            temp[3]=@"";
+            [desciption setDescription:temp];
         }
-    }else{
-        NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
-        temp[0]=[NSString stringWithFormat:@"Not Enough Gold"];
-        temp[1]=@"";
-        temp[2]=@"";
-        temp[3]=@"";
-        [desciption setDescription:temp];
+        [goldDisplay setScore:[[GameMechanics sharedGameMechanics]game].gold];
     }
-    [goldDisplay setScore:[[GameMechanics sharedGameMechanics]game].gold];
-        }
 }
 
 -(void) equipButtonPressed{
     if(!disableEquip){
-    //if the number of slot for weapon is less than the max number of spawn button you can have, equip the weapon
+        //if the number of slot for weapon is less than the max number of spawn button you can have, equip the weapon
         if([selectedItem.nameOfItem isEqual: @"Apple"] && tutorialOn){
             [equip stopAllActions];
             finishPurchase.visible=TRUE;
@@ -380,58 +428,57 @@
             disableBack=FALSE;
             [[GameMechanics sharedGameMechanics]game].activateStoreTutorial=FALSE;
         }
-    if(countOfEquiped < MAXSPAWNBUTTONS){
-        for(int i=0;i<MAXSPAWNBUTTONS;i++){
-            //insert it at the first open slot
-            if([weaponSlot[i]isEqual:@""]){
-                countOfEquiped++;
-                weaponSlot[i]=selectedItem.nameOfItem;
-                [selectedItem equipAtSlot];
-                [ self selectItem:selectedItem];
-                break;
+        if(countOfEquiped < MAXSPAWNBUTTONS){
+            for(int i=0;i<MAXSPAWNBUTTONS;i++){
+                //insert it at the first open slot
+                if([weaponSlot[i]isEqual:@""]){
+                    countOfEquiped++;
+                    weaponSlot[i]=selectedItem.nameOfItem;
+                    [selectedItem equipAtSlot];
+                    [ self selectItem:selectedItem];
+                    break;
+                }
             }
         }
     }
-    [seedSlots setScore:MAXSPAWNBUTTONS-countOfEquiped];
-}
 }
 
 
 -(void) unequipButtonPressed{
     if(!disableUnequip){
-    if(countOfEquiped > 0){
-        for(int i=0;i<MAXSPAWNBUTTONS;i++){
-            if([weaponSlot[i]isEqual:selectedItem.nameOfItem]){
-                countOfEquiped--;
-                weaponSlot[i]=@"";
-                [selectedItem unequip];
-                [ self selectItem:selectedItem];
-                break;
+        if(countOfEquiped > 0){
+            for(int i=0;i<MAXSPAWNBUTTONS;i++){
+                if([weaponSlot[i]isEqual:selectedItem.nameOfItem]){
+                    countOfEquiped--;
+                    weaponSlot[i]=@"";
+                    [selectedItem unequip];
+                    [ self selectItem:selectedItem];
+                    break;
+                }
             }
         }
-    }
-    [seedSlots setScore:MAXSPAWNBUTTONS-countOfEquiped];
+        [seedSlots setScore:MAXSPAWNBUTTONS-countOfEquiped];
     }
 }
 
 
 -(void)selectItem:(ItemNode *)itemSelected{
-        if(!disableSelect){
-            
-    if(itemSelected.ableToBuy){
-        [selectedItem deselect];
-        selectedItem=itemSelected;
-        [selectedItem select];
-        [self showSelectedItem:selectedItem] ;
-    }
-            if([selectedItem.nameOfItem isEqual:@"Apple"] && tutorialOn){
-                [upgrade runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.5f blinks:1]]];
-                [selectedItem stopAllActions];
-                disableSelect=TRUE;
-                
-                equip.visible=FALSE;
-            }
+    if(!disableSelect){
+        
+        if(itemSelected.ableToBuy){
+            [selectedItem deselect];
+            selectedItem=itemSelected;
+            [selectedItem select];
+            [self showSelectedItem:selectedItem] ;
         }
+        if([selectedItem.nameOfItem isEqual:@"Apple"] && tutorialOn){
+            [upgrade runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.5f blinks:1]]];
+            [selectedItem stopAllActions];
+            disableSelect=TRUE;
+            
+            equip.visible=FALSE;
+        }
+    }
 }
 
 -(void)showSelectedItem: (ItemNode *)item{
@@ -449,17 +496,23 @@
         upgrade.visible=FALSE;
     }
     
-    if(selectedItem.ableToEquip && !selectedItem.equiped && countOfEquiped<MAXSPAWNBUTTONS){
-        equip.visible=TRUE;
+    if(!selectedItem.ableToEquip || !selectedItem.bought){
+        equip.visible=FALSE;
         unequip.visible=FALSE;
     }else if(selectedItem.ableToEquip && selectedItem.equiped){
         equip.visible=FALSE;
         unequip.visible=TRUE;
+    }else if(!selectedItem.equiped && countOfEquiped==MAXSPAWNBUTTONS){
+        equip.visible=FALSE;
+        unequip.visible=FALSE;
     }else if(!selectedItem.ableToEquip || !selectedItem.bought){
         equip.visible=FALSE;
         unequip.visible=FALSE;
+    }else if(selectedItem.ableToEquip && !selectedItem.equiped && countOfEquiped<MAXSPAWNBUTTONS){
+        equip.visible=TRUE;
+        unequip.visible=FALSE;
     }
-        
+    
 }
 
 @end

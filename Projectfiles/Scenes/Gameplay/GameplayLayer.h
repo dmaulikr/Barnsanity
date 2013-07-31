@@ -71,6 +71,7 @@
 - (void)startGame;
 
 //going to different screens
+-(void)pauseButtonPressed;
 -(void)goTolevelSelection;
 -(void)goToMainMenu;
 -(void)goToStore;

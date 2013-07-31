@@ -24,6 +24,7 @@
     BOOL checkPoint3;
     BOOL checkPoint4;
     BOOL readyForBomb;
+    BOOL monsterKilled;
 }
 - (id)initWithGame;
 @end

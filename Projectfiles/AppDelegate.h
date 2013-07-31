@@ -6,9 +6,11 @@
  */
 
 #import "KKAppDelegate.h"
+#import "GameMechanics.h"
 
 @interface AppDelegate : KKAppDelegate
 {
+    GameState *currentGameState;
 }
 
 @end

@@ -10,12 +10,15 @@
 #import "Game.h"
 #import "CCSpriteBackgroundNode.h"
 #import "CCBackgroundColorNode.h"
+#import "PopUp.h"
 @interface OptionScreen : CCLayer
 {
     CCBackgroundColorNode *backgroundNode;
     CCMenu *menu;
     CCMenuItemSprite *resetGame;
     CCMenuItemSprite *back;
+    BOOL disableMenuButtons;
+    PopUp *goOnPopUp;
 }
 
 - (id)initWithGame;

@@ -108,6 +108,7 @@
         if(!shootDidRun){
             if([[MonsterCache sharedMonsterCache]anyMonsterAliveOfType:@"Ship Bullets"]){
                 shootDidRun=TRUE;
+                tapAndShoot.visible=FALSE;
                 checkPoint2=TRUE;
                 waitCount=count;
             }

@@ -9,6 +9,8 @@
 #import "PauseScreen.h"
 #import "GameMechanics.h"
 #import "STYLES.h"
+#import "PopupProvider.h"
+#import "StyleManager.h"
 
 @interface PauseScreen()
 
@@ -52,24 +54,25 @@
         
         
         //add a select level button to go select a different level
-        selectLevel= [CCMenuItemFont itemWithString:@"Select Level" block:^(id sender) {
+        selectLevel= [CCMenuItemFont itemWithString:@"Quit Level" block:^(id sender) {
             [self selectLevelButtonPressed];
         }];
         selectLevel.color = DEFAULT_FONT_COLOR;
         
+        selectLevel.position=ccp(0,-100);
         //add a main menu button to go back to the main menu
         
-        mainMenu= [CCMenuItemFont itemWithString:@"Main Menu" block:^(id sender) {
-            [self mainMenuButtonPressed];
-        }];
-        mainMenu.color = DEFAULT_FONT_COLOR;
-        
+//        mainMenu= [CCMenuItemFont itemWithString:@"Main Menu" block:^(id sender) {
+//            [self mainMenuButtonPressed];
+//        }];
+//        mainMenu.color = DEFAULT_FONT_COLOR;
+//        
         //add all the buttons to the menu
-        menu = [CCMenu menuWithItems:resumeMenuItem,mainMenu, selectLevel, nil];
-        [menu alignItemsVertically];
+        menu = [CCMenu menuWithItems:resumeMenuItem, selectLevel, nil];
+
         menu.position = ccp(0,0);
         [self addChild:menu];
-    
+        disableMenuButtons=FALSE;
         
     }
     
@@ -88,8 +91,10 @@
 //if the resume button is pressed
 - (void)resumeButtonPressed
 {
-    [self hideAndResume];
-    [self.delegate resumeButtonPressed:self];
+    if(!disableMenuButtons){
+        [self hideAndResume];
+        [self.delegate resumeButtonPressed:self];
+    }
 }
 
 - (void)hideAndResume
@@ -114,22 +119,47 @@
 //
 - (void)selectLevelButtonPressed
 {
-    //remove this layer before going to the next
-    self.visible = FALSE;
-     [self removeFromParentAndCleanup:TRUE];
-    //go to level selection layer
-    [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
+    if(!disableMenuButtons){
+        [self presentGoOnPopUp];
+    }
 }
 
 
 
-- (void)mainMenuButtonPressed
+//- (void)mainMenuButtonPressed
+//{
+//    //remove this layer before going to the next
+//    self.visible = FALSE;
+//     [self removeFromParentAndCleanup:TRUE];
+//    //go to mainmenu layer
+//    [[[GameMechanics sharedGameMechanics] gameScene] goToMainMenu];
+//}
+
+- (void)presentGoOnPopUp
 {
-    //remove this layer before going to the next
-    self.visible = FALSE;
-     [self removeFromParentAndCleanup:TRUE];
-    //go to mainmenu layer
-    [[[GameMechanics sharedGameMechanics] gameScene] goToMainMenu];
+    CCScale9Sprite *backgroundImage = [StyleManager goOnPopUpBackground];
+    goOnPopUp = [PopupProvider presentPopUpWithContentString:nil backgroundImage:backgroundImage target:self selector:@selector(goOnPopUpButtonClicked:) buttonTitles:@[@"Yes", @"No"]];
+    disableMenuButtons=TRUE;
+    selectLevel.visible=FALSE;
+    resumeMenuItem.visible=FALSE;
+}
+
+- (void)goOnPopUpButtonClicked:(CCControlButton *)sender
+{
+    disableMenuButtons=FALSE;
+    selectLevel.visible=TRUE;
+    resumeMenuItem.visible=TRUE;
+            [goOnPopUp dismiss];
+    if (sender.tag == 0)
+    {
+        
+        //remove this layer before going to the next
+        self.visible = FALSE;
+        [self removeFromParentAndCleanup:TRUE];
+        //go to level selection layer
+        [[[GameMechanics sharedGameMechanics] gameScene] goTolevelSelection];
+    }
+
 }
 
 @end

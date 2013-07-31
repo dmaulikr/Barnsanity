@@ -151,14 +151,16 @@
 
 - (void)playButtonPressed
 {
-    //remove this layer before going to the next
-    self.visible = FALSE;
-    [self removeFromParentAndCleanup:TRUE];
-    
-    //set the level the player wants to play with
-    [[GameMechanics sharedGameMechanics]game].gameplayLevel=levelToPlay;
-    //start the level
-    [[[GameMechanics sharedGameMechanics] gameScene] startGame];
+    if(![[GameMechanics sharedGameMechanics]game].activateStoreTutorial){
+        //remove this layer before going to the next
+        self.visible = FALSE;
+        [self removeFromParentAndCleanup:TRUE];
+        
+        //set the level the player wants to play with
+        [[GameMechanics sharedGameMechanics]game].gameplayLevel=levelToPlay;
+        //start the level
+        [[[GameMechanics sharedGameMechanics] gameScene] startGame];
+    }
 }
 
 - (void)mainMenuButtonPressed
@@ -191,30 +193,32 @@
 }
 
 -(void)storeButtonPressed{
-//    if(maxLevelToPlay>=5){
-        if([[GameMechanics sharedGameMechanics]game].activateStoreTutorial){
-            //remove this layer before going to the next
-            self.visible = FALSE;
-            [self removeFromParentAndCleanup:TRUE];
-            //go to store layer
-            [[[GameMechanics sharedGameMechanics] gameScene] shopTutorial];
+        if(maxLevelToPlay>=5){
+    if([[GameMechanics sharedGameMechanics]game].activateStoreTutorial){
+        //remove this layer before going to the next
+        self.visible = FALSE;
+        [self removeFromParentAndCleanup:TRUE];
+        //go to store layer
+        [[[GameMechanics sharedGameMechanics] gameScene] shopTutorial];
+    }else{
+        //remove this layer before going to the next
+        self.visible = FALSE;
+        [self removeFromParentAndCleanup:TRUE];
+        //go to store layer
+        [[[GameMechanics sharedGameMechanics] gameScene] goToStore];
+    }
         }else{
-            //remove this layer before going to the next
-            self.visible = FALSE;
-            [self removeFromParentAndCleanup:TRUE];
-            //go to store layer
-            [[[GameMechanics sharedGameMechanics] gameScene] goToStore];
+            requiredLevel.visible=TRUE;
         }
-//    }else{
-//        requiredLevel.visible=TRUE;
-//    }
 }
 
 -(void)optionPressed{
-    self.visible = FALSE;
-    [self removeFromParentAndCleanup:TRUE];
-    //go to store layer
-    [[[GameMechanics sharedGameMechanics] gameScene] goToOption];
+    if(![[GameMechanics sharedGameMechanics]game].activateStoreTutorial){
+        self.visible = FALSE;
+        [self removeFromParentAndCleanup:TRUE];
+        //go to store layer
+        [[[GameMechanics sharedGameMechanics] gameScene] goToOption];
+    }
 }
 
 

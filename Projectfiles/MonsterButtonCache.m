@@ -59,19 +59,11 @@
 }
 
 -(void)placeButton:(NSString *)buttonClass atLocation:(int) place{
-    //if the spot is open, place the button in the slot
-    if(buttonClass == nil){
-        [self removeChildByTag:place];
-    }else{
-        //if it is not open, remove the button that was there and place the new one there
-    if([self getChildByTag:place] != nil){
-        [self removeChildByTag:place];
-    }
     SpawnMonsterButton *button=[monsterButton objectForKey:buttonClass];
     [self addChild:button z:MAX_INT-1 tag:place];
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     button.position=ccp(screenSize.width-button.contentSize.width/5-15,screenSize.height-button.contentSize.height/4-(place * 60)-10);
-    }
+    
 }
 
 -(void)pressedButton:(int)place{
@@ -105,6 +97,7 @@
 }
 
 -(void)loadButtons{
+        [self removeAllChildrenWithCleanup:TRUE];
     //load the buttons to be used that is saved in game class
     NSMutableArray *buttonSlot=[[GameMechanics sharedGameMechanics]game].seedsUsed;
     for(int i=0;i<MAXSPAWNBUTTONS;i++){

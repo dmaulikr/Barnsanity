@@ -20,7 +20,7 @@
         energyLabel = [CCLabelBMFont labelWithString:@"" fntFile:fontFile];
         energyLabel.anchorPoint = ccp(0,0.5);
         [energyLabel setColor:ccc3(0, 0, 0)];
-            [NSTimer scheduledTimerWithTimeInterval:.9 target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
+            [NSTimer scheduledTimerWithTimeInterval:.7 target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
         [self addChild:energyLabel];
     }
     

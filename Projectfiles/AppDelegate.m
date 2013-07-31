@@ -34,6 +34,11 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
+    currentGameState=[[GameMechanics sharedGameMechanics] gameState];
+    if(currentGameState == GameStateRunning){
+        [[[GameMechanics sharedGameMechanics]gameScene]pauseButtonPressed];
+    }
+    [[GameMechanics sharedGameMechanics]setGameState:GameStatePaused];
     [[[CCDirector sharedDirector] runningScene] stopAllActions];
 }
 
@@ -44,6 +49,10 @@
     {
         id currentScene = (id) [[CCDirector sharedDirector] runningScene];
         [currentScene performSelector:@selector(didEnterForeground)];
+    }
+    if(currentGameState != GameStateRunning){
+        [[GameMechanics sharedGameMechanics]setGameState:currentGameState];
+
     }
 }
 
