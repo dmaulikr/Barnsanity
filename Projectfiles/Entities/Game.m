@@ -89,7 +89,7 @@
     self.levelsOfEverything=[NSMutableDictionary dictionaryWithContentsOfFile:newGame];
     
     //set start info
-    self.gold=2000;
+    self.gold=0;
     self.score=0;
     self.totalEnemiesMonsterKilled=0;
     self.totalPlayerMonsterKilled=0;
@@ -134,7 +134,7 @@
     //end level bonus for score
     self.endLevelBonusScore=50;
     //end level bonus for gold
-    self.endLevelBonusGold=150;
+    self.endLevelBonusGold=160;
     
     //time reset
     self.timeInSec=self.timeInSecInit;
@@ -182,9 +182,13 @@
     if(self.gameplayLevel == self.maxGamePlayLevel){
         multiplier=1;
     }else{
-        multiplier=.4;
+        multiplier=.35;
     }
     
+    if(self.gameplayLevel>=10){
+        float gamePlayLevelBonus=self.gameplayLevel/10;
+        multiplier=multiplier*gamePlayLevelBonus;
+    }
     if(self.difficulty==HARD){
         multiplier=multiplier*1.35;
     }

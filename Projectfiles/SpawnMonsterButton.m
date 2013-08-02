@@ -28,7 +28,7 @@
         [self addChild:delayTimer];
         [delayTimer setPosition:ccp(self.position.x+self.contentSize.width/2, self.position.y+self.contentSize.height/2)];
         //include updates
-        [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
+        [NSTimer scheduledTimerWithTimeInterval:(1.0/100.0) target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
         [self pauseSchedulerAndActions];
         
         scoreLabel = [CCLabelBMFont labelWithString:@"" fntFile:@"avenir24.fnt"];
@@ -37,7 +37,7 @@
         [scoreLabel setScale:3.0f];
         [scoreLabel setPosition:ccp(self.position.x+self.contentSize.width/4, self.position.y+self.contentSize.height/2)];
         [self addChild:scoreLabel];
-        fireDelayInitial=1;
+        fireDelayInitial=53;
         
     }
     return self;
@@ -52,15 +52,22 @@
                [[[[GameMechanics sharedGameMechanics]gameScene]ship]fireSeedForMonster:self.nameOfMonster];
                 fireDelayTimer=fireDelayInitial;
                 delayTimer.percentage=100;
-                float newPercentage=((float)(fireDelayTimer-1)/(float)fireDelayInitial)*100;
-                [delayTimer runAction:[CCProgressFromTo actionWithDuration:.5f from:delayTimer.percentage to:newPercentage]];
-                [self resumeSchedulerAndActions];
+//                float newPercentage=((float)(fireDelayTimer-1)/(float)fireDelayInitial)*100;
+                [delayTimer runAction:[CCProgressFromTo actionWithDuration:.53f from:delayTimer.percentage to:0]];
+//                [self resumeSchedulerAndActions];
             }
         }
     }
     
 }
 
+-(void)start{
+    [self resumeSchedulerAndActions];
+}
+
+-(void )pause{
+    [self pauseSchedulerAndActions];
+}
 -(void)updateDelay{
     self.cost= [[GameMechanics sharedGameMechanics] spawnCostForPlayerMonsterType:self.nameOfMonster];
     fireDelayTimer=0;
@@ -73,7 +80,6 @@
     {
         if(fireDelayTimer>0){
             fireDelayTimer--;
-
 
     }
     }

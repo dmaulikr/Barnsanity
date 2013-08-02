@@ -26,7 +26,7 @@
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
-			<integer>10</integer>
+			<integer>11</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
@@ -180,19 +180,19 @@
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>0</integer>
+			<integer>1000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Barns damage to enemy monster</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Barn Damage</string>
 			<key>Required Item</key>
-			<string></string>
+			<string>Player Barn Damage</string>
 			<key>Required Item Level</key>
 			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>0</integer>
+			<integer>99999</integer>
 			<key>Item Description</key>
 			<string></string>
 			<key>Item Level Up Description</key>
@@ -255,13 +255,13 @@
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>0</integer>
+			<integer>1000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Defense for the your barn</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Decrease damage taken by 2</string>
 			<key>Required Item</key>
-			<string></string>
+			<string>Player Barn Armor</string>
 			<key>Required Item Level</key>
 			<integer>0</integer>
 		</dict>
@@ -326,19 +326,19 @@
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
-			<integer>4</integer>
+			<integer>5</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>0</integer>
+			<integer>1000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Barn Health</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Barns Health</string>
 			<key>Required Item</key>
-			<string></string>
+			<string>Player Barn Health</string>
 			<key>Required Item Level</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
@@ -393,7 +393,7 @@
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>600</integer>
+			<integer>1500</integer>
 			<key>Item Description</key>
 			<string>The max seeds you can hold</string>
 			<key>Item Level Up Description</key>
@@ -401,11 +401,11 @@
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
-			<integer>4</integer>
+			<integer>5</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>1400</integer>
+			<integer>3000</integer>
 			<key>Item Description</key>
 			<string>The max seeds you can hold</string>
 			<key>Item Level Up Description</key>
@@ -470,21 +470,21 @@
 			<key>Item Description</key>
 			<string>Seed gain per cycle</string>
 			<key>Price</key>
-			<integer>600</integer>
+			<integer>1500</integer>
 			<key>Item Level Up Description</key>
 			<string>2 seeds per cycle</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
-			<integer>0</integer>
+			<integer>5</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>1400</integer>
+			<integer>3000</integer>
 			<key>Item Description</key>
 			<string>Seed gain per cycle</string>
 			<key>Item Level Up Description</key>
-			<string>4 seeds per cycle</string>
+			<string>3 seeds per cycle</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -543,7 +543,7 @@
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>700</integer>
+			<integer>1000</integer>
 			<key>Item Description</key>
 			<string>Damage dealt by ship bullet</string>
 			<key>Item Level Up Description</key>
@@ -551,19 +551,19 @@
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
-			<integer>0</integer>
+			<integer>5</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>0</integer>
+			<integer>2500</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Damage Per Bullet</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase the damage</string>
 			<key>Required Item</key>
-			<string></string>
+			<string>Game Levels</string>
 			<key>Required Item Level</key>
-			<integer>0</integer>
+			<integer>10</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
@@ -618,7 +618,7 @@
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>700</integer>
+			<integer>1000</integer>
 			<key>Item Description</key>
 			<string>Rate your ship fires bullet</string>
 			<key>Item Level Up Description</key>
@@ -626,19 +626,19 @@
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
-			<integer>4</integer>
+			<integer>5</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>0</integer>
+			<integer>2500</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Rate The Ship Fires Bullet</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase The Rate Of Fire</string>
 			<key>Required Item</key>
-			<string></string>
+			<string>Game Levels</string>
 			<key>Required Item Level</key>
-			<integer>0</integer>
+			<integer>10</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
@@ -780,7 +780,7 @@
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>1000</integer>
+			<integer>1300</integer>
 			<key>Item Description</key>
 			<string>Close Range</string>
 			<key>Item Level Up Description</key>
@@ -792,7 +792,7 @@
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>300</integer>
+			<integer>99999</integer>
 			<key>Item Description</key>
 			<string>Close Range</string>
 			<key>Item Level Up Description</key>
@@ -843,7 +843,7 @@
 	<array>
 		<dict>
 			<key>Price</key>
-			<integer>700</integer>
+			<integer>800</integer>
 			<key>Item Description</key>
 			<string>Close Range</string>
 			<key>Item Level Up Description</key>
@@ -855,7 +855,7 @@
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>1200</integer>
+			<integer>1300</integer>
 			<key>Item Description</key>
 			<string>Close Range</string>
 			<key>Item Level Up Description</key>
@@ -867,7 +867,7 @@
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>1100</integer>
+			<integer>99999</integer>
 			<key>Item Description</key>
 			<string>Close Range</string>
 			<key>Item Level Up Description</key>
@@ -930,7 +930,7 @@
 	<array>
 		<dict>
 			<key>Price</key>
-			<integer>800</integer>
+			<integer>1000</integer>
 			<key>Item Description</key>
 			<string>Long Range Shooter</string>
 			<key>Item Level Up Description</key>
@@ -942,7 +942,7 @@
 		</dict>
 		<dict>
 			<key>Price</key>
-			<integer>1400</integer>
+			<integer>1700</integer>
 			<key>Item Description</key>
 			<string>Long Range Shooter</string>
 			<key>Item Level Up Description</key>
@@ -951,6 +951,18 @@
 			<string>Strawberry</string>
 			<key>Required Item Level</key>
 			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>999999</integer>
+			<key>Item Description</key>
+			<string>Long Range Shooter</string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Game Levels</string>
+			<key>Required Item Level</key>
+			<integer>7</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
@@ -963,69 +975,6 @@
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
 			<integer>7</integer>
-		</dict>
-		<dict>
-			<key>Price</key>
-			<integer>900</integer>
-			<key>Item Description</key>
-			<string>Long Range Shooter</string>
-			<key>Item Level Up Description</key>
-			<string>Able To Equip And Use In Game</string>
-			<key>Required Item</key>
-			<string>Game Levels</string>
-			<key>Required Item Level</key>
-			<integer>7</integer>
-		</dict>
-		<dict>
-			<key>Price</key>
-			<integer>0</integer>
-			<key>Item Description</key>
-			<string></string>
-			<key>Item Level Up Description</key>
-			<string></string>
-			<key>Required Item</key>
-			<string></string>
-			<key>Required Item Level</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Price</key>
-			<integer>0</integer>
-			<key>Item Description</key>
-			<string></string>
-			<key>Item Level Up Description</key>
-			<string></string>
-			<key>Required Item</key>
-			<string></string>
-			<key>Required Item Level</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Price</key>
-			<integer>0</integer>
-			<key>Item Description</key>
-			<string></string>
-			<key>Item Level Up Description</key>
-			<string></string>
-			<key>Required Item</key>
-			<string></string>
-			<key>Required Item Level</key>
-			<integer>0</integer>
-		</dict>
-	</array>
-	<key>Cherry</key>
-	<array>
-		<dict>
-			<key>Price</key>
-			<integer>0</integer>
-			<key>Item Description</key>
-			<string></string>
-			<key>Item Level Up Description</key>
-			<string>Able To Equip And Use In Game</string>
-			<key>Required Item</key>
-			<string>Strawberry</string>
-			<key>Required Item Level</key>
-			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
@@ -1170,6 +1119,42 @@
 	<array>
 		<dict>
 			<key>Price</key>
+			<integer>2000</integer>
+			<key>Item Description</key>
+			<string>Close Range Tank</string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Game Levels</string>
+			<key>Required Item Level</key>
+			<integer>15</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Banana</string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Banana</string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
 			<integer>0</integer>
 			<key>Item Description</key>
 			<string></string>
@@ -1227,9 +1212,9 @@
 			<key>Item Level Up Description</key>
 			<string>Able To Equip And Use In Game</string>
 			<key>Required Item</key>
-			<string>Coconut</string>
+			<string>Game Levels</string>
 			<key>Required Item Level</key>
-			<integer>0</integer>
+			<integer>26</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
@@ -1270,6 +1255,42 @@
 	</array>
 	<key>Pineapple</key>
 	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Game Levels</string>
+			<key>Required Item Level</key>
+			<integer>35</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Grape</string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Grape</string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
 		<dict>
 			<key>Price</key>
 			<integer>0</integer>
@@ -1321,6 +1342,30 @@
 	</array>
 	<key>Watermelon</key>
 	<array>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Game Levels</string>
+			<key>Required Item Level</key>
+			<integer>45</integer>
+		</dict>
+		<dict>
+			<key>Price</key>
+			<integer>0</integer>
+			<key>Item Description</key>
+			<string></string>
+			<key>Item Level Up Description</key>
+			<string>Able To Equip And Use In Game</string>
+			<key>Required Item</key>
+			<string>Pineapple</string>
+			<key>Required Item Level</key>
+			<integer>0</integer>
+		</dict>
 		<dict>
 			<key>Price</key>
 			<integer>0</integer>

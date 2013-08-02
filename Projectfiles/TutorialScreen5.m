@@ -91,8 +91,9 @@
             checkPoint2=FALSE;
             tapToDrop.visible=TRUE;
             readyForBomb=TRUE;
-        }else if(checkPoint3 && count-waitCount>130){
+        }else if(checkPoint3 && count-waitCount>100){
             onePerLevel.visible=TRUE;
+            [[MonsterCache sharedMonsterCache] reset];
             checkPoint3=FALSE;
         }else if(checkPoint4 && count-waitCount>80){
             [self exitTutorial];

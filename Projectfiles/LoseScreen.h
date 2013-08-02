@@ -18,6 +18,7 @@
     CCBackgroundColorNode *backgroundNode;
     CCMenu *menu;
     CCMenuItemFont *selectLevel;
+    int tipCount;
 }
 
 

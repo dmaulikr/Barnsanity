@@ -37,9 +37,15 @@
 
 - (void)setEnergy:(int)energy
 {
+    if(energy <= self.energyMax){
     _energy = energy;
     [[GameMechanics sharedGameMechanics] game].energy=energy;
     energyLabel.string = [NSString stringWithFormat:_stringFormat, energy,self.energyMax];
+    }else{
+        _energy = self.energyMax;
+        [[GameMechanics sharedGameMechanics] game].energy=self.energyMax;
+        energyLabel.string = [NSString stringWithFormat:_stringFormat, self.energyMax,self.energyMax];
+    }
 }
 
 

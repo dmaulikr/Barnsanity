@@ -33,7 +33,7 @@
         
         //setup the start menu title
             // OPTION 1: Title as Text
-            CCLabelTTF *tempStartTitleLabel = [CCLabelTTF labelWithString:@"Battle Of The Barns"
+            CCLabelTTF *tempStartTitleLabel = [CCLabelTTF labelWithString:@"Barn Insanity"
                                                                  fontName:@"Arial"
                                                                  fontSize:40];
             tempStartTitleLabel.color = DEFAULT_FONT_COLOR;

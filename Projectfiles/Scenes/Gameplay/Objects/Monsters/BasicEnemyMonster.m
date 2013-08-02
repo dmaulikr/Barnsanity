@@ -93,17 +93,15 @@
 
 - (void)gotHit:(int)damage
 {
+    if(self.alive){
     //deduct hitpoint by damage
     //ableToAttack is set to false only when they are spawning in plant form,so if they get hit while in plant form, they take X2 damage
-    if(!self.ableToAttack){
-        self.hitPoints -=damage;
-    }else{
-        self.hitPoints-=2*damage;
-    }
+        self.hitPoints -=2*damage;
     //if hitpoint is 0 or less then the monster dies
     if(self.hitPoints<=0){
         [self stopAllActions];
-        [self runAction:death];
+//        [self runAction:death];
+        [self destroy];
 //                [[GameMechanics sharedGameMechanics]game].enemiesMonsterKilled++;
         //reward gold
         [[GameMechanics sharedGameMechanics] game].goldForLevel+=reward+[[GameMechanics sharedGameMechanics] game].goldBonusPerMonster;
@@ -114,7 +112,7 @@
         blinkDidRun=TRUE;
         [self runAction:blink];
     }
-    
+    }
 }
 
 -(void)reset{

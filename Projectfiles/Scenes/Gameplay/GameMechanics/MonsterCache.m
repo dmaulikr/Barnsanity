@@ -633,7 +633,7 @@
         {
             CCARRAY_FOREACH([enemyBatch children], enemy)
             {
-                if(enemy.alive && !enemy.invincible){
+                if(enemy.alive){
                     if ([self collisionBetweenMonstersWithAngle:self.theBomb andMonster:enemy]){
                         [enemy gotHit:self.theBomb.damage];
                     }
@@ -641,22 +641,12 @@
             }
         }
         
-        CCARRAY_FOREACH([playerMonster children], playerBatch){
-            CCARRAY_FOREACH([playerBatch children], player){
-                if(player.alive && !player.invincible){
-                    if ([self collisionBetweenMonstersWithAngle:self.theBomb andMonster:player]){
-                        [player gotHit:self.theBomb.damage];
-                    }
-                }
-            }
-            
-        }
         
         CCARRAY_FOREACH([wallObjects children], wallBatch)
         {
             CCARRAY_FOREACH([wallBatch children], wall)
             {
-                if(wall.visible && !wall.invincible){
+                if(wall.visible){
                     if ([self collisionBetweenMonstersWithAngle:player andMonster:wall]){
                         [wall gotHit:self.theBomb.damage];
                     }
@@ -1008,7 +998,7 @@
                 int spawnFrequency = [[GameMechanics sharedGameMechanics] spawnRateForEnemyMonsterType:monsterTypeClass];
                 // if the updateCount reached the spawnFrequency we spawn a new enemy
                 if([[GameMechanics sharedGameMechanics]game].timeInSec<=[[GameMechanics sharedGameMechanics]game].timeForCrazyMode){
-                    spawnFrequency=spawnFrequency/2;
+                    spawnFrequency=spawnFrequency/1.5;
                 }
                 
 //                if([[GameMechanics sharedGameMechanics]game].difficulty==HARD){

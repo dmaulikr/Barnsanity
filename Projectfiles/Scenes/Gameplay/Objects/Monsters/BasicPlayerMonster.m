@@ -105,12 +105,13 @@
 
 - (void)gotHit:(int)damage
 {
+        if(self.alive){
     //deduct hitpoint by damage
     //ableToAttack is set to false only when they are spawning in plant form,so if they get hit while in plant form, they take X2 damage
-    if(!self.ableToAttack){
-        self.hitPoints -=damage;
+    if(self.ableToAttack){
+        self.hitPoints -=2*damage;
     }else{
-        self.hitPoints-=2*damage;
+        self.hitPoints-=3*damage;
     }
     //if hitpoint is 0 or less then the monster dies
     if(self.hitPoints<=0){
@@ -121,7 +122,7 @@
         blinkDidRun=TRUE;
         [self runAction:blink];
     }
-    
+        }
 }
 
 

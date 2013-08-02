@@ -13,6 +13,7 @@
 {
     //a dictionary to hold the array of different monster units
     NSMutableDictionary* monsterButton;
+    NSMutableArray *buttonInUse;
 }
 //one instance
 + (id)sharedMonsterButtonCache;

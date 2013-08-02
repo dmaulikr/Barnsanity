@@ -21,5 +21,6 @@
 -(id) initWithEntityImage:(NSString*)fileName andMonster:(NSString *)monsterName;
 -(void)pressed;
 -(void)updateDelay;
-
+-(void)start;
+-(void)pause;
 @end

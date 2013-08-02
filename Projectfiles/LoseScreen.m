@@ -49,13 +49,45 @@
             [self selectLevelButtonPressed];
         }];
         selectLevel.color = DEFAULT_FONT_COLOR;
-    
+        
         
         menu = [CCMenu menuWithItems:selectLevel, nil];
         [menu alignItemsVertically];
         menu.position = ccp(0,-100);
         [self addChild:menu];
 
+        NSMutableArray *tips=[[NSMutableArray alloc]init];
+        [tips addObject:@"Tip: No Lead Is Safe! Keep Planting!"];
+        [tips addObject:@"Tip: Quantity is better than quality!"];
+        [tips addObject:@"Tip: While planting, in plant form, your units take 1.5X more damage"];
+        [tips addObject:@"Tip: Don't shoot aimlessly, take down high priority units first(ie corn and tomato)"];
+        [tips addObject:@"Tip: The key to success is to find balance between shooting and planting"];
+        [tips addObject:@"Tip: You will only gain 35% of your total possible gold when playing repeated levels"];
+        [tips addObject:@"Tip: Diversify your army!"];
+        [tips addObject:@"Tip: Keep up-to-date with your upgrades"];
+        [tips addObject:@"Tip: Keep looking around the map, Don't stay in one place too long."];
+        [tips addObject:@"Tip: United we stand, divided we fall. Group your army as much as possible!"];
+        [tips addObject:@"Tip: Different units have different plant time. Be aware of it!"];
+        [tips addObject:@"Tip: When your barn is under-attack, plant within your barn! They will be safe from all damages while they are planting."];
+        
+        [tips addObject:@"Tip: Use bomb wisely!"];
+        [tips addObject:@"Tip: Don't forget you have one bomb! Use it!"];
+        [tips addObject:@"Tip: Use bomb offensively to give yourself an edge in big battles"];
+        tipCount=15;
+        NSString *tipForTheLost;
+        if([[GameMechanics sharedGameMechanics]game].maxGamePlayLevel >=10){
+            tipForTheLost=tips[rand()%tipCount];
+        }else{
+            tipForTheLost=tips[rand()%tipCount-3];
+        }
+        CCLabelTTF *tip = [CCLabelTTF labelWithString:tipForTheLost
+                                                        fontName:DEFAULT_FONT
+                                                        fontSize:12];
+        tip.color = DEFAULT_FONT_COLOR;
+        tip.position = ccp(10, 0.5 * self.contentSize.height - 50);
+        [self addChild:tip];
+
+        
     }
     
     return self;
