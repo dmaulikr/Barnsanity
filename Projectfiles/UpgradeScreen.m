@@ -383,7 +383,7 @@
 -(void)showSelectedItem: (ItemNode *)item{
     NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
     
-    temp[0]=[NSString stringWithFormat:@"Level %d %@", selectedItem.level+1, selectedItem.nameOfItem];
+    temp[0]=[NSString stringWithFormat:@"Level %d %@", selectedItem.level, selectedItem.nameOfItem];
     temp[1]=[NSString stringWithFormat:@"Cost: %d", selectedItem.price];
     temp[2]=[NSString stringWithFormat:@"Requirment: level %d %@", selectedItem.requiredLevel, selectedItem.unlockingItem];
     temp[3]=[NSString stringWithFormat:@"%@", selectedItem.levelDescription];

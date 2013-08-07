@@ -105,7 +105,7 @@
         //		CCSpriteBatchNode *enemyBatch = [CCSpriteBatchNode batchNodeWithTexture:frame.texture];
         //        CCSpriteBatchNode *playerBatch=[CCSpriteBatchNode batchNodeWithTexture:frame.texture];
         
-         [monster setObject:shipBullets forKey:@"Ship Bullets"];
+        [monster setObject:shipBullets forKey:@"Ship Bullets"];
         [monster setObject:seeds forKey:@"Seeds"];
         CCNode *enemyBatch=[[CCNode alloc]init];
         CCNode *playerBatch=[[CCNode alloc]init];
@@ -151,7 +151,7 @@
         playerBatch=[[CCNode alloc]init];
 		[enemyMonsters addChild:enemyBatch];
         
-        [monster setObject:enemyBatch forKey:@"PeaPod"];
+        [monster setObject:enemyBatch forKey:@"Pea Pod"];
         [playerMonster addChild:playerBatch];
         [monster setObject:playerBatch forKey:@"Pineapple"];
         
@@ -213,7 +213,7 @@
         [monsterClass setObject: [Corn class]  forKey:@"Corn"];
         [monsterClass setObject: [Tomato class]  forKey:@"Tomato"];
         [monsterClass setObject: [Potato class]  forKey:@"Potato"];
-        [monsterClass setObject: [PeaPod class]  forKey:@"PeaPod"];
+        [monsterClass setObject: [PeaPod class]  forKey:@"Pea Pod"];
         [monsterClass setObject: [Pumpkin class]  forKey:@"Pumpkin"];
         [monsterClass setObject: [Beet class] forKey:@"Beet"];
         [monsterClass setObject: [Asparagus class]  forKey:@"Asparagus"];
@@ -351,7 +351,7 @@
 -(BOOL)anyMonsterAliveOfType:(NSString *) monsterName{
     CCNode* monsterType = [monster objectForKey:monsterName];
     Entity *monsterToCheck;
-
+    
     CCARRAY_FOREACH([monsterType children], monsterToCheck)
     {
         // find the first free enemy and respawn it
@@ -467,7 +467,7 @@
     CCARRAY_FOREACH([playerOfType children], player)
     {
         // find the first free enemy and respawn it
-        if (player.visible == NO)
+        if (player.alive == NO)
         {
             [player spawnAt:angleOfLocation];
             //            [playerOfType reorderChild:player z:(NSInteger)((2*player.radiusToSpawn)-player.radiusToSpawn)];
@@ -504,7 +504,7 @@
     CCARRAY_FOREACH([enemiesOfType children], enemy)
     {
         // find the first free enemy and respawn it
-        if (enemy.visible == NO)
+        if (enemy.alive == NO)
         {
             [enemy spawnAt:angleOfLocation];
             // remember, that we will not need to create a new enemy
@@ -541,7 +541,7 @@
     CCARRAY_FOREACH([wallOfType children], wall)
     {
         // find the first free enemy and respawn it
-        if (wall.visible == NO)
+        if (wall.alive == NO)
         {
             [wall spawnAt:angleOfLocation];
             // remember, that we will not need to create a new enemy
@@ -577,39 +577,119 @@
 }
 
 -(BOOL)collisionBetweenMonstersWithAngle:(Entity* )attacker andMonster:(Entity *)defender{
-    
-    if(//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
-       (attacker.hitZoneAngle1<=defender.boundingZoneAngle1 && attacker.hitZoneAngle1 >=defender.boundingZoneAngle2) ||
-       //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
-       (attacker.hitZoneAngle2 <=defender.boundingZoneAngle1 && attacker.hitZoneAngle2 >=defender.boundingZoneAngle2)||
-       //if the first bounding angle is within the hit zone angles, checks if bounding angles is with the hit zone
-       (defender.boundingZoneAngle1<=attacker.hitZoneAngle1 && defender.boundingZoneAngle1>= attacker.hitZoneAngle2)||
-       (defender.boundingZoneAngle2<=attacker.hitZoneAngle1 && defender.boundingZoneAngle2>= attacker.hitZoneAngle2)){
-        
-        return TRUE;
-    }else{
-        return FALSE;
+    int scenario;
+    BOOL retval;
+    if(attacker.hitZoneAngle2>attacker.hitZoneAngle1 && defender.boundingZoneAngle2> defender.boundingZoneAngle1){
+        scenario=1;
+    }else if(attacker.hitZoneAngle2>attacker.hitZoneAngle1){
+        scenario=2;
+    }else if(defender.boundingZoneAngle2> defender.boundingZoneAngle1){
+        scenario=3;
     }
+    
+    switch (scenario) {
+        case 1:
+            retval=TRUE;
+            break;
+        case 2:
+            if(//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
+               (defender.boundingZoneAngle1 <=2*M_PI && defender.boundingZoneAngle1 >= attacker.hitZoneAngle2) ||
+               //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
+               (defender.boundingZoneAngle2<=attacker.hitZoneAngle1 && defender.boundingZoneAngle2>=0)){
+                retval=TRUE;
+            }else{
+                retval=FALSE;
+            }
+            break;
+        case 3:
+            if(//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
+               (attacker.hitZoneAngle1 <=2*M_PI && attacker.hitZoneAngle1 >=defender.boundingZoneAngle2) ||
+               //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
+               (attacker.hitZoneAngle2<=defender.boundingZoneAngle1 && attacker.hitZoneAngle2>=0)){
+                retval=TRUE;
+            }else{
+                retval=FALSE;
+            }
+            break;
+        default:
+            if(//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
+               (attacker.hitZoneAngle1<=defender.boundingZoneAngle1 && attacker.hitZoneAngle1 >=defender.boundingZoneAngle2) ||
+               //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
+               (attacker.hitZoneAngle2 <=defender.boundingZoneAngle1 && attacker.hitZoneAngle2 >=defender.boundingZoneAngle2)||
+               //if the first bounding angle is within the hit zone angles, checks if bounding angles is with the hit zone
+               (defender.boundingZoneAngle1<=attacker.hitZoneAngle1 && defender.boundingZoneAngle1>= attacker.hitZoneAngle2)||
+               (defender.boundingZoneAngle2<=attacker.hitZoneAngle1 && defender.boundingZoneAngle2>= attacker.hitZoneAngle2)){
+                retval=TRUE;
+            }else{
+                retval=FALSE;
+            }
+            break;
+    }
+    
+    return retval;
     
     
 }
 
 -(BOOL)collisionBullets:(ShipBullets* )attacker andMonster:(Entity *)defender{
     
-    if((//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
-        (attacker.hitZoneAngle1<=defender.boundingZoneAngle1 && attacker.hitZoneAngle1 >=defender.boundingZoneAngle2) ||
-        //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
-        (attacker.hitZoneAngle2 <=defender.boundingZoneAngle1 && attacker.hitZoneAngle2 >=defender.boundingZoneAngle2)||
-        //if the first bounding angle is within the hit zone angles, checks if bounding angles is with the hit zone
-        (defender.boundingZoneAngle1<=attacker.hitZoneAngle1 && defender.boundingZoneAngle1>= attacker.hitZoneAngle2)||
-        (defender.boundingZoneAngle2<=attacker.hitZoneAngle1 && defender.boundingZoneAngle2>= attacker.hitZoneAngle2))
-       && attacker.distanceFromWorld-attacker.contentSize.height/9 <= [[GameMechanics sharedGameMechanics]gameScene].radiusOfWorld+defender.contentSize.height/9){
-        
-        return TRUE;
-    }else{
-        return FALSE;
+    int scenario;
+    BOOL retval;
+    if(attacker.hitZoneAngle2>attacker.hitZoneAngle1 && defender.boundingZoneAngle2> defender.boundingZoneAngle1){
+        scenario=1;
+    }else if(attacker.hitZoneAngle2>attacker.hitZoneAngle1){
+        scenario=2;
+    }else if(defender.boundingZoneAngle2> defender.boundingZoneAngle1){
+        scenario=3;
     }
     
+    switch (scenario) {
+        case 1:
+            if(attacker.distanceFromWorld-attacker.contentSize.height/9 <= defender.radiusToSpawn+defender.contentSize.height/9){
+                retval=TRUE;
+            }else{
+                retval=FALSE;
+            }
+            break;
+        case 2:
+            if(//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
+               ((defender.boundingZoneAngle1 <=2*M_PI && defender.boundingZoneAngle1 >= attacker.hitZoneAngle2) ||
+                //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
+                (defender.boundingZoneAngle2<=attacker.hitZoneAngle1 && defender.boundingZoneAngle2>=0))
+               && attacker.distanceFromWorld-attacker.contentSize.height/9 <= defender.radiusToSpawn+defender.contentSize.height/9){
+                retval=TRUE;
+            }else{
+                retval=FALSE;
+            }
+            break;
+        case 3:
+            if(//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
+               ((attacker.hitZoneAngle1 <=2*M_PI && attacker.hitZoneAngle1 >=defender.boundingZoneAngle2) ||
+                //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
+                (attacker.hitZoneAngle2<=defender.boundingZoneAngle1 && attacker.hitZoneAngle2>=0))
+               && attacker.distanceFromWorld-attacker.contentSize.height/9 <= defender.radiusToSpawn+defender.contentSize.height/9){
+                retval=TRUE;
+            }else{
+                retval=FALSE;
+            }
+            break;
+        default:
+            if(//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
+               ((attacker.hitZoneAngle1<=defender.boundingZoneAngle1 && attacker.hitZoneAngle1 >=defender.boundingZoneAngle2) ||
+                //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
+                (attacker.hitZoneAngle2 <=defender.boundingZoneAngle1 && attacker.hitZoneAngle2 >=defender.boundingZoneAngle2)||
+                //if the first bounding angle is within the hit zone angles, checks if bounding angles is with the hit zone
+                (defender.boundingZoneAngle1<=attacker.hitZoneAngle1 && defender.boundingZoneAngle1>= attacker.hitZoneAngle2)||
+                (defender.boundingZoneAngle2<=attacker.hitZoneAngle1 && defender.boundingZoneAngle2>= attacker.hitZoneAngle2))
+               && attacker.distanceFromWorld-attacker.contentSize.height/9 <= defender.radiusToSpawn+defender.contentSize.height/9){
+                retval=TRUE;
+            }else{
+                retval=FALSE;
+            }
+            break;
+    }
+    
+    return retval;
     
 }
 
@@ -628,12 +708,13 @@
     BOOL monsterNearBarn=FALSE;
     
     //CHECK IF THE BOMB HIT
-    if(self.theBomb.visible && self.theBomb.readyToDamage){
+    if(self.theBomb.readyToDamage){
+        //check if any monster is in the range of of bomb's hit zone
         CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
         {
             CCARRAY_FOREACH([enemyBatch children], enemy)
             {
-                if(enemy.alive){
+                if(enemy.alive && !enemy.invincible){
                     if ([self collisionBetweenMonstersWithAngle:self.theBomb andMonster:enemy]){
                         [enemy gotHit:self.theBomb.damage];
                     }
@@ -641,12 +722,12 @@
             }
         }
         
-        
+        //check if any walls are in range of the bomb's hit zone
         CCARRAY_FOREACH([wallObjects children], wallBatch)
         {
             CCARRAY_FOREACH([wallBatch children], wall)
             {
-                if(wall.visible){
+                if(wall.visible && !wall.invincible){
                     if ([self collisionBetweenMonstersWithAngle:player andMonster:wall]){
                         [wall gotHit:self.theBomb.damage];
                     }
@@ -655,6 +736,7 @@
             
         }
         
+        //destroy the bomb after checking
         [self.theBomb gotHit];
     }
     
@@ -663,8 +745,8 @@
     //COLLISIONS FOR ENEMY UNITS
     
     // iterate over all enemies
-	CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
-	{
+    CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
+    {
         CCARRAY_FOREACH([enemyBatch children], enemy)
         {
             // only check for collisions if the enemy is visible
@@ -846,47 +928,36 @@
     /*Collision Detection for ship bullets*/
     
     CCARRAY_FOREACH([shipBullets children], bullet){
-        if (bullet.visible && !bullet.attacked) {
+        if (bullet.alive ) {
             CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
             {
                 CCARRAY_FOREACH([enemyBatch children], enemy)
                 {
-                    if(!enemy.invincible && enemy.alive && (!bullet.attacked || bullet.areaOfEffect)){
+                    if(!enemy.invincible && enemy.alive){
                         if ([self collisionBullets:bullet andMonster:enemy])
                         {
-                            if(!bullet.attacked){
-                                [enemy gotHit:bullet.damage];
-                                bullet.attacked=TRUE;
-                            }else if(bullet.areaOfEffect){
-                                [enemy gotHit:bullet.areaOfEffectDamage];
-                                
-                            }
+                            [enemy gotHit:bullet.damage];
+                            [bullet gotHit];
                         }
                     }
                 }
             }
             
-            if((!bullet.attacked || bullet.areaOfEffect)){
-            CCARRAY_FOREACH([wallObjects children], wallBatch)
-            {
-                CCARRAY_FOREACH([wallBatch children], wall)
+            if(bullet.alive){
+                CCARRAY_FOREACH([wallObjects children], wallBatch)
                 {
-                    if(wall.visible && !wall.invincible){
-                        if ([self collisionBullets:bullet andMonster:wall]){
-                            if(!bullet.attacked){
+                    CCARRAY_FOREACH([wallBatch children], wall)
+                    {
+                        if(wall.visible && !wall.invincible){
+                            if ([self collisionBullets:bullet andMonster:wall]){
                                 [wall gotHit:bullet.damage];
-                                bullet.attacked=TRUE;
-                            }else if(bullet.areaOfEffect){
-                                [wall gotHit:bullet.areaOfEffectDamage];
+                                [bullet gotHit];
                             }
                         }
                     }
+                    
                 }
                 
-            }
-                if(bullet.attacked){
-                    [bullet gotHit];
-                }
             }
             
         }
@@ -894,7 +965,7 @@
     
     
     
-    //COLLISION WITH ENEMY BARN WITH PLAYER
+    //    //COLLISION WITH ENEMY BARN WITH PLAYER
     if(_enemyBarn.visible){
         /*Collision Detection for Barns*/
         CCARRAY_FOREACH([playerMonster children], playerBatch){
@@ -902,10 +973,9 @@
                 if(player.alive && !_enemyBarn.attacking){
                     if ([self collisionBetweenMonstersWithAngle:self.enemyBarn andMonster:player])
                     {
-                        if(!_enemyBarn.attacking){
-                            [_enemyBarn attack];
-                            [player gotHit:_enemyBarn.damage];
-                        }
+                        [_enemyBarn attack];
+                        [player gotHit:_enemyBarn.damage];
+                        
                     }
                 }
             }
@@ -922,18 +992,17 @@
                 if(enemy.alive && !_playerBarn.attacking){
                     if ([self collisionBetweenMonstersWithAngle:self.playerBarn andMonster:enemy])
                     {
-                        if(!_playerBarn.attacking){
-                            [_playerBarn attack];
-                            [enemy gotHit:_playerBarn.damage];
-                            
-                        }
+                        [_playerBarn attack];
+                        [enemy gotHit:_playerBarn.damage];
+                        
+                        
                     }
                 }
             }
         }
     }
     
-    //check if enemy is approaching the player barn
+    //check if enemy is approaching the player barn, if there is, flag it
     if(self.playerBarn.visible){
         monsterNearBarn=FALSE;
         CCARRAY_FOREACH([enemyMonsters children], enemyBatch){
@@ -943,9 +1012,9 @@
                 {
                     if([self monsterNearBarn:self.playerBarn andMonster:enemy]){
                         monsterNearBarn=TRUE;
-                        break;
                     }
                 }
+                
             }
         }
         if(monsterNearBarn){
@@ -955,7 +1024,7 @@
         }
     }
     
-    //check if player is approaching the enemy barn
+    //check if player is approaching the enemy barn, if there is, flag it
     if(self.enemyBarn.visible){
         monsterNearBarn=FALSE;
         CCARRAY_FOREACH([playerMonster children], playerBatch){
@@ -965,7 +1034,6 @@
                 {
                     if([self monsterNearBarn:self.enemyBarn andMonster:player]){
                         monsterNearBarn=TRUE;
-                        break;
                     }
                 }
             }
@@ -988,56 +1056,61 @@
     {
         if(self.ableToSpawn)
             updateCount++;
+        
+        // first we get all available monster types
+        NSArray *monsterTypes = [[[GameMechanics sharedGameMechanics] spawnRatesByEnemyMonsterType] allKeys];
+        
+        for (NSString *monsterTypeClass in monsterTypes)
+        {
+            // we get the spawn frequency for this specific monster type
+            int spawnFrequency = [[GameMechanics sharedGameMechanics] spawnRateForEnemyMonsterType:monsterTypeClass];
+            // if the updateCount reached the spawnFrequency we spawn a new enemy
+            if([[GameMechanics sharedGameMechanics]game].timeInSec<=[[GameMechanics sharedGameMechanics]game].timeForCrazyMode){
+                spawnFrequency=spawnFrequency/1.5;
+            }
             
-            // first we get all available monster types
-            NSArray *monsterTypes = [[[GameMechanics sharedGameMechanics] spawnRatesByEnemyMonsterType] allKeys];
+            if(self.enemyBarnUnderAttack){
+                spawnFrequency=spawnFrequency/.78;
+            }
             
-            for (NSString *monsterTypeClass in monsterTypes)
+            //                if([[GameMechanics sharedGameMechanics]game].difficulty==HARD){
+            //                    spawnFrequency=spawnFrequency/1.43;
+            //                }
+            
+            if (updateCount % spawnFrequency == 0)
             {
-                // we get the spawn frequency for this specific monster type
-                int spawnFrequency = [[GameMechanics sharedGameMechanics] spawnRateForEnemyMonsterType:monsterTypeClass];
-                // if the updateCount reached the spawnFrequency we spawn a new enemy
-                if([[GameMechanics sharedGameMechanics]game].timeInSec<=[[GameMechanics sharedGameMechanics]game].timeForCrazyMode){
-                    spawnFrequency=spawnFrequency/1.5;
-                }
-                
-//                if([[GameMechanics sharedGameMechanics]game].difficulty==HARD){
-//                    spawnFrequency=spawnFrequency/1.43;
-//                }
-                
-                if (updateCount % spawnFrequency == 0)
-                {
-                    if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
-                        if(self.enemyBarnUnderAttack){
-                            [self spawnEnemyOfType:monsterTypeClass atAngle:(5*M_PI_4-self.enemyBarn.boundingZone/1.2)];
-                        }else{
-                            
-                            [self spawnEnemyOfType:monsterTypeClass atAngle:(M_PI_2+M_PI_4/2+(CCRANDOM_0_1()*2.5*M_PI_4 ))];
-                        }
-                    }else{
-                        if(self.enemyBarnUnderAttack){
-                            [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI+CCRANDOM_MINUS1_1()*self.enemyBarn.boundingZone/1.2];
-                        }else{
-                            
-                            [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI_2+M_PI_4/2+CCRANDOM_0_1()*3*M_PI_4];
-                        }
-                    }
-                }
-            }
-            
-            
-            if (wallSpawnProp>0 && rand() %(wallSpawnProp) == 1){
-                int walltype=rand() %(wallList.count);
                 if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
-                    [self spawnWall:wallList[walltype] atAngle:M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4];
-                }else{
-                    if(CCRANDOM_0_1() >=.5){
-                        [self spawnWall:wallList[walltype] atAngle:M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4/2];
+                    if(self.enemyBarnUnderAttack){
+                        [self spawnEnemyOfType:monsterTypeClass atAngle:(5*M_PI_4-self.enemyBarn.boundingZone/1.2)];
                     }else{
-                        [self spawnWall:wallList[walltype] atAngle:3*M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4/2];
+                        
+                        [self spawnEnemyOfType:monsterTypeClass atAngle:(M_PI_2+M_PI_4/2+(CCRANDOM_0_1()*2.5*M_PI_4 ))];
+                        
+                    }
+                }else{
+                    if(self.enemyBarnUnderAttack){
+                        [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI+CCRANDOM_MINUS1_1()*self.enemyBarn.boundingZone/1.2];
+                    }else{
+                        
+                        [self spawnEnemyOfType:monsterTypeClass atAngle:M_PI_2+M_PI_4/2+CCRANDOM_0_1()*3*M_PI_4];
                     }
                 }
             }
+        }
+        
+        
+        if (wallSpawnProp>0 && rand() %(wallSpawnProp) == 1){
+            int walltype=rand() %(wallList.count);
+            if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
+                [self spawnWall:wallList[walltype] atAngle:M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4];
+            }else{
+                if(CCRANDOM_0_1() >=.5){
+                    [self spawnWall:wallList[walltype] atAngle:M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4/2];
+                }else{
+                    [self spawnWall:wallList[walltype] atAngle:3*M_PI_2+CCRANDOM_MINUS1_1()*M_PI_4/2];
+                }
+            }
+        }
         
         
         

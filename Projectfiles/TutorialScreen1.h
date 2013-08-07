@@ -19,13 +19,13 @@
     CCMenu *menu;
     CCMenuItemSprite *monsterButton;
     
-    CCMenuItemSprite* yourBarn;
-    CCMenuItemSprite* enemyBarn;
-    CCMenuItemSprite* firstPlant;
-    CCMenuItemSprite* plantMore;
-    CCMenuItemSprite* swipeToMove;
-    CCMenuItemSprite* cantPlant;
-    CCMenuItemSprite* play;
+    CCSprite* yourBarn;
+    CCSprite* enemyBarn;
+    CCSprite* firstPlant;
+    CCSprite* plantMore;
+    CCSprite* swipeToMove;
+    CCSprite* cantPlant;
+    CCSprite* play;
     CCSprite* pointToSeed;
     CCSprite* pointToButton;
     CCSprite* swipe;
@@ -46,6 +46,7 @@
      BOOL checkPoint5;
      BOOL checkPoint6;
     BOOL checkPoint7;
+    BOOL checkPoint8;
 }
 
 - (id)initWithGame;

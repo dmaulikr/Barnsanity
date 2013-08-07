@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>Bomb Damage</key>
-	<integer>-1</integer>
+	<integer>1</integer>
 	<key>Pineapple</key>
 	<integer>-1</integer>
 	<key>Watermelon</key>
 	<integer>-1</integer>
 	<key>Grape</key>
-	<integer>-1</integer>
+	<integer>0</integer>
 	<key>Coconut</key>
-	<integer>-1</integer>
+	<integer>0</integer>
 	<key>Banana</key>
 	<integer>-1</integer>
 	<key>Mango</key>
@@ -19,28 +19,28 @@
 	<key>Cherry</key>
 	<integer>-1</integer>
 	<key>Strawberry</key>
-	<integer>-1</integer>
+	<integer>1</integer>
 	<key>Apple</key>
-	<integer>-1</integer>
+	<integer>2</integer>
 	<key>Orange</key>
-	<integer>0</integer>
+	<integer>2</integer>
 	<key>Ship AreaOfEffect Damage</key>
 	<integer>0</integer>
 	<key>Ship Firerate</key>
-	<integer>0</integer>
+	<integer>3</integer>
 	<key>Ship Damage</key>
-	<integer>0</integer>
+	<integer>2</integer>
 	<key>Energy Regeneration</key>
-	<integer>0</integer>
+	<integer>3</integer>
 	<key>Energy Max</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>Player Barn Health</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>Player Barn Armor</key>
 	<integer>0</integer>
 	<key>Gold Bonus</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>Game Levels</key>
-	<integer>5</integer>
+	<integer>22</integer>
 </dict>
 </plist>

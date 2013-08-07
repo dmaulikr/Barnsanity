@@ -228,20 +228,21 @@ static CGRect screenRect;
     [self showHUD];
     barnUnderAttack.visible=FALSE;
     [[GameMechanics sharedGameMechanics] setGameState:GameStateRunning];
-    if(game.gameplayLevel==0){
+    
+    if(game.gameplayLevel==0 && game.activateLevel0Tutorial){
         [self level0Tutorial];
     }
-    if(game.gameplayLevel==1){
+    if(game.gameplayLevel==1 && game.activateLevel1Tutorial){
         [self level1Tutorial];
     }
-    if(game.gameplayLevel==8){
+    if(game.gameplayLevel==8 &&game.activateLevel8Tutorial){
         [self level8Tutorial];
     }
-    if(game.gameplayLevel==10){
+    if(game.gameplayLevel==10 &&game.activateLevel10Tutorial){
         [self level10Tutorial];
     }
     
-    if(game.gameplayLevel==20){
+    if(game.gameplayLevel==25 &&game.activateLevel25Tutorial){
         [self wholeWorldTutorial];
     }
     
@@ -249,7 +250,7 @@ static CGRect screenRect;
 
 - (void)resetGame
 {
-    if(game.gameplayLevel==20){
+    if(game.gameplayLevel==25){
         game.difficulty=HARD;
     }
     self.ableToShoot=TRUE;
@@ -367,7 +368,7 @@ static CGRect screenRect;
     if ([[MonsterCache sharedMonsterCache] playerBarn].alive ==FALSE)
     {
         [self goToLoseScreen];
-    }else if ([[MonsterCache sharedMonsterCache] enemyBarn].alive ==FALSE || (game.timeInSec <=0))
+    }else if ([[MonsterCache sharedMonsterCache] enemyBarn].alive ==FALSE )
     {
         // if enemy barn's hit point is 0 or less go to win screen
         [self goToWinScreen];
@@ -376,6 +377,7 @@ static CGRect screenRect;
 
 
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    self.touchHappened=TRUE;
     NSArray *allTouches=[touches allObjects];
     for(int i=0;i<allTouches.count;i++){
     UITouch *touch =allTouches[i];

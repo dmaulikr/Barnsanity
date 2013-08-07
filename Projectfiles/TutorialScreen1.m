@@ -32,54 +32,34 @@
         [[MonsterCache sharedMonsterCache] setAbleToSpawn:FALSE];
         [[MonsterButtonCache sharedMonsterButtonCache] hideButtons];
         [self scheduleUpdate];
-        yourBarn=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial1-1.png"] selectedSprite:nil block:^(id sender) {
-            checkPoint1=TRUE;
-            yourBarn.visible=FALSE;
-        }];
-        yourBarn.position=ccp(0,0);
         
-        enemyBarn=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial1-2.png"] selectedSprite:nil block:^(id sender) {
-            checkPoint2=TRUE;
-            enemyBarn.visible=FALSE;
-        }];
+        yourBarn=[CCSprite spriteWithFile:@"Tutorial1-1.png"];
+        yourBarn.position=ccp(0,0);
+                [self addChild:yourBarn];
+        enemyBarn=[CCSprite spriteWithFile:@"Tutorial1-2.png"];
         enemyBarn.visible=FALSE;
         enemyBarn.position=ccp(0,0);
-        
-        firstPlant=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial1-3.png"] selectedSprite:nil block:^(id sender) {
-        }];
+                [self addChild:enemyBarn];
+        firstPlant=[CCSprite spriteWithFile:@"Tutorial1-3.png"];
         firstPlant.visible=FALSE;
         firstPlant.position=ccp(0,0);
-        
-        plantMore=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial1-4.png"] selectedSprite:nil block:^(id sender) {
-            didMove=FALSE;
-            checkPoint5=TRUE;
-            plantMore.visible=FALSE;
-            swipeToMove.visible=TRUE;
-            [[GameMechanics sharedGameMechanics]gameScene].ableToRotate=TRUE;
-            swipe.visible=TRUE;
-        }];
+                [self addChild:firstPlant];
+        plantMore=[CCSprite spriteWithFile:@"Tutorial1-4.png"];
         plantMore.visible=FALSE;
         plantMore.position=ccp(0,0);
-        
-        swipeToMove=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial1-5.png"] selectedSprite:nil block:^(id sender) {
-        }];
+                [self addChild:plantMore];
+        swipeToMove=[CCSprite spriteWithFile:@"Tutorial1-5.png"] ;
         swipeToMove.visible=FALSE;
         swipeToMove.position=ccp(0,0);
-        
-        cantPlant=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial1-6.png"] selectedSprite:nil block:^(id sender) {
-            cantPlant.visible=FALSE;
-            play.visible=TRUE;
-            checkPoint6=TRUE;
-            waitCount=count;
-        }];
+                [self addChild:swipeToMove];
+        cantPlant=[CCSprite spriteWithFile:@"Tutorial1-6.png"];
         cantPlant.visible=FALSE;
         cantPlant.position=ccp(0,0);
-        
-        play=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial1-7.png"] selectedSprite:nil block:^(id sender) {
-            
-        }];
+                [self addChild:cantPlant];
+        play=[CCSprite spriteWithFile:@"Tutorial1-7.png"];
         play.visible=FALSE;
         play.position=ccp(0,0);
+        [self addChild:play];
         
         pointToSeed=[CCSprite spriteWithFile:@"pointToEnergy.png"];
         pointToSeed.visible=FALSE;
@@ -98,7 +78,7 @@
         firstButton=[CCSprite spriteWithFile:@"OrangeButton.png"];
         [firstButton setScale:.7];
         monsterButton=[CCMenuItemSprite itemWithNormalSprite:firstButton selectedSprite:nil block:^(id sender) {
-            if(checkPoint3 || checkPoint7){
+            if(checkPoint3 || checkPoint8){
             float angleOfSpawn = fmodf([[[GameMechanics sharedGameMechanics] gameScene]  getChildByTag:1].rotation, 360);
             if((angleOfSpawn <=-22.5 && angleOfSpawn >= -157.5)||(angleOfSpawn >202.5 && angleOfSpawn < 337.5)){
                 if(10<=[[GameMechanics sharedGameMechanics]game].energy){
@@ -122,19 +102,23 @@
                 cantPlant.visible=TRUE;
                 pointToButton.visible=FALSE;
                 checkPoint5=FALSE;
+                checkPoint6=TRUE;
+                [[GameMechanics sharedGameMechanics]gameScene].touchHappened=FALSE;
             }
             
         }];
         monsterButton.position=ccp((self.contentSize.width-firstButton.contentSize.width/5)/2-15,(self.contentSize.height-firstButton.contentSize.height/4)/2-10);
-        menu=[CCMenu menuWithItems:yourBarn, enemyBarn, firstPlant, plantMore,swipeToMove,cantPlant, monsterButton, play,nil];
+        monsterButton.visible=FALSE;
+        menu=[CCMenu menuWithItems:monsterButton, nil];
         menu.position=ccp(0,0);
         [self addChild:menu];
-        monsterButton.visible=FALSE;
         blink=[CCBlink actionWithDuration:1.5f blinks:1];
         blinkDidRun=FALSE;
         monsterProduced=0;
         didMove=TRUE;
-        count=0;    }
+        count=0;
+        checkPoint1=TRUE;
+     [[GameMechanics sharedGameMechanics]gameScene].touchHappened=FALSE;}
     
     return self;
 }
@@ -143,15 +127,21 @@
 
         count++;
         if(count >30){
-            if(checkPoint1){
+            if(checkPoint1 && [[GameMechanics sharedGameMechanics]gameScene].touchHappened){
+                yourBarn.visible=FALSE;
                 [[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation+=2.5;
                 if([[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation==125){
                     enemyBarn.visible=TRUE;
                     checkPoint1=FALSE;
+                    checkPoint2=TRUE;
+                    [[GameMechanics sharedGameMechanics]gameScene].touchHappened=FALSE;
                 }
-            }else if(checkPoint2){
+            }else if(checkPoint2 && [[GameMechanics sharedGameMechanics]gameScene].touchHappened){
+                enemyBarn.visible=FALSE;
                 [[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation-=2.5;
                 if([[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation==-120){
+                    [[GameMechanics sharedGameMechanics]gameScene].touchHappened=FALSE;
+                    firstPlant.visible=TRUE;
                     checkPoint2=FALSE;
                     checkPoint3=TRUE;
                     waitCount=count;
@@ -174,7 +164,18 @@
                 [[[GameMechanics sharedGameMechanics]gameScene] energy].run=FALSE;
                 [[MonsterCache sharedMonsterCache]gamePaused];
                 checkPoint4=FALSE;
-            }else if(checkPoint5){
+                checkPoint5=TRUE;
+                [[GameMechanics sharedGameMechanics]gameScene].touchHappened=FALSE;
+                didMove=FALSE;
+                
+            }else if(checkPoint5 && [[GameMechanics sharedGameMechanics]gameScene].touchHappened){
+                plantMore.visible=FALSE;
+    
+                if(!didMove){
+                    swipeToMove.visible=TRUE;
+                    swipe.visible=TRUE;
+                    [[GameMechanics sharedGameMechanics]gameScene].ableToRotate=TRUE;
+                }
                 if([[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation>=30){
                     if(!blinkDidRun){
                         blinkDidRun=TRUE;
@@ -184,17 +185,21 @@
                         pointToButton.visible=TRUE;
                     }
                 }
-            }else if(checkPoint6 && count-waitCount >=70){
-                
+            }else if(checkPoint6 && [[GameMechanics sharedGameMechanics]gameScene].touchHappened ){
+                cantPlant.visible=FALSE;
+                play.visible=TRUE;
+                checkPoint6=FALSE;
+                checkPoint7=TRUE;
+                waitCount=count;
+            }else if(checkPoint7 && count-waitCount >=70 ){
                 play.visible=FALSE;
                 [[GameMechanics sharedGameMechanics]gameScene].ableToRotate=TRUE;
-                [[MonsterCache sharedMonsterCache]spawnEnemyOfType:@"Carrot" atAngle:M_PI+M_PI_4/2];
                 [[MonsterCache sharedMonsterCache] setAbleToSpawn:TRUE];
                 [[[GameMechanics sharedGameMechanics]gameScene] energy].run=TRUE;
                 [[[GameMechanics sharedGameMechanics]gameScene]enableGamePlayButtons];
                 [[MonsterCache sharedMonsterCache]gameResumed];
-                checkPoint6=FALSE;
-                checkPoint7=TRUE;
+                checkPoint7=FALSE;
+                checkPoint8=TRUE;
             }
             
         }
@@ -203,6 +208,7 @@
         if(fabsf([[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation +120) >3){
                         swipeToMove.visible=FALSE;
             didMove=TRUE;
+            [[MonsterCache sharedMonsterCache]reset];
         }
     }
         

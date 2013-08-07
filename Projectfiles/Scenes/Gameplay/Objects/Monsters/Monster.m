@@ -66,7 +66,6 @@
 
 -(void) destroy{
     //turn invisible
-    
     self.visible = FALSE;
     self.alive=FALSE;
     self.move=FALSE;

@@ -85,9 +85,8 @@
 - (void)updateRunningMode:(ccTime)delta
 {
     self.distanceFromWorld-=speed;
-    if(self.distanceFromWorld <= radiusOfWorld){
-        self.visible=FALSE;
-        self.position = ccp(-MAX_INT, 0);
+    if(self.distanceFromWorld <= radiusOfWorld-30){
+        [self gotHit];
     }
     float deltaX=self.distanceFromWorld*cos(angle);
     float deltaY=self.distanceFromWorld*sin(angle);

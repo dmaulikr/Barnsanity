@@ -65,6 +65,7 @@
 		30C43540178B289800D6ABBD /* Beet.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4353F178B289800D6ABBD /* Beet.m */; };
 		30C43543178B28A800D6ABBD /* Asparagus.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43542178B28A700D6ABBD /* Asparagus.m */; };
 		30C43564178B338F00D6ABBD /* MonsterButtonCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C43563178B338E00D6ABBD /* MonsterButtonCache.m */; };
+		30C43ABD17B0C5310078B0EA /* Tutorial5-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C43ABC17B0C5310078B0EA /* Tutorial5-4.png */; };
 		30C4971D179DF0BA008C4D24 /* SelectConfirmScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4971C179DF0BA008C4D24 /* SelectConfirmScreen.m */; };
 		30C55DD4179BB79D008D3974 /* Artichokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C55DD3179BB79D008D3974 /* Artichokes.m */; };
 		30C55DD7179BB7BA008D3974 /* Eggplant.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C55DD6179BB7BA008D3974 /* Eggplant.m */; };
@@ -478,6 +479,7 @@
 		30C43542178B28A700D6ABBD /* Asparagus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asparagus.m; sourceTree = "<group>"; };
 		30C43562178B338D00D6ABBD /* MonsterButtonCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterButtonCache.h; sourceTree = "<group>"; };
 		30C43563178B338E00D6ABBD /* MonsterButtonCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterButtonCache.m; sourceTree = "<group>"; };
+		30C43ABC17B0C5310078B0EA /* Tutorial5-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial5-4.png"; sourceTree = "<group>"; };
 		30C4971B179DF0BA008C4D24 /* SelectConfirmScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectConfirmScreen.h; sourceTree = "<group>"; };
 		30C4971C179DF0BA008C4D24 /* SelectConfirmScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectConfirmScreen.m; sourceTree = "<group>"; };
 		30C55DD2179BB79D008D3974 /* Artichokes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artichokes.h; sourceTree = "<group>"; };
@@ -1684,6 +1686,7 @@
 			isa = PBXGroup;
 			children = (
 				30C8DA5A17A38D01000834AC /* Tutorial6-1.png */,
+				30C43ABC17B0C5310078B0EA /* Tutorial5-4.png */,
 				30C8DA6217A39387000834AC /* Tutorial6-2.png */,
 				30C8DA5C17A38D01000834AC /* Tutorial6-3.png */,
 				30C8DA5417A38A60000834AC /* Tutorial5-1.png */,
@@ -2061,6 +2064,7 @@
 				30C8DA5F17A38D01000834AC /* Tutorial6-3.png in Resources */,
 				30C8DA6117A3900D000834AC /* Tutorial4-2.png in Resources */,
 				30C8DA6317A39387000834AC /* Tutorial6-2.png in Resources */,
+				30C43ABD17B0C5310078B0EA /* Tutorial5-4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

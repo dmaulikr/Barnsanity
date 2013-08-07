@@ -19,6 +19,16 @@
 
 //is true if it is the first time playing
 @property (nonatomic, assign) BOOL activateStoreTutorial;
+//is true if it is the first time playing
+@property (nonatomic, assign) BOOL activateLevel0Tutorial;
+//is true if it is the first time playing
+@property (nonatomic, assign) BOOL activateLevel1Tutorial;
+//is true if it is the first time playing
+@property (nonatomic, assign) BOOL activateLevel8Tutorial;
+//is true if it is the first time playing
+@property (nonatomic, assign) BOOL activateLevel10Tutorial;
+//is true if it is the first time playing
+@property (nonatomic, assign) BOOL activateLevel25Tutorial;
 //indicates the difficulty level of the game
 @property (nonatomic, assign) NSInteger difficulty;
 

@@ -31,39 +31,25 @@
         [[[[GameMechanics sharedGameMechanics]gameScene]energy ]resetEnergy:[[GameMechanics sharedGameMechanics]game].energyMax increasedAt:0];
         [self scheduleUpdate];
         
-        thereMoreSpace=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial6-1.png"] selectedSprite:nil block:^(id sender) {
-            checkPoint1=TRUE;
-            thereMoreSpace.visible=FALSE;
-            wholeNewWorld.visible=TRUE;
-        }];
+        thereMoreSpace=[CCSprite spriteWithFile:@"Tutorial6-1.png"];
         thereMoreSpace.position=ccp(0,0);
-        
-        wholeNewWorld=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial6-2.png"] selectedSprite:nil block:^(id sender) {
-
-        }];
+        [self addChild:thereMoreSpace];
+        wholeNewWorld=[CCSprite spriteWithFile:@"Tutorial6-2.png"];
         wholeNewWorld.visible=FALSE;
         wholeNewWorld.position=ccp(0,0);
-        defendAndAttack=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial6-3.png"] selectedSprite:nil block:^(id sender) {
-            defendAndAttack.visible=FALSE;
-            finish.visible=TRUE;
-            checkPoint2=TRUE;
-            waitCount=count;
-        }];
+        [self addChild:wholeNewWorld];
+        defendAndAttack=[CCSprite spriteWithFile:@"Tutorial6-3.png"];
         defendAndAttack.visible=FALSE;
         defendAndAttack.position=ccp(0,0);
-        
-        finish=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial1-7.png"] selectedSprite:nil block:^(id sender) {
-            
-        }];
+        [self addChild:defendAndAttack];
+        finish=[CCSprite spriteWithFile:@"Tutorial1-7.png"];
         finish.visible=FALSE;
         finish.position=ccp(0,0);
-        
-        
-        menu=[CCMenu menuWithItems:thereMoreSpace,wholeNewWorld,defendAndAttack,finish, nil];
-        menu.position=ccp(0,0);
-        [self addChild:menu];
+        [self addChild:finish];
         
         count=0;
+        [[GameMechanics sharedGameMechanics]gameScene].touchHappened=FALSE;
+        checkPoint1=TRUE;
     }
     
     return self;
@@ -72,14 +58,22 @@
 -(void)update:(ccTime)delta{
     if([[GameMechanics sharedGameMechanics] gameState]==GameStateRunning){
         count++;
-        if(checkPoint1){
+        if(checkPoint1 && [[GameMechanics sharedGameMechanics]gameScene].touchHappened){
+            thereMoreSpace.visible=FALSE;
             [[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation+=1.5;
             if([[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation==270){
                 checkPoint1=FALSE;
-                wholeNewWorld.visible=FALSE;
                 defendAndAttack.visible=TRUE;
+                checkPoint2=TRUE;
+                [[GameMechanics sharedGameMechanics]gameScene].touchHappened=FALSE;
             }
-        }else if(checkPoint2 && count-waitCount>80){
+        }else if(checkPoint2 && [[GameMechanics sharedGameMechanics]gameScene].touchHappened){
+            defendAndAttack.visible=FALSE;
+            finish.visible=TRUE;
+            checkPoint3=TRUE;
+            checkPoint2=FALSE;
+            waitCount=count;
+        }else if(checkPoint3 && count-waitCount>=80){
             [self exitTutorial];
         }
         

@@ -117,6 +117,7 @@
     if(self.hitPoints<=0){
 //        [[GameMechanics sharedGameMechanics]game].playerMonsterKilled=+1;
         [self stopAllActions];
+        self.visible = YES;
         [self runAction:death];
     }else if(blinkDidRun==FALSE || [blink isDone]){
         blinkDidRun=TRUE;

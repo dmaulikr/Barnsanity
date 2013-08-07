@@ -15,7 +15,7 @@
     
     if (self)
     {
-        nameOfMonster=@"PeaPod";
+        nameOfMonster=@"Pea Pod";
         
 		//self.velocity = CGPointMake(-30, 0);
         
@@ -72,7 +72,7 @@
             
         }];
         
-        attack = [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] , hitAction, [CCDelayTime actionWithDuration:.5] ,finishHit, nil];
+        attack = [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] , hitAction, [CCDelayTime actionWithDuration:1] ,finishHit, nil];
         
         //*********Plant animation**********
         CCFiniteTimeAction *planting = [CCCallBlock actionWithBlock:^{

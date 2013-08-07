@@ -13,14 +13,15 @@
 @interface TutorialScreen6 : CCLayer
 {
     CCMenu *menu;
-    CCMenuItemSprite *thereMoreSpace;
-    CCMenuItemSprite *wholeNewWorld;
-    CCMenuItemSprite *defendAndAttack;
-    CCMenuItemSprite *finish;
+    CCSprite *thereMoreSpace;
+    CCSprite *wholeNewWorld;
+    CCSprite *defendAndAttack;
+    CCSprite *finish;
     int count;
     int waitCount;
     BOOL checkPoint1;
     BOOL checkPoint2;
+    BOOL checkPoint3;
 }
 - (id)initWithGame;
 @end

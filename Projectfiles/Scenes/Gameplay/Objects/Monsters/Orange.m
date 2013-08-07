@@ -120,8 +120,7 @@
         death=[CCSequence actions:dying, nil];
         
         //**********blink************
-        blink = [CCBlink actionWithDuration:.4f blinks:2];
-        
+        blink = [CCSequence actions:[CCBlink actionWithDuration:.4f blinks:2],[CCShow action], nil];
         CCSprite *delayTimerImage=[[CCSprite alloc] initWithFile:@"n2pY1.png"];
         [delayTimerImage setColor:ccc3(2, 2, 200)];
         delayTimer=[CCProgressTimer progressWithSprite:delayTimerImage];

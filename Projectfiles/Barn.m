@@ -34,7 +34,6 @@
         
         CCFiniteTimeAction *startHit = [CCCallBlock actionWithBlock:^{
             // stop running animation
-            self.attacking = TRUE;
         }];
         
         CCFiniteTimeAction *finishHit = [CCCallBlock actionWithBlock:^{
@@ -43,7 +42,7 @@
             
         }];
         
-        attack= [CCSequence actions:startHit,[CCDelayTime actionWithDuration:3] ,finishHit, nil];
+        attack= [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] ,finishHit, nil];
         
         //health bar
         CCSprite *health=[[CCSprite alloc] initWithFile:@"n2pY1.png"];
@@ -111,6 +110,7 @@
 -(void)attack{
     if(hitDidRun == FALSE||[attack isDone]){
         hitDidRun=TRUE;
+         self.attacking = TRUE;
         [self runAction:attack];
     }
 }

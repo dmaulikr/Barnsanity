@@ -27,7 +27,7 @@
     CCSequence *spawn;
     CCSequence *death;
     BOOL hitDidRun;
-    CCBlink *blink;
+    CCSequence *blink;
     BOOL blinkDidRun;
     NSMutableDictionary *stats;
     int spawnDelayInitial;

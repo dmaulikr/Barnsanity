@@ -13,16 +13,16 @@
 
 @interface TutorialScreen4 : CCLayer
 {
-    CCMenu *menu;
-    CCMenuItemSprite *whatIsThis;
-    CCMenuItemSprite *weeds;
-    CCMenuItemSprite *handle;
-    CCMenuItemSprite *finish;
+    CCSprite *whatIsThis;
+    CCSprite *weeds;
+    CCSprite *handle;
+    CCSprite *finish;
     int count;
     int waitCount;
     BOOL checkPoint1;
     BOOL checkPoint2;
     BOOL checkPoint3;
+    BOOL checkPoint4;
 }
 - (id)initWithGame;
 @end

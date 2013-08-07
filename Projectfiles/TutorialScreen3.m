@@ -34,6 +34,7 @@
         //self.anchorPoint = ccp(0.5, 0.5);
         backgroundNode.anchorPoint = ccp(0.5, 0.5);
         
+        [self scheduleUpdate];
         // add title label
         CCLabelTTF *storeItemLabel = [CCLabelTTF labelWithString:@"Upgrade Store"
                                                         fontName:DEFAULT_FONT
@@ -127,54 +128,21 @@
         
         [self setUpitemsWithList:[[GameMechanics sharedGameMechanics]game].utilUpgradeList];
         
-        hereIsStore=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial3-1.png"] selectedSprite:nil block:^(id sender) {
-            disableNext=FALSE;
-            disablePrevious=TRUE;
-            disableUpgrade=TRUE;
-            disableSelect=TRUE;
-            disableEquip=TRUE;
-            disableUnequip=TRUE;
-            [nextPage runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.5f blinks:1]]];
-            hereIsStore.visible=FALSE;
-            
-        }];
-        
+        hereIsStore=[CCSprite spriteWithFile:@"Tutorial3-1.png"];
         hereIsStore.position=ccp(0,0);
-        
-        hereIsSeedSection=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial3-2.png"] selectedSprite:nil block:^(id sender) {
-            disableNext=TRUE;
-            disablePrevious=TRUE;
-            disableUpgrade=FALSE;
-            disableSelect=FALSE;
-            disableEquip=FALSE;
-            disableUnequip=FALSE;
-            ItemNode* temp=[currentItemNodes objectForKey:@"Apple"];
-            [temp runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.5f blinks:1]]];
-            hereIsSeedSection.visible=FALSE;
-        }];
+        [self addChild:hereIsStore z:2];
+        hereIsSeedSection=[CCSprite spriteWithFile:@"Tutorial3-2.png"];
         hereIsSeedSection.visible=FALSE;
         hereIsSeedSection.position=ccp(0,0);
-        finishPurchase=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial3-3.png"] selectedSprite:nil block:^(id sender) {
-            finishPurchase.visible=FALSE;
-            goShop.visible=TRUE;
-        }];
+        [self addChild:hereIsSeedSection z:2];
+        finishPurchase=[CCSprite spriteWithFile:@"Tutorial3-3.png"];
         finishPurchase.visible=FALSE;
         finishPurchase.position=ccp(0,0);
-        goShop=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial3-4.png"] selectedSprite:nil block:^(id sender) {
-            disableNext=FALSE;
-            disablePrevious=FALSE;
-            disableUpgrade=FALSE;
-            disableSelect=FALSE;
-            disableEquip=FALSE;
-            disableUnequip=FALSE;
-            goShop.visible=FALSE;
-            tutorialOn=FALSE;
-        }];
+        [self addChild:finishPurchase z:2];
+        goShop=[CCSprite spriteWithFile:@"Tutorial3-4.png"];
         goShop.visible=FALSE;
         goShop.position=ccp(0,0);
-        tutorialMenu=[CCMenu menuWithItems:hereIsStore,hereIsSeedSection,finishPurchase,goShop, nil];
-        tutorialMenu.position=ccp(0,0);
-        [self addChild:tutorialMenu z:10];
+[self addChild:goShop  z:2];
         itemPage=UTIL;
         
         disableNext=TRUE;
@@ -185,6 +153,8 @@
         disableUnequip=TRUE;
         disableBack=FALSE;
         tutorialOn=TRUE;
+        checkPoint1=TRUE;
+        [[GameMechanics sharedGameMechanics]gameScene].touchHappened=FALSE;
     }
     
     return self;
@@ -223,7 +193,9 @@
 -(void)nextPageButtonPressed{
     if(!disableNext){
         if(tutorialOn){
+            checkPoint2=TRUE;
             hereIsSeedSection.visible=TRUE;
+            [[GameMechanics sharedGameMechanics]gameScene].touchHappened=FALSE;
         }
         itemPage=WEAPON;
         [self setUpitemsWithList:[[GameMechanics sharedGameMechanics]game].playerMonsterList];
@@ -388,7 +360,7 @@
 -(void) upgradeButtonPressed{
     if(!disableUpgrade){
         if([selectedItem.nameOfItem isEqual: @"Apple"] && tutorialOn){
-            [equip runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.5f blinks:1]]];
+            [equip runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:2.0f blinks:1]]];
             [upgrade stopAllActions];
             disableBack=TRUE;
             equip.visible=TRUE;
@@ -427,6 +399,8 @@
             disableUnequip=TRUE;
             disableBack=FALSE;
             [[GameMechanics sharedGameMechanics]game].activateStoreTutorial=FALSE;
+            checkPoint3=TRUE;
+            [[GameMechanics sharedGameMechanics]gameScene].touchHappened=FALSE;
         }
         if(countOfEquiped < MAXSPAWNBUTTONS){
             for(int i=0;i<MAXSPAWNBUTTONS;i++){
@@ -472,7 +446,7 @@
             [self showSelectedItem:selectedItem] ;
         }
         if([selectedItem.nameOfItem isEqual:@"Apple"] && tutorialOn){
-            [upgrade runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.5f blinks:1]]];
+            [upgrade runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:2.0f blinks:1]]];
             [selectedItem stopAllActions];
             disableSelect=TRUE;
             
@@ -515,5 +489,48 @@
     
 }
 
+
+-(void)update:(ccTime)delta{
+    if(checkPoint1 && [[GameMechanics sharedGameMechanics]gameScene].touchHappened){
+        disableNext=FALSE;
+        disablePrevious=TRUE;
+        disableUpgrade=TRUE;
+        disableSelect=TRUE;
+        disableEquip=TRUE;
+        disableUnequip=TRUE;
+        [nextPage runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:2.0f blinks:1]]];
+        hereIsStore.visible=FALSE;
+        checkPoint1=FALSE;
+    }else if(checkPoint2 && [[GameMechanics sharedGameMechanics]gameScene].touchHappened){
+        hereIsSeedSection.visible=FALSE;
+        checkPoint2=FALSE;
+        disableNext=TRUE;
+        disablePrevious=TRUE;
+        disableUpgrade=FALSE;
+        disableSelect=FALSE;
+        disableEquip=FALSE;
+        disableUnequip=FALSE;
+        ItemNode* temp=[currentItemNodes objectForKey:@"Apple"];
+        [temp runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:2.0f blinks:1]]];
+        hereIsSeedSection.visible=FALSE;
+    }else if(checkPoint3 && [[GameMechanics sharedGameMechanics]gameScene].touchHappened){
+        finishPurchase.visible=FALSE;
+        goShop.visible=TRUE;
+        checkPoint3=FALSE;
+        checkPoint4=TRUE;
+        [[GameMechanics sharedGameMechanics]gameScene].touchHappened=FALSE;
+    }else if(checkPoint4 && [[GameMechanics sharedGameMechanics]gameScene].touchHappened){
+        goShop.visible=FALSE;
+        checkPoint4=FALSE;
+        disableNext=FALSE;
+        disablePrevious=FALSE;
+        disableUpgrade=FALSE;
+        disableSelect=FALSE;
+        disableEquip=FALSE;
+        disableUnequip=FALSE;
+        goShop.visible=FALSE;
+        tutorialOn=FALSE;
+    }
+}
 @end
 

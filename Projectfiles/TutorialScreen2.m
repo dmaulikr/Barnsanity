@@ -33,48 +33,31 @@
             [[[[GameMechanics sharedGameMechanics]gameScene]energy ]resetEnergy:[[GameMechanics sharedGameMechanics]game].energyMax increasedAt:0];
         [self scheduleUpdate];
         
-        whatIFound=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial2-1.png"] selectedSprite:nil block:^(id sender) {
-            checkPoint1=TRUE;
-        }];
+        whatIFound=[CCSprite spriteWithFile:@"Tutorial2-1.png"];
         whatIFound.position=ccp(0,0);
-        
-        tapAndShoot=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial2-2.png"] selectedSprite:nil block:^(id sender) {
-        }];
+        [self addChild:whatIFound];
+        tapAndShoot=[CCSprite spriteWithFile:@"Tutorial2-2.png"];
         tapAndShoot.visible=FALSE;
         tapAndShoot.position=ccp(0,0);
-        practice=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial2-3.png"] selectedSprite:nil block:^(id sender) {
-            practice.visible=FALSE;
-            [[GameMechanics sharedGameMechanics]gameScene].ableToShoot=TRUE;
-            [[GameMechanics sharedGameMechanics]gameScene].ableToRotate=TRUE;
-            [[MonsterCache sharedMonsterCache]spawnEnemyOfType:@"Carrot" atAngle:M_PI+M_PI_4/2 ];
-            checkIfMonsterSpawned=TRUE;
-            
-        }];
+        [self addChild:tapAndShoot];
+        practice=[CCSprite spriteWithFile:@"Tutorial2-3.png"];
         practice.visible=FALSE;
         practice.position=ccp(0,0);
-        
-        finish=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial2-4.png"] selectedSprite:nil block:^(id sender) {
-            finish.visible=FALSE;
-            checkPoint4=TRUE;
-            waitCount=count;
-            play.visible=TRUE;
-        }];
+        [self addChild:practice];
+        finish=[CCSprite spriteWithFile:@"Tutorial2-4.png"];
         finish.visible=FALSE;
         finish.position=ccp(0,0);
-        
-        play=[CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"Tutorial1-7.png"] selectedSprite:nil block:^(id sender) {
-
-        }];
+        [self addChild:finish];
+        play=[CCSprite spriteWithFile:@"Tutorial1-7.png"];
         play.visible=FALSE;
         play.position=ccp(0,0);
-        
-        menu=[CCMenu menuWithItems:whatIFound,tapAndShoot,practice,finish,play, nil];
-        menu.position=ccp(0,0);
-        [self addChild:menu];
+[self addChild:play];
         shootDidRun=FALSE;
         monsterKilled=TRUE;
         checkIfMonsterSpawned=FALSE;
         count=0;
+        [[GameMechanics sharedGameMechanics]gameScene].touchHappened=FALSE;
+        checkPoint1=TRUE;
     }
     
     return self;
@@ -83,10 +66,10 @@
 -(void)update:(ccTime)delta{
     if([[GameMechanics sharedGameMechanics] gameState]==GameStateRunning){
         count++;
-        if(checkPoint1){
+        if(checkPoint1 && [[GameMechanics sharedGameMechanics]gameScene].touchHappened){
+            whatIFound.visible=FALSE;
             [[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation+=2.5;
             if([[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation==115){
-                whatIFound.visible=FALSE;
                 checkPoint1=FALSE;
                 tapAndShoot.visible=TRUE;
                 [[GameMechanics sharedGameMechanics]gameScene].ableToShoot=TRUE;
@@ -96,10 +79,29 @@
             [[GameMechanics sharedGameMechanics]gameScene].ableToShoot=FALSE;
             practice.visible=TRUE;
             checkPoint2=FALSE;
-        }else if(checkPoint3 && count-waitCount>15){
-            finish.visible=TRUE;
+            checkPoint3=TRUE;
+            waitCount=count;
+        }else if(checkPoint3 &&  count-waitCount>180){
+            practice.visible=FALSE;
+            [[GameMechanics sharedGameMechanics]gameScene].ableToShoot=TRUE;
+            [[GameMechanics sharedGameMechanics]gameScene].ableToRotate=TRUE;
+            [[MonsterCache sharedMonsterCache]spawnEnemyOfType:@"Carrot" atAngle:M_PI+M_PI_4/2 ];
+            checkIfMonsterSpawned=TRUE;
             checkPoint3=FALSE;
-        }else if(checkPoint4 && count-waitCount>80){
+            waitCount=count;
+        }else if(checkPoint4 && count-waitCount>15){
+            finish.visible=TRUE;
+            checkPoint4=FALSE;
+            waitCount=count;
+            //[[GameMechanics sharedGameMechanics]gameScene].touchHappened=FALSE;
+            checkPoint5=TRUE;
+        }else if(checkPoint5 && count-waitCount>=160){
+            finish.visible=FALSE;
+            play.visible=TRUE;
+            checkPoint5=FALSE;
+            checkPoint6=TRUE;
+            waitCount=count;
+        }else if(checkPoint6 && count-waitCount>=90){
             [[MonsterCache sharedMonsterCache]spawnEnemyOfType:@"Carrot" atAngle:M_PI ];
             [[MonsterCache sharedMonsterCache]spawnEnemyOfType:@"Carrot" atAngle:M_PI+3*M_PI_4/4 ];
             [self exitTutorial];
@@ -116,13 +118,15 @@
         if(checkIfMonsterSpawned){
             if([[MonsterCache sharedMonsterCache]anyMonsterAliveOfType:@"Carrot"]){
                 monsterKilled=FALSE;
+                checkIfMonsterSpawned=FALSE;
             }
         }
         if(!monsterKilled){
             if(![[MonsterCache sharedMonsterCache]anyMonsterAliveOfType:@"Carrot"]){
                 monsterKilled=TRUE;
-                checkPoint3=TRUE;
+                checkPoint4=TRUE;
                 waitCount=count;
+                [[GameMechanics sharedGameMechanics]gameScene].ableToShoot=FALSE;
             }
         }
     }
@@ -135,6 +139,7 @@
     [[[GameMechanics sharedGameMechanics]gameScene]enableGamePlayButtons];
     [[GameMechanics sharedGameMechanics]gameScene].energy.visible=TRUE;
     [[MonsterButtonCache sharedMonsterButtonCache] showButtons];
+    [[GameMechanics sharedGameMechanics]gameScene].ableToShoot=TRUE;
     [[[[GameMechanics sharedGameMechanics]gameScene]energy ]resetEnergy:[[GameMechanics sharedGameMechanics]game].energyMax increasedAt:[[GameMechanics sharedGameMechanics]game].energyPerSec];
     [[MonsterCache sharedMonsterCache] setAbleToSpawn:TRUE];
     [[GameMechanics sharedGameMechanics]gameScene].ableToRotate=TRUE;

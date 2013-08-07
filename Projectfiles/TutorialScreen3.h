@@ -16,10 +16,10 @@
 @interface TutorialScreen3 : CCLayer
 
 {
-    CCMenuItemImage *hereIsStore;
-    CCMenuItemImage *hereIsSeedSection;
-    CCMenuItemImage *finishPurchase;
-    CCMenuItemImage *goShop;
+    CCSprite *hereIsStore;
+    CCSprite *hereIsSeedSection;
+    CCSprite *finishPurchase;
+    CCSprite *goShop;
      CCMenu *tutorialMenu;
     CCBackgroundColorNode *backgroundNode;
     CCMenu *menu;
@@ -66,6 +66,12 @@
     BOOL disableEquip;
     BOOL disableUnequip;
     BOOL disableBack;
+    BOOL checkPoint1;
+    BOOL checkPoint2;
+    BOOL checkPoint3;
+    BOOL checkPoint4;
+    BOOL buttonPress;
+    
 }
 
 - (id)initWithGame;

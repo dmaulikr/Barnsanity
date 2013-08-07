@@ -54,7 +54,7 @@
     self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
     self.hitZoneAngle2=angle-self.hitZone;
     self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
-    
+
     self.areaOfEffect=TRUE;
     
     self.visible=TRUE;
@@ -64,6 +64,7 @@
 }
 
 - (void)gotHit{
+    self.readyToDamage=FALSE;
     self.visible = FALSE;
     self.alive=FALSE;
     self.position = ccp(-MAX_INT, 0);
@@ -82,14 +83,16 @@
 
 - (void)updateRunningMode:(ccTime)delta
 {
-    self.distanceFromWorld-=speed;
-    if(self.distanceFromWorld <= radiusOfWorld){
+    if(self.distanceFromWorld <= radiusOfWorld && self.readyToDamage==FALSE){
         self.readyToDamage=TRUE;
     }
-    float deltaX=self.distanceFromWorld*cos(angle);
-    float deltaY=self.distanceFromWorld*sin(angle);
-    CGPoint newPosition = ccp(deltaX, deltaY);
-    [self setPosition:newPosition];
+    if(self.readyToDamage==FALSE){
+        self.distanceFromWorld-=speed;
+        float deltaX=self.distanceFromWorld*cos(angle);
+        float deltaY=self.distanceFromWorld*sin(angle);
+        CGPoint newPosition = ccp(deltaX, deltaY);
+        [self setPosition:newPosition];
+    }
     
     
     

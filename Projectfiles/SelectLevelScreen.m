@@ -134,7 +134,7 @@
         [self addChild:requiredLevel];
         requiredLevel.visible=FALSE;
         if([[GameMechanics sharedGameMechanics]game].activateStoreTutorial){
-            [store runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:1.0f blinks:1]]];
+            [store runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:2.0f blinks:1]]];
         }
     }
     

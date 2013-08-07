@@ -21,7 +21,7 @@
         //the name of all player's monster
         self.playerMonsterList=[[NSArray alloc]initWithObjects:@"Orange",@"Apple",@"Strawberry",@"Coconut",@"Grape",@"Pineapple",@"Watermelon",nil];
         //name of all enemy monsters
-        self.enemyMonsterList=[[NSArray alloc]initWithObjects:@"Carrot",@"Broccoli",@"Corn",@"Tomato",@"Potato",@"PeaPod",@"Pumpkin",@"Beet",@"Asparagus",@"Artichokes",@"Eggplant",nil];
+        self.enemyMonsterList=[[NSArray alloc]initWithObjects:@"Carrot",@"Broccoli",@"Corn",@"Tomato",@"Potato",@"Pea Pod",@"Pumpkin",@"Beet",@"Asparagus",@"Artichokes",@"Eggplant",nil];
         //name of all util upgrades
         self.utilUpgradeList=[[NSArray alloc]initWithObjects:@"Player Barn Damage",@"Player Barn Armor",@"Player Barn Health",@"Ship Damage",@"Ship Firerate",@"Energy Max",@"Energy Regeneration",@"Gold Bonus",@"Bomb Damage",nil];
         //all information of the game
@@ -60,6 +60,13 @@
     self.totalTimePlayed=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Total Time Played"]integerValue];
     self.totalGold=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Highest Gold For Level"]integerValue];
     
+        self.activateLevel0Tutorial=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Tutorial 0"]boolValue];
+        self.activateLevel1Tutorial=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Tutorial 1"]boolValue];
+        self.activateLevel8Tutorial=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Tutorial 8"]boolValue];
+        self.activateLevel10Tutorial=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Tutorial 10"]boolValue];
+        self.activateLevel25Tutorial=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Tutorial 25"]boolValue];
+        self.activateStoreTutorial=[[[NSUserDefaults standardUserDefaults] objectForKey:@"Tutorial Shop"]boolValue];
+    
     [self reset];
     }else{
         [self newGame];
@@ -81,6 +88,13 @@
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.highScoreForGold] forKey:@"Highest Score For Level"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.highScoreForLevel] forKey:@"Highest Gold For Level"];
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:1]forKey:@"Game Exist"];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:self.activateLevel0Tutorial] forKey:@"Tutorial 0"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:self.activateLevel1Tutorial] forKey:@"Tutorial 1"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:self.activateLevel8Tutorial] forKey:@"Tutorial 8"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:self.activateLevel10Tutorial] forKey:@"Tutorial 10"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:self.activateLevel25Tutorial]forKey:@"Tutorial 25"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool: self.activateStoreTutorial]forKey:@"Tutorial Shop"];
 }
 
 -(void)newGame{
@@ -89,7 +103,7 @@
     self.levelsOfEverything=[NSMutableDictionary dictionaryWithContentsOfFile:newGame];
     
     //set start info
-    self.gold=0;
+    self.gold=1000;
     self.score=0;
     self.totalEnemiesMonsterKilled=0;
     self.totalPlayerMonsterKilled=0;
@@ -98,6 +112,12 @@
     self.totalTimePlayed=0;
     self.totalGold=0;
     self.difficulty=EASY;
+    self.activateLevel0Tutorial=TRUE;
+    self.activateLevel1Tutorial=FALSE;
+    self.activateLevel8Tutorial=FALSE;
+    self.activateLevel10Tutorial=FALSE;
+    self.activateLevel25Tutorial=FALSE;
+    self.activateStoreTutorial=FALSE;
     
     //save the game into the slot
     for(int i=0;i<MAXSPAWNBUTTONS;i++){
@@ -242,14 +262,28 @@
         newlevel++;
         [self.levelsOfEverything  setObject:[NSNumber numberWithInt:newlevel] forKey:@"Game Levels"];
         self.maxGamePlayLevel=newlevel;
-        if(newlevel==5){
+    
+        if(newlevel==1){
+            self.activateLevel0Tutorial=FALSE;
+            self.activateLevel1Tutorial=TRUE;
+        }else if(newlevel==2){
+            self.activateLevel1Tutorial=FALSE;
+        }else if(newlevel==5){
             self.activateStoreTutorial=TRUE;
-        }
-        if(newlevel==10){
+        }else if(newlevel==8){
+            self.activateLevel8Tutorial=TRUE;
+        }else if(newlevel==9){
+            self.activateLevel8Tutorial=FALSE;
+        }else if(newlevel==10){
+             self.activateLevel10Tutorial=TRUE;
             [self increaseLevel:@"Bomb Damage"];
-        }
-        if(newlevel==20){
+        }else if(newlevel==11){
+            self.activateLevel10Tutorial=FALSE;
+        }else if(newlevel==25){
+            self.activateLevel25Tutorial=TRUE;
             self.difficulty=HARD;
+        }else if(newlevel==26){
+            self.activateLevel25Tutorial=FALSE;
         }
     }
     

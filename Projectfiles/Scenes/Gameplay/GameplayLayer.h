@@ -59,6 +59,7 @@
 @property (nonatomic, assign) BOOL ableToRotate;
 @property (nonatomic, assign) BOOL ableToShoot;
 @property (nonatomic, assign) BOOL showMainMenu;
+@property (nonatomic, assign) BOOL touchHappened;
 @property (nonatomic, assign) float radiusOfWorld;
 @property (nonatomic, assign) Ship *ship;
 @property (nonatomic, assign) MonsterButtonCache *monsterButton;

@@ -15,12 +15,12 @@
 @interface TutorialScreen2 : CCLayer
 {
     
-    CCMenu *menu;
-    CCMenuItemSprite *whatIFound;
+
+    CCSprite *whatIFound;
     CCSprite *tapAndShoot;
-    CCMenuItemSprite *finish;
-    CCMenuItemSprite *practice;
-    CCMenuItemSprite *play;
+    CCSprite *finish;
+    CCSprite *practice;
+    CCSprite *play;
     int count;
      int waitCount;
     BOOL shootDidRun;
@@ -28,6 +28,8 @@
     BOOL checkPoint2;
     BOOL checkPoint3;
     BOOL checkPoint4;
+    BOOL checkPoint5;
+    BOOL checkPoint6;
     BOOL monsterKilled;
     BOOL checkIfMonsterSpawned;
 }

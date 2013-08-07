@@ -68,6 +68,8 @@
     self.boundingZoneAngle2=self.angle-self.boundingZone;
     self.boundingZoneAngle2=fmodf(self.boundingZoneAngle2+2*M_PI, 2*M_PI);
     
+    
+    
     //set health point
     self.hitPoints=self.hitPointsInit;
     self.damage+=CCRANDOM_MINUS1_1()*self.damageDelta;
@@ -93,15 +95,16 @@
 
 - (void)gotHit:(int)damage
 {
-    if(self.alive){
     //deduct hitpoint by damage
     //ableToAttack is set to false only when they are spawning in plant form,so if they get hit while in plant form, they take X2 damage
+        
         self.hitPoints -=2*damage;
     //if hitpoint is 0 or less then the monster dies
     if(self.hitPoints<=0){
         [self stopAllActions];
-//        [self runAction:death];
-        [self destroy];
+        self.visible = YES;
+        [self runAction:death];
+
 //                [[GameMechanics sharedGameMechanics]game].enemiesMonsterKilled++;
         //reward gold
         [[GameMechanics sharedGameMechanics] game].goldForLevel+=reward+[[GameMechanics sharedGameMechanics] game].goldBonusPerMonster;
@@ -112,7 +115,8 @@
         blinkDidRun=TRUE;
         [self runAction:blink];
     }
-    }
+
+
 }
 
 -(void)reset{

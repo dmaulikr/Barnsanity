@@ -5,15 +5,15 @@
 	<key>Spawn Radius Delta</key>
 	<integer>15</integer>
 	<key>Bullet Speed</key>
-	<integer>9</integer>
+	<integer>10</integer>
 	<key>Bomb Damage</key>
 	<array>
 		<integer>500</integer>
 		<integer>800</integer>
-		<integer>250</integer>
-		<integer>250</integer>
-		<integer>250</integer>
-		<integer>250</integer>
+		<integer>1500</integer>
+		<integer>2000</integer>
+		<integer>2600</integer>
+		<integer>3500</integer>
 	</array>
 	<key>Watermelon</key>
 	<array>
@@ -333,25 +333,25 @@
 	<array>
 		<dict>
 			<key>Damage Delta</key>
-			<integer>5</integer>
+			<integer>2</integer>
 			<key>Range</key>
-			<integer>4</integer>
+			<real>5.9</real>
 			<key>Health</key>
 			<integer>300</integer>
 			<key>Energy Cost</key>
-			<integer>300</integer>
+			<integer>150</integer>
 			<key>Move Speed</key>
-			<integer>1</integer>
+			<real>1.3</real>
 			<key>Delay</key>
-			<integer>10</integer>
+			<integer>9</integer>
 			<key>Damage</key>
-			<integer>15</integer>
+			<integer>10</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
 			<true/>
 			<key>AreaOfEffect Damage</key>
-			<integer>15</integer>
+			<integer>10</integer>
 		</dict>
 		<dict>
 			<key>Damage Delta</key>
@@ -524,28 +524,6 @@
 			<key>Delay</key>
 			<integer>6</integer>
 			<key>Damage</key>
-			<integer>5</integer>
-			<key>Attack Speed</key>
-			<integer>0</integer>
-			<key>AreaOfEffect</key>
-			<false/>
-			<key>AreaOfEffect Damage</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Range</key>
-			<integer>1</integer>
-			<key>Damage Delta</key>
-			<integer>1</integer>
-			<key>Health</key>
-			<integer>1250</integer>
-			<key>Energy Cost</key>
-			<integer>100</integer>
-			<key>Move Speed</key>
-			<integer>3</integer>
-			<key>Delay</key>
-			<integer>7</integer>
-			<key>Damage</key>
 			<integer>6</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
@@ -568,50 +546,6 @@
 			<key>Delay</key>
 			<integer>7</integer>
 			<key>Damage</key>
-			<integer>6</integer>
-			<key>Attack Speed</key>
-			<integer>0</integer>
-			<key>AreaOfEffect</key>
-			<false/>
-			<key>AreaOfEffect Damage</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Range</key>
-			<integer>1</integer>
-			<key>Damage Delta</key>
-			<integer>1</integer>
-			<key>Health</key>
-			<integer>2150</integer>
-			<key>Energy Cost</key>
-			<integer>100</integer>
-			<key>Move Speed</key>
-			<integer>3</integer>
-			<key>Delay</key>
-			<integer>7</integer>
-			<key>Damage</key>
-			<integer>7</integer>
-			<key>Attack Speed</key>
-			<integer>0</integer>
-			<key>AreaOfEffect</key>
-			<false/>
-			<key>AreaOfEffect Damage</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Range</key>
-			<integer>1</integer>
-			<key>Damage Delta</key>
-			<integer>1</integer>
-			<key>Health</key>
-			<integer>2700</integer>
-			<key>Energy Cost</key>
-			<integer>100</integer>
-			<key>Move Speed</key>
-			<real>3.1</real>
-			<key>Delay</key>
-			<integer>8</integer>
-			<key>Damage</key>
 			<integer>9</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
@@ -626,15 +560,81 @@
 			<key>Damage Delta</key>
 			<integer>1</integer>
 			<key>Health</key>
-			<integer>3200</integer>
+			<integer>2300</integer>
 			<key>Energy Cost</key>
 			<integer>100</integer>
 			<key>Move Speed</key>
-			<real>3.3</real>
+			<integer>3</integer>
+			<key>Delay</key>
+			<integer>7</integer>
+			<key>Damage</key>
+			<integer>12</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Range</key>
+			<integer>1</integer>
+			<key>Damage Delta</key>
+			<integer>1</integer>
+			<key>Health</key>
+			<integer>3000</integer>
+			<key>Energy Cost</key>
+			<integer>100</integer>
+			<key>Move Speed</key>
+			<real>3.2</real>
+			<key>Delay</key>
+			<integer>7</integer>
+			<key>Damage</key>
+			<integer>15</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Range</key>
+			<integer>1</integer>
+			<key>Damage Delta</key>
+			<integer>1</integer>
+			<key>Health</key>
+			<integer>4000</integer>
+			<key>Energy Cost</key>
+			<integer>100</integer>
+			<key>Move Speed</key>
+			<real>3.4</real>
 			<key>Delay</key>
 			<integer>8</integer>
 			<key>Damage</key>
-			<integer>13</integer>
+			<integer>17</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Range</key>
+			<integer>1</integer>
+			<key>Damage Delta</key>
+			<integer>1</integer>
+			<key>Health</key>
+			<integer>5200</integer>
+			<key>Energy Cost</key>
+			<integer>100</integer>
+			<key>Move Speed</key>
+			<real>3.6</real>
+			<key>Delay</key>
+			<integer>8</integer>
+			<key>Damage</key>
+			<integer>20</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
@@ -693,59 +693,15 @@
 			<key>Damage Delta</key>
 			<integer>3</integer>
 			<key>Range</key>
-			<integer>4</integer>
+			<integer>7</integer>
 			<key>Health</key>
-			<integer>350</integer>
+			<integer>275</integer>
 			<key>Energy Cost</key>
 			<integer>65</integer>
 			<key>Move Speed</key>
-			<integer>2</integer>
+			<real>1.6</real>
 			<key>Delay</key>
 			<integer>5</integer>
-			<key>Damage</key>
-			<integer>24</integer>
-			<key>Attack Speed</key>
-			<integer>0</integer>
-			<key>AreaOfEffect</key>
-			<false/>
-			<key>AreaOfEffect Damage</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Damage Delta</key>
-			<integer>3</integer>
-			<key>Range</key>
-			<integer>4</integer>
-			<key>Health</key>
-			<integer>475</integer>
-			<key>Energy Cost</key>
-			<integer>65</integer>
-			<key>Move Speed</key>
-			<real>2.2</real>
-			<key>Delay</key>
-			<integer>6</integer>
-			<key>Damage</key>
-			<integer>26</integer>
-			<key>Attack Speed</key>
-			<integer>0</integer>
-			<key>AreaOfEffect</key>
-			<false/>
-			<key>AreaOfEffect Damage</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Damage Delta</key>
-			<integer>3</integer>
-			<key>Range</key>
-			<integer>4</integer>
-			<key>Health</key>
-			<integer>500</integer>
-			<key>Energy Cost</key>
-			<integer>65</integer>
-			<key>Move Speed</key>
-			<real>2.5</real>
-			<key>Delay</key>
-			<integer>6</integer>
 			<key>Damage</key>
 			<integer>28</integer>
 			<key>Attack Speed</key>
@@ -759,13 +715,13 @@
 			<key>Damage Delta</key>
 			<integer>3</integer>
 			<key>Range</key>
-			<integer>4</integer>
+			<integer>7</integer>
 			<key>Health</key>
-			<integer>550</integer>
+			<integer>350</integer>
 			<key>Energy Cost</key>
 			<integer>65</integer>
 			<key>Move Speed</key>
-			<real>2.5</real>
+			<real>1.7</real>
 			<key>Delay</key>
 			<integer>6</integer>
 			<key>Damage</key>
@@ -781,17 +737,61 @@
 			<key>Damage Delta</key>
 			<integer>3</integer>
 			<key>Range</key>
-			<integer>4</integer>
+			<integer>7</integer>
 			<key>Health</key>
-			<integer>650</integer>
+			<integer>400</integer>
 			<key>Energy Cost</key>
 			<integer>65</integer>
 			<key>Move Speed</key>
-			<real>2.6</real>
+			<real>1.8</real>
+			<key>Delay</key>
+			<integer>6</integer>
+			<key>Damage</key>
+			<integer>34</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Damage Delta</key>
+			<integer>3</integer>
+			<key>Range</key>
+			<integer>7</integer>
+			<key>Health</key>
+			<integer>475</integer>
+			<key>Energy Cost</key>
+			<integer>65</integer>
+			<key>Move Speed</key>
+			<integer>2</integer>
 			<key>Delay</key>
 			<integer>7</integer>
 			<key>Damage</key>
-			<integer>34</integer>
+			<integer>39</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Damage Delta</key>
+			<integer>3</integer>
+			<key>Range</key>
+			<integer>7</integer>
+			<key>Health</key>
+			<integer>575</integer>
+			<key>Energy Cost</key>
+			<integer>65</integer>
+			<key>Move Speed</key>
+			<integer>2</integer>
+			<key>Delay</key>
+			<integer>7</integer>
+			<key>Damage</key>
+			<integer>45</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
@@ -816,6 +816,28 @@
 			<key>Delay</key>
 			<integer>4</integer>
 			<key>Damage</key>
+			<integer>15</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Range</key>
+			<integer>3</integer>
+			<key>Damage Delta</key>
+			<integer>2</integer>
+			<key>Health</key>
+			<integer>530</integer>
+			<key>Energy Cost</key>
+			<integer>30</integer>
+			<key>Move Speed</key>
+			<integer>2</integer>
+			<key>Delay</key>
+			<integer>4</integer>
+			<key>Damage</key>
 			<integer>16</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
@@ -830,7 +852,7 @@
 			<key>Damage Delta</key>
 			<integer>2</integer>
 			<key>Health</key>
-			<integer>570</integer>
+			<integer>580</integer>
 			<key>Energy Cost</key>
 			<integer>30</integer>
 			<key>Move Speed</key>
@@ -848,13 +870,13 @@
 		</dict>
 		<dict>
 			<key>Range</key>
-			<integer>2</integer>
+			<integer>3</integer>
 			<key>Damage Delta</key>
 			<integer>2</integer>
 			<key>Health</key>
-			<integer>600</integer>
+			<integer>660</integer>
 			<key>Energy Cost</key>
-			<integer>35</integer>
+			<integer>30</integer>
 			<key>Move Speed</key>
 			<integer>2</integer>
 			<key>Delay</key>
@@ -870,85 +892,63 @@
 		</dict>
 		<dict>
 			<key>Range</key>
-			<integer>2</integer>
+			<integer>3</integer>
 			<key>Damage Delta</key>
 			<integer>2</integer>
 			<key>Health</key>
-			<integer>725</integer>
+			<integer>740</integer>
 			<key>Energy Cost</key>
-			<integer>35</integer>
-			<key>Move Speed</key>
-			<real>2.5</real>
-			<key>Delay</key>
-			<integer>3</integer>
-			<key>Damage</key>
-			<integer>24</integer>
-			<key>Attack Speed</key>
-			<integer>0</integer>
-			<key>AreaOfEffect</key>
-			<false/>
-			<key>AreaOfEffect Damage</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Range</key>
-			<integer>2</integer>
-			<key>Damage Delta</key>
-			<integer>2</integer>
-			<key>Health</key>
-			<integer>850</integer>
-			<key>Energy Cost</key>
-			<integer>35</integer>
-			<key>Move Speed</key>
-			<real>2.5</real>
-			<key>Delay</key>
-			<integer>3</integer>
-			<key>Damage</key>
-			<integer>24</integer>
-			<key>Attack Speed</key>
-			<integer>0</integer>
-			<key>AreaOfEffect</key>
-			<false/>
-			<key>AreaOfEffect Damage</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Range</key>
-			<integer>2</integer>
-			<key>Damage Delta</key>
-			<integer>2</integer>
-			<key>Health</key>
-			<integer>1000</integer>
-			<key>Energy Cost</key>
-			<integer>35</integer>
-			<key>Move Speed</key>
-			<integer>3</integer>
-			<key>Delay</key>
-			<integer>3</integer>
-			<key>Damage</key>
-			<integer>26</integer>
-			<key>Attack Speed</key>
-			<integer>0</integer>
-			<key>AreaOfEffect</key>
-			<false/>
-			<key>AreaOfEffect Damage</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Range</key>
-			<integer>2</integer>
-			<key>Damage Delta</key>
-			<integer>2</integer>
-			<key>Health</key>
-			<integer>1200</integer>
-			<key>Energy Cost</key>
-			<integer>35</integer>
-			<key>Move Speed</key>
-			<real>3.2</real>
-			<key>Delay</key>
-			<integer>3</integer>
-			<key>Damage</key>
 			<integer>30</integer>
+			<key>Move Speed</key>
+			<real>2.1</real>
+			<key>Delay</key>
+			<integer>5</integer>
+			<key>Damage</key>
+			<integer>23</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Range</key>
+			<integer>3</integer>
+			<key>Damage Delta</key>
+			<integer>2</integer>
+			<key>Health</key>
+			<integer>840</integer>
+			<key>Energy Cost</key>
+			<integer>30</integer>
+			<key>Move Speed</key>
+			<real>2.2</real>
+			<key>Delay</key>
+			<integer>5</integer>
+			<key>Damage</key>
+			<integer>25</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Range</key>
+			<integer>3</integer>
+			<key>Damage Delta</key>
+			<integer>2</integer>
+			<key>Health</key>
+			<integer>900</integer>
+			<key>Energy Cost</key>
+			<integer>30</integer>
+			<key>Move Speed</key>
+			<real>2.35</real>
+			<key>Delay</key>
+			<integer>5</integer>
+			<key>Damage</key>
+			<integer>28</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
@@ -1031,13 +1031,35 @@
 			<key>Range</key>
 			<integer>2</integer>
 			<key>Health</key>
-			<integer>450</integer>
+			<integer>300</integer>
 			<key>Energy Cost</key>
 			<integer>10</integer>
 			<key>Move Speed</key>
-			<integer>2</integer>
+			<real>2.1</real>
 			<key>Delay</key>
+			<integer>2</integer>
+			<key>Damage</key>
+			<integer>10</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Damage Delta</key>
 			<integer>1</integer>
+			<key>Range</key>
+			<integer>2</integer>
+			<key>Health</key>
+			<integer>330</integer>
+			<key>Energy Cost</key>
+			<integer>10</integer>
+			<key>Move Speed</key>
+			<real>2.2</real>
+			<key>Delay</key>
+			<integer>2</integer>
 			<key>Damage</key>
 			<integer>11</integer>
 			<key>Attack Speed</key>
@@ -1053,59 +1075,37 @@
 			<key>Range</key>
 			<integer>2</integer>
 			<key>Health</key>
-			<integer>500</integer>
+			<integer>360</integer>
 			<key>Energy Cost</key>
 			<integer>10</integer>
 			<key>Move Speed</key>
-			<integer>2</integer>
+			<real>2.4</real>
 			<key>Delay</key>
+			<integer>2</integer>
+			<key>Damage</key>
+			<integer>11</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Damage Delta</key>
 			<integer>1</integer>
+			<key>Range</key>
+			<integer>2</integer>
+			<key>Health</key>
+			<integer>410</integer>
+			<key>Energy Cost</key>
+			<integer>10</integer>
+			<key>Move Speed</key>
+			<real>2.5</real>
+			<key>Delay</key>
+			<integer>2</integer>
 			<key>Damage</key>
 			<integer>12</integer>
-			<key>Attack Speed</key>
-			<integer>0</integer>
-			<key>AreaOfEffect</key>
-			<false/>
-			<key>AreaOfEffect Damage</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Damage Delta</key>
-			<integer>1</integer>
-			<key>Range</key>
-			<integer>2</integer>
-			<key>Health</key>
-			<integer>600</integer>
-			<key>Energy Cost</key>
-			<integer>10</integer>
-			<key>Move Speed</key>
-			<integer>3</integer>
-			<key>Delay</key>
-			<integer>1</integer>
-			<key>Damage</key>
-			<integer>13</integer>
-			<key>Attack Speed</key>
-			<integer>0</integer>
-			<key>AreaOfEffect</key>
-			<false/>
-			<key>AreaOfEffect Damage</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Damage Delta</key>
-			<integer>1</integer>
-			<key>Range</key>
-			<integer>2</integer>
-			<key>Health</key>
-			<integer>700</integer>
-			<key>Energy Cost</key>
-			<integer>10</integer>
-			<key>Move Speed</key>
-			<integer>3</integer>
-			<key>Delay</key>
-			<integer>1</integer>
-			<key>Damage</key>
-			<integer>14</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
@@ -1128,7 +1128,7 @@
 		<integer>22</integer>
 		<integer>20</integer>
 		<integer>17</integer>
-		<integer>12</integer>
+		<integer>13</integer>
 		<integer>9</integer>
 		<integer>5</integer>
 	</array>
@@ -1136,37 +1136,37 @@
 	<array>
 		<integer>14</integer>
 		<integer>17</integer>
-		<integer>19</integer>
-		<integer>23</integer>
+		<integer>21</integer>
 		<integer>26</integer>
-		<integer>31</integer>
+		<integer>32</integer>
+		<integer>38</integer>
 	</array>
 	<key>Energy Regeneration</key>
 	<array>
 		<integer>1</integer>
 		<integer>2</integer>
 		<integer>3</integer>
-		<integer>30</integer>
-		<integer>50</integer>
-		<integer>100</integer>
+		<integer>5</integer>
+		<integer>10</integer>
+		<integer>20</integer>
 	</array>
 	<key>Energy Max</key>
 	<array>
 		<integer>100</integer>
 		<integer>250</integer>
-		<integer>800</integer>
-		<integer>1200</integer>
-		<integer>2200</integer>
-		<integer>4000</integer>
+		<integer>500</integer>
+		<integer>750</integer>
+		<integer>1000</integer>
+		<integer>1500</integer>
 	</array>
 	<key>Player Barn Health</key>
 	<array>
 		<integer>600</integer>
 		<integer>1000</integer>
-		<integer>1500</integer>
-		<integer>2500</integer>
-		<integer>3500</integer>
-		<integer>5500</integer>
+		<integer>2000</integer>
+		<integer>4000</integer>
+		<integer>7500</integer>
+		<integer>12000</integer>
 	</array>
 	<key>Player Barn Armor</key>
 	<array>
@@ -1189,18 +1189,18 @@
 	<key>Gold Bonus</key>
 	<array>
 		<integer>0</integer>
+		<integer>1</integer>
 		<integer>2</integer>
-		<integer>5</integer>
-		<integer>10</integer>
-		<integer>20</integer>
-		<integer>30</integer>
+		<integer>4</integer>
+		<integer>8</integer>
+		<integer>15</integer>
 	</array>
 	<key>Enemy Monsters</key>
 	<dict>
 		<key>Carrot</key>
 		<dict>
 			<key>Range</key>
-			<integer>2</integer>
+			<real>1.8</real>
 			<key>Damage Delta</key>
 			<integer>1</integer>
 			<key>Energy Reward</key>
@@ -1218,16 +1218,16 @@
 			<key>AreaOfEffect Damage</key>
 			<integer>0</integer>
 			<key>Gold Reward</key>
-			<integer>8</integer>
+			<integer>3</integer>
 		</dict>
 		<key>Broccoli</key>
 		<dict>
 			<key>Range</key>
-			<integer>3</integer>
+			<real>2.8</real>
 			<key>Damage Delta</key>
 			<integer>2</integer>
 			<key>Energy Reward</key>
-			<integer>3</integer>
+			<integer>2</integer>
 			<key>Health</key>
 			<integer>640</integer>
 			<key>Move Speed</key>
@@ -1241,7 +1241,7 @@
 			<key>AreaOfEffect Damage</key>
 			<integer>0</integer>
 			<key>Gold Reward</key>
-			<integer>16</integer>
+			<integer>6</integer>
 		</dict>
 		<key>Corn</key>
 		<dict>
@@ -1250,7 +1250,7 @@
 			<key>Damage Delta</key>
 			<integer>2</integer>
 			<key>Energy Reward</key>
-			<integer>6</integer>
+			<integer>4</integer>
 			<key>Health</key>
 			<integer>320</integer>
 			<key>Move Speed</key>
@@ -1264,16 +1264,16 @@
 			<key>AreaOfEffect Damage</key>
 			<integer>0</integer>
 			<key>Gold Reward</key>
-			<integer>23</integer>
+			<integer>10</integer>
 		</dict>
 		<key>Tomato</key>
 		<dict>
 			<key>Range</key>
-			<real>1.4</real>
+			<real>1.2</real>
 			<key>Damage Delta</key>
 			<integer>5</integer>
 			<key>Energy Reward</key>
-			<integer>7</integer>
+			<integer>5</integer>
 			<key>Health</key>
 			<integer>240</integer>
 			<key>Move Speed</key>
@@ -1287,16 +1287,16 @@
 			<key>AreaOfEffect Damage</key>
 			<integer>40</integer>
 			<key>Gold Reward</key>
-			<integer>27</integer>
+			<integer>10</integer>
 		</dict>
 		<key>Potato</key>
 		<dict>
 			<key>Range</key>
-			<real>2.5</real>
+			<real>2.3</real>
 			<key>Damage Delta</key>
 			<integer>3</integer>
 			<key>Energy Reward</key>
-			<integer>10</integer>
+			<integer>7</integer>
 			<key>Health</key>
 			<integer>1300</integer>
 			<key>Move Speed</key>
@@ -1310,30 +1310,30 @@
 			<key>AreaOfEffect Damage</key>
 			<integer>0</integer>
 			<key>Gold Reward</key>
-			<integer>35</integer>
+			<integer>15</integer>
 		</dict>
 		<key>Pea Pod</key>
 		<dict>
 			<key>Range</key>
-			<integer>5</integer>
+			<real>5.5</real>
 			<key>Damage Delta</key>
-			<integer>1</integer>
+			<integer>2</integer>
 			<key>Energy Reward</key>
-			<integer>4</integer>
+			<integer>9</integer>
 			<key>Health</key>
 			<integer>700</integer>
 			<key>Move Speed</key>
-			<integer>1</integer>
+			<real>1.3</real>
 			<key>Damage</key>
-			<integer>10</integer>
+			<integer>13</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
-			<false/>
+			<true/>
 			<key>AreaOfEffect Damage</key>
-			<integer>0</integer>
+			<integer>13</integer>
 			<key>Gold Reward</key>
-			<integer>30</integer>
+			<integer>19</integer>
 		</dict>
 		<key>Pea</key>
 		<dict>
@@ -1361,17 +1361,17 @@
 		<key>Pumpkin</key>
 		<dict>
 			<key>Range</key>
-			<integer>2</integer>
+			<real>1.8</real>
 			<key>Damage Delta</key>
 			<integer>4</integer>
 			<key>Energy Reward</key>
-			<integer>6</integer>
+			<integer>20</integer>
 			<key>Health</key>
-			<integer>1700</integer>
+			<integer>2100</integer>
 			<key>Move Speed</key>
 			<real>2.5</real>
 			<key>Damage</key>
-			<integer>26</integer>
+			<integer>35</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
@@ -1388,11 +1388,11 @@
 			<key>Damage Delta</key>
 			<integer>1</integer>
 			<key>Energy Reward</key>
-			<integer>7</integer>
+			<integer>25</integer>
 			<key>Health</key>
-			<integer>3000</integer>
+			<integer>4500</integer>
 			<key>Move Speed</key>
-			<integer>2</integer>
+			<real>3.4</real>
 			<key>Damage</key>
 			<integer>6</integer>
 			<key>Attack Speed</key>
@@ -1411,9 +1411,9 @@
 			<key>Damage Delta</key>
 			<integer>5</integer>
 			<key>Energy Reward</key>
-			<integer>8</integer>
+			<integer>35</integer>
 			<key>Health</key>
-			<integer>2050</integer>
+			<integer>2900</integer>
 			<key>Move Speed</key>
 			<real>2.6</real>
 			<key>Damage</key>
@@ -1434,11 +1434,11 @@
 			<key>Damage Delta</key>
 			<integer>10</integer>
 			<key>Energy Reward</key>
-			<integer>9</integer>
+			<integer>45</integer>
 			<key>Health</key>
-			<integer>3900</integer>
+			<integer>3000</integer>
 			<key>Move Speed</key>
-			<integer>2</integer>
+			<real>2.3</real>
 			<key>Damage</key>
 			<integer>100</integer>
 			<key>Attack Speed</key>
@@ -1446,7 +1446,7 @@
 			<key>AreaOfEffect</key>
 			<true/>
 			<key>AreaOfEffect Damage</key>
-			<integer>4</integer>
+			<integer>6</integer>
 			<key>Gold Reward</key>
 			<integer>95</integer>
 		</dict>
@@ -1457,9 +1457,9 @@
 			<key>Damage Delta</key>
 			<integer>13</integer>
 			<key>Energy Reward</key>
-			<integer>10</integer>
+			<integer>65</integer>
 			<key>Health</key>
-			<integer>6500</integer>
+			<integer>6000</integer>
 			<key>Move Speed</key>
 			<real>3.7</real>
 			<key>Damage</key>
@@ -1493,7 +1493,7 @@
 				<integer>1</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>1100</integer>
+			<integer>1000</integer>
 			<key>Broccoli</key>
 			<integer>0</integer>
 			<key>Corn</key>
@@ -1534,7 +1534,7 @@
 				<integer>1</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>850</integer>
+			<integer>750</integer>
 			<key>Broccoli</key>
 			<integer>0</integer>
 			<key>Corn</key>
@@ -1575,7 +1575,7 @@
 				<integer>1</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>380</integer>
+			<integer>350</integer>
 			<key>Broccoli</key>
 			<integer>0</integer>
 			<key>Corn</key>
@@ -1616,7 +1616,7 @@
 				<integer>2</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>450</integer>
+			<integer>430</integer>
 			<key>Broccoli</key>
 			<integer>1500</integer>
 			<key>Corn</key>
@@ -1939,7 +1939,7 @@
 				<key>Armor</key>
 				<integer>0</integer>
 				<key>Health</key>
-				<integer>900</integer>
+				<integer>1100</integer>
 				<key>Damage</key>
 				<integer>5</integer>
 			</dict>
@@ -1980,7 +1980,7 @@
 				<key>Armor</key>
 				<integer>0</integer>
 				<key>Health</key>
-				<integer>950</integer>
+				<integer>1300</integer>
 				<key>Damage</key>
 				<integer>5</integer>
 			</dict>
@@ -2021,7 +2021,7 @@
 				<key>Armor</key>
 				<integer>0</integer>
 				<key>Health</key>
-				<integer>950</integer>
+				<integer>1400</integer>
 				<key>Damage</key>
 				<integer>8</integer>
 			</dict>
@@ -2062,7 +2062,7 @@
 				<key>Armor</key>
 				<integer>0</integer>
 				<key>Health</key>
-				<integer>950</integer>
+				<integer>1600</integer>
 				<key>Damage</key>
 				<integer>8</integer>
 			</dict>
@@ -2103,7 +2103,7 @@
 				<key>Armor</key>
 				<integer>0</integer>
 				<key>Health</key>
-				<integer>1000</integer>
+				<integer>1700</integer>
 				<key>Damage</key>
 				<integer>8</integer>
 			</dict>
@@ -2144,391 +2144,391 @@
 				<key>Armor</key>
 				<integer>0</integer>
 				<key>Health</key>
-				<integer>1050</integer>
+				<integer>1800</integer>
 				<key>Damage</key>
-				<integer>10</integer>
+				<integer>11</integer>
 			</dict>
 			<key>Carrot</key>
 			<integer>200</integer>
+			<key>Broccoli</key>
+			<integer>300</integer>
+			<key>Corn</key>
+			<integer>800</integer>
+			<key>Tomato</key>
+			<integer>1050</integer>
+			<key>Potato</key>
+			<integer>1550</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>2000</integer>
+			<key>ScareCrow</key>
+			<integer>200</integer>
+			<key>Tree</key>
+			<integer>300</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>2000</integer>
+				<key>Damage</key>
+				<integer>13</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>200</integer>
+			<key>Broccoli</key>
+			<integer>300</integer>
+			<key>Corn</key>
+			<integer>700</integer>
+			<key>Tomato</key>
+			<integer>900</integer>
+			<key>Potato</key>
+			<integer>1300</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>4000</integer>
+			<key>ScareCrow</key>
+			<integer>200</integer>
+			<key>Tree</key>
+			<integer>300</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>2200</integer>
+				<key>Damage</key>
+				<integer>13</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>200</integer>
+			<key>Broccoli</key>
+			<integer>300</integer>
+			<key>Corn</key>
+			<integer>800</integer>
+			<key>Tomato</key>
+			<integer>1000</integer>
+			<key>Potato</key>
+			<integer>1500</integer>
+			<key>Pea Pod</key>
+			<integer>2350</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>2000</integer>
+			<key>ScareCrow</key>
+			<integer>200</integer>
+			<key>Tree</key>
+			<integer>350</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>2500</integer>
+				<key>Damage</key>
+				<integer>13</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>175</integer>
+			<key>Broccoli</key>
+			<integer>250</integer>
+			<key>Corn</key>
+			<integer>750</integer>
+			<key>Tomato</key>
+			<integer>900</integer>
+			<key>Potato</key>
+			<integer>1300</integer>
+			<key>Pea Pod</key>
+			<integer>1950</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>3000</integer>
+			<key>ScareCrow</key>
+			<integer>250</integer>
+			<key>Tree</key>
+			<integer>350</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>2600</integer>
+				<key>Damage</key>
+				<integer>15</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>200</integer>
+			<key>Broccoli</key>
+			<integer>300</integer>
+			<key>Corn</key>
+			<integer>600</integer>
+			<key>Tomato</key>
+			<integer>700</integer>
+			<key>Potato</key>
+			<integer>1200</integer>
+			<key>Pea Pod</key>
+			<integer>1800</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>0</integer>
+			<key>ScareCrow</key>
+			<integer>50</integer>
+			<key>Tree</key>
+			<integer>150</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>2800</integer>
+				<key>Damage</key>
+				<integer>15</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>200</integer>
+			<key>Broccoli</key>
+			<integer>270</integer>
+			<key>Corn</key>
+			<integer>560</integer>
+			<key>Tomato</key>
+			<integer>700</integer>
+			<key>Potato</key>
+			<integer>0</integer>
+			<key>Pea Pod</key>
+			<integer>1750</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>3000</integer>
+			<key>ScareCrow</key>
+			<integer>200</integer>
+			<key>Tree</key>
+			<integer>350</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>2900</integer>
+				<key>Damage</key>
+				<integer>16</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>150</integer>
+			<key>Broccoli</key>
+			<integer>250</integer>
+			<key>Corn</key>
+			<integer>750</integer>
+			<key>Tomato</key>
+			<integer>700</integer>
+			<key>Potato</key>
+			<integer>880</integer>
+			<key>Pea Pod</key>
+			<integer>1700</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>2000</integer>
+			<key>ScareCrow</key>
+			<integer>200</integer>
+			<key>Tree</key>
+			<integer>350</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>3100</integer>
+				<key>Damage</key>
+				<integer>16</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>150</integer>
+			<key>Broccoli</key>
+			<integer>210</integer>
+			<key>Corn</key>
+			<integer>710</integer>
+			<key>Tomato</key>
+			<integer>700</integer>
+			<key>Potato</key>
+			<integer>800</integer>
+			<key>Pea Pod</key>
+			<integer>1600</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>1000</integer>
+			<key>ScareCrow</key>
+			<integer>150</integer>
+			<key>Tree</key>
+			<integer>250</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>3300</integer>
+				<key>Damage</key>
+				<integer>17</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>130</integer>
+			<key>Broccoli</key>
+			<integer>190</integer>
+			<key>Corn</key>
+			<integer>670</integer>
+			<key>Tomato</key>
+			<integer>670</integer>
+			<key>Potato</key>
+			<integer>760</integer>
+			<key>Pea Pod</key>
+			<integer>1550</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>3000</integer>
+			<key>ScareCrow</key>
+			<integer>200</integer>
+			<key>Tree</key>
+			<integer>350</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>4000</integer>
+				<key>Damage</key>
+				<integer>21</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>300</integer>
 			<key>Broccoli</key>
 			<integer>400</integer>
 			<key>Corn</key>
 			<integer>900</integer>
 			<key>Tomato</key>
-			<integer>1200</integer>
+			<integer>1100</integer>
 			<key>Potato</key>
-			<integer>1800</integer>
+			<integer>1500</integer>
 			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>0</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>900</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
+			<integer>1600</integer>
 			<key>Pea</key>
 			<integer>0</integer>
 			<key>Pumpkin</key>

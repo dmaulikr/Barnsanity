@@ -12,19 +12,22 @@
 #import "CCBackgroundColorNode.h"
 @interface TutorialScreen5 : CCLayer
 {
-    CCMenu *menu;
-    CCMenuItemSprite *whatIFound;
-    CCMenuItemSprite *tapToDrop;
-    CCMenuItemSprite *onePerLevel;
-    CCMenuItemSprite *finish;
+
+    CCSprite *whatIFound;
+    CCSprite *tapToDrop;
+    CCSprite *onePerLevel;
+     CCSprite *missed;
+    CCSprite *finish;
     int count;
     int waitCount;
     BOOL checkPoint1;
     BOOL checkPoint2;
     BOOL checkPoint3;
     BOOL checkPoint4;
+    BOOL checkPoint5;
     BOOL readyForBomb;
     BOOL monsterKilled;
+    BOOL missedBomb;
 }
 - (id)initWithGame;
 @end

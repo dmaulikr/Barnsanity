@@ -117,7 +117,7 @@
         
         
         //*************blink***************
-        blink = [CCBlink actionWithDuration:.4f blinks:2];
+        blink = [CCSequence actions:[CCBlink actionWithDuration:.4f blinks:2],[CCShow action], nil];
         
         //for the prototype
         [self setColor:ccc3(0,255,127)];
