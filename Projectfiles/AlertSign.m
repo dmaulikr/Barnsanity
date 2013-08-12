@@ -25,7 +25,7 @@
 	// Loading the Entity's sprite using a file, is a ship for now but you can change this
 	if ((self = [super initWithFile:@"skipahead.png"]))
 	{
-        [self runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:2.0f blinks:1]]];
+        [self runAction:[CCRepeatForever actionWithAction:[CCBlink actionWithDuration:2.4f blinks:1]]];
 
 	}
 	return self;

@@ -47,7 +47,7 @@
     BOOL loadGame =[[[NSUserDefaults standardUserDefaults] objectForKey:@"Game Exist"]boolValue];
     if(loadGame){
         //load all the data
-    self.difficulty = [[[NSUserDefaults standardUserDefaults] objectForKey:@"Difficulty"]integerValue];
+//    self.difficulty = [[[NSUserDefaults standardUserDefaults] objectForKey:@"Difficulty"]integerValue];
     self.gold = [[[NSUserDefaults standardUserDefaults] objectForKey:@"Gold"]integerValue];
     self.score = [[[NSUserDefaults standardUserDefaults] objectForKey:@"Score"]integerValue];
     self.levelsOfEverything=[[NSUserDefaults standardUserDefaults] objectForKey:@"levelsOfEverything"];
@@ -77,7 +77,7 @@
 
     [[NSUserDefaults standardUserDefaults] setObject: self.levelsOfEverything forKey:@"levelsOfEverything"];
     //save all the data into the slot
-    [[NSUserDefaults standardUserDefaults] setObject: [NSNumber numberWithInt:self.difficulty] forKey:@"Difficulty"];
+//    [[NSUserDefaults standardUserDefaults] setObject: [NSNumber numberWithInt:self.difficulty] forKey:@"Difficulty"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.gold] forKey:@"Gold"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.score] forKey:@"Score"];
     [[NSUserDefaults standardUserDefaults] setObject:self.seedsUsed forKey:@"Seeds Used"];
@@ -103,7 +103,7 @@
     self.levelsOfEverything=[NSMutableDictionary dictionaryWithContentsOfFile:newGame];
     
     //set start info
-    self.gold=1000;
+    self.gold=0;
     self.score=0;
     self.totalEnemiesMonsterKilled=0;
     self.totalPlayerMonsterKilled=0;
@@ -111,7 +111,7 @@
     self.highScoreForLevel=0;
     self.totalTimePlayed=0;
     self.totalGold=0;
-    self.difficulty=EASY;
+//    self.difficulty=EASY;
     self.activateLevel0Tutorial=TRUE;
     self.activateLevel1Tutorial=FALSE;
     self.activateLevel8Tutorial=FALSE;
@@ -164,9 +164,6 @@
     //get energy regeneration for this level
     int level=[[self.levelsOfEverything  objectForKey:@"Energy Regeneration"]integerValue];
     self.energyPerSec=[[[self.gameInfo objectForKey:@"Energy Regeneration"] objectAtIndex:level]integerValue];
-    if(self.difficulty==HARD){
-        self.energyPerSec=self.energyPerSec*2;
-    }
     //get max energy
     level=[[self.levelsOfEverything objectForKey:@"Energy Max"] integerValue];
     self.energyMax=[[[self.gameInfo  objectForKey:@"Energy Max"] objectAtIndex:level] integerValue];
@@ -281,7 +278,6 @@
             self.activateLevel10Tutorial=FALSE;
         }else if(newlevel==25){
             self.activateLevel25Tutorial=TRUE;
-            self.difficulty=HARD;
         }else if(newlevel==26){
             self.activateLevel25Tutorial=FALSE;
         }

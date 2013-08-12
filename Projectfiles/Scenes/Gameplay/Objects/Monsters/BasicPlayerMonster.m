@@ -19,7 +19,7 @@
     
     radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
     self.radiusToSpawn=radiusOfWorld+CCRANDOM_MINUS1_1()*self.radiusToSpawnDelta-5;
-    self.boundingZone=atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2;
+    self.boundingZone=atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2.4;
     self.hitZone=CCRANDOM_MINUS1_1()*(M_PI/500)+self.range*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2;
     [self setZOrder:(NSInteger)((2*radiusOfWorld)-self.radiusToSpawn)];
     //set health

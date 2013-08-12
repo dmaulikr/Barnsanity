@@ -10,7 +10,7 @@
 //
 //  Contains open source code and SDKs from Crashlytics, Inc. (SecureUDID, CrashlyticsSDK), Matej Bukovinski (MBProgressHUD), Stig Brautaset (SBJson), Ray Wenderlich (iAPHelper), Facebook (FacebookConnect iOS), Tapjoy (TapjoyConnect), Arash Payan (Appirater), Benjamin Borowski and Stephane Peter (GKAchievementNotification) thank you to all!
 //
-//  MGWU_BUILD_NUMBER 324
+//  MGWU_BUILD_NUMBER 376
 //
 
 #import <UIKit/UIKit.h>
@@ -77,7 +77,8 @@
 //About:
 //
 + (void)displayAboutPage; //*
-
+//For Android use only:
++ (void)displayAboutMessage:(NSString*)message andTitle:(NSString*)title;
 
 /////////////////////////////////////////////////////////////////////////////////
 //
@@ -122,6 +123,7 @@
 //
 //General
 + (void)preFacebook;
++ (void)noFacebookPrompt;
 + (BOOL)isFacebookActive;
 + (NSString*)getUsername;
 + (void)likeAppWithPageId:(NSString*)pageid;
@@ -154,6 +156,13 @@
 //Twitter
 + (BOOL)isTwitterActive;
 + (void)postToTwitter:(NSString*)message; //*
++ (void)postToTwitter:(NSString*)message withImage:(UIImage*)image;
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//Facebook Native
++ (BOOL)isFacebookNativeActive;
++ (void)postToFacebook:(NSString*)message withImage:(UIImage*)image;
 
 /////////////////////////////////////////////////////////////////////////////////
 //
@@ -161,6 +170,7 @@
 //
 + (void)getMyInfoWithCallback:(SEL)m onTarget:(id)t;
 + (void)move:(NSDictionary*)move withMoveNumber:(int)moveNumber forGame:(int)gameId withGameState:(NSString*)gameState withGameData:(NSDictionary*)gameData againstPlayer:(NSString*)friendId withPushNotificationMessage:(NSString*)message withCallback:(SEL)m onTarget:(id)t;
++ (void)getRandomGameWithCallback:(SEL)m onTarget:(id)t;
 + (void)getGame:(int)gameId withCallback:(SEL)m onTarget:(id)t;
 + (void)deleteGame:(int)gameId withCallback:(SEL)m onTarget:(id)t;
 + (void)getPlayerWithUsername:(NSString*)user withCallback:(SEL)m onTarget:(id)t;
@@ -174,6 +184,12 @@
 + (void)getMessagesWithFriend:(NSString*)friendId andCallback:(SEL)m onTarget:(id)t;
 + (void)sendMessage:(NSString*)message toFriend:(NSString*)friendId andCallback:(SEL)m onTarget:(id)t;
 
+/////////////////////////////////////////////////////////////////////////////////
+//
+//Multiplayer File Sending
+//
++ (void)useS3WithAccessKey:(NSString*)accessKey andSecretKey:(NSString*)secretKey;
++ (void)getFileWithExtension:(NSString*)ext forGame:(int)gameId andMove:(int)moveNumber withCallback:(SEL)m onTarget:(id)t;
 
 /////////////////////////////////////////////////////////////////////////////////
 //
@@ -187,5 +203,13 @@
 + (void)buyProduct:(NSString*)productId withCallback:(SEL)m onTarget:(id)t; //*
 + (void)restoreProductsWithCallback:(SEL)m onTarget:(id)t;
 
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//For Testing
+//
++ (void)test;
++ (void)local;
++ (void)invisiblePause;
 
 @end

@@ -42,59 +42,69 @@
     return self;
 }
 
-
+//set the spawn rate for enemy monsters
 - (void)setSpawnRate:(int)spawnRate forEnemyMonsterType:(NSString *)monsterType {
     NSNumber *spawnRateNumber = [NSNumber numberWithInt:spawnRate];
     [spawnRatesByEnemyMonsterType setObject:spawnRateNumber forKey:monsterType];
 }
 
+//returns the spawn rate for the specified enemy monster
 - (int)spawnRateForEnemyMonsterType:(NSString *)monsterType {
+    
     return [[spawnRatesByEnemyMonsterType objectForKey:monsterType] intValue];
 }
 
+//set the spawn cost for player monster
 - (void)setSpawnCost:(int)spawnCost forPlayerMonsterType:(NSString *)monsterType{
     NSNumber *spawnCostNumber = [NSNumber numberWithInt:spawnCost];
     [spawnCostByPlayerMonsterType setObject:spawnCostNumber forKey:monsterType];
 }
 
+//returns the spawn rate for the speciied enemy monster
 - (int)spawnCostForPlayerMonsterType:(NSString *)monsterType{
     return [[spawnCostByPlayerMonsterType objectForKey:monsterType] intValue];
 }
 
-
+//reset the rate and cost of all monsters
 - (void)resetGame
 {
+    //pause the game
     self.gameState = GameStatePaused;
+    
+    //reset al lthe spawn rate and spawn cost of monsters
     [self.spawnRatesByEnemyMonsterType removeAllObjects];
     [self.spawnCostByPlayerMonsterType removeAllObjects];
     
     //set the spawn rates for all enemy monster
     int spawnRate;
-    int level=_game.gameplayLevel ;
+    //get the level that the user wants to play
+    int level=_game.gameplayLevel;
+    //get all information for that level
     NSDictionary *monsterInfo=[[[_game gameInfo] objectForKey:@"Game Levels"] objectAtIndex:level];
+    //get the list of all enemy monsters
     NSArray *list=self.game.enemyMonsterList;
     NSString *monster;
+    //get the spawn rate and assign the number to that monster
     for(int i=0;i<list.count;i++){
         monster=list[i];
-    spawnRate=[[monsterInfo objectForKey:monster] integerValue];
-    if(spawnRate >0){
-        [self setSpawnRate:spawnRate forEnemyMonsterType:monster];
+        spawnRate=[[monsterInfo objectForKey:monster] integerValue];
+        if(spawnRate >0){
+            [self setSpawnRate:spawnRate forEnemyMonsterType:monster];
+        }
     }
-    }
-
-
+    
     
     //set up spawn cost for player monster
     list=[[GameMechanics sharedGameMechanics]game].playerMonsterList;
     for(int i=0;i<list.count;i++){
         monster=list[i];
-    level=[[[_game levelsOfEverything] objectForKey:monster] integerValue];
-    if(level >=0){
-        spawnRate= [[[[[_game gameInfo] objectForKey:monster] objectAtIndex:level] objectForKey:@"Energy Cost"]integerValue];
-        [self setSpawnCost:spawnRate forPlayerMonsterType:monster];
+        level=[[[_game levelsOfEverything] objectForKey:monster] integerValue];
+        if(level >=0){
+            spawnRate= [[[[[_game gameInfo] objectForKey:monster] objectAtIndex:level] objectForKey:@"Energy Cost"]integerValue];
+            [self setSpawnCost:spawnRate forPlayerMonsterType:monster];
+        }
     }
-    }
-    }
+}
 
 - (void)setGameState:(GameState)gameState
 {

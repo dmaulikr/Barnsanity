@@ -49,35 +49,7 @@
         score.color = DEFAULT_FONT_COLOR;
         score.position = ccp(-self.contentSize.width/2+80, 0.5 * self.contentSize.height - 45);
         [self addChild:score];
-        
-        if([[GameMechanics sharedGameMechanics]game].gameplayLevel>=10){
-        NSString *moreKilled;
-        if([[GameMechanics sharedGameMechanics]gameScene].ship.bombUsed){
-        moreKilled=[NSString stringWithFormat:@"Bomb Used: Yes"];
-        }else{
-            moreKilled=[NSString stringWithFormat:@"Bomb Used: No"];
-        }
 
-        CCLabelTTF *moreKillThanDeath = [CCLabelTTF labelWithString:moreKilled
-                                                           fontName:DEFAULT_FONT
-                                                           fontSize:16];
-        moreKillThanDeath.color = DEFAULT_FONT_COLOR;
-        moreKillThanDeath.position = ccp(-self.contentSize.width/2+80, 0.5 * self.contentSize.height - 65);
-        [self addChild:moreKillThanDeath];
-        }
-        NSString *barn;
-        if([[MonsterCache sharedMonsterCache] enemyBarn].hitPoints <= 0){
-            barn=[NSString stringWithFormat:@"Enemy Barn Destroyed: Yes"];
-        }else{
-            barn=[NSString stringWithFormat:@"Enemy Barn Destroyed: No"];
-        }
-        
-        CCLabelTTF *barnDestroyed = [CCLabelTTF labelWithString:barn
-                                                       fontName:DEFAULT_FONT
-                                                       fontSize:16];
-        barnDestroyed.color = DEFAULT_FONT_COLOR;
-        barnDestroyed.position= ccp(-self.contentSize.width/2+80, 0.5 * self.contentSize.height - 105);
-        [self addChild:barnDestroyed];
         
         NSString *goldForLevel=[NSString stringWithFormat:@"Gold Earned: %d",[[GameMechanics sharedGameMechanics]game].goldForLevel];
 
@@ -85,7 +57,7 @@
                                                         fontName:DEFAULT_FONT
                                                         fontSize:16];
         goldEarned.color = DEFAULT_FONT_COLOR;
-        goldEarned.position = ccp(-self.contentSize.width/2+80, 0.5 * self.contentSize.height - 135);
+        goldEarned.position = ccp(-self.contentSize.width/2+80, 0.5 * self.contentSize.height - 75);
         [self addChild:goldEarned];
         
                 NSString *total=[NSString stringWithFormat:@"Total Gold: %d",[[GameMechanics sharedGameMechanics]game].gold];
@@ -93,7 +65,7 @@
                                                         fontName:DEFAULT_FONT
                                                         fontSize:16];
         totalGold.color = DEFAULT_FONT_COLOR;
-        totalGold.position = ccp(-self.contentSize.width/2+80, 0.5 * self.contentSize.height - 160);
+        totalGold.position = ccp(-self.contentSize.width/2+80, 0.5 * self.contentSize.height - 105);
         [self addChild:totalGold];
         
         

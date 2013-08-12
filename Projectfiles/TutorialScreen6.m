@@ -60,7 +60,7 @@
         count++;
         if(checkPoint1 && [[GameMechanics sharedGameMechanics]gameScene].touchHappened){
             thereMoreSpace.visible=FALSE;
-            [[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation+=1.5;
+            [[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation+=2.5;
             if([[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation==270){
                 checkPoint1=FALSE;
                 defendAndAttack.visible=TRUE;

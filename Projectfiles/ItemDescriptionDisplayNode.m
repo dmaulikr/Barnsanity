@@ -26,7 +26,7 @@
             temp.anchorPoint = ccp(0,0.5);
             float deltay=(((numRows-i)/(float)numRows)*background.contentSize.height/2);
             temp.position=ccp(background.position.x-background.contentSize.width,
-                              background.position.y+deltay*2-25);
+                              background.position.y+deltay*2.5-40);
             [temp setScale:2];
             [self addChild:temp z:1];
             labels[i]=temp;

@@ -32,15 +32,21 @@
 
 -(void)changePosition{
     //move the monster M_PI/480 in a direction
+    float deltaSpeed;
+    if([[GameMechanics sharedGameMechanics]game].difficulty==HARD){
+        deltaSpeed=(M_PI/5850);
+    }else{
+        deltaSpeed=(M_PI/5000);
+    }
     if(self.moveDirection==left){
-        self.angle+=speed* (M_PI/5000);
+        self.angle+=speed* deltaSpeed;
         self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
         self.hitZoneAngle1=self.angle+self.hitZone;
         self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
         self.hitZoneAngle2=self.angle;
         self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
     }else{
-        self.angle-=speed* (M_PI/5000);
+        self.angle-=speed* deltaSpeed;
         self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
         self.hitZoneAngle1=self.angle;
         self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);

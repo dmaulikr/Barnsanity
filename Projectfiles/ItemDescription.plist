@@ -20,7 +20,7 @@
 			<key>Price</key>
 			<integer>750</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Bomb Damage Can Destroy Low Tier Enemy</string>
 			<key>Item Level Up Description</key>
 			<string>Increase Damage</string>
 			<key>Required Item</key>
@@ -32,9 +32,9 @@
 			<key>Price</key>
 			<integer>1500</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Bomb Damage Can Destroy Low-Mid Tier Enemy</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Damage</string>
 			<key>Required Item</key>
 			<string>Bomb Damage</string>
 			<key>Required Item Level</key>
@@ -44,9 +44,9 @@
 			<key>Price</key>
 			<integer>5000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Bomb Damage Can Destroy Mid Tier Enemy</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Damage</string>
 			<key>Required Item</key>
 			<string>Bomb Damage</string>
 			<key>Required Item Level</key>
@@ -56,9 +56,9 @@
 			<key>Price</key>
 			<integer>10000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Bomb Damage Can Destroy Mid-High Tier Enemy</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Damage</string>
 			<key>Required Item</key>
 			<string>Bomb Damage</string>
 			<key>Required Item Level</key>
@@ -68,9 +68,9 @@
 			<key>Price</key>
 			<integer>20000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Bomb Damage Can Destroy All Enemy Except Boss</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Damage</string>
 			<key>Required Item</key>
 			<string>Bomb Damage</string>
 			<key>Required Item Level</key>
@@ -95,9 +95,9 @@
 			<key>Price</key>
 			<integer>1500</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Gold Bonus Gained From Killing Monster</string>
 			<key>Item Level Up Description</key>
-			<string>Increase gold by 1 per monster killed</string>
+			<string>Increase gold by 1</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -107,9 +107,9 @@
 			<key>Price</key>
 			<integer>4000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Gold Bonus Gained From Killing Monster</string>
 			<key>Item Level Up Description</key>
-			<string>Increase gold by 2 per monster killed</string>
+			<string>Increase gold by 2</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -119,9 +119,9 @@
 			<key>Price</key>
 			<integer>8000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Gold Bonus Gained From Killing Monster</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase gold by 4</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -131,9 +131,9 @@
 			<key>Price</key>
 			<integer>16000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Gold Bonus Gained From Killing Monster</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase gold by 8</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -143,9 +143,9 @@
 			<key>Price</key>
 			<integer>25000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Gold Bonus Gained From Killing Monster</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase gold by 15</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -170,7 +170,7 @@
 			<key>Price</key>
 			<integer>500</integer>
 			<key>Item Description</key>
-			<string>Barns damage to enemy monster</string>
+			<string>Barns Attack Damage</string>
 			<key>Item Level Up Description</key>
 			<string>Increase Barn Damage</string>
 			<key>Required Item</key>
@@ -182,7 +182,7 @@
 			<key>Price</key>
 			<integer>1000</integer>
 			<key>Item Description</key>
-			<string>Barns damage to enemy monster</string>
+			<string>Barns Attack Damage</string>
 			<key>Item Level Up Description</key>
 			<string>Increase Barn Damage</string>
 			<key>Required Item</key>
@@ -194,9 +194,9 @@
 			<key>Price</key>
 			<integer>4000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Barns Attack Damage</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Barn Damage</string>
 			<key>Required Item</key>
 			<string>Player Barn Damage</string>
 			<key>Required Item Level</key>
@@ -206,9 +206,9 @@
 			<key>Price</key>
 			<integer>10000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Barns Attack Damage</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Barn Damage</string>
 			<key>Required Item</key>
 			<string>Player Barn Damage</string>
 			<key>Required Item Level</key>
@@ -218,9 +218,9 @@
 			<key>Price</key>
 			<integer>18000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Barns Attack Damage</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Barn Damage</string>
 			<key>Required Item</key>
 			<string>Player Barn Damage</string>
 			<key>Required Item Level</key>
@@ -245,9 +245,9 @@
 			<key>Price</key>
 			<integer>500</integer>
 			<key>Item Description</key>
-			<string>Defense for the your barn</string>
+			<string>Reduce Incoming Damage From Monster</string>
 			<key>Item Level Up Description</key>
-			<string>Decrease damage taken by 1</string>
+			<string>Increase Armor</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -257,9 +257,9 @@
 			<key>Price</key>
 			<integer>1000</integer>
 			<key>Item Description</key>
-			<string>Defense for the your barn</string>
+			<string>Reduce Incoming Damage From Monster</string>
 			<key>Item Level Up Description</key>
-			<string>Decrease damage taken by 2</string>
+			<string>Increase Armor</string>
 			<key>Required Item</key>
 			<string>Player Barn Armor</string>
 			<key>Required Item Level</key>
@@ -269,9 +269,9 @@
 			<key>Price</key>
 			<integer>4000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Reduce Incoming Damage From Monster</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Armor</string>
 			<key>Required Item</key>
 			<string>Player Barn Armor</string>
 			<key>Required Item Level</key>
@@ -281,9 +281,9 @@
 			<key>Price</key>
 			<integer>10000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Reduce Incoming Damage From Monster</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Armor</string>
 			<key>Required Item</key>
 			<string>Player Barn Armor</string>
 			<key>Required Item Level</key>
@@ -293,9 +293,9 @@
 			<key>Price</key>
 			<integer>18000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Reduce Incoming Damage From Monster</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Armor</string>
 			<key>Required Item</key>
 			<string>Player Barn Armor</string>
 			<key>Required Item Level</key>
@@ -344,9 +344,9 @@
 			<key>Price</key>
 			<integer>4000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Barn Health</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Barns Health</string>
 			<key>Required Item</key>
 			<string>Player Barn Health</string>
 			<key>Required Item Level</key>
@@ -356,9 +356,9 @@
 			<key>Price</key>
 			<integer>10000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Barn Health</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Barns Health</string>
 			<key>Required Item</key>
 			<string>Player Barn Health</string>
 			<key>Required Item Level</key>
@@ -368,9 +368,9 @@
 			<key>Price</key>
 			<integer>18000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Barn Health</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Barns Health</string>
 			<key>Required Item</key>
 			<string>Player Barn Health</string>
 			<key>Required Item Level</key>
@@ -395,7 +395,7 @@
 			<key>Price</key>
 			<integer>1500</integer>
 			<key>Item Description</key>
-			<string>The max seeds you can hold</string>
+			<string>Max Seed Able To Hold</string>
 			<key>Item Level Up Description</key>
 			<string>Max seed of 200</string>
 			<key>Required Item</key>
@@ -407,7 +407,7 @@
 			<key>Price</key>
 			<integer>5000</integer>
 			<key>Item Description</key>
-			<string>The max seeds you can hold</string>
+			<string>Max Seed Able To Hold</string>
 			<key>Item Level Up Description</key>
 			<string>Max Seed of 500</string>
 			<key>Required Item</key>
@@ -419,9 +419,9 @@
 			<key>Price</key>
 			<integer>8000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Max Seed Able To Hold</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Max Seed of 750</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -431,9 +431,9 @@
 			<key>Price</key>
 			<integer>18000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Max Seed Able To Hold</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Max Seed of 1000</string>
 			<key>Required Item</key>
 			<string>Game Levels </string>
 			<key>Required Item Level</key>
@@ -443,9 +443,9 @@
 			<key>Price</key>
 			<integer>30000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Max Seed Able To Hold</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Max Seed of 1500</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -506,9 +506,9 @@
 			<key>Price</key>
 			<integer>25000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Seed gain per cycle</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>10 seeds per cycle</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -518,9 +518,9 @@
 			<key>Price</key>
 			<integer>45000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Seed gain per cycle</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>20 seeds per cycle</string>
 			<key>Required Item</key>
 			<string>Game Levels </string>
 			<key>Required Item Level</key>
@@ -545,7 +545,7 @@
 			<key>Price</key>
 			<integer>1000</integer>
 			<key>Item Description</key>
-			<string>Damage dealt by ship bullet</string>
+			<string>Damage Per Bullet</string>
 			<key>Item Level Up Description</key>
 			<string>Increase ship bullet damage</string>
 			<key>Required Item</key>
@@ -569,9 +569,9 @@
 			<key>Price</key>
 			<integer>8000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Damage Per Bullet</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase the damage</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -581,9 +581,9 @@
 			<key>Price</key>
 			<integer>18000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Damage Per Bullet</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase the damage</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -593,9 +593,9 @@
 			<key>Price</key>
 			<integer>30000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Damage Per Bullet</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase the damage</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -620,7 +620,7 @@
 			<key>Price</key>
 			<integer>1000</integer>
 			<key>Item Description</key>
-			<string>Rate your ship fires bullet</string>
+			<string>Rate The Ship Fires Bullet</string>
 			<key>Item Level Up Description</key>
 			<string>Increase the rate of fire</string>
 			<key>Required Item</key>
@@ -644,9 +644,9 @@
 			<key>Price</key>
 			<integer>8000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Rate The Ship Fires Bullet</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase the rate of fire</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -656,9 +656,9 @@
 			<key>Price</key>
 			<integer>18000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Rate The Ship Fires Bullet</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase the rate of fire</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -668,9 +668,9 @@
 			<key>Price</key>
 			<integer>30000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Rate The Ship Fires Bullet</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase the rate of fire</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -758,9 +758,9 @@
 			<key>Price</key>
 			<integer>0</integer>
 			<key>Item Description</key>
-			<string>Close Range</string>
+			<string>Close Range/Low Cost</string>
 			<key>Item Level Up Description</key>
-			<string>Increase Health/Damage</string>
+			<string>Able To Use</string>
 			<key>Required Item</key>
 			<string>Orange</string>
 			<key>Required Item Level</key>
@@ -770,7 +770,7 @@
 			<key>Price</key>
 			<integer>600</integer>
 			<key>Item Description</key>
-			<string>Close Range</string>
+			<string>Close Range Attacker</string>
 			<key>Item Level Up Description</key>
 			<string>Increase Health/Damage</string>
 			<key>Required Item</key>
@@ -782,7 +782,7 @@
 			<key>Price</key>
 			<integer>1300</integer>
 			<key>Item Description</key>
-			<string>Close Range</string>
+			<string>Close Range Attacker</string>
 			<key>Item Level Up Description</key>
 			<string>Increase Health/Damage</string>
 			<key>Required Item</key>
@@ -794,7 +794,7 @@
 			<key>Price</key>
 			<integer>2700</integer>
 			<key>Item Description</key>
-			<string>Close Range</string>
+			<string>Close Range Attacker</string>
 			<key>Item Level Up Description</key>
 			<string>Increase Health/Damage</string>
 			<key>Required Item</key>
@@ -806,7 +806,7 @@
 			<key>Price</key>
 			<integer>6000</integer>
 			<key>Item Description</key>
-			<string>Close Range</string>
+			<string>Close Range Attacker</string>
 			<key>Item Level Up Description</key>
 			<string>Increase Health/Damage/Decrease Delay</string>
 			<key>Required Item</key>
@@ -818,7 +818,7 @@
 			<key>Price</key>
 			<integer>10000</integer>
 			<key>Item Description</key>
-			<string>Close Range</string>
+			<string>Close Range Attacker</string>
 			<key>Item Level Up Description</key>
 			<string>Increase Health/Speed</string>
 			<key>Required Item</key>
@@ -830,7 +830,7 @@
 			<key>Price</key>
 			<integer>18000</integer>
 			<key>Item Description</key>
-			<string>Close Range</string>
+			<string>Close Range Attacker</string>
 			<key>Item Level Up Description</key>
 			<string>Increase Health/Damage</string>
 			<key>Required Item</key>
@@ -845,9 +845,9 @@
 			<key>Price</key>
 			<integer>800</integer>
 			<key>Item Description</key>
-			<string>Close Range</string>
+			<string>Close Range Attacker</string>
 			<key>Item Level Up Description</key>
-			<string>Buy Seeds</string>
+			<string>Buy Seeds To Equip</string>
 			<key>Required Item</key>
 			<string>Game Levels</string>
 			<key>Required Item Level</key>
@@ -857,7 +857,7 @@
 			<key>Price</key>
 			<integer>1300</integer>
 			<key>Item Description</key>
-			<string>Close Range</string>
+			<string>Close Range Attacker</string>
 			<key>Item Level Up Description</key>
 			<string>Increase Health/Damage</string>
 			<key>Required Item</key>
@@ -869,7 +869,7 @@
 			<key>Price</key>
 			<integer>3000</integer>
 			<key>Item Description</key>
-			<string>Close Range</string>
+			<string>Close Range Attacker</string>
 			<key>Item Level Up Description</key>
 			<string>Increase Health/Damage</string>
 			<key>Required Item</key>
@@ -881,7 +881,7 @@
 			<key>Price</key>
 			<integer>8000</integer>
 			<key>Item Description</key>
-			<string>Close Range</string>
+			<string>Close Range Attacker</string>
 			<key>Item Level Up Description</key>
 			<string>Increase Health/Damage/Delay</string>
 			<key>Required Item</key>
@@ -893,7 +893,7 @@
 			<key>Price</key>
 			<integer>18000</integer>
 			<key>Item Description</key>
-			<string>Close Range</string>
+			<string>Close Range Attacker</string>
 			<key>Item Level Up Description</key>
 			<string>Increase Health/Damage/Speed</string>
 			<key>Required Item</key>
@@ -905,7 +905,7 @@
 			<key>Price</key>
 			<integer>30000</integer>
 			<key>Item Description</key>
-			<string>Close Range</string>
+			<string>Close Range Attacker</string>
 			<key>Item Level Up Description</key>
 			<string>Increase Health/Damage/Speed</string>
 			<key>Required Item</key>
@@ -946,7 +946,7 @@
 			<key>Item Description</key>
 			<string>Long Range Shooter</string>
 			<key>Item Level Up Description</key>
-			<string>Able To Equip And Use In Game</string>
+			<string>Increase Damage</string>
 			<key>Required Item</key>
 			<string>Strawberry</string>
 			<key>Required Item Level</key>
@@ -958,7 +958,7 @@
 			<key>Item Description</key>
 			<string>Long Range Shooter</string>
 			<key>Item Level Up Description</key>
-			<string>Able To Equip And Use In Game</string>
+			<string>Increase Damage/Health</string>
 			<key>Required Item</key>
 			<string>Strawberry</string>
 			<key>Required Item Level</key>
@@ -970,7 +970,7 @@
 			<key>Item Description</key>
 			<string>Long Range Shooter</string>
 			<key>Item Level Up Description</key>
-			<string>Able To Equip And Use In Game</string>
+			<string>Increase Damage</string>
 			<key>Required Item</key>
 			<string>Strawberry</string>
 			<key>Required Item Level</key>
@@ -980,9 +980,9 @@
 			<key>Price</key>
 			<integer>20000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Long Range Shooter</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Damage</string>
 			<key>Required Item</key>
 			<string>Strawberry</string>
 			<key>Required Item Level</key>
@@ -992,25 +992,25 @@
 			<key>Price</key>
 			<integer>15000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Long Range Shooter</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Damage</string>
 			<key>Required Item</key>
-			<string></string>
+			<string>Strawberry</string>
 			<key>Required Item Level</key>
-			<integer>0</integer>
+			<integer>4</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
 			<integer>25000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Long Range Shooter</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Damage</string>
 			<key>Required Item</key>
-			<string></string>
+			<string>Strawberry</string>
 			<key>Required Item Level</key>
-			<integer>0</integer>
+			<integer>5</integer>
 		</dict>
 	</array>
 	<key>Mango</key>
@@ -1133,9 +1133,9 @@
 			<key>Price</key>
 			<integer>8000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Close Range Tank</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Health/Damage</string>
 			<key>Required Item</key>
 			<string>Coconut</string>
 			<key>Required Item Level</key>
@@ -1145,9 +1145,9 @@
 			<key>Price</key>
 			<integer>16000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Close Range Tank</string>
 			<key>Item Level Up Description</key>
-			<string></string>
+			<string>Increase Health/Damage</string>
 			<key>Required Item</key>
 			<string>Coconut</string>
 			<key>Required Item Level</key>
@@ -1157,9 +1157,9 @@
 			<key>Price</key>
 			<integer>25000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Close Range Tank</string>
 			<key>Item Level Up Description</key>
-			<string>Able To Equip And Use In Game</string>
+			<string>Increase Health/Damage</string>
 			<key>Required Item</key>
 			<string>Coconut</string>
 			<key>Required Item Level</key>
@@ -1208,7 +1208,7 @@
 			<key>Price</key>
 			<integer>10000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Mid Range AOE Shooter</string>
 			<key>Item Level Up Description</key>
 			<string>Able To Equip And Use In Game</string>
 			<key>Required Item</key>
@@ -1220,25 +1220,25 @@
 			<key>Price</key>
 			<integer>20000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Mid Range AOE Shooter</string>
 			<key>Item Level Up Description</key>
-			<string>Able To Equip And Use In Game</string>
+			<string>Increase Health/Damage</string>
 			<key>Required Item</key>
-			<string>Game Levels</string>
+			<string>Grape</string>
 			<key>Required Item Level</key>
-			<integer>22</integer>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>Price</key>
 			<integer>35000</integer>
 			<key>Item Description</key>
-			<string></string>
+			<string>Mid Range AOE Shooter</string>
 			<key>Item Level Up Description</key>
-			<string>Able To Equip And Use In Game</string>
+			<string>Increase Health/Damage</string>
 			<key>Required Item</key>
-			<string>Game Levels</string>
+			<string>Grape</string>
 			<key>Required Item Level</key>
-			<integer>22</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>Price</key>

@@ -223,6 +223,12 @@ static CGRect screenRect;
 
 - (void)startGame
 {
+    if(game.gameplayLevel>=25){
+        game.difficulty=HARD;
+    }else{
+        game.difficulty=EASY;
+    }
+    
     [self resetGame];
     [self enableGamePlayButtons];
     [self showHUD];

@@ -80,11 +80,20 @@
             self.ableToAttack=FALSE;
             float boundAngle1=[[MonsterCache sharedMonsterCache] playerBarn].boundingZoneAngle1;
             float boundAngle2=[[MonsterCache sharedMonsterCache] playerBarn].boundingZoneAngle2;
-            if(self.angle<=boundAngle1 && self.angle>= boundAngle2){
-                self.invincible=TRUE;
+            if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
+                if(self.angle<=boundAngle1 && self.angle>= boundAngle2){
+                    self.invincible=TRUE;
+                }else{
+                    self.invincible=FALSE;
+                }
             }else{
-                self.invincible=FALSE;
+                if((self.angle<=boundAngle1 && self.angle>=0) || (self.angle<=0 && self.angle>= boundAngle2)){
+                    self.invincible=TRUE;
+                }else{
+                    self.invincible=FALSE;
+                }
             }
+            
             spawnDelayTimer=spawnDelayInitial;
             delayTimer.percentage=100;
             float newPercentage=((float)(spawnDelayTimer-1)/(float)spawnDelayInitial)*100;
@@ -135,7 +144,7 @@
         //for the prototype
         [self setScale:.46];
         //dark orange
-                [self setColor:ccc3(255,140,0)];
+        [self setColor:ccc3(255,140,0)];
         [self scheduleUpdate];
         [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
         [self reset];

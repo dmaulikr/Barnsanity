@@ -72,7 +72,7 @@
             }else{
                 col++;
             }
-            button.position=ccp(screenSize.width-button.contentSize.width/5-(col * 75)-15,screenSize.height-button.contentSize.height/4-(row * 75)-10);
+            button.position=ccp(screenSize.width-button.contentSize.width/5-(col * 75)-15,screenSize.height-button.contentSize.height/4-(row * 64)-10);
         }
     }
 }

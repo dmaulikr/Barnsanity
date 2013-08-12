@@ -73,7 +73,14 @@
     [self resumeSchedulerAndActions];
     radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
     self.boundingZone=2.5*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2));
-    self.hitZone=9*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2));
+    if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
+        self.hitZone=9*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2));
+        self.alertZone=5*self.boundingZone;
+    }else{
+        self.hitZone=7*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2));
+         self.alertZone=3.5*self.boundingZone;
+    }
+    
     self.angle=fmodf(angle+2*M_PI, 2*M_PI);
     //set up spawn location
     //get the radius of the world
@@ -94,6 +101,10 @@
     self.boundingZoneAngle2=self.angle-self.boundingZone;
     self.boundingZoneAngle2=fmodf(self.boundingZoneAngle2+2*M_PI, 2*M_PI);
     
+    self.alertZoneAngle1=self.angle+self.alertZone;
+    self.alertZoneAngle1=fmodf(self.alertZoneAngle1+2*M_PI, 2*M_PI);
+    self.alertZoneAngle2=self.angle-self.alertZone;
+    self.alertZoneAngle2=fmodf(self.alertZoneAngle2+2*M_PI, 2*M_PI);
     self.hitPoints=self.hitPointsInit;
     //have the barn visible
     self.visible=TRUE;

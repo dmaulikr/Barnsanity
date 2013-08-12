@@ -27,7 +27,9 @@
 @property (nonatomic, assign) BOOL alive;
 //whether the unit is an enemy's unit or not
 @property (nonatomic, assign) BOOL enemy;
-
+@property (nonatomic, assign) float alertZone;
+@property (nonatomic, assign) float alertZoneAngle1;
+@property (nonatomic, assign) float alertZoneAngle2;
 //initialize the unit
 -(id) initWithEntityImage:(BOOL)enemySide;
 //spawn the unit into the world

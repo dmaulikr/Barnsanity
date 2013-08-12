@@ -17,25 +17,40 @@
 @interface MonsterCache : CCNode
 {
     //batch for the different kind of monster units
+    //node that contains all enemy monsters
     CCNode *enemyMonsters;
+    //node that contains all player monsters
     CCNode *playerMonster;
+    //contains all wall units
     CCNode *wallObjects;
+    //contains all ship bullets
     CCNode *shipBullets;
+    //contains all seed
     CCNode *seeds;
     //a dictionary to hold the array of different monster units
     NSMutableDictionary* monster;
+    //a dictionary that holds the class assiociates with a monster string name
     NSMutableDictionary* monsterClass;
+    //array that holds the string name of all the walls units
     NSMutableArray *wallList;
+    //the prop of a wall spawning in the level
     NSInteger wallSpawnProp;
     // count the updates (used to determine when monsters should be spawned)
     int updateCount;
 }
+//enemy barn
 @property (nonatomic, weak) Barn *enemyBarn;
+//player barn
 @property (nonatomic, weak) Barn *playerBarn;
-@property (nonatomic, assign) BOOL  *enemyBarnUnderAttack;
-@property (nonatomic, assign) BOOL  *playerBarnUnderAttack;
-@property (nonatomic, assign) BOOL ableToSpawn;
+//the 1 bomb the player can use
 @property (nonatomic, weak)  Bomb *theBomb;
+
+//flag that is true only when player monster is approaching enemy barn
+@property (nonatomic, assign) BOOL  *enemyBarnUnderAttack;
+//flag taht is true only when enemy monster is approaching player barn
+@property (nonatomic, assign) BOOL  *playerBarnUnderAttack;
+//switch that enables this class to start spawning enemy monsters
+@property (nonatomic, assign) BOOL ableToSpawn;
 + (id)sharedMonsterCache;
 
 //barn
@@ -64,8 +79,6 @@
 
 //pause game
 - (void)gamePaused;
-
-
 
 //Check if there is any monster of a type alive
 -(BOOL)anyMonsterAliveOfType:(NSString *) monsterName;

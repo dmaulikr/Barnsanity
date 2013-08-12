@@ -257,13 +257,16 @@
     Seed *seed;
     Walls *wall;
     
+    //reset bomb
     [self.theBomb reset];
+    //resets all player mosnters
     CCARRAY_FOREACH([playerMonster children], playerBatch){
         CCARRAY_FOREACH([playerBatch children], player){
             [player reset];
         }
     }
     
+    //reset all enemy monsters
     CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
 	{
         CCARRAY_FOREACH([enemyBatch children], enemy)
@@ -272,14 +275,16 @@
         }
     }
     
+    //reset all ship bullets
     CCARRAY_FOREACH([shipBullets children], bullet){
         [bullet reset];
     }
     
+    //resets all seeds
     CCARRAY_FOREACH([seeds children], seed){
         [seed reset];
     }
-    
+    //resets al lwall units
     CCARRAY_FOREACH([wallObjects children], wallBatch)
 	{
         CCARRAY_FOREACH([wallBatch children], wall)
@@ -302,6 +307,7 @@
     // checks the collision between enemy units and player units
 	BasicEnemyMonster* enemy;
     BasicPlayerMonster* player;
+    
     
     CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
 	{
@@ -349,9 +355,10 @@
 
 
 -(BOOL)anyMonsterAliveOfType:(NSString *) monsterName{
+    //grabs the array that holds all monster with monsterName
     CCNode* monsterType = [monster objectForKey:monsterName];
     Entity *monsterToCheck;
-    
+    //check if all is alive and return true if there is one, else return false
     CCARRAY_FOREACH([monsterType children], monsterToCheck)
     {
         // find the first free enemy and respawn it
@@ -418,14 +425,13 @@
     CCNode *seedsArray= [monster objectForKey:@"Seeds"];
     Seed* seed;
     
-    /* we try to reuse existing enimies, therefore we use this flag, to keep track if we found an enemy we can
-     respawn or if we need to create a new one */
+    //iterate through the array that holds all the seed objects and try to find a non-active one
+    //if we found one, foundAvailablePlayerToSpawn is true
     BOOL foundAvailablePlayerToSpawn = FALSE;
-    // if the enemiesOfType array exists, iterate over all already existing enemies of the provided type and check if one of them can be respawned
-    
+
     CCARRAY_FOREACH([seedsArray children], seed)
     {
-        // find the first free enemy and respawn it
+        // find the first free unit and respawn it
         if (seed.visible == NO)
         {
             [seed spawnMonster:monsterName];
@@ -436,51 +442,46 @@
     }
     
     
-    // if we haven't been able to find a enemy to respawn, we need to create one
+    // if we haven't been able to find a unit to respawn, we need to create one
     if (!foundAvailablePlayerToSpawn)
     {
-        // initialize an enemy of the provided class
+        // initialize an unit of the provided class
         seed=[(Seed *) [Seed alloc] initWithMonsterPicture];
         [seeds addChild:seed];
         [seed spawnMonster:monsterName];
     }
 }
+
 -(void) spawn:(NSString*)PlayerTypeClass atAngle:(float) angleOfLocation{
     [self spawnPlayerOfType:PlayerTypeClass atAngle:(float) angleOfLocation];
     
 }
 
-
-
 -(void) spawnPlayerOfType:(NSString*)PlayerTypeClass atAngle:(float) angleOfLocation{
-    /* the 'enemies' dictionary stores an array of available enemies for each enemy type.
-     We use the class of the enemy as key for the dictionary, to receive an array of all existing enimies of that type.
-     We use a CCArray since it has a better performance than an NSArray. */
     //      CCSpriteBatchNode*
     CCNode* playerOfType = [monster objectForKey:PlayerTypeClass];
     BasicPlayerMonster* player;
     
-    /* we try to reuse existing enimies, therefore we use this flag, to keep track if we found an enemy we can
-     respawn or if we need to create a new one */
+    //iterate through the array that holds all the unit objects and try to find a non-active one
+    //if we found one, foundAvailablePlayerToSpawn is true
     BOOL foundAvailablePlayerToSpawn = FALSE;
-    // if the enemiesOfType array exists, iterate over all already existing enemies of the provided type and check if one of them can be respawned
+
     CCARRAY_FOREACH([playerOfType children], player)
     {
         // find the first free enemy and respawn it
         if (player.alive == NO)
         {
             [player spawnAt:angleOfLocation];
-            //            [playerOfType reorderChild:player z:(NSInteger)((2*player.radiusToSpawn)-player.radiusToSpawn)];
-            // remember, that we will not need to create a new enemy
+            // remember, that we will not need to create a new unit
             foundAvailablePlayerToSpawn = TRUE;
             break;
         }
     }
     
-    // if we haven't been able to find a enemy to respawn, we need to create one
+    // if we haven't been able to find a unit to respawn, we need to create one
     if (!foundAvailablePlayerToSpawn)
     {
-        // initialize an enemy of the provided class
+        // initialize an unit of the provided class
         BasicPlayerMonster* player =  [(BasicPlayerMonster *) [[monsterClass objectForKey:PlayerTypeClass] alloc] initWithMonsterPicture];
         [player spawnAt:angleOfLocation];
         [playerOfType addChild:player];
@@ -489,18 +490,14 @@
 
 -(void) spawnEnemyOfType:(NSString*)enemyTypeClass atAngle:(float) angleOfLocation
 {
-    /* the 'enemies' dictionary stores an array of available enemies for each enemy type.
-     We use the class of the enemy as key for the dictionary, to receive an array of all existing enimies of that type.
-     We use a CCArray since it has a better performance than an NSArray. */
     //      CCSpriteBatchNode*
     CCNode* enemiesOfType = [monster objectForKey:enemyTypeClass];
     BasicEnemyMonster* enemy;
     
-    /* we try to reuse existing enimies, therefore we use this flag, to keep track if we found an enemy we can
-     respawn or if we need to create a new one */
+    //iterate through the array that holds all the unit objects and try to find a non-active one
+    //if we found one, foundAvailablePlayerToSpawn is true
     BOOL foundAvailableEnemyToSpawn = FALSE;
     
-    // if the enemiesOfType array exists, iterate over all already existing enemies of the provided type and check if one of them can be respawned
     CCARRAY_FOREACH([enemiesOfType children], enemy)
     {
         // find the first free enemy and respawn it
@@ -512,7 +509,6 @@
             break;
         }
     }
-    
     
     // if we haven't been able to find a enemy to respawn, we need to create one
     if (!foundAvailableEnemyToSpawn)
@@ -526,35 +522,31 @@
 
 -(void) spawnWall:(NSString*)wallType atAngle:(float) angleOfLocation
 {
-    /* the 'enemies' dictionary stores an array of available enemies for each enemy type.
-     We use the class of the enemy as key for the dictionary, to receive an array of all existing enimies of that type.
-     We use a CCArray since it has a better performance than an NSArray. */
     //      CCSpriteBatchNode*
     CCNode* wallOfType = [monster objectForKey:wallType];
     Walls* wall;
     
-    /* we try to reuse existing enimies, therefore we use this flag, to keep track if we found an enemy we can
-     respawn or if we need to create a new one */
+    //iterate through the array that holds all the unit objects and try to find a non-active one
+    //if we found one, foundAvailableEnemyToSpawn is true
     BOOL foundAvailableEnemyToSpawn = FALSE;
-    
-    // if the enemiesOfType array exists, iterate over all already existing enemies of the provided type and check if one of them can be respawned
+
     CCARRAY_FOREACH([wallOfType children], wall)
     {
-        // find the first free enemy and respawn it
+        // find the first free unit and respawn it
         if (wall.alive == NO)
         {
             [wall spawnAt:angleOfLocation];
-            // remember, that we will not need to create a new enemy
+            // remember, that we will not need to create a new unit
             foundAvailableEnemyToSpawn = TRUE;
             break;
         }
     }
     
     
-    // if we haven't been able to find a enemy to respawn, we need to create one
+    // if we haven't been able to find a unit to respawn, we need to create one
     if (!foundAvailableEnemyToSpawn)
     {
-        // initialize an enemy of the provided class
+        // initialize an unit of the provided class
         Walls *wall =  [(Walls *) [[monsterClass objectForKey:wallType] alloc] initWithMonsterPicture];
         [wall spawnAt:angleOfLocation];
         [wallOfType addChild:wall];
@@ -562,28 +554,17 @@
 }
 
 -(BOOL)monsterNearBarn:(Barn *)defender andMonster:(Monster *)attacker{
-    if(//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
-       (attacker.hitZoneAngle1<=(defender.boundingZoneAngle1+3*defender.boundingZone) && attacker.hitZoneAngle1 >=(defender.boundingZoneAngle2-3*defender.boundingZone)) ||
-       //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
-       (attacker.hitZoneAngle2 <=(defender.boundingZoneAngle1+3*defender.boundingZone) && attacker.hitZoneAngle2 >=(defender.boundingZoneAngle2-3*defender.boundingZone))||
-       //if the first bounding angle is within the hit zone angles, checks if bounding angles is with the hit zone
-       ((defender.boundingZoneAngle1+3*defender.boundingZone)<=attacker.hitZoneAngle1 && (defender.boundingZoneAngle1+3*defender.boundingZone)>= attacker.hitZoneAngle2)||
-       ((defender.boundingZoneAngle2-3*defender.boundingZone)<=attacker.hitZoneAngle1 && (defender.boundingZoneAngle2-3*defender.boundingZone)>= attacker.hitZoneAngle2)){
-        
-        return TRUE;
-    }else{
-        return FALSE;
-    }
-}
-
--(BOOL)collisionBetweenMonstersWithAngle:(Entity* )attacker andMonster:(Entity *)defender{
     int scenario;
     BOOL retval;
-    if(attacker.hitZoneAngle2>attacker.hitZoneAngle1 && defender.boundingZoneAngle2> defender.boundingZoneAngle1){
+    
+    if(attacker.hitZoneAngle2>attacker.hitZoneAngle1 && defender.alertZoneAngle2> defender.alertZoneAngle1){
+        //this scenario occurs when both the attackers hitzone angles and defenders bounding angles include degree 0
         scenario=1;
     }else if(attacker.hitZoneAngle2>attacker.hitZoneAngle1){
+        //this scenario occurs when only the attackers hitzone angles includes 0
         scenario=2;
-    }else if(defender.boundingZoneAngle2> defender.boundingZoneAngle1){
+    }else if(defender.alertZoneAngle2> defender.alertZoneAngle1){
+        //this scenario occurs when only the defenders alert zone include 0
         scenario=3;
     }
     
@@ -592,20 +573,20 @@
             retval=TRUE;
             break;
         case 2:
-            if(//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
-               (defender.boundingZoneAngle1 <=2*M_PI && defender.boundingZoneAngle1 >= attacker.hitZoneAngle2) ||
-               //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
-               (defender.boundingZoneAngle2<=attacker.hitZoneAngle1 && defender.boundingZoneAngle2>=0)){
+            if(
+               (defender.alertZoneAngle1 <=2*M_PI && defender.alertZoneAngle1 >= attacker.hitZoneAngle2) ||
+               (defender.alertZoneAngle2<=attacker.hitZoneAngle1 && defender.alertZoneAngle2>=0)
+               ){
                 retval=TRUE;
             }else{
                 retval=FALSE;
             }
             break;
         case 3:
-            if(//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
-               (attacker.hitZoneAngle1 <=2*M_PI && attacker.hitZoneAngle1 >=defender.boundingZoneAngle2) ||
-               //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
-               (attacker.hitZoneAngle2<=defender.boundingZoneAngle1 && attacker.hitZoneAngle2>=0)){
+            if(
+               (attacker.hitZoneAngle1 <=2*M_PI && attacker.hitZoneAngle1 >=defender.alertZoneAngle2) ||
+                (attacker.hitZoneAngle2<=defender.alertZoneAngle1 && attacker.hitZoneAngle2>=0)
+               ){
                 retval=TRUE;
             }else{
                 retval=FALSE;
@@ -613,12 +594,69 @@
             break;
         default:
             if(//if the first hitzone angle is within the bounding angles, checks if the end hitzone intersects the bounding
-               (attacker.hitZoneAngle1<=defender.boundingZoneAngle1 && attacker.hitZoneAngle1 >=defender.boundingZoneAngle2) ||
+               (attacker.hitZoneAngle1<=defender.alertZoneAngle1 && attacker.hitZoneAngle1 >=defender.alertZoneAngle2) ||
                //if the second hitzone angle is within the bounding angles, checks if the beginning hitzone intersects the bounding
-               (attacker.hitZoneAngle2 <=defender.boundingZoneAngle1 && attacker.hitZoneAngle2 >=defender.boundingZoneAngle2)||
+               (attacker.hitZoneAngle2 <=defender.alertZoneAngle1 && attacker.hitZoneAngle2 >=defender.alertZoneAngle2)||
                //if the first bounding angle is within the hit zone angles, checks if bounding angles is with the hit zone
+               (defender.alertZoneAngle1<=attacker.hitZoneAngle1 && defender.alertZoneAngle1>= attacker.hitZoneAngle2)||
+               (defender.alertZoneAngle2<=attacker.hitZoneAngle1 && defender.alertZoneAngle2>= attacker.hitZoneAngle2)
+               ){
+                retval=TRUE;
+            }else{
+                retval=FALSE;
+            }
+            break;
+    }
+    
+    return retval;
+    
+}
+
+-(BOOL)collisionBetweenMonstersWithAngle:(Entity* )attacker andMonster:(Entity *)defender{
+    int scenario;
+    BOOL retval;
+    if(attacker.hitZoneAngle2>attacker.hitZoneAngle1 && defender.boundingZoneAngle2> defender.boundingZoneAngle1){
+        //this scenario occurs when both the attackers hitzone angles and defenders bounding angles include degree 0
+        scenario=1;
+    }else if(attacker.hitZoneAngle2>attacker.hitZoneAngle1){
+         //this scenario occurs when only the attackers hitzone angles includes 0
+        scenario=2;
+    }else if(defender.boundingZoneAngle2> defender.boundingZoneAngle1){
+        //this scenario occurs when only the defenders bounding zone include 0
+        scenario=3;
+    }
+    
+    switch (scenario) {
+        case 1:
+            retval=TRUE;
+            break;
+        case 2:
+            if(
+               (defender.boundingZoneAngle1 <=2*M_PI && defender.boundingZoneAngle1 >= attacker.hitZoneAngle2) ||
+               (defender.boundingZoneAngle2<=attacker.hitZoneAngle1 && defender.boundingZoneAngle2>=0)
+               ){
+                retval=TRUE;
+            }else{
+                retval=FALSE;
+            }
+            break;
+        case 3:
+            if(
+               (attacker.hitZoneAngle1 <=2*M_PI && attacker.hitZoneAngle1 >=defender.boundingZoneAngle2) ||
+               (attacker.hitZoneAngle2<=defender.boundingZoneAngle1 && attacker.hitZoneAngle2>=0)
+               ){
+                retval=TRUE;
+            }else{
+                retval=FALSE;
+            }
+            break;
+        default:
+            if(
+               (attacker.hitZoneAngle1<=defender.boundingZoneAngle1 && attacker.hitZoneAngle1 >=defender.boundingZoneAngle2) ||
+               (attacker.hitZoneAngle2 <=defender.boundingZoneAngle1 && attacker.hitZoneAngle2 >=defender.boundingZoneAngle2)||
                (defender.boundingZoneAngle1<=attacker.hitZoneAngle1 && defender.boundingZoneAngle1>= attacker.hitZoneAngle2)||
-               (defender.boundingZoneAngle2<=attacker.hitZoneAngle1 && defender.boundingZoneAngle2>= attacker.hitZoneAngle2)){
+               (defender.boundingZoneAngle2<=attacker.hitZoneAngle1 && defender.boundingZoneAngle2>= attacker.hitZoneAngle2)
+               ){
                 retval=TRUE;
             }else{
                 retval=FALSE;
@@ -636,6 +674,7 @@
     int scenario;
     BOOL retval;
     if(attacker.hitZoneAngle2>attacker.hitZoneAngle1 && defender.boundingZoneAngle2> defender.boundingZoneAngle1){
+        //this scenario occurs when both the attackers hitzone angles and defenders bounding angles include degree 0
         scenario=1;
     }else if(attacker.hitZoneAngle2>attacker.hitZoneAngle1){
         scenario=2;

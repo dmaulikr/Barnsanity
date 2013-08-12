@@ -345,13 +345,13 @@
 			<key>Delay</key>
 			<integer>9</integer>
 			<key>Damage</key>
-			<integer>10</integer>
+			<integer>9</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
 			<true/>
 			<key>AreaOfEffect Damage</key>
-			<integer>10</integer>
+			<integer>9</integer>
 		</dict>
 		<dict>
 			<key>Damage Delta</key>
@@ -2503,7 +2503,7 @@
 		</dict>
 		<dict>
 			<key>Wall Spawn</key>
-			<integer>3000</integer>
+			<integer>4000</integer>
 			<key>ScareCrow</key>
 			<integer>200</integer>
 			<key>Tree</key>
@@ -2518,9 +2518,9 @@
 				<integer>21</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>300</integer>
-			<key>Broccoli</key>
 			<integer>400</integer>
+			<key>Broccoli</key>
+			<integer>600</integer>
 			<key>Corn</key>
 			<integer>900</integer>
 			<key>Tomato</key>
@@ -2559,17 +2559,17 @@
 				<integer>5</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>950</integer>
+			<integer>200</integer>
 			<key>Broccoli</key>
-			<integer>0</integer>
+			<integer>200</integer>
 			<key>Corn</key>
-			<integer>0</integer>
+			<integer>200</integer>
 			<key>Tomato</key>
-			<integer>0</integer>
+			<integer>200</integer>
 			<key>Potato</key>
-			<integer>0</integer>
+			<integer>200</integer>
 			<key>Pea Pod</key>
-			<integer>0</integer>
+			<integer>200</integer>
 			<key>Pea</key>
 			<integer>0</integer>
 			<key>Pumpkin</key>

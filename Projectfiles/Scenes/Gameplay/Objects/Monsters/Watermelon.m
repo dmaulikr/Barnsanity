@@ -79,10 +79,18 @@
             self.ableToAttack=FALSE;
             float boundAngle1=[[MonsterCache sharedMonsterCache] playerBarn].boundingZoneAngle1;
             float boundAngle2=[[MonsterCache sharedMonsterCache] playerBarn].boundingZoneAngle2;
-            if(self.angle<=boundAngle1 && self.angle>= boundAngle2){
-                self.invincible=TRUE;
+            if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
+                if(self.angle<=boundAngle1 && self.angle>= boundAngle2){
+                    self.invincible=TRUE;
+                }else{
+                    self.invincible=FALSE;
+                }
             }else{
-                self.invincible=FALSE;
+                if((self.angle<=boundAngle1 && self.angle>=0) || (self.angle<=0 && self.angle>= boundAngle2)){
+                    self.invincible=TRUE;
+                }else{
+                    self.invincible=FALSE;
+                }
             }
             spawnDelayTimer=spawnDelayInitial;
             delayTimer.percentage=100;
