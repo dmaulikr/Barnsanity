@@ -61,6 +61,11 @@
         play.position=ccp(0,0);
         [self addChild:play];
         
+        tapEnemyBarn=[CCSprite spriteWithFile:@"Tutorial1-8.png"];
+        tapEnemyBarn.visible=FALSE;
+        tapEnemyBarn.position=ccp(0,0);
+        [self addChild:tapEnemyBarn];
+        
         pointToSeed=[CCSprite spriteWithFile:@"pointToEnergy.png"];
         pointToSeed.visible=FALSE;
         pointToSeed.position=ccp(-self.contentSize.width/5,self.contentSize.height/2-10);
@@ -100,6 +105,7 @@
             if(checkPoint5 && blinkDidRun){
                 [firstButton stopAllActions];
                 cantPlant.visible=TRUE;
+                tapEnemyBarn.visible=FALSE;
                 pointToButton.visible=FALSE;
                 checkPoint5=FALSE;
                 checkPoint6=TRUE;
@@ -176,13 +182,14 @@
                     swipe.visible=TRUE;
                     [[GameMechanics sharedGameMechanics]gameScene].ableToRotate=TRUE;
                 }
-                if([[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation>=30){
+                if([[GameMechanics sharedGameMechanics]gameScene].centerOfRotation.rotation>=100){
                     if(!blinkDidRun){
                         blinkDidRun=TRUE;
                         [firstButton runAction:[CCRepeatForever actionWithAction:blink]];
                         swipe.visible=FALSE;
                         [[GameMechanics sharedGameMechanics]gameScene].ableToRotate=FALSE;
                         pointToButton.visible=TRUE;
+                        tapEnemyBarn.visible=TRUE;
                     }
                 }
             }else if(checkPoint6 && [[GameMechanics sharedGameMechanics]gameScene].touchHappened ){

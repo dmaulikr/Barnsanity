@@ -29,7 +29,7 @@
     CCSprite* pointToSeed;
     CCSprite* pointToButton;
     CCSprite* swipe;
-    
+    CCSprite* tapEnemyBarn;
     CCSprite *firstButton;
     
     SpawnMonsterButton *orangeButton;

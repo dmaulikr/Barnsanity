@@ -46,7 +46,7 @@
 //whether the unit is attacking
 @property (nonatomic, assign) BOOL attacking;
 //the amount of damage the unit does
-@property (nonatomic, assign) NSInteger damageDelta;
+@property (nonatomic, assign) int damageDelta;
 //whether the unit should move
 @property (nonatomic, assign) BOOL move;
 //whether the unit is attacked

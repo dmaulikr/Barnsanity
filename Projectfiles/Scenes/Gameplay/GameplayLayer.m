@@ -625,20 +625,24 @@ static CGRect screenRect;
     [self removeChildByTag:10];
         [self disableGameplayButtons];
         [self hideInfo];
+    self.ableToRotate=FALSE;
+    self.ableToShoot=FALSE;
         [game beatLevel];
         WinScreen *winLayer=[[WinScreen alloc]initWithGame];
         [self addChild:winLayer z:9];
-        [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
+        [[GameMechanics sharedGameMechanics] setGameState:GameStatePaused];
 }
 
 -(void) goToLoseScreen{
     [self removeChildByTag:10];
         [self disableGameplayButtons];
         [self hideInfo];
+    self.ableToRotate=FALSE;
+    self.ableToShoot=FALSE;
         [game loseLevel];
         LoseScreen *loseLayer=[[LoseScreen alloc]initWithGame];
         [self addChild:loseLayer z:9];
-        [[GameMechanics sharedGameMechanics] setGameState:GameStateMenu];
+        [[GameMechanics sharedGameMechanics] setGameState:GameStatePaused];
     
 }
 

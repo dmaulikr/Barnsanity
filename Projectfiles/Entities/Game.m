@@ -199,7 +199,7 @@
     if(self.gameplayLevel == self.maxGamePlayLevel){
         multiplier=1;
     }else{
-        multiplier=.35;
+        multiplier=.30;
     }
     
     if(self.gameplayLevel>=10){

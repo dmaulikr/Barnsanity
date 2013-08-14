@@ -42,8 +42,7 @@
         storeItemLabel.color = DEFAULT_FONT_COLOR;
         storeItemLabel.position = ccp(0, 0.5 * self.contentSize.height - 25);
         [self addChild:storeItemLabel];
-        
-        
+
         
         // add scoreboard entry for points
         ScoreboardEntryNode *goldDisplay = [[ScoreboardEntryNode alloc] initWithfontFile:@"avenir24.fnt"];
@@ -91,9 +90,9 @@
         
         //shows to the player which level they are selecting
         level = [CCLabelBMFont labelWithString:@"" fntFile:@"avenir24.fnt"];
-        level.string=[NSString stringWithFormat:@"%d", levelToPlay];
+        level.string=[NSString stringWithFormat:@"Level %d", levelToPlay];
         level.anchorPoint=ccp(0,0.5);
-        level.position = ccp(-5, 0);
+        level.position = ccp(-70, 0);
         [level setScale:3];
         [self addChild:level];
         
@@ -105,15 +104,18 @@
         decreaseLevel = [CCMenuItemSprite itemWithNormalSprite:decreaseButton selectedSprite:decreaseButtonPressed block:^(id sender) {
             [self decreaseLevelToPlay];
         }];
-        decreaseLevel.position=ccp(-80, 0);
-        
+        decreaseLevel.position=ccp(-140, 0);
+        if(maxLevelToPlay==0){
+            decreaseLevel.visible=FALSE;
+        }
         //add a increase level button to increase the level to play with
         CCSprite *increaseButton = [CCSprite spriteWithFile:@"button_playbutton.png"];
         CCSprite *increaseButtonPressed = [CCSprite spriteWithFile:@"button_playbutton.png"];
         increaseLevel= [CCMenuItemSprite itemWithNormalSprite:increaseButton selectedSprite:increaseButtonPressed block:^(id sender) {
             [self increaseLevelToPlay];
         }];
-        increaseLevel.position=ccp(80, 0);
+        increaseLevel.position=ccp(140, 0);
+        increaseLevel.visible=FALSE;
         
         //add the increase and decrease button into the menu
         levelSelection=[CCMenu menuWithItems:decreaseLevel, increaseLevel, nil];
@@ -180,16 +182,24 @@
     //levelToPlay cannot go below level 0
     if(levelToPlay >0){
         levelToPlay--;
+        increaseLevel.visible=TRUE;
     }
-    level.string=[NSString stringWithFormat:@"%d", levelToPlay];
+    if(levelToPlay==0){
+        decreaseLevel.visible=FALSE;
+    }
+    level.string=[NSString stringWithFormat:@"Level %d", levelToPlay];
 }
 
 -(void)increaseLevelToPlay{
     //levelToPlay cannot go beyond maxLevelToPlay
     if(levelToPlay < maxLevelToPlay){
         levelToPlay++;
+        decreaseLevel.visible=TRUE;
     }
-    level.string=[NSString stringWithFormat:@"%d", levelToPlay];
+    if(levelToPlay==maxLevelToPlay){
+        increaseLevel.visible=FALSE;
+    }
+    level.string=[NSString stringWithFormat:@"Level %d", levelToPlay];
 }
 
 -(void)storeButtonPressed{

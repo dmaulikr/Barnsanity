@@ -62,7 +62,7 @@
         [tips addObject:@"Tip: While planting, in plant form, your units take 1.5X more damage"];
         [tips addObject:@"Tip: Don't shoot aimlessly, take down high priority units first(ie corn and tomato)"];
         [tips addObject:@"Tip: The key to success is to find balance between shooting and planting"];
-        [tips addObject:@"Tip: You will only gain 35% of your total possible gold when playing repeated levels"];
+        [tips addObject:@"Tip: You will only gain 30% of your total possible gold when playing repeated levels"];
         [tips addObject:@"Tip: Diversify your army!"];
         [tips addObject:@"Tip: Keep up-to-date with your upgrades"];
         [tips addObject:@"Tip: Keep looking around the map, Don't stay in one place too long."];

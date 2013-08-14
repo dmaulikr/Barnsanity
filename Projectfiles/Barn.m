@@ -42,7 +42,7 @@
             
         }];
         
-        attack= [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] ,finishHit, nil];
+        attack= [CCSequence actions:startHit,[CCDelayTime actionWithDuration:1] ,finishHit, nil];
         
         //health bar
         CCSprite *health=[[CCSprite alloc] initWithFile:@"n2pY1.png"];

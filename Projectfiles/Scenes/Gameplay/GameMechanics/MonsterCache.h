@@ -39,11 +39,11 @@
     int updateCount;
 }
 //enemy barn
-@property (nonatomic, weak) Barn *enemyBarn;
+@property (nonatomic) Barn *enemyBarn;
 //player barn
-@property (nonatomic, weak) Barn *playerBarn;
+@property (nonatomic) Barn *playerBarn;
 //the 1 bomb the player can use
-@property (nonatomic, weak)  Bomb *theBomb;
+@property (nonatomic)  Bomb *theBomb;
 
 //flag that is true only when player monster is approaching enemy barn
 @property (nonatomic, assign) BOOL  *enemyBarnUnderAttack;

@@ -29,18 +29,18 @@ typedef NS_ENUM(NSInteger, GameState) {
 @interface GameMechanics : NSObject
 
 // determines the current state the game is in. Either menu mode (scene displayed beyond main menu) or gameplay mode.
-@property (nonatomic, assign) GameState gameState;
+@property (nonatomic) GameState gameState;
 
 // reference to the current game object
-@property (nonatomic, weak) Game *game;
+@property (nonatomic) Game *game;
 
 // reference to the GamePlay-Scene
-@property (nonatomic, weak) GameplayLayer *gameScene;
+@property (nonatomic) GameplayLayer *gameScene;
 
 
 // stores the individual spawn rates for all monster types
-@property (nonatomic, strong, readonly) NSMutableDictionary *spawnRatesByEnemyMonsterType;
-@property (nonatomic, strong, readonly) NSMutableDictionary *spawnCostByPlayerMonsterType;
+@property (nonatomic) NSMutableDictionary *spawnRatesByEnemyMonsterType;
+@property (nonatomic) NSMutableDictionary *spawnCostByPlayerMonsterType;
 
 // gives access to the shared instance of this class
 + (id)sharedGameMechanics;

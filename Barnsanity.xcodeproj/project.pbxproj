@@ -165,10 +165,11 @@
 		30D04FA717A0D218005A421A /* Tutorial2-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D04FA617A0D218005A421A /* Tutorial2-2.png */; };
 		30D04FAB17A0D403005A421A /* Tutorial2-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D04FAA17A0D403005A421A /* Tutorial2-3.png */; };
 		30D04FB017A0D895005A421A /* Tutorial1-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D04FAC17A0D895005A421A /* Tutorial1-3.png */; };
-		30D04FB117A0D895005A421A /* Tutorial1-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D04FAD17A0D895005A421A /* Tutorial1-5.png */; };
 		30D04FB317A0D895005A421A /* Tutorial1-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D04FAF17A0D895005A421A /* Tutorial1-6.png */; };
 		30E69475178750380048D2DE /* TimerDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E69474178750380048D2DE /* TimerDisplayNode.m */; };
 		30E69478178750490048D2DE /* EnergyDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E69477178750490048D2DE /* EnergyDisplayNode.m */; };
+		30EAD17117BB401100E7D0E2 /* Tutorial1-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 30EAD17017BB401100E7D0E2 /* Tutorial1-5.png */; };
+		30EAD17317BB401F00E7D0E2 /* Tutorial1-8.png in Resources */ = {isa = PBXBuildFile; fileRef = 30EAD17217BB401F00E7D0E2 /* Tutorial1-8.png */; };
 		30EB7C2317A21DDE009E1C36 /* Tutorial1-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 30EB7C2117A21DDE009E1C36 /* Tutorial1-1.png */; };
 		30EB7C2417A21DDE009E1C36 /* Tutorial1-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 30EB7C2217A21DDE009E1C36 /* Tutorial1-2.png */; };
 		30EB7C2617A21E78009E1C36 /* Tutorial1-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 30EB7C2517A21E78009E1C36 /* Tutorial1-4.png */; };
@@ -597,12 +598,13 @@
 		30D04FA617A0D218005A421A /* Tutorial2-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial2-2.png"; sourceTree = "<group>"; };
 		30D04FAA17A0D403005A421A /* Tutorial2-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial2-3.png"; sourceTree = "<group>"; };
 		30D04FAC17A0D895005A421A /* Tutorial1-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial1-3.png"; sourceTree = "<group>"; };
-		30D04FAD17A0D895005A421A /* Tutorial1-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial1-5.png"; sourceTree = "<group>"; };
 		30D04FAF17A0D895005A421A /* Tutorial1-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial1-6.png"; sourceTree = "<group>"; };
 		30E69473178750380048D2DE /* TimerDisplayNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDisplayNode.h; sourceTree = "<group>"; };
 		30E69474178750380048D2DE /* TimerDisplayNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDisplayNode.m; sourceTree = "<group>"; };
 		30E69476178750490048D2DE /* EnergyDisplayNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnergyDisplayNode.h; sourceTree = "<group>"; };
 		30E69477178750490048D2DE /* EnergyDisplayNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnergyDisplayNode.m; sourceTree = "<group>"; };
+		30EAD17017BB401100E7D0E2 /* Tutorial1-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial1-5.png"; sourceTree = "<group>"; };
+		30EAD17217BB401F00E7D0E2 /* Tutorial1-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial1-8.png"; sourceTree = "<group>"; };
 		30EB7C2117A21DDE009E1C36 /* Tutorial1-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial1-1.png"; sourceTree = "<group>"; };
 		30EB7C2217A21DDE009E1C36 /* Tutorial1-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial1-2.png"; sourceTree = "<group>"; };
 		30EB7C2517A21E78009E1C36 /* Tutorial1-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial1-4.png"; sourceTree = "<group>"; };
@@ -859,7 +861,7 @@
 		DC9C33E713B5024400931BF2 /* BuildSettings-Debug-Mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Debug-Mac.xcconfig"; sourceTree = "<group>"; };
 		DC9C33E813B5024400931BF2 /* BuildSettings-Mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Mac.xcconfig"; sourceTree = "<group>"; };
 		DC9C33E913B5024400931BF2 /* BuildSettings-Release-Mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Release-Mac.xcconfig"; sourceTree = "<group>"; };
-		DCC1A0E313A94ED5005BD75D /* Veggy_V_Fruit-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Veggy_V_Fruit-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCC1A0E313A94ED5005BD75D /* Barnsanity-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Barnsanity-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC1A38D13A94F1A005BD75D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DCC1A38E13A94F1A005BD75D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DCC1A39113A94F1A005BD75D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1677,7 +1679,7 @@
 		DCC1A0E413A94ED5005BD75D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DCC1A0E313A94ED5005BD75D /* Veggy_V_Fruit-iOS.app */,
+				DCC1A0E313A94ED5005BD75D /* Barnsanity-iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1745,10 +1747,11 @@
 				30EB7C2117A21DDE009E1C36 /* Tutorial1-1.png */,
 				30EB7C2217A21DDE009E1C36 /* Tutorial1-2.png */,
 				30D04FAC17A0D895005A421A /* Tutorial1-3.png */,
-				30D04FAD17A0D895005A421A /* Tutorial1-5.png */,
+				30EAD17017BB401100E7D0E2 /* Tutorial1-5.png */,
 				30EB7C2517A21E78009E1C36 /* Tutorial1-4.png */,
 				30D04FAF17A0D895005A421A /* Tutorial1-6.png */,
 				30EB7C2717A21EE9009E1C36 /* Tutorial1-7.png */,
+				30EAD17217BB401F00E7D0E2 /* Tutorial1-8.png */,
 				30C0FBB717988FAB00C3FDFF /* mailbox.png */,
 				30C0FBB517988F7700C3FDFF /* palmtree.png */,
 				3057A28B1796388500448A68 /* cat1.png */,
@@ -1803,9 +1806,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DCC1A0E213A94ED5005BD75D /* Veggy_V_Fruit-iOS */ = {
+		DCC1A0E213A94ED5005BD75D /* Barnsanity */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DCC1A25313A94ED7005BD75D /* Build configuration list for PBXNativeTarget "Veggy_V_Fruit-iOS" */;
+			buildConfigurationList = DCC1A25313A94ED7005BD75D /* Build configuration list for PBXNativeTarget "Barnsanity" */;
 			buildPhases = (
 				DCC1A0DF13A94ED5005BD75D /* Sources */,
 				DCC1A0E013A94ED5005BD75D /* Frameworks */,
@@ -1815,9 +1818,9 @@
 			);
 			dependencies = (
 			);
-			name = "Veggy_V_Fruit-iOS";
+			name = Barnsanity;
 			productName = "Hello-World-iOS";
-			productReference = DCC1A0E313A94ED5005BD75D /* Veggy_V_Fruit-iOS.app */;
+			productReference = DCC1A0E313A94ED5005BD75D /* Barnsanity-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1829,7 +1832,7 @@
 				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "MakeGamesWithUs Inc.";
 			};
-			buildConfigurationList = DCC1A0DB13A94EC0005BD75D /* Build configuration list for PBXProject "Veggy_V_Fruit" */;
+			buildConfigurationList = DCC1A0DB13A94EC0005BD75D /* Build configuration list for PBXProject "Barnsanity" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1842,7 +1845,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DCC1A0E213A94ED5005BD75D /* Veggy_V_Fruit-iOS */,
+				DCC1A0E213A94ED5005BD75D /* Barnsanity */,
 			);
 		};
 /* End PBXProject section */
@@ -2020,7 +2023,6 @@
 				30D04FA717A0D218005A421A /* Tutorial2-2.png in Resources */,
 				30D04FAB17A0D403005A421A /* Tutorial2-3.png in Resources */,
 				30D04FB017A0D895005A421A /* Tutorial1-3.png in Resources */,
-				30D04FB117A0D895005A421A /* Tutorial1-5.png in Resources */,
 				30D04FB317A0D895005A421A /* Tutorial1-6.png in Resources */,
 				30EB7C2317A21DDE009E1C36 /* Tutorial1-1.png in Resources */,
 				30EB7C2417A21DDE009E1C36 /* Tutorial1-2.png in Resources */,
@@ -2113,6 +2115,8 @@
 				3025931F17B40E8D007ED0CD /* send-button-inactive.png in Resources */,
 				3025932017B40E8D007ED0CD /* send-button-instate.png in Resources */,
 				3025932117B40E8D007ED0CD /* send-field-landscape.png in Resources */,
+				30EAD17117BB401100E7D0E2 /* Tutorial1-5.png in Resources */,
+				30EAD17317BB401F00E7D0E2 /* Tutorial1-8.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2249,7 +2253,7 @@
 					"$(KKFRAMEWORKS_IOS)",
 					"-lsqlite3.0",
 				);
-				PRODUCT_NAME = "Veggy_V_Fruit-iOS";
+				PRODUCT_NAME = "Barnsanity-iOS";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2269,7 +2273,7 @@
 					"$(KKFRAMEWORKS_IOS)",
 					"-lsqlite3.0",
 				);
-				PRODUCT_NAME = "Veggy_V_Fruit-iOS";
+				PRODUCT_NAME = "Barnsanity-iOS";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -2277,7 +2281,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DCC1A0DB13A94EC0005BD75D /* Build configuration list for PBXProject "Veggy_V_Fruit" */ = {
+		DCC1A0DB13A94EC0005BD75D /* Build configuration list for PBXProject "Barnsanity" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DCC1A0DD13A94EC0005BD75D /* Debug */,
@@ -2286,7 +2290,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DCC1A25313A94ED7005BD75D /* Build configuration list for PBXNativeTarget "Veggy_V_Fruit-iOS" */ = {
+		DCC1A25313A94ED7005BD75D /* Build configuration list for PBXNativeTarget "Barnsanity" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DCC1A25413A94ED7005BD75D /* Debug */,

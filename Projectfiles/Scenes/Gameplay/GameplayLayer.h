@@ -61,11 +61,11 @@
 @property (nonatomic, assign) BOOL showMainMenu;
 @property (nonatomic, assign) BOOL touchHappened;
 @property (nonatomic, assign) float radiusOfWorld;
-@property (nonatomic, assign) Ship *ship;
-@property (nonatomic, assign) MonsterButtonCache *monsterButton;
-@property (nonatomic, assign) CCNode *centerOfRotation;
-@property (nonatomic, assign) TimerDisplayNode *timer;
-@property (nonatomic, assign) EnergyDisplayNode *energy;
+@property (nonatomic) Ship *ship;
+@property (nonatomic) MonsterButtonCache *monsterButton;
+@property (nonatomic) CCNode *centerOfRotation;
+@property (nonatomic) TimerDisplayNode *timer;
+@property (nonatomic) EnergyDisplayNode *energy;
 /**
  Tells the game to start
  */
