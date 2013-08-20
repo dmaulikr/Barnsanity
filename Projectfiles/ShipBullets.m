@@ -99,12 +99,14 @@
 
 -(void)reset{
     [self gotHit];
+    
     int level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship Damage"] integerValue];
     self.damage=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo]objectForKey:@"Ship Damage"]   objectAtIndex:level] integerValue];
 //    level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship AreaOfEffect Damage"]integerValue];
 //    self.areaOfEffectDamage=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo]objectForKey:@"AreaOfEffect Damage"]   objectAtIndex:level]integerValue];
 //    if(self.areaOfEffectDamage <= 0){
-        self.areaOfEffect=FALSE;
+//        self.areaOfEffect=FALSE;
+    self.areaOfEffectDamage=self.damage/4;
 //    }
     
 }

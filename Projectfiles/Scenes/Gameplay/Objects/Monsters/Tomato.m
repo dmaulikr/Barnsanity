@@ -76,7 +76,7 @@
             
         }];
         
-        attack = [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] , hitAction, [CCDelayTime actionWithDuration:.5] ,finishHit, nil];
+        attack = [CCSequence actions:startHit, hitAction ,finishHit, nil];
         
         //*********Plant animation**********
         CCFiniteTimeAction *planting = [CCCallBlock actionWithBlock:^{

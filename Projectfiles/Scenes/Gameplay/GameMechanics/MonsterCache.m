@@ -796,7 +796,7 @@
                 {
                     CCARRAY_FOREACH([wallBatch children], wall)
                     {
-                        if(wall.visible && !wall.invincible){
+                        if(wall.alive && !wall.invincible){
                             if ([self collisionBetweenMonstersWithAngle:enemy andMonster:wall]){
                                 //if the enemy is not attacking, then prompt the enemy unit to attack
                                 if (enemy.attacking == FALSE)
@@ -891,7 +891,7 @@
                 {
                     CCARRAY_FOREACH([wallBatch children], wall)
                     {
-                        if(wall.visible && !wall.invincible){
+                        if(wall.alive && !wall.invincible){
                             if ([self collisionBetweenMonstersWithAngle:player andMonster:wall]){
                                 //if the enemy is not attacking, then prompt the enemy unit to attack
                                 if (player.attacking == FALSE)
@@ -965,38 +965,46 @@
     }
     
     /*Collision Detection for ship bullets*/
-    
     CCARRAY_FOREACH([shipBullets children], bullet){
         if (bullet.alive ) {
             CCARRAY_FOREACH([enemyMonsters children], enemyBatch)
             {
                 CCARRAY_FOREACH([enemyBatch children], enemy)
                 {
-                    if(!enemy.invincible && enemy.alive){
+                    if(!enemy.invincible && enemy.alive && bullet.alive){
                         if ([self collisionBullets:bullet andMonster:enemy])
                         {
-                            [enemy gotHit:bullet.damage];
-                            [bullet gotHit];
+                            if(!bullet.attacked){
+                                bullet.attacked=TRUE;
+                                [enemy gotHit:bullet.damage];
+                            }else{
+                                [enemy gotHit:bullet.areaOfEffectDamage];
+                            }
                         }
                     }
                 }
             }
             
-            if(bullet.alive){
                 CCARRAY_FOREACH([wallObjects children], wallBatch)
                 {
                     CCARRAY_FOREACH([wallBatch children], wall)
                     {
-                        if(wall.visible && !wall.invincible){
+                        if(wall.alive && !wall.invincible){
                             if ([self collisionBullets:bullet andMonster:wall]){
-                                [wall gotHit:bullet.damage];
-                                [bullet gotHit];
+                                if(!bullet.attacked){
+                                    bullet.attacked=TRUE;
+                                    [wall gotHit:bullet.damage];
+                                }else{
+                                    [wall gotHit:bullet.areaOfEffectDamage];
+                                }
                             }
                         }
                     }
                     
                 }
                 
+            if(bullet.attacked){
+                [bullet gotHit];
             }
             
         }
@@ -1108,8 +1116,8 @@
                 spawnFrequency=spawnFrequency/1.5;
             }
             
-            if(self.enemyBarnUnderAttack){
-                spawnFrequency=spawnFrequency/.78;
+            if(self.enemyBarnUnderAttack && [[GameMechanics sharedGameMechanics]game].difficulty==EASY){
+                spawnFrequency=spawnFrequency/.80;
             }
             
             //                if([[GameMechanics sharedGameMechanics]game].difficulty==HARD){

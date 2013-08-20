@@ -57,10 +57,12 @@
     self.visible = YES;
             self.invincible=FALSE;
     blinkDidRun=FALSE;
+    self.alive=TRUE;
 
 }
 -(void)destroy{
     self.visible=FALSE;
+    self.alive=FALSE;
     self.position=ccp(-MAX_INT,0);
 }
 -(void)reset{

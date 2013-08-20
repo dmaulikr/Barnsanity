@@ -191,6 +191,7 @@
     newlevel++;
     [self.levelsOfEverything  setObject:[NSNumber numberWithInt:newlevel] forKey:category];
     [self reset];
+    [self saveGame];
 }
 
 -(void)beatLevel{
@@ -207,7 +208,7 @@
         multiplier=multiplier*gamePlayLevelBonus;
     }
     if(self.difficulty==HARD){
-        multiplier=multiplier*1.35;
+        multiplier=multiplier*1.25;
     }
     
     self.goldForLevel=self.goldForLevel*multiplier;
@@ -217,6 +218,8 @@
     if(self.gameplayLevel == self.maxGamePlayLevel){
         self.goldForLevel=self.goldForLevel+self.endLevelBonusGold;
     }
+    
+    
     //if player kills more enemy than losing their own get endlevelbonus gold
     if(![[GameMechanics sharedGameMechanics]gameScene].ship.bombUsed && self.maxGamePlayLevel>=10){
         self.goldForLevel=self.goldForLevel+self.endLevelBonusGold*.75*multiplier;
@@ -246,12 +249,6 @@
     //total time played
     self.totalTimePlayed=self.totalTimePlayed+(self.timeInSecInit-self.timeInSec);
     
-    //add this levels gold gain to gold
-    self.gold=self.gold+self.goldForLevel;
-    //add this levels gold gain to total gold gained
-    self.totalGold=self.totalGold+self.goldForLevel;
-    //add this levels score to total score
-    self.score=self.score+self.scorePerLevel;
     
     //increase max level if player is playing max level
     if(self.gameplayLevel == self.maxGamePlayLevel){
@@ -280,8 +277,17 @@
             self.activateLevel25Tutorial=TRUE;
         }else if(newlevel==26){
             self.activateLevel25Tutorial=FALSE;
+            self.goldForLevel=self.goldForLevel+8000;
+            
         }
     }
+    
+    //add this levels gold gain to gold
+    self.gold=self.gold+self.goldForLevel;
+    //add this levels gold gain to total gold gained
+    self.totalGold=self.totalGold+self.goldForLevel;
+    //add this levels score to total score
+    self.score=self.score+self.scorePerLevel;
     
     [self saveGame];
 }

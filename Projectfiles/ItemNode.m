@@ -42,20 +42,21 @@
 
 -(void)reset{
     //check level of item
-    self.level=[[[[[GameMechanics sharedGameMechanics] game] levelsOfEverything]objectForKey:_nameOfItem] integerValue]+1;
-    _unlockingItem= [[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level]objectForKey:@"Required Item"] ;
-    _requiredLevel=[[[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level]objectForKey:@"Required Item Level"]integerValue];
-    self.price=[[[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level]objectForKey:@"Price"]integerValue];
-    self.itemDescription=[[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level]objectForKey:@"Item Description"];
-    self.levelDescription=[[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level] objectForKey:@"Item Level Up Description"];
+    self.level=[[[[[GameMechanics sharedGameMechanics] game] levelsOfEverything]objectForKey:_nameOfItem] integerValue];
+    _unlockingItem= [[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level+1]objectForKey:@"Required Item"] ;
+    _requiredLevel=[[[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level+1]objectForKey:@"Required Item Level"]integerValue];
+    self.price=[[[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level+1]objectForKey:@"Price"]integerValue];
+//    self.itemDescription=[[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level]objectForKey:@"Item Description"];
+    self.levelDescription=[[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level+1] objectForKey:@"Item Level Up Description"];
     
+    int numberOfLevels=[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]count];
     //if the item level is 0 then it is already bought and is ableToBuy is true but have to check if it is able to upgrade
-    if(self.level >0){
+    if(self.level >=0){
         self.bought=TRUE;
         self.ableToBuy=TRUE;
         
         //if unlockingItem=@"----" then it is maxed level
-        if(![_unlockingItem isEqual:@"----"]){
+        if(self.level != numberOfLevels-1){
             //check if the required item's level matches the required item's required level
             int levelOfRequiredItem=[[[[[GameMechanics sharedGameMechanics] game] levelsOfEverything] objectForKey:_unlockingItem] integerValue];
             if(levelOfRequiredItem >= _requiredLevel){
@@ -76,7 +77,7 @@
         //the item's level is less than 0 so it has not been bought and have to check it you can buy it
         self.bought=FALSE;
         
-        if(![_unlockingItem isEqual:@"----"]){
+        if(self.level != numberOfLevels-1){
             //check if required item's level matches required item's required level
             int levelOfRequiredItem=[[[[[GameMechanics sharedGameMechanics] game] levelsOfEverything] objectForKey:_unlockingItem] integerValue];
             if(levelOfRequiredItem >= _requiredLevel){

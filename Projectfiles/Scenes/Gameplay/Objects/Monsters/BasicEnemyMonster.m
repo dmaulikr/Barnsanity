@@ -21,7 +21,7 @@
         self.radiusToSpawn=radiusOfWorld+CCRANDOM_MINUS1_1()*self.radiusToSpawnDelta-5;
     //calculate the boudzone and hit zone of the monster
     self.boundingZone= atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2.5;
-    self.hitZone=CCRANDOM_MINUS1_1()*(M_PI/500)+self.range*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2;
+    self.hitZone=CCRANDOM_MINUS1_1()*(M_PI/550)+self.range*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2;
     
     //base on where you spawn, set the zorder of the monster
         [self setZOrder:(NSInteger)((2*radiusOfWorld)-self.radiusToSpawn)];

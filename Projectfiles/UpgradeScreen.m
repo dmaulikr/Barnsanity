@@ -378,22 +378,6 @@
         [selectedItem select];
         [self showSelectedItem:selectedItem] ;
     }
-}
-
--(void)showSelectedItem: (ItemNode *)item{
-    NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
-    
-    temp[0]=[NSString stringWithFormat:@"Level %d %@", selectedItem.level, selectedItem.nameOfItem];
-    temp[1]=[NSString stringWithFormat:@"%@", selectedItem.levelDescription];
-    temp[2]=[NSString stringWithFormat:@"Requirment: level %d %@", selectedItem.requiredLevel, selectedItem.unlockingItem];
-    temp[3]=[NSString stringWithFormat:@"Cost: %d", selectedItem.price];
-    [desciption setDescription:temp];
-    
-    if(selectedItem.ableToUpgrade){
-        upgrade.visible=TRUE;
-    }else{
-        upgrade.visible=FALSE;
-    }
     
     if(!selectedItem.ableToEquip || !selectedItem.bought){
         equip.visible=FALSE;
@@ -411,6 +395,27 @@
         equip.visible=TRUE;
         unequip.visible=FALSE;
     }
+}
+
+-(void)showSelectedItem: (ItemNode *)item{
+    NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
+    
+    temp[0]=[NSString stringWithFormat:@"Level %d %@", selectedItem.level+1, selectedItem.nameOfItem];
+    temp[1]=[NSString stringWithFormat:@"Cost: %d", selectedItem.price];
+    temp[2]=[NSString stringWithFormat:@"%@", selectedItem.levelDescription];
+
+    if(selectedItem.ableToUpgrade){
+        upgrade.visible=TRUE;
+        temp[3]=[NSString stringWithFormat:@""];
+
+    }else{
+        upgrade.visible=FALSE;
+        temp[3]=[NSString stringWithFormat:@"Requirment: level %d %@", selectedItem.requiredLevel, selectedItem.unlockingItem];
+    }
+    
+    [desciption setDescription:temp];
+    
+    
 }
 
 @end
