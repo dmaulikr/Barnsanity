@@ -41,9 +41,15 @@
 }
 
 -(void) updateTimer:(NSTimer *) theTimer{
-    if ([[GameMechanics sharedGameMechanics] gameState] == GameStateRunning && self.timeInSec !=0)
+    if ([[GameMechanics sharedGameMechanics] gameState] == GameStateRunning)
     {
-        [self setTime:(_timeInSec-1)];
+        [self setTime:(_timeInSec+1)];
+        //after 15 min increase spawn rate every 1 min
+        if(_timeInSec>=900){
+            if([[GameMechanics sharedGameMechanics]game].timeInSec%60 == 0){
+                [[MonsterCache sharedMonsterCache]increaseSpawnRate];
+            }
+        }
     }
 }
 @end

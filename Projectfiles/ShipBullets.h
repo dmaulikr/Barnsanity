@@ -21,7 +21,7 @@
 @property (nonatomic, assign) float distanceFromWorld;
 
 - (id)initWithMonsterPicture;
-- (void)spawn;
+- (void)spawn:(float)angleToSpawn;
 - (void)gotHit;
 -(void)reset;
 

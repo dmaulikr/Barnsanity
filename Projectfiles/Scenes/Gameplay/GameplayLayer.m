@@ -171,9 +171,9 @@ static CGRect screenRect;
         //        [hudNode addChild:pointsDisplayNode z:MAX_INT-1];
         //include timer
         self.timer=[[TimerDisplayNode alloc] initWithfontFile:@"avenir24.fnt"];
-//        self.timer.position = ccp(10, screenSize.height - 40);
-//        [self.timer setScale:1.5];
-//        [hudNode addChild:self.timer z:8];
+        self.timer.position = ccp(10, screenSize.height - 40);
+        [self.timer setScale:1.5];
+        [hudNode addChild:self.timer z:8];
         //include energy
         self.energy=[[EnergyDisplayNode alloc] initWithfontFile:@"avenir24.fnt"];
         self.energy.position = ccp(10, screenSize.height - 20);
@@ -281,7 +281,7 @@ static CGRect screenRect;
     //reset all monsters
     [[MonsterCache sharedMonsterCache]reset];
     //reset timer
-    [self.timer resetTimer:game.timeInSec];
+    [self.timer resetTimer:0];
     //reset the ship
     [self.ship reset];
     //reset energy info

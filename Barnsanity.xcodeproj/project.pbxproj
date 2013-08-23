@@ -166,6 +166,7 @@
 		30D04FAB17A0D403005A421A /* Tutorial2-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D04FAA17A0D403005A421A /* Tutorial2-3.png */; };
 		30D04FB017A0D895005A421A /* Tutorial1-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D04FAC17A0D895005A421A /* Tutorial1-3.png */; };
 		30D04FB317A0D895005A421A /* Tutorial1-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D04FAF17A0D895005A421A /* Tutorial1-6.png */; };
+		30E20F6617C6B6F800EE658F /* Banana.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E20F6517C6B6F800EE658F /* Banana.m */; };
 		30E69475178750380048D2DE /* TimerDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E69474178750380048D2DE /* TimerDisplayNode.m */; };
 		30E69478178750490048D2DE /* EnergyDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E69477178750490048D2DE /* EnergyDisplayNode.m */; };
 		30EAD17117BB401100E7D0E2 /* Tutorial1-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 30EAD17017BB401100E7D0E2 /* Tutorial1-5.png */; };
@@ -599,6 +600,8 @@
 		30D04FAA17A0D403005A421A /* Tutorial2-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial2-3.png"; sourceTree = "<group>"; };
 		30D04FAC17A0D895005A421A /* Tutorial1-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial1-3.png"; sourceTree = "<group>"; };
 		30D04FAF17A0D895005A421A /* Tutorial1-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial1-6.png"; sourceTree = "<group>"; };
+		30E20F6417C6B6F800EE658F /* Banana.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Banana.h; sourceTree = "<group>"; };
+		30E20F6517C6B6F800EE658F /* Banana.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banana.m; sourceTree = "<group>"; };
 		30E69473178750380048D2DE /* TimerDisplayNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDisplayNode.h; sourceTree = "<group>"; };
 		30E69474178750380048D2DE /* TimerDisplayNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDisplayNode.m; sourceTree = "<group>"; };
 		30E69476178750490048D2DE /* EnergyDisplayNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnergyDisplayNode.h; sourceTree = "<group>"; };
@@ -1121,6 +1124,8 @@
 				30C43524178B27A000D6ABBD /* Pineapple.m */,
 				30C43526178B27B000D6ABBD /* Watermelon.h */,
 				30C43527178B27B000D6ABBD /* Watermelon.m */,
+				30E20F6417C6B6F800EE658F /* Banana.h */,
+				30E20F6517C6B6F800EE658F /* Banana.m */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -2218,6 +2223,7 @@
 				30C8DA3F17A2E4A6000834AC /* TutorialScreen5.m in Sources */,
 				30C8DA4217A2E4BC000834AC /* TutorialScreen4.m in Sources */,
 				30C8DA4517A2E4D3000834AC /* TutorialScreen6.m in Sources */,
+				30E20F6617C6B6F800EE658F /* Banana.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

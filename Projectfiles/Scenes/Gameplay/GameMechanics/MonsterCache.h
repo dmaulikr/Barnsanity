@@ -37,6 +37,8 @@
     NSInteger wallSpawnProp;
     // count the updates (used to determine when monsters should be spawned)
     int updateCount;
+    float spawnIncreaseFactor;
+
 }
 //enemy barn
 @property (nonatomic) Barn *enemyBarn;
@@ -51,6 +53,7 @@
 @property (nonatomic, assign) BOOL  *playerBarnUnderAttack;
 //switch that enables this class to start spawning enemy monsters
 @property (nonatomic, assign) BOOL ableToSpawn;
+
 + (id)sharedMonsterCache;
 
 //barn
@@ -66,13 +69,13 @@
 
 -(void) spawnWall:(NSString*)wallType atAngle:(float) angleOfLocation;
 //create ship bullet
--(void)createShipBullet;
+-(void)createShipBullet:(float)angle;
 
 //create seed
 -(void)createSeed:(NSString*)monsterName;
 
 //create bomb
--(void)createBomb;
+-(void)createBomb:(float)angle;
 
 //resume game
 - (void)gameResumed;
@@ -80,6 +83,8 @@
 //pause game
 - (void)gamePaused;
 
+//increase spawnrate
+- (void)increaseSpawnRate;
 //Check if there is any monster of a type alive
 -(BOOL)anyMonsterAliveOfType:(NSString *) monsterName;
 @end

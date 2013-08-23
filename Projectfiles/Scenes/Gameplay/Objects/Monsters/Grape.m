@@ -59,6 +59,7 @@
             // stop running animation
             self.attacking = TRUE;
             [self stopAction:run];
+            
         }];
         
         CCFiniteTimeAction *finishHit = [CCCallBlock actionWithBlock:^{
@@ -66,99 +67,110 @@
             // restart running animation
             [self stopAction:run];
             [self runAction:run];
-            
         }];
         
-        attack = [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] , hitAction, [CCDelayTime actionWithDuration:.5] ,finishHit, nil];
-        
-        
-        //****************planting animation**************
-        CCFiniteTimeAction *planting = [CCCallBlock actionWithBlock:^{
-            self.attacking = FALSE;
-            self.move=FALSE;
-            self.ableToAttack=FALSE;
-            float boundAngle1=[[MonsterCache sharedMonsterCache] playerBarn].boundingZoneAngle1;
-            float boundAngle2=[[MonsterCache sharedMonsterCache] playerBarn].boundingZoneAngle2;
-            if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
-                if(self.angle<=boundAngle1 && self.angle>= boundAngle2){
-                    self.invincible=TRUE;
-                }else{
-                    self.invincible=FALSE;
-                }
-            }else{
-                if((self.angle<=boundAngle1 && self.angle>=0) || (self.angle<=0 && self.angle>= boundAngle2)){
-                    self.invincible=TRUE;
-                }else{
-                    self.invincible=FALSE;
-                }
-            }
-            spawnDelayTimer=spawnDelayInitial;
-            delayTimer.percentage=100;
-            float newPercentage=((float)(spawnDelayTimer-1)/(float)spawnDelayInitial)*100;
-            [delayTimer runAction:[CCProgressFromTo actionWithDuration:1.0f from:delayTimer.percentage to:newPercentage]];
-            
-        }];
-        plant=[CCSequence actions:planting, nil];
-        
-        //*************spawning*******************
-        CCFiniteTimeAction *spawning = [CCCallBlock actionWithBlock:^{
-            [self stopAction:plant];
-            self.attacking = FALSE;
-            self.move=TRUE;
-            self.ableToAttack=TRUE;
-            self.invincible=FALSE;
-            [self stopAction:run];
-            [self runAction:run];
-            
-        }];
-        
-        spawn=[CCSequence actions:spawning, nil];
-        
-        //****************death*****************
-        CCFiniteTimeAction *dying = [CCCallBlock actionWithBlock:^{
-            [self stopAction:run];
-            self.attacking = FALSE;
-            self.move=FALSE;
-            self.ableToAttack=FALSE;
-            self.invincible=TRUE;
-            [self destroy];
-            
-        }];
-        death=[CCSequence actions:dying, nil];
-        
-        //**********blink************
-        blink = [CCBlink actionWithDuration:.4f blinks:2];
-        
-        CCSprite *delayTimerImage=[[CCSprite alloc] initWithFile:@"n2pY1.png"];
-        [delayTimerImage setColor:ccc3(2, 2, 200)];
-        delayTimer=[CCProgressTimer progressWithSprite:delayTimerImage];
-        [delayTimer setScale:.7];
-        delayTimer.type =kCCProgressTimerTypeBar;
-        delayTimer.midpoint = ccp(0,0.5);
-        delayTimer.barChangeRate = ccp(1, 0);
-        delayTimer.percentage=0;
-        delayTimer.position=ccp(delayTimerImage.contentSize.width/4,2*self.contentSize.height/2+10);
-        [self addChild:delayTimer];
-        
-        //for the prototype
-        [self setScale:.5];
 
-        //blue violet
-                   [self setColor:ccc3(138,43,226)];
-        [self scheduleUpdate];
-        [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
-        [self reset];
-        
-        
-    }
     
-    return self;
+    attack = [CCSequence actions:startHit,[CCDelayTime actionWithDuration:.5] , hitAction, [CCDelayTime actionWithDuration:.5] ,finishHit, nil];
+    
+    
+    //****************planting animation**************
+    CCFiniteTimeAction *planting = [CCCallBlock actionWithBlock:^{
+        self.attacking = FALSE;
+        self.move=FALSE;
+        self.ableToAttack=FALSE;
+        float boundAngle1=[[MonsterCache sharedMonsterCache] playerBarn].boundingZoneAngle1;
+        float boundAngle2=[[MonsterCache sharedMonsterCache] playerBarn].boundingZoneAngle2;
+        if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
+            if(self.angle<=boundAngle1 && self.angle>= boundAngle2){
+                self.invincible=TRUE;
+            }else{
+                self.invincible=FALSE;
+            }
+        }else{
+            if((self.angle<=boundAngle1 && self.angle>=0) || (self.angle<=0 && self.angle>= boundAngle2)){
+                self.invincible=TRUE;
+            }else{
+                self.invincible=FALSE;
+            }
+        }
+        spawnDelayTimer=spawnDelayInitial;
+        delayTimer.percentage=100;
+        float newPercentage=((float)(spawnDelayTimer-1)/(float)spawnDelayInitial)*100;
+        [delayTimer runAction:[CCProgressFromTo actionWithDuration:1.0f from:delayTimer.percentage to:newPercentage]];
+        
+    }];
+    plant=[CCSequence actions:planting, nil];
+    
+    //*************spawning*******************
+    CCFiniteTimeAction *spawning = [CCCallBlock actionWithBlock:^{
+        [self stopAction:plant];
+        self.attacking = FALSE;
+        self.move=TRUE;
+        self.ableToAttack=TRUE;
+        self.invincible=FALSE;
+        [self stopAction:run];
+        [self runAction:run];
+        
+    }];
+    
+    spawn=[CCSequence actions:spawning, nil];
+    
+    //****************death*****************
+    CCFiniteTimeAction *dying = [CCCallBlock actionWithBlock:^{
+        [self stopAction:run];
+        self.attacking = FALSE;
+        self.move=FALSE;
+        self.ableToAttack=FALSE;
+        self.invincible=TRUE;
+        [self destroy];
+        
+    }];
+    death=[CCSequence actions:dying, nil];
+
+    //**********blink************
+    blink = [CCBlink actionWithDuration:.4f blinks:2];
+    
+    CCSprite *delayTimerImage=[[CCSprite alloc] initWithFile:@"n2pY1.png"];
+    [delayTimerImage setColor:ccc3(2, 2, 200)];
+    delayTimer=[CCProgressTimer progressWithSprite:delayTimerImage];
+    [delayTimer setScale:.7];
+    delayTimer.type =kCCProgressTimerTypeBar;
+    delayTimer.midpoint = ccp(0,0.5);
+    delayTimer.barChangeRate = ccp(1, 0);
+    delayTimer.percentage=0;
+    delayTimer.position=ccp(delayTimerImage.contentSize.width/4,2*self.contentSize.height/2+10);
+    [self addChild:delayTimer];
+    
+    //for the prototype
+    [self setScale:.5];
+    
+    //blue violet
+    [self setColor:ccc3(138,43,226)];
+    [self scheduleUpdate];
+    [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:TRUE];
+    [self reset];
+    
 }
+
+return self;
+}
+
+
+
 
 - (void)update:(ccTime)delta
 {
-    if(self.move && self.alive){
+    if((self.move && self.alive)){
         [self changePosition];
+    }else if(self.alive){
+        if(self.moveDirection==left){
+            self.hitZoneAngle1=self.angle+(self.hitZone+1.3*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2);
+            self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
+        }else{
+            self.hitZoneAngle2=self.angle-(self.hitZone+1.3*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2);
+            self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
+        }
     }
 }
 @end

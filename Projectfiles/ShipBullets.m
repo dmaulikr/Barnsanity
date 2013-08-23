@@ -26,7 +26,7 @@
     }
     return self;
 }
-- (void)spawn{
+- (void)spawn:(float)angleToSpawn{
     
     //get the radius of the world
     radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
@@ -39,12 +39,11 @@
     
     self.boundingZone=atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2.5;
     self.hitZone=atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/7;
-    
-    float angleOfRotation=[[[GameMechanics sharedGameMechanics] gameScene] getChildByTag:1].rotation;
+
     self.distanceFromWorld=self.radiusToSpawn;
     
     //angle of the spawn
-    angle= M_PI_2+CC_DEGREES_TO_RADIANS(angleOfRotation);
+    angle= M_PI_2+CC_DEGREES_TO_RADIANS(angleToSpawn);
     angle=fmodf(angle+2*M_PI, 2*M_PI);
     // Select a spawn location
     float xPos=self.distanceFromWorld*cos(angle);
@@ -106,7 +105,7 @@
 //    self.areaOfEffectDamage=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo]objectForKey:@"AreaOfEffect Damage"]   objectAtIndex:level]integerValue];
 //    if(self.areaOfEffectDamage <= 0){
 //        self.areaOfEffect=FALSE;
-    self.areaOfEffectDamage=self.damage/4;
+    self.areaOfEffectDamage=0;
 //    }
     
 }

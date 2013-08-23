@@ -1,8 +1,8 @@
 //
 //  Banana.h
-//  Veggy_V_Fruit
+//  Barnsanity
 //
-//  Created by Danny on 7/8/13.
+//  Created by Danny on 8/22/13.
 //  Copyright (c) 2013 MakeGamesWithUs Inc. All rights reserved.
 //
 

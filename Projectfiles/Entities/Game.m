@@ -19,7 +19,7 @@
     if (self)
     {
         //the name of all player's monster
-        self.playerMonsterList=[[NSArray alloc]initWithObjects:@"Orange",@"Apple",@"Strawberry",@"Coconut",@"Grape",@"Pineapple",@"Watermelon",nil];
+        self.playerMonsterList=[[NSArray alloc]initWithObjects:@"Orange",@"Apple",@"Strawberry",@"Coconut",@"Grape",@"Pineapple",@"Banana",@"Watermelon",nil];
         //name of all enemy monsters
         self.enemyMonsterList=[[NSArray alloc]initWithObjects:@"Carrot",@"Broccoli",@"Corn",@"Tomato",@"Potato",@"Pea Pod",@"Pumpkin",@"Beet",@"Asparagus",@"Artichokes",@"Eggplant",nil];
         //name of all util upgrades
@@ -144,20 +144,20 @@
 
 -(void)reset{
     
-    if(self.difficulty==EASY){
-    //the initial time in sec for all levels
-        self.timeInSecInit=540;
-    }else{
-        //the initial time in sec for all levels
-        self.timeInSecInit=660;
-    }
+//    if(self.difficulty==EASY){
+//    //the initial time in sec for all levels
+//        self.timeInSecInit=540;
+//    }else{
+//        //the initial time in sec for all levels
+//        self.timeInSecInit=660;
+//    }
     //end level bonus for score
     self.endLevelBonusScore=50;
     //end level bonus for gold
     self.endLevelBonusGold=160;
-    
-    //time reset
-    self.timeInSec=self.timeInSecInit;
+//    
+//    //time reset
+//    self.timeInSec=self.timeInSecInit;
     //energy reset
     self.energy=0;
     
@@ -235,19 +235,44 @@
         self.scorePerLevel=self.scorePerLevel+self.timeInSec*.25;
     }
     
-    //check if it is the high score for gold and score
-    if(self.goldForLevel>self.highScoreForGold){
-        self.highScoreForGold=self.goldForLevel;
-    }
-    
-    if(self.goldForLevel>self.highScoreForGold){
-        self.highScoreForGold=self.goldForLevel;
-    }
+//    //check if it is the high score for gold and score
+//    if(self.goldForLevel>self.highScoreForGold){
+//        self.highScoreForGold=self.goldForLevel;
+//    }
+//    
+//    if(self.goldForLevel>self.highScoreForGold){
+//        self.highScoreForGold=self.goldForLevel;
+//    }
 //    //total the amount of enemy and player killed
 //    self.totalEnemiesMonsterKilled=self.totalEnemiesMonsterKilled+self.enemiesMonsterKilled;
 //    self.totalPlayerMonsterKilled=self.totalPlayerMonsterKilled+self.playerMonsterKilled;
     //total time played
-    self.totalTimePlayed=self.totalTimePlayed+(self.timeInSecInit-self.timeInSec);
+//    self.totalTimePlayed=self.totalTimePlayed+(self.timeInSecInit-self.timeInSec);
+    
+    //after 8 minutes, a percentage of goldforlevel will be deducted
+    int beginningTimeDeduct=420+((self.gameplayLevel/10)*60);
+    int beginningTimeBonus=0;
+    if(self.gameplayLevel>30){
+        beginningTimeBonus=240+((self.gameplayLevel/10)*60);
+    }
+    self.timeInSec=self.timeInSec-beginningTimeDeduct;
+    float percentChange;
+    if(self.timeInSec>0){
+        //every minute after 8 minute mark, 10% will be deducted
+        float percentChange=(float)self.timeInSec/60.0;
+        //max of 70% deduction
+        if(percentChange>7){
+            percentChange=7;
+        }
+        percentChange=percentChange*.1;
+        int goldDeducted=self.goldForLevel*percentChange;
+        self.goldForLevel=self.goldForLevel-goldDeducted;
+    }else if(self.timeInSec<= -beginningTimeBonus){
+        percentChange=.5;
+        int goldDeducted=self.goldForLevel*percentChange;
+        self.goldForLevel=self.goldForLevel+goldDeducted;
+
+    }
     
     
     //increase max level if player is playing max level

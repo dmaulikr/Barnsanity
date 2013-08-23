@@ -73,7 +73,7 @@
     self.alive=TRUE;
     self.attacked=FALSE;
     self.attacking=FALSE;
-    hitDidRun=FALSE;
+    self.hitDidRun=FALSE;
     blinkDidRun=FALSE;
     [self runAction:plant];
 	
@@ -96,10 +96,13 @@
 
 - (void)attack{
     // animation needs to be either done (isDone) or run for the first time (stabDidRun)
-    if ((hitDidRun == FALSE) || [attack isDone])
+    if ((self.hitDidRun == FALSE) || [attack isDone])
     {
+        [self stopAction:attack];
         [self runAction:attack];
-        hitDidRun = TRUE;
+        self.hitDidRun = TRUE;
+         self.attacking = TRUE;
+        self.attacked=TRUE;
     }
 }
 

@@ -26,7 +26,6 @@
     NSMutableArray *animationFramesSpawn;
     CCSequence *spawn;
     CCSequence *death;
-    BOOL hitDidRun;
     CCSequence *blink;
     BOOL blinkDidRun;
     NSMutableDictionary *stats;
@@ -40,7 +39,8 @@
 @property (nonatomic, assign) float radiusToSpawnDelta;
 @property (nonatomic, assign) float range;
 
-
+//whether the unit first attack
+@property (nonatomic, assign) BOOL hitDidRun;
 //whether the unit is visible
 @property (nonatomic, assign) BOOL alive;
 //whether the unit is attacking

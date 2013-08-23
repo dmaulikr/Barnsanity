@@ -48,7 +48,7 @@
         angleOfSpawn = fmodf([[[GameMechanics sharedGameMechanics] gameScene]  getChildByTag:1].rotation, 360);
        if((angleOfSpawn <=-22.5 && angleOfSpawn >= -157.5)||(angleOfSpawn >202.5 && angleOfSpawn < 337.5)){
            if(self.cost<=[[GameMechanics sharedGameMechanics]game].energy){
-            [[GameMechanics sharedGameMechanics]game].energy-=self.cost;
+               [[[[GameMechanics sharedGameMechanics]gameScene]energy]deductEnergyBy:self.cost];
                [[[[GameMechanics sharedGameMechanics]gameScene]ship]fireSeedForMonster:self.nameOfMonster];
                 fireDelayTimer=fireDelayInitial;
                 delayTimer.percentage=100;

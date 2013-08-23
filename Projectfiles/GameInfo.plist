@@ -22,25 +22,25 @@
 	<array>
 		<dict>
 			<key>Damage Delta</key>
-			<integer>3</integer>
+			<integer>4</integer>
 			<key>Range</key>
-			<integer>2</integer>
+			<real>3.2</real>
 			<key>Health</key>
-			<integer>900</integer>
+			<integer>1500</integer>
 			<key>Energy Cost</key>
-			<integer>200</integer>
+			<integer>300</integer>
 			<key>Move Speed</key>
-			<integer>1</integer>
+			<real>1.6</real>
 			<key>Delay</key>
-			<integer>9</integer>
+			<integer>18</integer>
 			<key>Damage</key>
 			<integer>30</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
-			<true/>
+			<false/>
 			<key>AreaOfEffect Damage</key>
-			<integer>5</integer>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>Damage Delta</key>
@@ -175,6 +175,185 @@
 			<integer>9</integer>
 		</dict>
 	</array>
+	<key>Banana</key>
+	<array>
+		<dict>
+			<key>Damage Delta</key>
+			<integer>3</integer>
+			<key>Range</key>
+			<real>8.5</real>
+			<key>Health</key>
+			<integer>1000</integer>
+			<key>Energy Cost</key>
+			<integer>250</integer>
+			<key>Move Speed</key>
+			<real>1.2</real>
+			<key>Delay</key>
+			<integer>15</integer>
+			<key>Damage</key>
+			<integer>35</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Damage Delta</key>
+			<integer>3</integer>
+			<key>Range</key>
+			<real>9.5</real>
+			<key>Health</key>
+			<integer>1000</integer>
+			<key>Energy Cost</key>
+			<integer>250</integer>
+			<key>Move Speed</key>
+			<real>1.2</real>
+			<key>Delay</key>
+			<integer>15</integer>
+			<key>Damage</key>
+			<integer>40</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Damage Delta</key>
+			<integer>3</integer>
+			<key>Range</key>
+			<integer>7</integer>
+			<key>Health</key>
+			<integer>225</integer>
+			<key>Energy Cost</key>
+			<integer>65</integer>
+			<key>Move Speed</key>
+			<real>1.4</real>
+			<key>Delay</key>
+			<integer>5</integer>
+			<key>Damage</key>
+			<integer>20</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Damage Delta</key>
+			<integer>3</integer>
+			<key>Range</key>
+			<integer>7</integer>
+			<key>Health</key>
+			<integer>275</integer>
+			<key>Energy Cost</key>
+			<integer>65</integer>
+			<key>Move Speed</key>
+			<real>1.4</real>
+			<key>Delay</key>
+			<integer>5</integer>
+			<key>Damage</key>
+			<integer>22</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Damage Delta</key>
+			<integer>3</integer>
+			<key>Range</key>
+			<integer>7</integer>
+			<key>Health</key>
+			<integer>350</integer>
+			<key>Energy Cost</key>
+			<integer>65</integer>
+			<key>Move Speed</key>
+			<real>1.6</real>
+			<key>Delay</key>
+			<integer>6</integer>
+			<key>Damage</key>
+			<integer>24</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Damage Delta</key>
+			<integer>3</integer>
+			<key>Range</key>
+			<integer>7</integer>
+			<key>Health</key>
+			<integer>400</integer>
+			<key>Energy Cost</key>
+			<integer>65</integer>
+			<key>Move Speed</key>
+			<real>1.8</real>
+			<key>Delay</key>
+			<integer>6</integer>
+			<key>Damage</key>
+			<integer>27</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Damage Delta</key>
+			<integer>3</integer>
+			<key>Range</key>
+			<integer>7</integer>
+			<key>Health</key>
+			<integer>475</integer>
+			<key>Energy Cost</key>
+			<integer>65</integer>
+			<key>Move Speed</key>
+			<integer>2</integer>
+			<key>Delay</key>
+			<integer>7</integer>
+			<key>Damage</key>
+			<integer>30</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Damage Delta</key>
+			<integer>3</integer>
+			<key>Range</key>
+			<integer>7</integer>
+			<key>Health</key>
+			<integer>575</integer>
+			<key>Energy Cost</key>
+			<integer>65</integer>
+			<key>Move Speed</key>
+			<integer>2</integer>
+			<key>Delay</key>
+			<integer>7</integer>
+			<key>Damage</key>
+			<integer>35</integer>
+			<key>Attack Speed</key>
+			<integer>0</integer>
+			<key>AreaOfEffect</key>
+			<false/>
+			<key>AreaOfEffect Damage</key>
+			<integer>0</integer>
+		</dict>
+	</array>
 	<key>Pineapple</key>
 	<array>
 		<dict>
@@ -183,15 +362,15 @@
 			<key>Damage Delta</key>
 			<integer>3</integer>
 			<key>Health</key>
-			<integer>2000</integer>
+			<integer>1300</integer>
 			<key>Energy Cost</key>
-			<integer>180</integer>
+			<integer>200</integer>
 			<key>Move Speed</key>
-			<real>2.15</real>
+			<real>2.7</real>
 			<key>Delay</key>
-			<integer>13</integer>
+			<integer>12</integer>
 			<key>Damage</key>
-			<integer>34</integer>
+			<integer>27</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
@@ -205,7 +384,7 @@
 			<key>Damage Delta</key>
 			<integer>3</integer>
 			<key>Health</key>
-			<integer>1250</integer>
+			<integer>2300</integer>
 			<key>Energy Cost</key>
 			<integer>175</integer>
 			<key>Move Speed</key>
@@ -338,17 +517,17 @@
 			<key>Damage Delta</key>
 			<integer>2</integer>
 			<key>Range</key>
-			<real>5.5</real>
+			<integer>5</integer>
 			<key>Health</key>
 			<integer>350</integer>
 			<key>Energy Cost</key>
-			<integer>130</integer>
+			<integer>150</integer>
 			<key>Move Speed</key>
 			<real>2.15</real>
 			<key>Delay</key>
 			<integer>9</integer>
 			<key>Damage</key>
-			<integer>10</integer>
+			<integer>13</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
@@ -519,7 +698,7 @@
 			<key>Damage Delta</key>
 			<integer>1</integer>
 			<key>Health</key>
-			<integer>1300</integer>
+			<integer>1400</integer>
 			<key>Energy Cost</key>
 			<integer>100</integer>
 			<key>Move Speed</key>
@@ -541,7 +720,7 @@
 			<key>Damage Delta</key>
 			<integer>1</integer>
 			<key>Health</key>
-			<integer>2300</integer>
+			<integer>1900</integer>
 			<key>Energy Cost</key>
 			<integer>100</integer>
 			<key>Move Speed</key>
@@ -563,7 +742,7 @@
 			<key>Damage Delta</key>
 			<integer>1</integer>
 			<key>Health</key>
-			<integer>3000</integer>
+			<integer>2600</integer>
 			<key>Energy Cost</key>
 			<integer>100</integer>
 			<key>Move Speed</key>
@@ -585,7 +764,7 @@
 			<key>Damage Delta</key>
 			<integer>1</integer>
 			<key>Health</key>
-			<integer>3800</integer>
+			<integer>3300</integer>
 			<key>Energy Cost</key>
 			<integer>100</integer>
 			<key>Move Speed</key>
@@ -680,7 +859,7 @@
 			<key>Energy Cost</key>
 			<integer>65</integer>
 			<key>Move Speed</key>
-			<real>1.4</real>
+			<real>1.6</real>
 			<key>Delay</key>
 			<integer>5</integer>
 			<key>Damage</key>
@@ -702,7 +881,7 @@
 			<key>Energy Cost</key>
 			<integer>65</integer>
 			<key>Move Speed</key>
-			<real>1.4</real>
+			<real>1.8</real>
 			<key>Delay</key>
 			<integer>5</integer>
 			<key>Damage</key>
@@ -724,7 +903,7 @@
 			<key>Energy Cost</key>
 			<integer>65</integer>
 			<key>Move Speed</key>
-			<real>1.6</real>
+			<integer>2</integer>
 			<key>Delay</key>
 			<integer>6</integer>
 			<key>Damage</key>
@@ -899,7 +1078,7 @@
 			<key>Damage Delta</key>
 			<integer>2</integer>
 			<key>Health</key>
-			<integer>740</integer>
+			<integer>720</integer>
 			<key>Energy Cost</key>
 			<integer>30</integer>
 			<key>Move Speed</key>
@@ -921,7 +1100,7 @@
 			<key>Damage Delta</key>
 			<integer>2</integer>
 			<key>Health</key>
-			<integer>840</integer>
+			<integer>800</integer>
 			<key>Energy Cost</key>
 			<integer>30</integer>
 			<key>Move Speed</key>
@@ -1132,11 +1311,11 @@
 		<integer>20</integer>
 		<integer>18</integer>
 		<integer>16</integer>
+		<integer>15</integer>
 		<integer>14</integer>
+		<integer>13</integer>
 		<integer>12</integer>
 		<integer>10</integer>
-		<integer>8</integer>
-		<integer>6</integer>
 	</array>
 	<key>Ship Damage</key>
 	<array>
@@ -1145,22 +1324,22 @@
 		<integer>17</integer>
 		<integer>19</integer>
 		<integer>21</integer>
-		<integer>23</integer>
-		<integer>25</integer>
-		<integer>27</integer>
-		<integer>29</integer>
+		<integer>13</integer>
+		<integer>14</integer>
+		<integer>15</integer>
+		<integer>11</integer>
 	</array>
 	<key>Energy Regeneration</key>
 	<array>
 		<integer>1</integer>
 		<integer>2</integer>
 		<integer>3</integer>
+		<integer>4</integer>
 		<integer>5</integer>
 		<integer>7</integer>
-		<integer>10</integer>
+		<integer>9</integer>
+		<integer>12</integer>
 		<integer>15</integer>
-		<integer>20</integer>
-		<integer>25</integer>
 	</array>
 	<key>Energy Max</key>
 	<array>
@@ -1170,9 +1349,9 @@
 		<integer>600</integer>
 		<integer>800</integer>
 		<integer>1000</integer>
-		<integer>1250</integer>
-		<integer>1500</integer>
-		<integer>2000</integer>
+		<integer>1300</integer>
+		<integer>1800</integer>
+		<integer>2500</integer>
 	</array>
 	<key>Player Barn Health</key>
 	<array>
@@ -1342,13 +1521,13 @@
 		<key>Pea Pod</key>
 		<dict>
 			<key>Range</key>
-			<real>5.5</real>
+			<integer>5</integer>
 			<key>Damage Delta</key>
 			<integer>2</integer>
 			<key>Energy Reward</key>
 			<integer>9</integer>
 			<key>Health</key>
-			<integer>700</integer>
+			<integer>600</integer>
 			<key>Move Speed</key>
 			<real>1.3</real>
 			<key>Damage</key>
@@ -1369,7 +1548,7 @@
 			<key>Damage Delta</key>
 			<integer>4</integer>
 			<key>Energy Reward</key>
-			<integer>13</integer>
+			<integer>11</integer>
 			<key>Health</key>
 			<integer>2700</integer>
 			<key>Move Speed</key>
@@ -1383,22 +1562,22 @@
 			<key>AreaOfEffect Damage</key>
 			<integer>0</integer>
 			<key>Gold Reward</key>
-			<integer>30</integer>
+			<integer>40</integer>
 		</dict>
 		<key>Beet</key>
 		<dict>
 			<key>Range</key>
-			<integer>1</integer>
+			<real>1.3</real>
 			<key>Damage Delta</key>
-			<integer>1</integer>
+			<integer>2</integer>
 			<key>Energy Reward</key>
-			<integer>16</integer>
+			<integer>7</integer>
 			<key>Health</key>
-			<integer>4350</integer>
+			<integer>4400</integer>
 			<key>Move Speed</key>
-			<real>2.9</real>
+			<real>4.3</real>
 			<key>Damage</key>
-			<integer>6</integer>
+			<integer>16</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
@@ -1406,22 +1585,22 @@
 			<key>AreaOfEffect Damage</key>
 			<integer>0</integer>
 			<key>Gold Reward</key>
-			<integer>44</integer>
+			<integer>50</integer>
 		</dict>
 		<key>Artichokes</key>
 		<dict>
 			<key>Range</key>
-			<real>2.4</real>
+			<real>6.2</real>
 			<key>Damage Delta</key>
-			<integer>5</integer>
+			<integer>2</integer>
 			<key>Energy Reward</key>
-			<integer>35</integer>
+			<integer>16</integer>
 			<key>Health</key>
-			<integer>2900</integer>
+			<integer>1300</integer>
 			<key>Move Speed</key>
 			<real>2.6</real>
 			<key>Damage</key>
-			<integer>60</integer>
+			<integer>70</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
@@ -1429,45 +1608,45 @@
 			<key>AreaOfEffect Damage</key>
 			<integer>0</integer>
 			<key>Gold Reward</key>
-			<integer>75</integer>
+			<integer>45</integer>
 		</dict>
 		<key>Eggplant</key>
 		<dict>
 			<key>Range</key>
-			<real>3.2</real>
+			<real>1.7</real>
 			<key>Damage Delta</key>
-			<integer>10</integer>
+			<integer>2</integer>
 			<key>Energy Reward</key>
-			<integer>45</integer>
+			<integer>16</integer>
 			<key>Health</key>
-			<integer>3000</integer>
+			<integer>3600</integer>
 			<key>Move Speed</key>
-			<real>2.3</real>
+			<integer>1</integer>
 			<key>Damage</key>
-			<integer>100</integer>
+			<integer>24</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
 			<true/>
 			<key>AreaOfEffect Damage</key>
-			<integer>6</integer>
+			<integer>14</integer>
 			<key>Gold Reward</key>
-			<integer>95</integer>
+			<integer>80</integer>
 		</dict>
 		<key>Asparagus</key>
 		<dict>
 			<key>Range</key>
 			<real>3.5</real>
 			<key>Damage Delta</key>
-			<integer>13</integer>
+			<integer>7</integer>
 			<key>Energy Reward</key>
-			<integer>65</integer>
+			<integer>20</integer>
 			<key>Health</key>
-			<integer>6000</integer>
+			<integer>9000</integer>
 			<key>Move Speed</key>
-			<real>3.7</real>
+			<real>3.3</real>
 			<key>Damage</key>
-			<integer>200</integer>
+			<integer>65</integer>
 			<key>Attack Speed</key>
 			<integer>0</integer>
 			<key>AreaOfEffect</key>
@@ -1475,7 +1654,7 @@
 			<key>AreaOfEffect Damage</key>
 			<integer>0</integer>
 			<key>Gold Reward</key>
-			<integer>150</integer>
+			<integer>130</integer>
 		</dict>
 	</dict>
 	<key>Game Levels</key>
@@ -2522,7 +2701,7 @@
 				<integer>21</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>450</integer>
+			<integer>500</integer>
 			<key>Broccoli</key>
 			<integer>1240</integer>
 			<key>Corn</key>
@@ -2563,17 +2742,17 @@
 				<integer>21</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>350</integer>
+			<integer>450</integer>
 			<key>Broccoli</key>
-			<integer>750</integer>
+			<integer>900</integer>
 			<key>Corn</key>
-			<integer>1200</integer>
+			<integer>1400</integer>
 			<key>Tomato</key>
-			<integer>2000</integer>
+			<integer>2100</integer>
 			<key>Potato</key>
-			<integer>2000</integer>
-			<key>Pea Pod</key>
 			<integer>2300</integer>
+			<key>Pea Pod</key>
+			<integer>2500</integer>
 			<key>Pea</key>
 			<integer>0</integer>
 			<key>Pumpkin</key>
@@ -2604,17 +2783,17 @@
 				<integer>22</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>300</integer>
+			<integer>400</integer>
 			<key>Broccoli</key>
-			<integer>670</integer>
+			<integer>830</integer>
 			<key>Corn</key>
-			<integer>1100</integer>
+			<integer>1350</integer>
 			<key>Tomato</key>
-			<integer>1900</integer>
+			<integer>2030</integer>
 			<key>Potato</key>
-			<integer>1960</integer>
+			<integer>2240</integer>
 			<key>Pea Pod</key>
-			<integer>2200</integer>
+			<integer>2420</integer>
 			<key>Pea</key>
 			<integer>0</integer>
 			<key>Pumpkin</key>
@@ -2645,17 +2824,17 @@
 				<integer>22</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>280</integer>
+			<integer>380</integer>
 			<key>Broccoli</key>
-			<integer>610</integer>
+			<integer>790</integer>
 			<key>Corn</key>
-			<integer>1020</integer>
+			<integer>1290</integer>
 			<key>Tomato</key>
-			<integer>1820</integer>
+			<integer>1950</integer>
 			<key>Potato</key>
-			<integer>1900</integer>
+			<integer>2200</integer>
 			<key>Pea Pod</key>
-			<integer>2050</integer>
+			<integer>2340</integer>
 			<key>Pea</key>
 			<integer>0</integer>
 			<key>Pumpkin</key>
@@ -2671,7 +2850,7 @@
 		</dict>
 		<dict>
 			<key>Wall Spawn</key>
-			<integer>2500</integer>
+			<integer>4000</integer>
 			<key>ScareCrow</key>
 			<integer>300</integer>
 			<key>Tree</key>
@@ -2686,21 +2865,21 @@
 				<integer>22</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>225</integer>
+			<integer>0</integer>
 			<key>Broccoli</key>
-			<integer>520</integer>
+			<integer>700</integer>
 			<key>Corn</key>
-			<integer>650</integer>
+			<integer>1220</integer>
 			<key>Tomato</key>
-			<integer>850</integer>
+			<integer>1910</integer>
 			<key>Potato</key>
-			<integer>1200</integer>
+			<integer>2000</integer>
 			<key>Pea Pod</key>
-			<integer>1400</integer>
+			<integer>2210</integer>
 			<key>Pea</key>
 			<integer>0</integer>
 			<key>Pumpkin</key>
-			<integer>2750</integer>
+			<integer>3950</integer>
 			<key>Beet</key>
 			<integer>0</integer>
 			<key>Eggplant</key>
@@ -2722,26 +2901,26 @@
 				<key>Armor</key>
 				<integer>0</integer>
 				<key>Health</key>
-				<integer>10500</integer>
+				<integer>9400</integer>
 				<key>Damage</key>
 				<integer>22</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>180</integer>
+			<integer>0</integer>
 			<key>Broccoli</key>
-			<integer>460</integer>
+			<integer>630</integer>
 			<key>Corn</key>
-			<integer>750</integer>
+			<integer>1100</integer>
 			<key>Tomato</key>
-			<integer>800</integer>
+			<integer>1900</integer>
 			<key>Potato</key>
-			<integer>1150</integer>
+			<integer>1970</integer>
 			<key>Pea Pod</key>
-			<integer>1350</integer>
+			<integer>2100</integer>
 			<key>Pea</key>
 			<integer>0</integer>
 			<key>Pumpkin</key>
-			<integer>2700</integer>
+			<integer>3620</integer>
 			<key>Beet</key>
 			<integer>0</integer>
 			<key>Eggplant</key>
@@ -2763,26 +2942,26 @@
 				<key>Armor</key>
 				<integer>0</integer>
 				<key>Health</key>
-				<integer>11000</integer>
+				<integer>9900</integer>
 				<key>Damage</key>
 				<integer>22</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>220</integer>
+			<integer>0</integer>
 			<key>Broccoli</key>
-			<integer>460</integer>
+			<integer>645</integer>
 			<key>Corn</key>
-			<integer>800</integer>
+			<integer>1040</integer>
 			<key>Tomato</key>
-			<integer>1120</integer>
+			<integer>1850</integer>
 			<key>Potato</key>
-			<integer>1100</integer>
+			<integer>1700</integer>
 			<key>Pea Pod</key>
-			<integer>1270</integer>
+			<integer>2052</integer>
 			<key>Pea</key>
 			<integer>0</integer>
 			<key>Pumpkin</key>
-			<integer>2700</integer>
+			<integer>3480</integer>
 			<key>Beet</key>
 			<integer>0</integer>
 			<key>Eggplant</key>
@@ -2794,11 +2973,93 @@
 		</dict>
 		<dict>
 			<key>Wall Spawn</key>
-			<integer>3450</integer>
+			<integer>1600</integer>
 			<key>ScareCrow</key>
 			<integer>300</integer>
 			<key>Tree</key>
 			<integer>500</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>11500</integer>
+				<key>Damage</key>
+				<integer>20</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>570</integer>
+			<key>Corn</key>
+			<integer>870</integer>
+			<key>Tomato</key>
+			<integer>1500</integer>
+			<key>Potato</key>
+			<integer>1550</integer>
+			<key>Pea Pod</key>
+			<integer>1980</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>3150</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>2000</integer>
+			<key>ScareCrow</key>
+			<integer>400</integer>
+			<key>Tree</key>
+			<integer>600</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>10000</integer>
+				<key>Damage</key>
+				<integer>20</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>545</integer>
+			<key>Corn</key>
+			<integer>880</integer>
+			<key>Tomato</key>
+			<integer>1200</integer>
+			<key>Potato</key>
+			<integer>1480</integer>
+			<key>Pea Pod</key>
+			<integer>1900</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>3020</integer>
+			<key>Beet</key>
+			<integer>0</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>1300</integer>
+			<key>ScareCrow</key>
+			<integer>400</integer>
+			<key>Tree</key>
+			<integer>600</integer>
 			<key>Barn</key>
 			<dict>
 				<key>Armor</key>
@@ -2809,23 +3070,64 @@
 				<integer>20</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>220</integer>
+			<integer>0</integer>
 			<key>Broccoli</key>
-			<integer>450</integer>
+			<integer>600</integer>
 			<key>Corn</key>
-			<integer>820</integer>
+			<integer>800</integer>
 			<key>Tomato</key>
-			<integer>1070</integer>
+			<integer>0</integer>
 			<key>Potato</key>
-			<integer>980</integer>
+			<integer>1400</integer>
 			<key>Pea Pod</key>
-			<integer>1200</integer>
+			<integer>1800</integer>
 			<key>Pea</key>
 			<integer>0</integer>
 			<key>Pumpkin</key>
-			<integer>2650</integer>
+			<integer>2940</integer>
 			<key>Beet</key>
 			<integer>0</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>6000</integer>
+			<key>ScareCrow</key>
+			<integer>500</integer>
+			<key>Tree</key>
+			<integer>700</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>14000</integer>
+				<key>Damage</key>
+				<integer>20</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>400</integer>
+			<key>Corn</key>
+			<integer>700</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>1200</integer>
+			<key>Pea Pod</key>
+			<integer>1700</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2730</integer>
+			<key>Beet</key>
+			<integer>3800</integer>
 			<key>Eggplant</key>
 			<integer>0</integer>
 			<key>Artichokes</key>
@@ -2837,1149 +3139,1026 @@
 			<key>Wall Spawn</key>
 			<integer>2000</integer>
 			<key>ScareCrow</key>
-			<integer>400</integer>
+			<integer>500</integer>
 			<key>Tree</key>
-			<integer>600</integer>
+			<integer>700</integer>
 			<key>Barn</key>
 			<dict>
 				<key>Armor</key>
 				<integer>0</integer>
 				<key>Health</key>
-				<integer>13000</integer>
+				<integer>14500</integer>
 				<key>Damage</key>
-				<integer>20</integer>
+				<integer>21</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>200</integer>
+			<integer>0</integer>
 			<key>Broccoli</key>
-			<integer>430</integer>
+			<integer>400</integer>
 			<key>Corn</key>
-			<integer>790</integer>
+			<integer>697</integer>
 			<key>Tomato</key>
-			<integer>1050</integer>
+			<integer>7000</integer>
 			<key>Potato</key>
+			<integer>1187</integer>
+			<key>Pea Pod</key>
+			<integer>1690</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Beet</key>
+			<integer>3775</integer>
+			<key>Pumpkin</key>
+			<integer>2720</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>5400</integer>
+			<key>ScareCrow</key>
+			<integer>500</integer>
+			<key>Tree</key>
+			<integer>700</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>14500</integer>
+				<key>Damage</key>
+				<integer>21</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>392</integer>
+			<key>Corn</key>
+			<integer>692</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>1180</integer>
+			<key>Pea Pod</key>
+			<integer>1650</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2700</integer>
+			<key>Beet</key>
+			<integer>3760</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>1800</integer>
+			<key>ScareCrow</key>
+			<integer>500</integer>
+			<key>Tree</key>
+			<integer>700</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>14500</integer>
+				<key>Damage</key>
+				<integer>21</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>390</integer>
+			<key>Corn</key>
+			<integer>683</integer>
+			<key>Tomato</key>
+			<integer>6000</integer>
+			<key>Potato</key>
+			<integer>1140</integer>
+			<key>Pea Pod</key>
+			<integer>1620</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2630</integer>
+			<key>Beet</key>
+			<integer>3705</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>3000</integer>
+			<key>ScareCrow</key>
+			<integer>525</integer>
+			<key>Tree</key>
+			<integer>710</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>14750</integer>
+				<key>Damage</key>
+				<integer>21</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>380</integer>
+			<key>Corn</key>
+			<integer>660</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>1070</integer>
+			<key>Pea Pod</key>
+			<integer>1600</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2525</integer>
+			<key>Beet</key>
+			<integer>3610</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>3500</integer>
+			<key>ScareCrow</key>
+			<integer>550</integer>
+			<key>Tree</key>
+			<integer>750</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>15000</integer>
+				<key>Damage</key>
+				<integer>22</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>370</integer>
+			<key>Corn</key>
+			<integer>620</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>1026</integer>
+			<key>Pea Pod</key>
+			<integer>1542</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2300</integer>
+			<key>Beet</key>
+			<integer>3500</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>6000</integer>
+			<key>ScareCrow</key>
+			<integer>550</integer>
+			<key>Tree</key>
+			<integer>750</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>15000</integer>
+				<key>Damage</key>
+				<integer>22</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>360</integer>
+			<key>Corn</key>
+			<integer>570</integer>
+			<key>Tomato</key>
+			<integer>4000</integer>
+			<key>Potato</key>
+			<integer>990</integer>
+			<key>Pea Pod</key>
+			<integer>0</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2430</integer>
+			<key>Beet</key>
+			<integer>3420</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>0</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>4503</integer>
+			<key>ScareCrow</key>
+			<integer>550</integer>
+			<key>Tree</key>
+			<integer>750</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>15500</integer>
+				<key>Damage</key>
+				<integer>22</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>600</integer>
+			<key>Tomato</key>
+			<integer>5000</integer>
+			<key>Potato</key>
+			<integer>600</integer>
+			<key>Pea Pod</key>
+			<integer>1500</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2300</integer>
+			<key>Beet</key>
+			<integer>3330</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>3700</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>3200</integer>
+			<key>ScareCrow</key>
+			<integer>550</integer>
+			<key>Tree</key>
+			<integer>750</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>16000</integer>
+				<key>Damage</key>
+				<integer>24</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>580</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>590</integer>
+			<key>Pea Pod</key>
+			<integer>1460</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2280</integer>
+			<key>Beet</key>
+			<integer>3330</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>3680</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>2700</integer>
+			<key>ScareCrow</key>
+			<integer>600</integer>
+			<key>Tree</key>
+			<integer>750</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>16500</integer>
+				<key>Damage</key>
+				<integer>24</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>568</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>584</integer>
+			<key>Pea Pod</key>
+			<integer>1450</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2270</integer>
+			<key>Beet</key>
+			<integer>3296</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>3667</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>1300</integer>
+			<key>ScareCrow</key>
+			<integer>600</integer>
+			<key>Tree</key>
+			<integer>780</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>16500</integer>
+				<key>Damage</key>
+				<integer>25</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>550</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>570</integer>
+			<key>Pea Pod</key>
+			<integer>1430</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2230</integer>
+			<key>Beet</key>
+			<integer>3240</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>3600</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>2400</integer>
+			<key>ScareCrow</key>
+			<integer>650</integer>
+			<key>Tree</key>
+			<integer>800</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>17000</integer>
+				<key>Damage</key>
+				<integer>25</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>530</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>550</integer>
+			<key>Pea Pod</key>
+			<integer>1410</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2200</integer>
+			<key>Beet</key>
+			<integer>3200</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>3560</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>1000</integer>
+			<key>ScareCrow</key>
+			<integer>650</integer>
+			<key>Tree</key>
+			<integer>800</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>17000</integer>
+				<key>Damage</key>
+				<integer>25</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>515</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>530</integer>
+			<key>Pea Pod</key>
+			<integer>1380</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2185</integer>
+			<key>Beet</key>
+			<integer>3150</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>3520</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>4000</integer>
+			<key>ScareCrow</key>
+			<integer>700</integer>
+			<key>Tree</key>
+			<integer>800</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>17500</integer>
+				<key>Damage</key>
+				<integer>25</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>500</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>515</integer>
+			<key>Pea Pod</key>
+			<integer>1350</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2165</integer>
+			<key>Beet</key>
+			<integer>3120</integer>
+			<key>Eggplant</key>
+			<integer>0</integer>
+			<key>Artichokes</key>
+			<integer>3410</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>3600</integer>
+			<key>ScareCrow</key>
+			<integer>700</integer>
+			<key>Tree</key>
+			<integer>870</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>18000</integer>
+				<key>Damage</key>
+				<integer>25</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>500</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>500</integer>
+			<key>Pea Pod</key>
+			<integer>1330</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2155</integer>
+			<key>Beet</key>
+			<integer>3150</integer>
+			<key>Eggplant</key>
+			<integer>4000</integer>
+			<key>Artichokes</key>
+			<integer>3400</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>2800</integer>
+			<key>ScareCrow</key>
+			<integer>750</integer>
+			<key>Tree</key>
+			<integer>900</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>18500</integer>
+				<key>Damage</key>
+				<integer>27</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>500</integer>
+			<key>Tomato</key>
+			<integer>4000</integer>
+			<key>Potato</key>
+			<integer>480</integer>
+			<key>Pea Pod</key>
+			<integer>1300</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2110</integer>
+			<key>Beet</key>
+			<integer>3100</integer>
+			<key>Eggplant</key>
+			<integer>3900</integer>
+			<key>Artichokes</key>
+			<integer>3350</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>1350</integer>
+			<key>ScareCrow</key>
+			<integer>800</integer>
+			<key>Tree</key>
 			<integer>950</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>18500</integer>
+				<key>Damage</key>
+				<integer>27</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>500</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>450</integer>
+			<key>Pea Pod</key>
+			<integer>1270</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2070</integer>
+			<key>Beet</key>
+			<integer>3030</integer>
+			<key>Eggplant</key>
+			<integer>3830</integer>
+			<key>Artichokes</key>
+			<integer>3190</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>3000</integer>
+			<key>ScareCrow</key>
+			<integer>800</integer>
+			<key>Tree</key>
+			<integer>950</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>18500</integer>
+				<key>Damage</key>
+				<integer>27</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>500</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>420</integer>
+			<key>Pea Pod</key>
+			<integer>1240</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2000</integer>
+			<key>Beet</key>
+			<integer>3010</integer>
+			<key>Eggplant</key>
+			<integer>3770</integer>
+			<key>Artichokes</key>
+			<integer>3150</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>4300</integer>
+			<key>ScareCrow</key>
+			<integer>850</integer>
+			<key>Tree</key>
+			<integer>950</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>19000</integer>
+				<key>Damage</key>
+				<integer>27</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>480</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>410</integer>
+			<key>Pea Pod</key>
+			<integer>1220</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>1987</integer>
+			<key>Beet</key>
+			<integer>3000</integer>
+			<key>Eggplant</key>
+			<integer>3740</integer>
+			<key>Artichokes</key>
+			<integer>3100</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>3600</integer>
+			<key>ScareCrow</key>
+			<integer>850</integer>
+			<key>Tree</key>
+			<integer>950</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>19500</integer>
+				<key>Damage</key>
+				<integer>27</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>470</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>400</integer>
+			<key>Pea Pod</key>
+			<integer>1200</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>1970</integer>
+			<key>Beet</key>
+			<integer>2950</integer>
+			<key>Eggplant</key>
+			<integer>3720</integer>
+			<key>Artichokes</key>
+			<integer>3060</integer>
+			<key>Asparagus</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>7000</integer>
+			<key>ScareCrow</key>
+			<integer>850</integer>
+			<key>Tree</key>
+			<integer>1000</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>20000</integer>
+				<key>Damage</key>
+				<integer>27</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>470</integer>
+			<key>Tomato</key>
+			<integer>5000</integer>
+			<key>Potato</key>
+			<integer>600</integer>
+			<key>Pea Pod</key>
+			<integer>1300</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>2000</integer>
+			<key>Beet</key>
+			<integer>3000</integer>
+			<key>Eggplant</key>
+			<integer>4000</integer>
+			<key>Artichokes</key>
+			<integer>3100</integer>
+			<key>Asparagus</key>
+			<integer>4000</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>4000</integer>
+			<key>ScareCrow</key>
+			<integer>900</integer>
+			<key>Tree</key>
+			<integer>1000</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>20000</integer>
+				<key>Damage</key>
+				<integer>27</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>460</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>560</integer>
+			<key>Pea Pod</key>
+			<integer>1280</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>1980</integer>
+			<key>Beet</key>
+			<integer>2960</integer>
+			<key>Eggplant</key>
+			<integer>3970</integer>
+			<key>Artichokes</key>
+			<integer>3060</integer>
+			<key>Asparagus</key>
+			<integer>3950</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>3600</integer>
+			<key>ScareCrow</key>
+			<integer>900</integer>
+			<key>Tree</key>
+			<integer>1000</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>21000</integer>
+				<key>Damage</key>
+				<integer>27</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>450</integer>
+			<key>Tomato</key>
+			<integer>0</integer>
+			<key>Potato</key>
+			<integer>540</integer>
+			<key>Pea Pod</key>
+			<integer>1270</integer>
+			<key>Pea</key>
+			<integer>0</integer>
+			<key>Pumpkin</key>
+			<integer>1950</integer>
+			<key>Beet</key>
+			<integer>2900</integer>
+			<key>Eggplant</key>
+			<integer>3930</integer>
+			<key>Artichokes</key>
+			<integer>3000</integer>
+			<key>Asparagus</key>
+			<integer>3910</integer>
+		</dict>
+		<dict>
+			<key>Wall Spawn</key>
+			<integer>1800</integer>
+			<key>ScareCrow</key>
+			<integer>900</integer>
+			<key>Tree</key>
+			<integer>1000</integer>
+			<key>Barn</key>
+			<dict>
+				<key>Armor</key>
+				<integer>0</integer>
+				<key>Health</key>
+				<integer>21000</integer>
+				<key>Damage</key>
+				<integer>27</integer>
+			</dict>
+			<key>Carrot</key>
+			<integer>0</integer>
+			<key>Broccoli</key>
+			<integer>0</integer>
+			<key>Corn</key>
+			<integer>450</integer>
+			<key>Tomato</key>
+			<integer>6000</integer>
+			<key>Potato</key>
+			<integer>520</integer>
 			<key>Pea Pod</key>
 			<integer>1250</integer>
 			<key>Pea</key>
 			<integer>0</integer>
 			<key>Pumpkin</key>
-			<integer>2650</integer>
+			<integer>1900</integer>
 			<key>Beet</key>
-			<integer>0</integer>
+			<integer>2900</integer>
 			<key>Eggplant</key>
-			<integer>0</integer>
+			<integer>3900</integer>
 			<key>Artichokes</key>
-			<integer>0</integer>
+			<integer>2960</integer>
 			<key>Asparagus</key>
-			<integer>0</integer>
+			<integer>3880</integer>
 		</dict>
 		<dict>
 			<key>Wall Spawn</key>
-			<integer>2300</integer>
+			<integer>2400</integer>
 			<key>ScareCrow</key>
-			<integer>400</integer>
-			<key>Tree</key>
-			<integer>600</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>13000</integer>
-				<key>Damage</key>
-				<integer>20</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>180</integer>
-			<key>Broccoli</key>
-			<integer>360</integer>
-			<key>Corn</key>
-			<integer>700</integer>
-			<key>Tomato</key>
-			<integer>970</integer>
-			<key>Potato</key>
 			<integer>900</integer>
-			<key>Pea Pod</key>
-			<integer>1100</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>2500</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
 			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>0</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
 			<integer>1000</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
 			<key>Barn</key>
 			<dict>
 				<key>Armor</key>
 				<integer>0</integer>
 				<key>Health</key>
-				<integer>600</integer>
+				<integer>22000</integer>
 				<key>Damage</key>
-				<integer>5</integer>
+				<integer>27</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>950</integer>
+			<integer>0</integer>
 			<key>Broccoli</key>
 			<integer>0</integer>
 			<key>Corn</key>
-			<integer>0</integer>
+			<integer>440</integer>
 			<key>Tomato</key>
 			<integer>0</integer>
 			<key>Potato</key>
-			<integer>0</integer>
+			<integer>510</integer>
 			<key>Pea Pod</key>
-			<integer>0</integer>
+			<integer>1240</integer>
 			<key>Pea</key>
 			<integer>0</integer>
 			<key>Pumpkin</key>
-			<integer>0</integer>
+			<integer>1870</integer>
 			<key>Beet</key>
-			<integer>0</integer>
+			<integer>2870</integer>
 			<key>Eggplant</key>
-			<integer>0</integer>
+			<integer>3860</integer>
 			<key>Artichokes</key>
-			<integer>0</integer>
+			<integer>2900</integer>
 			<key>Asparagus</key>
-			<integer>0</integer>
+			<integer>3840</integer>
 		</dict>
 		<dict>
 			<key>Wall Spawn</key>
-			<integer>0</integer>
+			<integer>3000</integer>
 			<key>ScareCrow</key>
-			<integer>50</integer>
+			<integer>1000</integer>
 			<key>Tree</key>
-			<integer>150</integer>
+			<integer>1200</integer>
 			<key>Barn</key>
 			<dict>
 				<key>Armor</key>
 				<integer>0</integer>
 				<key>Health</key>
-				<integer>600</integer>
+				<integer>25000</integer>
 				<key>Damage</key>
-				<integer>5</integer>
+				<integer>30</integer>
 			</dict>
 			<key>Carrot</key>
-			<integer>950</integer>
+			<integer>1400</integer>
 			<key>Broccoli</key>
-			<integer>0</integer>
+			<integer>1600</integer>
 			<key>Corn</key>
-			<integer>0</integer>
+			<integer>900</integer>
 			<key>Tomato</key>
-			<integer>0</integer>
+			<integer>6000</integer>
 			<key>Potato</key>
-			<integer>0</integer>
+			<integer>800</integer>
 			<key>Pea Pod</key>
-			<integer>0</integer>
+			<integer>1600</integer>
 			<key>Pea</key>
 			<integer>0</integer>
 			<key>Pumpkin</key>
-			<integer>0</integer>
+			<integer>1900</integer>
 			<key>Beet</key>
-			<integer>0</integer>
+			<integer>2900</integer>
 			<key>Eggplant</key>
-			<integer>0</integer>
+			<integer>3800</integer>
 			<key>Artichokes</key>
-			<integer>0</integer>
+			<integer>2860</integer>
 			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Wall Spawn</key>
-			<integer>0</integer>
-			<key>ScareCrow</key>
-			<integer>50</integer>
-			<key>Tree</key>
-			<integer>150</integer>
-			<key>Barn</key>
-			<dict>
-				<key>Armor</key>
-				<integer>0</integer>
-				<key>Health</key>
-				<integer>600</integer>
-				<key>Damage</key>
-				<integer>5</integer>
-			</dict>
-			<key>Carrot</key>
-			<integer>950</integer>
-			<key>Broccoli</key>
-			<integer>0</integer>
-			<key>Corn</key>
-			<integer>0</integer>
-			<key>Tomato</key>
-			<integer>0</integer>
-			<key>Potato</key>
-			<integer>0</integer>
-			<key>Pea Pod</key>
-			<integer>0</integer>
-			<key>Pea</key>
-			<integer>0</integer>
-			<key>Pumpkin</key>
-			<integer>0</integer>
-			<key>Beet</key>
-			<integer>0</integer>
-			<key>Eggplant</key>
-			<integer>0</integer>
-			<key>Artichokes</key>
-			<integer>0</integer>
-			<key>Asparagus</key>
-			<integer>0</integer>
+			<integer>3800</integer>
 		</dict>
 	</array>
 </dict>

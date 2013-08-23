@@ -15,7 +15,7 @@
 
 - (id)initWithfontFile:(NSString *)fontFile;
 -(void)resetEnergy:(int) initialEnergyMax increasedAt:(int)energyPerSec;
-
+-(void)deductEnergyBy:(int)cost;
 @property (nonatomic, assign) int energy;
 @property (nonatomic, assign) int energyPerSec;
 @property (nonatomic, assign) int energyMax;

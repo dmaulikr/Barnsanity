@@ -18,6 +18,7 @@
 #import "Coconut.h"
 #import "Grape.h"
 #import "Pineapple.h"
+#import "Banana.h"
 #import "Watermelon.h"
 #import "Carrot.h"
 #import "Broccoli.h"
@@ -164,10 +165,15 @@
         [monster setObject:playerBatch forKey:@"Watermelon"];
         
         enemyBatch=[[CCNode alloc]init];
+                playerBatch=[[CCNode alloc]init];
 		[enemyMonsters addChild:enemyBatch];
+        
         [monster setObject:enemyBatch forKey:@"Beet"];
+        [playerMonster addChild:playerBatch];
+        [monster setObject:playerBatch forKey:@"Banana"];
         
         enemyBatch=[[CCNode alloc]init];
+        
 		[enemyMonsters addChild:enemyBatch];
         [monster setObject:enemyBatch forKey:@"Asparagus"];
         
@@ -206,6 +212,7 @@
         [monsterClass setObject: [Coconut class]  forKey:@"Coconut"];
         [monsterClass setObject: [Grape class]  forKey:@"Grape"];
         [monsterClass setObject: [Pineapple class] forKey:@"Pineapple"];
+        [monsterClass setObject: [Banana class] forKey:@"Banana"];
         [monsterClass setObject: [Watermelon class]  forKey:@"Watermelon"];
         
         [monsterClass setObject:[Carrot class] forKey:@"Carrot"];
@@ -244,6 +251,7 @@
     int level=[[[GameMechanics sharedGameMechanics]game]gameplayLevel];
     wallSpawnProp=[[[[[[[GameMechanics sharedGameMechanics]game] gameInfo]objectForKey:@"Game Levels"] objectAtIndex:level ] objectForKey:@"Wall Spawn"]integerValue];
     updateCount=450;
+    spawnIncreaseFactor=1;
     self.enemyBarnUnderAttack=FALSE;
     self.playerBarnUnderAttack=FALSE;
     //    CCSpriteBatchNode *playerBatch;
@@ -380,13 +388,13 @@
         [_playerBarn constructAt:0 ];
     }
 }
--(void)createBomb{
+-(void)createBomb:(float)angle{
     if(!self.theBomb.visible){
-        [self.theBomb spawn];
+        [self.theBomb spawn:angle];
     }
 }
 
--(void)createShipBullet{
+-(void)createShipBullet:(float)angle{
     CCNode *shipBullet= [monster objectForKey:@"Ship Bullets"];
     ShipBullets* bullet;
     
@@ -401,7 +409,7 @@
             // find the first free enemy and respawn it
             if (bullet.visible == NO)
             {
-                [bullet spawn];
+                [bullet spawn:angle];
                 // remember, that we will not need to create a new enemy
                 foundAvailablePlayerToSpawn = TRUE;
                 break;
@@ -415,7 +423,7 @@
         // initialize an enemy of the provided class
         bullet=[(ShipBullets *) [ShipBullets alloc] initWithMonsterPicture];
         [shipBullets addChild:bullet];
-        [bullet spawn];
+        [bullet spawn:angle];
     }
     
 }
@@ -801,7 +809,6 @@
                                 //if the enemy is not attacking, then prompt the enemy unit to attack
                                 if (enemy.attacking == FALSE)
                                 {
-                                    enemy.attacked=TRUE;
                                     [enemy attack];
                                     [wall gotHit:enemy.damage];
                                 }else if(enemy.attacking && enemy.areaOfEffect){
@@ -825,7 +832,6 @@
                                     //if the enemy is not attacking, then prompt the enemy unit to attack
                                     if (enemy.attacking == FALSE)
                                     {
-                                        enemy.attacked=TRUE;
                                         [enemy attack];
                                         [player gotHit:enemy.damage];
                                     }else if(enemy.attacking && enemy.areaOfEffect){
@@ -849,7 +855,6 @@
                             //if the enemy is not attacking, then prompt the enemy unit to attack
                             if (enemy.attacking == FALSE)
                             {
-                                enemy.attacked=TRUE;
                                 [enemy attack];
                                 [_playerBarn gotHit:enemy.damage];
                             }else if(enemy.attacking && enemy.areaOfEffect){
@@ -863,6 +868,7 @@
                 
                 if(!enemy.attacked){
                     enemy.move=TRUE;
+                    enemy.hitDidRun=FALSE;
                 }else{
                     enemy.move=FALSE;
                 }
@@ -896,7 +902,6 @@
                                 //if the enemy is not attacking, then prompt the enemy unit to attack
                                 if (player.attacking == FALSE)
                                 {
-                                    player.attacked=TRUE;
                                     [player attack];
                                     [wall gotHit:player.damage];
                                 }else if(player.attacking && player.areaOfEffect){
@@ -918,7 +923,6 @@
                                     //if the enemy is not attacking, then prompt the enemy unit to attack
                                     if (player.attacking == FALSE)
                                     {
-                                        player.attacked=TRUE;
                                         [player attack];
                                         [enemy gotHit:player.damage];
                                     }else if(player.attacking && player.areaOfEffect){
@@ -942,7 +946,6 @@
                             self.enemyBarnUnderAttack=TRUE;
                             if (player.attacking == FALSE)
                             {
-                                player.attacked=TRUE;
                                 [player attack];
                                 [_enemyBarn gotHit:player.damage];
                             }else if(player.attacking && player.areaOfEffect){
@@ -956,6 +959,7 @@
                 
                 if(!player.attacked ){
                     player.move=TRUE;
+                    player.hitDidRun=FALSE;
                 }else{
                     player.move=FALSE;
                 }
@@ -1094,7 +1098,9 @@
     }
     
 }
-
+-(void)increaseSpawnRate{
+    spawnIncreaseFactor=spawnIncreaseFactor+.3;
+}
 
 -(void) update:(ccTime)delta
 {
@@ -1111,11 +1117,9 @@
         {
             // we get the spawn frequency for this specific monster type
             int spawnFrequency = [[GameMechanics sharedGameMechanics] spawnRateForEnemyMonsterType:monsterTypeClass];
+            spawnFrequency=spawnFrequency/spawnIncreaseFactor;
             // if the updateCount reached the spawnFrequency we spawn a new enemy
-            if([[GameMechanics sharedGameMechanics]game].timeInSec<=[[GameMechanics sharedGameMechanics]game].timeForCrazyMode){
-                spawnFrequency=spawnFrequency/1.5;
-            }
-            
+        
             if(self.enemyBarnUnderAttack && [[GameMechanics sharedGameMechanics]game].difficulty==EASY){
                 spawnFrequency=spawnFrequency/.80;
             }

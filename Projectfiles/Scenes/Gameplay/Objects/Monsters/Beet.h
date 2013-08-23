@@ -9,5 +9,10 @@
 #import "BasicEnemyMonster.h"
 
 @interface Beet : BasicEnemyMonster
-
+{
+    float deltaRadius;
+    float ceiling;
+    float floor;
+    float radiusOfPosition;
+}
 @end

@@ -137,6 +137,14 @@
 {
     if(self.move && self.alive){
         [self changePosition];
+    }else if(self.alive){
+        if(self.moveDirection==left){
+            self.hitZoneAngle1=self.angle+(self.hitZone+1*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2);
+            self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
+        }else{
+            self.hitZoneAngle2=self.angle-(self.hitZone+1*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2);
+            self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
+        }
     }
 }
 

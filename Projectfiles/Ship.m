@@ -28,14 +28,25 @@
 
 -(void)fireBomb{
     if(!self.bombUsed){
-        [[MonsterCache sharedMonsterCache] createBomb];
+        float angle=[[[GameMechanics sharedGameMechanics] gameScene] getChildByTag:1].rotation;
+            [[MonsterCache sharedMonsterCache] createBomb:angle];
         self.bombUsed=TRUE;
     }
 }
 
 -(void)fireBullet{
     if(fireDelayTimer<=0){
-        [[MonsterCache sharedMonsterCache] createShipBullet];
+        float angle=[[[GameMechanics sharedGameMechanics] gameScene] getChildByTag:1].rotation;
+        if(numberOfBulletFire==1){
+             [[MonsterCache sharedMonsterCache] createShipBullet:angle];
+        }else if(numberOfBulletFire==2){
+            [[MonsterCache sharedMonsterCache] createShipBullet:angle-.9];
+            [[MonsterCache sharedMonsterCache] createShipBullet:angle+.9];
+        }else if(numberOfBulletFire==3){
+            [[MonsterCache sharedMonsterCache] createShipBullet:angle-1.25];
+            [[MonsterCache sharedMonsterCache] createShipBullet:angle];
+            [[MonsterCache sharedMonsterCache] createShipBullet:angle+1.25];
+         }
         fireDelayTimer=fireDelayInitial;
     }
 }
@@ -60,5 +71,13 @@
     }
     int level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship Firerate"] integerValue];
     fireDelayInitial=[[[[[[GameMechanics sharedGameMechanics]game]gameInfo]objectForKey:@"Ship Firerate"]   objectAtIndex:level] integerValue];
+    level=[[[[[GameMechanics sharedGameMechanics]game]levelsOfEverything] objectForKey:@"Ship Damage"] integerValue];
+    if(level>=8){
+        numberOfBulletFire=3;
+    }else if(level>=5){
+        numberOfBulletFire=2;
+    }else{
+        numberOfBulletFire=1;
+    }
 }
 @end

@@ -47,7 +47,13 @@
         energyLabel.string = [NSString stringWithFormat:_stringFormat, self.energyMax,self.energyMax];
     }
 }
+-(void)deductEnergyBy:(int)cost{
 
+        _energy = _energy-cost;
+        [[GameMechanics sharedGameMechanics] game].energy=_energy;
+        energyLabel.string = [NSString stringWithFormat:_stringFormat, _energy,self.energyMax];
+
+}
 
 -(void) updateTimer:(NSTimer *) theTimer{
     if ([[GameMechanics sharedGameMechanics] gameState] == GameStateRunning && self.run)
