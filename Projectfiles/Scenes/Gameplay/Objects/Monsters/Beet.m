@@ -133,132 +133,132 @@
     return self;
 }
 
-//- (void)spawnAt:(float) angleOfLocation
-//{
-//    //start update and run action
-//    [self stopAllActions];
-//    //get the radius of the world
-//    radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
-//    //calculate where to spawn
-//    self.radiusToSpawn=radiusOfWorld+CCRANDOM_MINUS1_1()*self.radiusToSpawnDelta-5;
-//    radiusOfPosition= self.radiusToSpawn;
-//    ceiling=self.radiusToSpawn+80;
-//    floor=self.radiusToSpawn+60;
-//    //calculate the boudzone and hit zone of the monster
-//    self.boundingZone= atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2.5;
-//    self.hitZone=CCRANDOM_MINUS1_1()*(M_PI/550)+self.range*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2;
-//    
-//    //base on where you spawn, set the zorder of the monster
-//    [self setZOrder:(NSInteger)((2*radiusOfWorld)-self.radiusToSpawn)];
-//    
-//    
-//    //set up spawn locaiton
-//    //angle of the spawn
-//    self.angle=angleOfLocation;
-//    self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
-//    // Select a spawn location
-//    float xPos=  self.radiusToSpawn*cos(self.angle);
-//    float yPos=  self.radiusToSpawn*sin(self.angle);
-//    //set the location
-//    self.position = CGPointMake(xPos, yPos);
-//    self.rotation=CC_RADIANS_TO_DEGREES(-self.angle+M_PI_2);
-//    //set up the hit zone angles according to the direction they are moving towards
-//    if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
-//        self.flipX=0;
-//        self.moveDirection=right;
-//        self.hitZoneAngle1=self.angle;
-//        self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
-//        self.hitZoneAngle2=self.angle-self.hitZone;
-//        self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
-//    }else{
-//        
-//        if(self.angle<=M_PI){
-//            self.flipX=0;
-//            self.moveDirection=right;
-//            self.hitZoneAngle1=self.angle;
-//            self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
-//            self.hitZoneAngle2=self.angle-self.hitZone;
-//            self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
-//        }else{
-//            self.moveDirection=left;
-//            self.flipX=180;
-//            self.hitZoneAngle1=self.angle+self.hitZone;
-//            self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
-//            self.hitZoneAngle2=self.angle;
-//            self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
-//        }
-//    }
-//    self.boundingZoneAngle1=self.angle+self.boundingZone;
-//    self.boundingZoneAngle1=fmodf(self.boundingZoneAngle1+2*M_PI, 2*M_PI);
-//    self.boundingZoneAngle2=self.angle-self.boundingZone;
-//    self.boundingZoneAngle2=fmodf(self.boundingZoneAngle2+2*M_PI, 2*M_PI);
-//    
-//    
-//    
-//    //set health point
-//    self.hitPoints=self.hitPointsInit;
-//    self.damage+=CCRANDOM_MINUS1_1()*self.damageDelta;
-//	// Finally set yourself to be visible, this also flag the enemy as "in use"
-//	self.visible = YES;
-//    self.alive=TRUE;
-//    self.attacked=FALSE;
-//    self.attacking=FALSE;
-//    self.hitDidRun=FALSE;
-//    blinkDidRun=FALSE;
-//    deltaRadius=1;
-//    [self runAction:plant];
-//	
-//}
-//
-//-(void)changePosition{
-//    //move the monster M_PI/480 in a direction
-//    float deltaSpeed;
-//    if([[GameMechanics sharedGameMechanics]game].difficulty==HARD){
-//        deltaSpeed=(M_PI/5850);
-//    }else{
-//        deltaSpeed=(M_PI/5000);
-//    }
-//    if(self.moveDirection==left){
-//        self.angle+=speed* deltaSpeed;
-//        self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
-//        self.hitZoneAngle1=self.angle+self.hitZone;
-//        self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
-//        self.hitZoneAngle2=self.angle;
-//        self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
-//    }else{
-//        self.angle-=speed* deltaSpeed;
-//        self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
-//        self.hitZoneAngle1=self.angle;
-//        self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
-//        self.hitZoneAngle2=self.angle-self.hitZone;
-//        self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
-//    }
-//    
-//    self.boundingZoneAngle1=self.angle+self.boundingZone;
-//    self.boundingZoneAngle1=fmodf(self.boundingZoneAngle1+2*M_PI, 2*M_PI);
-//    self.boundingZoneAngle2=self.angle-self.boundingZone;
-//    self.boundingZoneAngle2=fmodf(self.boundingZoneAngle2+2*M_PI, 2*M_PI);
-//    
-//    radiusOfPosition=radiusOfPosition+deltaRadius;
-//    if(deltaRadius>0){
-//        if(radiusOfPosition>=ceiling){
-//            deltaRadius=-.35;
-//        }
-//    }else{
-//        if(radiusOfPosition<floor){
-//            deltaRadius=.35;
-//        }
-//    }
-//    
-//    float deltaX=radiusOfPosition*cos(self.angle);
-//    float deltaY=radiusOfPosition*sin(self.angle);
-//    CGPoint newPosition = ccp(deltaX, deltaY);
-//    
-//    
-//    self.rotation=CC_RADIANS_TO_DEGREES(-self.angle+M_PI_2);
-//    
-//    [self setPosition:newPosition];
-//}
+- (void)spawnAt:(float) angleOfLocation
+{
+    //start update and run action
+    [self stopAllActions];
+    //get the radius of the world
+    radiusOfWorld=[[GameMechanics sharedGameMechanics] gameScene].radiusOfWorld;
+    //calculate where to spawn
+    self.radiusToSpawn=radiusOfWorld+CCRANDOM_MINUS1_1()*self.radiusToSpawnDelta-5;
+    radiusOfPosition= self.radiusToSpawn;
+    ceiling=self.radiusToSpawn+80;
+    floor=self.radiusToSpawn+60;
+    //calculate the boudzone and hit zone of the monster
+    self.boundingZone= atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2.5;
+    self.hitZone=CCRANDOM_MINUS1_1()*(M_PI/550)+self.range*atanf((self.contentSize.width/2)/(radiusOfWorld+self.contentSize.height/2))/2;
+    
+    //base on where you spawn, set the zorder of the monster
+    [self setZOrder:(NSInteger)((2*radiusOfWorld)-self.radiusToSpawn)];
+    
+    
+    //set up spawn locaiton
+    //angle of the spawn
+    self.angle=angleOfLocation;
+    self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
+    // Select a spawn location
+    float xPos=  self.radiusToSpawn*cos(self.angle);
+    float yPos=  self.radiusToSpawn*sin(self.angle);
+    //set the location
+    self.position = CGPointMake(xPos, yPos);
+    self.rotation=CC_RADIANS_TO_DEGREES(-self.angle+M_PI_2);
+    //set up the hit zone angles according to the direction they are moving towards
+    if([[GameMechanics sharedGameMechanics]game].difficulty==EASY){
+        self.flipX=0;
+        self.moveDirection=right;
+        self.hitZoneAngle1=self.angle;
+        self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
+        self.hitZoneAngle2=self.angle-self.hitZone;
+        self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
+    }else{
+        
+        if(self.angle<=M_PI){
+            self.flipX=0;
+            self.moveDirection=right;
+            self.hitZoneAngle1=self.angle;
+            self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
+            self.hitZoneAngle2=self.angle-self.hitZone;
+            self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
+        }else{
+            self.moveDirection=left;
+            self.flipX=180;
+            self.hitZoneAngle1=self.angle+self.hitZone;
+            self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
+            self.hitZoneAngle2=self.angle;
+            self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
+        }
+    }
+    self.boundingZoneAngle1=self.angle+self.boundingZone;
+    self.boundingZoneAngle1=fmodf(self.boundingZoneAngle1+2*M_PI, 2*M_PI);
+    self.boundingZoneAngle2=self.angle-self.boundingZone;
+    self.boundingZoneAngle2=fmodf(self.boundingZoneAngle2+2*M_PI, 2*M_PI);
+    
+    
+    
+    //set health point
+    self.hitPoints=self.hitPointsInit;
+    self.damage+=CCRANDOM_MINUS1_1()*self.damageDelta;
+	// Finally set yourself to be visible, this also flag the enemy as "in use"
+	self.visible = YES;
+    self.alive=TRUE;
+    self.attacked=FALSE;
+    self.attacking=FALSE;
+    self.hitDidRun=FALSE;
+    blinkDidRun=FALSE;
+    deltaRadius=1;
+    [self runAction:plant];
+	
+}
+
+-(void)changePosition{
+    //move the monster M_PI/480 in a direction
+    float deltaSpeed;
+    if([[GameMechanics sharedGameMechanics]game].difficulty==HARD){
+        deltaSpeed=(M_PI/5850);
+    }else{
+        deltaSpeed=(M_PI/5000);
+    }
+    if(self.moveDirection==left){
+        self.angle+=speed* deltaSpeed;
+        self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
+        self.hitZoneAngle1=self.angle+self.hitZone;
+        self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
+        self.hitZoneAngle2=self.angle;
+        self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
+    }else{
+        self.angle-=speed* deltaSpeed;
+        self.angle=fmodf(self.angle+2*M_PI, 2*M_PI);
+        self.hitZoneAngle1=self.angle;
+        self.hitZoneAngle1=fmodf(self.hitZoneAngle1+2*M_PI, 2*M_PI);
+        self.hitZoneAngle2=self.angle-self.hitZone;
+        self.hitZoneAngle2=fmodf(self.hitZoneAngle2+2*M_PI, 2*M_PI);
+    }
+    
+    self.boundingZoneAngle1=self.angle+self.boundingZone;
+    self.boundingZoneAngle1=fmodf(self.boundingZoneAngle1+2*M_PI, 2*M_PI);
+    self.boundingZoneAngle2=self.angle-self.boundingZone;
+    self.boundingZoneAngle2=fmodf(self.boundingZoneAngle2+2*M_PI, 2*M_PI);
+    
+    radiusOfPosition=radiusOfPosition+deltaRadius;
+    if(deltaRadius>0){
+        if(radiusOfPosition>=ceiling){
+            deltaRadius=-.35;
+        }
+    }else{
+        if(radiusOfPosition<floor){
+            deltaRadius=.35;
+        }
+    }
+    
+    float deltaX=radiusOfPosition*cos(self.angle);
+    float deltaY=radiusOfPosition*sin(self.angle);
+    CGPoint newPosition = ccp(deltaX, deltaY);
+    
+    
+    self.rotation=CC_RADIANS_TO_DEGREES(-self.angle+M_PI_2);
+    
+    [self setPosition:newPosition];
+}
 
 
 - (void)update:(ccTime)delta

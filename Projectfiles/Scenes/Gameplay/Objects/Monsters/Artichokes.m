@@ -133,6 +133,7 @@
     return self;
 }
 
+
 - (void)update:(ccTime)delta
 {
     if(self.move && self.alive){

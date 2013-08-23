@@ -9,5 +9,10 @@
 #import "BasicPlayerMonster.h"
 
 @interface Grape : BasicPlayerMonster
-
+{
+    float deltaRadius;
+    float ceiling;
+    float floor;
+    float radiusOfPosition;
+}
 @end

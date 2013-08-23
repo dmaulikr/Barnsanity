@@ -9,5 +9,10 @@
 #import "BasicEnemyMonster.h"
 
 @interface PeaPod : BasicEnemyMonster
-
+{
+    float deltaRadius;
+    float ceiling;
+    float floor;
+    float radiusOfPosition;
+}
 @end
