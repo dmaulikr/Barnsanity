@@ -399,7 +399,7 @@
 
 -(void)showSelectedItem: (ItemNode *)item{
     NSMutableArray *temp=[[NSMutableArray alloc]initWithCapacity:countOfDescription];
-    
+    if(!item.maxed){
     temp[0]=[NSString stringWithFormat:@"Level %d %@", selectedItem.level+1, selectedItem.nameOfItem];
     temp[1]=[NSString stringWithFormat:@"Cost: %d", selectedItem.price];
     temp[2]=[NSString stringWithFormat:@"%@", selectedItem.levelDescription];
@@ -412,7 +412,14 @@
         upgrade.visible=FALSE;
         temp[3]=[NSString stringWithFormat:@"Requirment: level %d %@", selectedItem.requiredLevel, selectedItem.unlockingItem];
     }
-    
+    }else{
+        temp[0]=[NSString stringWithFormat:@"Maxed %@", selectedItem.nameOfItem];
+         temp[1]=[NSString stringWithFormat:@""];
+         temp[2]=[NSString stringWithFormat:@""];
+         temp[3]=[NSString stringWithFormat:@""];
+         upgrade.visible=FALSE;
+        
+    }
     [desciption setDescription:temp];
     
     

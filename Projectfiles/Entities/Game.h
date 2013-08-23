@@ -29,12 +29,16 @@
 @property (nonatomic, assign) BOOL activateLevel10Tutorial;
 //is true if it is the first time playing
 @property (nonatomic, assign) BOOL activateLevel25Tutorial;
+
+@property (nonatomic, assign) BOOL showCredits;
 //indicates the difficulty level of the game
 @property (nonatomic, assign) NSInteger difficulty;
 
 //which game slot to use
 @property (nonatomic, assign) NSInteger gameSlot;
 
+//increase difficulty
+@property (nonatomic, assign) float difficultyFactor;
 //scores
 @property (nonatomic, assign) NSInteger score;
 @property (nonatomic, assign) NSInteger scorePerLevel;

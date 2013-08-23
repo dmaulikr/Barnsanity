@@ -81,6 +81,7 @@
 		3025932117B40E8D007ED0CD /* send-field-landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 302592DA17B40E8D007ED0CD /* send-field-landscape.png */; };
 		3025932217B40E8D007ED0CD /* mgwuSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302592DB17B40E8D007ED0CD /* mgwuSDK.framework */; };
 		3026A64117B2DC1A00E48C30 /* Tutorial3-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3026A64017B2DC1A00E48C30 /* Tutorial3-1.png */; };
+		3035C8FD17C707250016737F /* End.m in Sources */ = {isa = PBXBuildFile; fileRef = 3035C8FC17C707250016737F /* End.m */; };
 		30553E6A178F67F2005192DB /* view.png in Resources */ = {isa = PBXBuildFile; fileRef = 30553E69178F67F2005192DB /* view.png */; };
 		30553E6E178FB87E005192DB /* UpgradeScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 30553E6D178FB87E005192DB /* UpgradeScreen.m */; };
 		30553E7A178FBC78005192DB /* ItemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30553E79178FBC78005192DB /* ItemNode.m */; };
@@ -462,6 +463,8 @@
 		302592DA17B40E8D007ED0CD /* send-field-landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-field-landscape.png"; sourceTree = "<group>"; };
 		302592DB17B40E8D007ED0CD /* mgwuSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = mgwuSDK.framework; sourceTree = "<group>"; };
 		3026A64017B2DC1A00E48C30 /* Tutorial3-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial3-1.png"; sourceTree = "<group>"; };
+		3035C8FB17C707250016737F /* End.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = End.h; sourceTree = "<group>"; };
+		3035C8FC17C707250016737F /* End.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = End.m; sourceTree = "<group>"; };
 		30553E69178F67F2005192DB /* view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view.png; sourceTree = "<group>"; };
 		30553E6C178FB87E005192DB /* UpgradeScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeScreen.h; sourceTree = "<group>"; };
 		30553E6D178FB87E005192DB /* UpgradeScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeScreen.m; sourceTree = "<group>"; };
@@ -1021,6 +1024,8 @@
 				30C8DA3E17A2E4A6000834AC /* TutorialScreen5.m */,
 				30C8DA4317A2E4D3000834AC /* TutorialScreen6.h */,
 				30C8DA4417A2E4D3000834AC /* TutorialScreen6.m */,
+				3035C8FB17C707250016737F /* End.h */,
+				3035C8FC17C707250016737F /* End.m */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -2224,6 +2229,7 @@
 				30C8DA4217A2E4BC000834AC /* TutorialScreen4.m in Sources */,
 				30C8DA4517A2E4D3000834AC /* TutorialScreen6.m in Sources */,
 				30E20F6617C6B6F800EE658F /* Banana.m in Sources */,
+				3035C8FD17C707250016737F /* End.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

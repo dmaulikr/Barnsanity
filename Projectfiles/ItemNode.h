@@ -18,6 +18,7 @@
 @property (nonatomic, assign) BOOL ableToEquip;
 @property (nonatomic, assign) BOOL equiped;
 @property (nonatomic, assign) BOOL selected;
+@property (nonatomic, assign) BOOL maxed;
 @property (nonatomic, assign) NSInteger level;
 @property (nonatomic, assign) NSInteger price;
 @property (nonatomic, assign) NSInteger slotPriority;

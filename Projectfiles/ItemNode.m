@@ -41,33 +41,31 @@
 }
 
 -(void)reset{
+        int numberOfLevels=[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]count];
     //check level of item
     self.level=[[[[[GameMechanics sharedGameMechanics] game] levelsOfEverything]objectForKey:_nameOfItem] integerValue];
+    if(self.level != numberOfLevels-1){
     _unlockingItem= [[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level+1]objectForKey:@"Required Item"] ;
     _requiredLevel=[[[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level+1]objectForKey:@"Required Item Level"]integerValue];
     self.price=[[[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level+1]objectForKey:@"Price"]integerValue];
 //    self.itemDescription=[[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level]objectForKey:@"Item Description"];
     self.levelDescription=[[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]objectAtIndex:self.level+1] objectForKey:@"Item Level Up Description"];
     
-    int numberOfLevels=[[[[[GameMechanics sharedGameMechanics]game]gameItemInfo]objectForKey:_nameOfItem]count];
+        self.maxed=FALSE;
     //if the item level is 0 then it is already bought and is ableToBuy is true but have to check if it is able to upgrade
     if(self.level >=0){
         self.bought=TRUE;
         self.ableToBuy=TRUE;
         
-        //if unlockingItem=@"----" then it is maxed level
-        if(self.level != numberOfLevels-1){
             //check if the required item's level matches the required item's required level
             int levelOfRequiredItem=[[[[[GameMechanics sharedGameMechanics] game] levelsOfEverything] objectForKey:_unlockingItem] integerValue];
             if(levelOfRequiredItem >= _requiredLevel){
                 //it matches the required items required level so it is able to be upgraded
                 self.ableToUpgrade=TRUE;
-            }else{
-                //it did not match
-                self.ableToUpgrade=FALSE;
-            }
+
             
         }else{
+            
             //it is maxed out so it cant be upgraded
             self.ableToUpgrade=FALSE;
         }
@@ -98,6 +96,12 @@
             notBought.visible=FALSE;
             
         }
+    }
+    }else{
+        self.maxed=TRUE;
+        self.bought=TRUE;
+        self.ableToBuy=TRUE;
+        self.ableToUpgrade=FALSE;
     }
     self.selected=FALSE;
 }

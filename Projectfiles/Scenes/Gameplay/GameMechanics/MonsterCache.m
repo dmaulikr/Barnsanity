@@ -251,7 +251,7 @@
     int level=[[[GameMechanics sharedGameMechanics]game]gameplayLevel];
     wallSpawnProp=[[[[[[[GameMechanics sharedGameMechanics]game] gameInfo]objectForKey:@"Game Levels"] objectAtIndex:level ] objectForKey:@"Wall Spawn"]integerValue];
     updateCount=450;
-    spawnIncreaseFactor=1;
+    spawnIncreaseFactor=[[GameMechanics sharedGameMechanics]game].difficultyFactor;
     self.enemyBarnUnderAttack=FALSE;
     self.playerBarnUnderAttack=FALSE;
     //    CCSpriteBatchNode *playerBatch;
